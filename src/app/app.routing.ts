@@ -4,20 +4,33 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './_layouts/admin-layout/admin-layout.component';
+import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'guest/home',
     pathMatch: 'full',
   }, {
-    path: '',
+    path: 'admin',
     component: AdminLayoutComponent,
     children: [{
       path: '',
-      loadChildren: () => import('./_layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
+      loadChildren: () => import('./_layouts/admin-layout/admin-layout.module').then(m => { return m.AdminLayoutModule })
     }]
-  }
+  }, {
+    path: 'guest',
+    component: GuestLayoutComponent,
+    children: [{
+      path: '',
+      loadChildren: () => import('./_layouts/guest-layout/guest-layout.module').then(m => { return m.GuestLayoutModule })
+    }]
+  },
+  {
+    path: '**',
+    redirectTo: 'guest/home',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
@@ -25,7 +38,8 @@ const routes: Routes = [
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes, {
-      useHash: true
+      useHash: true,
+      // enableTracing: true
     })
   ],
   exports: [

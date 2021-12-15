@@ -18,7 +18,8 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/ghost.ico"
             ],
             "styles": [
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
@@ -124,7 +125,8 @@
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/ghost.ico"
             ]
           }
         },

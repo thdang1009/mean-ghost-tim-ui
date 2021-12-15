@@ -17,7 +17,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
-import { CreateUserComponent } from '@app/views/auth/create-user/create-user.component';
+import { CreateUserComponent } from '@app/views/create-user/create-user.component';
 import { TodoTodayComponent } from '@app/views/todo-today/todo-today.component';
 import { MoneyComponent } from '@app/views/money/money.component';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
-import { AuthService } from '@services/auth.service';
+import { AuthService } from '../../_services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CONSTANT } from '@app/_shares/constant';

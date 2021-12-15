@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { AuthService } from '@services/auth.service';
+import { AuthService } from '../../_services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { CONSTANT } from '@app/_shares/constant';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -14,42 +13,37 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
-  loginForm: FormGroup;
+  registerForm: FormGroup;
+  fullName = '';
   username = '';
   password = '';
-  matcher = new MyErrorStateMatcher();
   isLoadingResults = false;
+  matcher = new MyErrorStateMatcher();
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group({
+      fullName: [null, Validators.required],
       username: [null, Validators.required],
       password: [null, Validators.required]
     });
   }
 
   onFormSubmit(form: NgForm) {
-    this.authService.login(form)
+    this.authService.register(form)
       .subscribe(res => {
-        console.log(res);
-        if (res.token) {
-          localStorage.setItem(CONSTANT.TOKEN, res.token);
-          this.router.navigate(['/']);
-        }
+        this.router.navigate(['login']);
       }, (err) => {
         console.log(err);
+        alert(err.error);
       });
-  }
-
-  register() {
-    this.router.navigate(['register']);
   }
 
 }
