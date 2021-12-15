@@ -1,0 +1,10 @@
+export const CONSTANT = {
+  USER_INFO: 'USER_INFO',
+  TOKEN: 'token',
+  PERMISSION: {
+    GRAND_ADMIN: 'GRAND_ADMIN',
+    ADMIN: 'ADMIN',
+    MEMBER: 'MEMBER',
+    GUEST: 'GUEST'
+  }
+}
