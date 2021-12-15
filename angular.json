@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "material-dashboard-angular": {
+    "mean-ghost-tim-ui": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -83,14 +83,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "material-dashboard-angular:build"
+            "browserTarget": "mean-ghost-tim-ui:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "material-dashboard-angular:build:production"
+              "browserTarget": "mean-ghost-tim-ui:build:production"
             },
             "development": {
-              "browserTarget": "material-dashboard-angular:build:development"
+              "browserTarget": "mean-ghost-tim-ui:build:development"
             }
           },
           "defaultConfiguration": "production"
@@ -98,7 +98,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "material-dashboard-angular:build"
+            "browserTarget": "mean-ghost-tim-ui:build"
           }
         },
         "test": {
@@ -142,7 +142,7 @@
         }
       }
     },
-    "material-dashboard-angular-e2e": {
+    "mean-ghost-tim-ui-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -151,7 +151,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "material-dashboard-angular:serve"
+            "devServerTarget": "mean-ghost-tim-ui:serve"
           }
         },
         "lint": {
@@ -166,7 +166,7 @@
       }
     }
   },
-  "defaultProject": "material-dashboard-angular",
+  "defaultProject": "mean-ghost-tim-ui",
   "schematics": {},
   "cli": {
     "analytics": false
