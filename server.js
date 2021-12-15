@@ -13,10 +13,10 @@ const forceSSL = function () {
     next();
   }
 };
-app.use(express.static('./dist/client'));
+app.use(express.static('./dist/mean-ghost-tim-ui'));
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '/dist/client/index.html'));
+  res.sendFile(path.join(__dirname, '/dist/mean-ghost-tim-ui/index.html'));
 });
 
 app.use(forceSSL());
