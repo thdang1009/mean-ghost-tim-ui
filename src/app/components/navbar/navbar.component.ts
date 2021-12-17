@@ -112,11 +112,11 @@ export class NavbarComponent implements OnInit {
     getTitle() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         const subpath = titlee.split('/').slice(-1)[0];
-        console.log(subpath);
-        console.log(this.listTitles);
+        // console.log(subpath);
+        // console.log(this.listTitles);
         const found = (this.listTitles.filter(item => item.path === subpath) || [])[0] || {};
         const title = found.title || 'Dashboard';
-        console.log(title);
+        // console.log(title);
         return title
     }
 }

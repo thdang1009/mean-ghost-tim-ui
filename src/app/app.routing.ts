@@ -5,30 +5,32 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './_layouts/admin-layout/admin-layout.component';
 import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.component';
+import { LoginGuard } from './views/auth/login.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'guest/home',
+    redirectTo: 'home',
     pathMatch: 'full',
   }, {
     path: 'admin',
     component: AdminLayoutComponent,
     children: [{
       path: '',
-      loadChildren: () => import('./_layouts/admin-layout/admin-layout.module').then(m => { return m.AdminLayoutModule })
+      loadChildren: () => import('./_layouts/admin-layout/admin-layout.module').then(m => { return m.AdminLayoutModule }),
+      canActivate: [LoginGuard]
     }]
   }, {
-    path: 'guest',
+    path: '',
     component: GuestLayoutComponent,
     children: [{
       path: '',
-      loadChildren: () => import('./_layouts/guest-layout/guest-layout.module').then(m => { return m.GuestLayoutModule })
+      loadChildren: () => import('./_layouts/guest-layout/guest-layout.module').then(m => { return m.GuestLayoutModule }),
     }]
   },
   {
     path: '**',
-    redirectTo: 'guest/home',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
 ];

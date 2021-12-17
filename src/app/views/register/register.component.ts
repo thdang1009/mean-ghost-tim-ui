@@ -3,6 +3,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 import { AuthService } from '../../_services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { CONSTANT } from '@app/_shares/constant';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -39,7 +40,11 @@ export class RegisterComponent implements OnInit {
   onFormSubmit(form: NgForm) {
     this.authService.register(form)
       .subscribe(res => {
-        this.router.navigate(['login']);
+        this.router.navigate(['login'], {
+          queryParams: {
+            fromRegister: true
+          }
+        });
       }, (err) => {
         console.log(err);
         alert(err.error);

@@ -11,6 +11,7 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CONSTANT } from '@app/_shares/constant';
+import { showNoti } from '@app/_shares/common';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -40,7 +41,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          console.log('event--->>>', event);
+          console.log('ghost event--->>>', event);
         }
         return event;
       }),
@@ -52,6 +53,7 @@ export class TokenInterceptor implements HttpInterceptor {
         if (error.status === 400) {
           alert(error.error);
         }
+        showNoti(`Error: ${error.error.msg || error.message}`, 'danger');
         return throwError(error);
       }));
   }

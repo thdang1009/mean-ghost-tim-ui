@@ -12,19 +12,22 @@ import { UpgradeComponent } from '@views/upgrade/upgrade.component';
 import { TodoTodayComponent } from '@app/views/todo-today/todo-today.component';
 import { CreateUserComponent } from '@app/views/create-user/create-user.component';
 import { MoneyComponent } from '@app/views/money/money.component';
+import { AdminGuard } from '@app/views/auth/admin.guard';
+import { GrandAdminGuard } from '@app/views/auth/grand-admin.guard';
+import { LoginGuard } from '@app/views/auth/login.guard';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'create-user', component: CreateUserComponent },
-    { path: 'todo-today', component: TodoTodayComponent },
-    { path: 'money', component: MoneyComponent },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
+    { path: 'create-user', component: CreateUserComponent, canActivate: [GrandAdminGuard] },
+    { path: 'todo-today', component: TodoTodayComponent, canActivate: [LoginGuard] },
+    { path: 'money', component: MoneyComponent, canActivate: [GrandAdminGuard] },
 
     //----- sample components
-    { path: 'user-profile', component: UserProfileComponent },
-    { path: 'table-list', component: TableListComponent },
-    { path: 'typography', component: TypographyComponent },
-    { path: 'icons', component: IconsComponent },
-    { path: 'maps', component: MapsComponent },
-    { path: 'notifications', component: NotificationsComponent },
-    { path: 'upgrade', component: UpgradeComponent },
+    // { path: 'user-profile', component: UserProfileComponent },
+    // { path: 'table-list', component: TableListComponent },
+    // { path: 'typography', component: TypographyComponent },
+    // { path: 'icons', component: IconsComponent },
+    // { path: 'maps', component: MapsComponent },
+    // { path: 'notifications', component: NotificationsComponent },
+    // { path: 'upgrade', component: UpgradeComponent },
 ];

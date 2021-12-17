@@ -4,6 +4,7 @@ import { AuthService } from '../../_services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CONSTANT } from '@app/_shares/constant';
+import { showNoti } from '@app/_shares/common';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -38,13 +39,12 @@ export class LoginComponent implements OnInit {
   onFormSubmit(form: NgForm) {
     this.authService.login(form)
       .subscribe(res => {
-        console.log(res);
         if (res.token) {
           localStorage.setItem(CONSTANT.TOKEN, res.token);
-          this.router.navigate(['/']);
+          this.router.navigate(['/admin/dashboard']);
+          showNoti('Login success!', 'success');
         }
       }, (err) => {
-        console.log(err);
       });
   }
 

@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
@@ -14,6 +14,8 @@ import {
 } from '@agm/core';
 import { AdminLayoutComponent } from '@layouts/admin-layout/admin-layout.component';
 import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.component';
+import { LogoutComponent } from './views/logout/logout.component';
+import { TokenInterceptor } from './_helpers/_index';
 
 @NgModule({
   imports: [
@@ -31,9 +33,12 @@ import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.compo
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    GuestLayoutComponent
+    GuestLayoutComponent,
+    LogoutComponent
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

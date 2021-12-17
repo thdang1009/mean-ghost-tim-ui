@@ -3,7 +3,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 import { AuthService } from '../../_services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { CONSTANT } from '@app/_shares/constant';
+import { showNoti } from '@app/_shares/common';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -36,7 +36,6 @@ export class CreateUserComponent implements OnInit {
   username = '';
   password = '';
   repassword = '';
-  permission; // CONSTANT.PERMISSION.MEMBER;
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
   matcherRepassword = new MyErrorStateMatcherRepassword();
@@ -44,6 +43,7 @@ export class CreateUserComponent implements OnInit {
     'ADMIN',
     'MEMBER'
   ];
+  permission = this.permissions[1]; // CONSTANT.PERMISSION.MEMBER;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
 
@@ -53,7 +53,7 @@ export class CreateUserComponent implements OnInit {
       username: [null, Validators.required],
       password: [null, Validators.required],
       repassword: [null, Validators.required],
-      permission: [CONSTANT.PERMISSION.MEMBER, Validators.required]
+      permission: [this.permissions[1], Validators.required]
     }, {
       validators: this.checkReasswords
     });
@@ -67,8 +67,12 @@ export class CreateUserComponent implements OnInit {
 
   onFormSubmit(form: NgForm) {
     this.authService.register(form)
-      .subscribe(_ => {
-        this.router.navigate(['/']);
+      .subscribe(resp => {
+        if (!resp.success) {
+          showNoti(`Create fail! (${resp.msg})`, 'danger');
+        } else {
+          showNoti(`Create success`, 'success');
+        }
       }, (err) => {
         console.log(err);
         alert(err.error);

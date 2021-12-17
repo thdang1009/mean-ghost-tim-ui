@@ -5,14 +5,14 @@ import { AuthService } from '@services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
+export class NotLoginGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    const logined = this.authService.isLogin();
-    return logined;
+    return !this.authService.isLogin();
   }
+
 }
