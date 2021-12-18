@@ -9,6 +9,7 @@ import { HomeService } from '@services/home.service';
 export class HomeComponent implements OnInit {
 
   isLoadingResults = true;
+  thisYear = (new Date).getFullYear();
 
   constructor(private api: HomeService) { }
 
