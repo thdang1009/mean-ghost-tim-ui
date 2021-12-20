@@ -17,7 +17,7 @@ export class TodoTodayService {
   getTodoTodays(): Observable<TodoToday[]> {
     return this.http.get<TodoToday[]>(apiUrl)
       .pipe(
-        tap(_ => this.log('fetched Categories')),
+        tap(_ => this.log('fetched Todo Todays')),
         catchError(this.handleError('getTodoTodays', []))
       );
   }
@@ -40,7 +40,7 @@ export class TodoTodayService {
 
   addTodoToday(tdtd: TodoToday): Observable<TodoToday> {
     return this.http.post<TodoToday>(apiUrl, tdtd).pipe(
-      tap((prod: TodoToday) => console.log(`added tdtd w/ id=${tdtd.id}`)),
+      tap((prod: TodoToday) => console.log(`added tdtd id=${tdtd.id}`)),
       catchError(this.handleError<TodoToday>('addTodoToday'))
     );
   }

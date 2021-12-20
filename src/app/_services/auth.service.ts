@@ -52,7 +52,9 @@ export class AuthService {
           this.isLoggedIn.emit(false);
           this.loggedInStatus = false;
           this.clearUserInfo();
-          this.router.navigate(['/']);
+          setTimeout(_ => {
+            this.router.navigate(['/']);
+          }, 1000);
         }),
         catchError(this.handleError('logout', []))
       );

@@ -4,6 +4,8 @@ import { AuthService } from '../../_services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { showNoti } from '@app/_shares/common';
+import { UserService } from '@app/_services/user.service';
+import { User } from '@app/_models/user';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -45,7 +47,7 @@ export class CreateUserComponent implements OnInit {
   ];
   permission = this.permissions[1]; // CONSTANT.PERMISSION.MEMBER;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -65,18 +67,23 @@ export class CreateUserComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true }
   }
 
-  onFormSubmit(form: NgForm) {
-    this.authService.register(form)
-      .subscribe(resp => {
-        if (!resp.success) {
-          showNoti(`Create fail! (${resp.msg})`, 'danger');
-        } else {
+  onFormSubmit(data: any) {
+    console.log(data);
+    const newUser: User = {
+      fullName: data.fullName,
+      username: data.username,
+      permission: data.permission,
+      password: data.password
+    }
+    this.userService.addUser(newUser)
+      .subscribe(user => {
+        if (user && user.id) {
           showNoti(`Create success`, 'success');
+          this.router.navigate(['/admin/list-user']);
         }
       }, (err) => {
         console.log(err);
         alert(err.error);
       });
   }
-
 }

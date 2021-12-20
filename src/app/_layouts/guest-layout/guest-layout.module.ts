@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { RegisterComponent } from '@app/views/register/register.component';
 import { LoginComponent } from '@app/views/login/login.component';
 import { HomeComponent } from '@app/views/home/home.component';
+import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { HomeComponent } from '@app/views/home/home.component';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    NgJsonEditorModule
   ],
   declarations: [
     HomeComponent,

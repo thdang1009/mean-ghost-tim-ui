@@ -9,10 +9,12 @@ import { AuthService } from '@app/_services/auth.service';
 export class GuestNavbarComponent implements OnInit {
 
   isLogined = false;
+  isAdmin = false;
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.isLogined = this.authService.isLogin();
+    this.isAdmin = this.authService.isAdmin();
   }
   gotoAdminView() {
     if (this.isLogined) {

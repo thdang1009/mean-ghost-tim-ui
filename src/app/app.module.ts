@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import {
   AgmCoreModule
 } from '@agm/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AdminLayoutComponent } from '@layouts/admin-layout/admin-layout.component';
 import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.component';
@@ -23,7 +22,7 @@ import { HtmlIndexComponent } from './views/html-index/html-index.component';
 import { CssIndexComponent } from './views/css-index/css-index.component';
 import { AngularIndexComponent } from './views/angular-index/angular-index.component';
 import { RunJsComponent } from './views/run-js/run-js.component';
-import { JsonBeautifierComponent } from './views/json-beautifier/json-beautifier.component';
+import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor'
 
 @NgModule({
   imports: [
@@ -37,7 +36,7 @@ import { JsonBeautifierComponent } from './views/json-beautifier/json-beautifier
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
-    FontAwesomeModule
+    NgJsonEditorModule
   ],
   declarations: [
     AppComponent,
@@ -49,7 +48,6 @@ import { JsonBeautifierComponent } from './views/json-beautifier/json-beautifier
     CssIndexComponent,
     AngularIndexComponent,
     RunJsComponent,
-    JsonBeautifierComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

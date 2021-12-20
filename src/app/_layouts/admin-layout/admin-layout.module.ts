@@ -18,8 +18,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { CreateUserComponent } from '@app/views/create-user/create-user.component';
+import { ListUserComponent } from '@app/views/list-user/list-user.component';
 import { TodoTodayComponent } from '@app/views/todo-today/todo-today.component';
 import { MoneyComponent } from '@app/views/money/money.component';
+import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 
 @NgModule({
   imports: [
@@ -33,10 +35,12 @@ import { MoneyComponent } from '@app/views/money/money.component';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    NgJsonEditorModule
   ],
   declarations: [
     DashboardComponent,
     CreateUserComponent,
+    ListUserComponent,
     TodoTodayComponent,
     MoneyComponent
     // sample

@@ -1,0 +1,78 @@
+import { Injectable, Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { environment } from '@environments/environment';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CONSTANT } from '@app/_shares/constant';
+import { LoginResponse } from '@app/_shares/common';
+import { User } from '@app/_models/_index';
+
+const apiUrl = environment.apiUrl + '/api/user/';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  @Output() isLoggedIn: EventEmitter<any> = new EventEmitter();
+  userInfo: any = {};
+  loggedInStatus = false;
+  redirectUrl: string;
+
+
+  constructor(private http: HttpClient) { }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(apiUrl)
+      .pipe(
+        tap(_ => this.log('fetched Users')),
+        catchError(this.handleError('getUser', []))
+      );
+  }
+
+  getUser(id: any): Observable<User> {
+    const url = `${apiUrl}/${id}`;
+    return this.http.get<User>(url).pipe(
+      tap(_ => console.log(`fetched user by id=${id}`)),
+      catchError(this.handleError<User>(`getUser id=${id}`))
+    );
+  }
+
+  addUser(tdtd: User): Observable<User> {
+    return this.http.post<User>(apiUrl, tdtd).pipe(
+      tap((prod: User) => console.log(`added user id=${tdtd.id}`)),
+      catchError(this.handleError<User>('addUser'))
+    );
+  }
+
+  updateUser(id: any, tdtd: User): Observable<any> {
+    const url = `${apiUrl}/${id}`;
+    return this.http.put(url, tdtd).pipe(
+      tap(_ => console.log(`updated tdtd id=${id}`)),
+      catchError(this.handleError<any>('updateUser'))
+    );
+  }
+
+  deleteUser(id: any): Observable<User> {
+    const url = `${apiUrl}/${id}`;
+    return this.http.delete<User>(url).pipe(
+      tap(_ => console.log(`deleted tdtd id=${id}`)),
+      catchError(this.handleError<User>('deleteUser'))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      console.error(error); // log to console instead
+      this.log(`${operation} failed: ${error.message}`);
+
+      return of(result as T);
+    };
+  }
+
+  private log(message: string) {
+    console.log(message);
+  }
+}
