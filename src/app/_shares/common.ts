@@ -38,3 +38,11 @@ export function showNotification(from, align, content, type) {
       '</div>'
   });
 }
+export function buildQueryString(object) {
+  const str = [];
+  for (let p in object)
+    if (object.hasOwnProperty(p) && object[p]) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(object[p]));
+    }
+  return str.join("&");
+}

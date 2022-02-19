@@ -1,0 +1,71 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title ">Search Infomation</h4>
+                    </div>
+                    <!-- search date, default today -->
+
+                    <!-- search status, default all -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title ">List Todo {{ searchDateDisplay }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Content
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <!-- <th>
+                                        Update Time
+                                    </th> -->
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let tdtd of data; let index = index">
+                                        <td>
+                                            {{ index + 1 }}
+                                        </td>
+                                        <td>
+                                            {{ tdtd.displayDate }}
+                                        </td>
+                                        <td>
+                                            {{ tdtd.displayContent }}
+                                        </td>
+                                        <td>
+                                            {{ tdtd.status}}
+                                        </td>
+                                        <!-- <td>
+                                            {{ user.updateTime }}
+                                        </td> -->
+                                    </tr>
+                                    <tr *ngIf="data.length === 0" class="text-center">No data</tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
