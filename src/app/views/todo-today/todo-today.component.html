@@ -83,7 +83,7 @@
                                         </td>
                                         <td>
                                             <textarea type="text" [(ngModel)]="tdtd.content" class="editable wd100"
-                                                (keyup.enter)="saveItem(tdtd.id, tdtd, index);false" autosize [minRows]="1"
+                                                (blur)="saveItem(tdtd.id, tdtd, index);false" autosize [minRows]="1"
                                                 [maxRows]="3" [useImportant]="true"></textarea>
                                             <!-- <input type="text" [(ngModel)]="tdtd.content" class="editable wd100"
                                                 (keyup.enter)="saveItem(tdtd.id, tdtd)"> -->
