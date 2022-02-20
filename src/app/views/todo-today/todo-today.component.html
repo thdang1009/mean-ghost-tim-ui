@@ -7,7 +7,7 @@
                         <h4 class="card-title ">List Todo {{ searchDateDisplay }}</h4>
                     </div>
                     <form class="form-under-table-header row" (ngSubmit)="searchToDoToDay()">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Date</mat-label>
                                 <input matInput [matDatepicker]="picker" name="date" [formControl]="searchDate">
@@ -16,7 +16,7 @@
                             </mat-form-field>
                         </div>
                         <!-- search status, default all -->
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Trạng thái</mat-label>
                                 <mat-select [(ngModel)]="searchStatus" [ngModelOptions]="{standalone: true}">
@@ -28,30 +28,36 @@
                             </mat-form-field>
                         </div>
                         <!-- button search -->
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <button mat-raised-button type="submit" [disabled]="isLoadingResults"
-                                class="btn btn-info pull-right">Search</button>
+                                class="btn btn-info pull-right">
+                                <i class="material-icons">search</i>
+                                Search
+                            </button>
                         </div>
                         <!-- button add -->
-                        <div class="col-md-3">
+                        <!-- <div class="col-md-3">
                             <button mat-raised-button type="button" [disabled]="isLoadingResults"
-                                class="btn btn-info pull-right">New</button>
-                        </div>
+                                class="btn btn-info pull-right" (click)="addToDoToDay()">
+                                <i class="material-icons">add</i>
+                                New
+                            </button>
+                        </div> -->
                     </form>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
-                                    <th>
-                                        #
-                                    </th>
-                                    <th>
+                                    <!-- <th>
+                                        ID
+                                    </th> -->
+                                    <th style="max-width: 56px; min-width: 56px; width: 56px;">
                                         Date
                                     </th>
                                     <th>
                                         Content
                                     </th>
-                                    <th>
+                                    <th style="max-width: 95px; min-width: 95px; width: 95px;">
                                         Status
                                     </th>
                                     <!-- <th>
@@ -59,24 +65,49 @@
                                     </th> -->
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let tdtd of data; let index = index">
+                                    <tr *ngFor="let tdtd of data; let index = index" [ngClass]="{
+                                        'warning': tdtd.status === 'NOT_YET',
+                                        'success': tdtd.status === 'DONE',
+                                        'primary': tdtd.status === 'NEW',
+                                        'future': tdtd.status === 'TOMORROW'
+                                    }">
+                                        <!-- <td>
+                                            {{ tdtd.id }}
+                                        </td> -->
                                         <td>
-                                            {{ index + 1 }}
+                                            {{ tdtd.date | date: 'dd-MM' }}
                                         </td>
                                         <td>
-                                            {{ tdtd.date }}
+                                            <input type="text" [(ngModel)]="tdtd.content" class="editable wd100"
+                                                (keyup.enter)="saveItem(tdtd.id, tdtd)">
                                         </td>
                                         <td>
-                                            {{ tdtd.content }}
-                                        </td>
-                                        <td>
-                                            {{ tdtd.status}}
+                                            <span class="hover-pointer" (click)="updateStatus(tdtd)">
+                                                {{ tdtd.status }}</span>
                                         </td>
                                         <!-- <td>
                                             {{ user.updateTime }}
                                         </td> -->
                                     </tr>
-                                    <tr *ngIf="data && data.length === 0" class="text-center">No data</tr>
+                                    <tr *ngIf="data && data.length === 0" class="text-center">
+                                        <td colspan="100%">No data</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <button mat-raised-button type="button" matTooltip="Add Empty Row"
+                                                [disabled]="isLoadingResults" class="btn btn-info pull-right"
+                                                (click)="addToDoToDay()">
+                                                <i class="material-icons">add</i>
+                                            </button>
+                                        </td>
+                                        <td colspan="1">
+                                            <button mat-raised-button type="button" matTooltip="Delete Last"
+                                                [disabled]="isLoadingResults" class="btn btn-danger pull-right"
+                                                (click)="deleteLast()">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

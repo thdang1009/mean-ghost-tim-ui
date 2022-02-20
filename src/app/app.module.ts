@@ -23,6 +23,7 @@ import { CssIndexComponent } from './views/css-index/css-index.component';
 import { AngularIndexComponent } from './views/angular-index/angular-index.component';
 import { RunJsComponent } from './views/run-js/run-js.component';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

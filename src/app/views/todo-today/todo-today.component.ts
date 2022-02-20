@@ -21,6 +21,8 @@ export class TodoTodayComponent implements OnInit {
   searchStatus = 'NONE';
   statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];
 
+  popupContent = '';
+
   constructor(private todoTodayService: TodoTodayService) { }
 
   ngOnInit() {
@@ -36,12 +38,13 @@ export class TodoTodayComponent implements OnInit {
       status: String
     */
     const sample: TodoToday = {
-      content: 'Hôm nay phải code xong ToDo ToDay'
+      content: ''
     }
     this.todoTodayService.addTodoToday(sample)
       .subscribe((res: any) => {
-        this.data = res;
-        console.log(this.data);
+        // this.data = res;
+        // console.log(this.data);
+        this.searchToDoToDay();
         this.isLoadingResults = false;
       }, err => {
         console.log(err);
@@ -83,11 +86,60 @@ export class TodoTodayComponent implements OnInit {
       .subscribe((res: any) => {
         this.data = res;
         console.log(this.data);
-        showNoti(`Get Your ToDo ToDay success!`, 'success');
+        // showNoti(`Get Your ToDo ToDay success!`, 'success');
         this.isLoadingResults = false;
       }, err => {
         console.log(err);
         this.isLoadingResults = false;
       });
+  }
+  updateStatus(item) {
+    console.log(item);
+    const nextStatus = (oldStatus) => ({
+      'NEW': 'DONE',
+      'DONE': 'NOT_YET',
+      'NOT_YET': 'TOMORROW',
+      'TOMORROW': 'NEW'
+    }[oldStatus])
+    const req = {
+      ...item,
+      status: nextStatus(item.status)
+    };
+    this.isLoadingResults = true;
+    this.todoTodayService.updateTodoToday(item.id, req)
+      .subscribe((res: any) => {
+        const index = this.data.findIndex(el => el.id === item.id);
+        this.data[index] = res;
+        this.isLoadingResults = false;
+      }, err => {
+        console.log(err);
+        this.isLoadingResults = false;
+      });
+  }
+  saveItem(id, item) {
+    this.isLoadingResults = true;
+    this.todoTodayService.updateTodoToday(id, item)
+      .subscribe((res: any) => {
+        const index = this.data.findIndex(el => el.id === item.id);
+        this.data[index] = res;
+        this.isLoadingResults = false;
+      }, err => {
+        console.log(err);
+        this.isLoadingResults = false;
+      });
+  }
+  deleteLast() {
+    this.isLoadingResults = true;
+    const id = this.data[this.data.length - 1].id;
+    if (id) {
+      this.todoTodayService.deleteTodoToday(id)
+        .subscribe((res: any) => {
+          this.data.pop();
+          this.isLoadingResults = false;
+        }, err => {
+          console.log(err);
+          this.isLoadingResults = false;
+        });
+    }
   }
 }
