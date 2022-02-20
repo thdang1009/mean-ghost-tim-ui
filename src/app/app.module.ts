@@ -39,7 +39,7 @@ import { AutosizeModule } from 'ngx-autosize';
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
     NgJsonEditorModule,
-    AutosizeModule
+    AutosizeModule,
   ],
   declarations: [
     AppComponent,

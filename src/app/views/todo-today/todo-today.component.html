@@ -51,15 +51,15 @@
                                     <!-- <th>
                                         ID
                                     </th> -->
-                                    <th style="max-width: 56px; min-width: 56px; width: 56px;">
+                                    <th style="max-width: 120px; min-width: 120px; width: 120px;">
                                         Date
                                     </th>
                                     <th>
                                         Content
                                     </th>
-                                    <th style="max-width: 95px; min-width: 95px; width: 95px;">
+                                    <!-- <th style="max-width: 95px; min-width: 95px; width: 95px;">
                                         Status
-                                    </th>
+                                    </th> -->
                                     <!-- <th>
                                         Update Time
                                     </th> -->
@@ -75,7 +75,11 @@
                                             {{ tdtd.id }}
                                         </td> -->
                                         <td>
-                                            {{ tdtd.date | date: 'dd-MM' }}
+                                            <span class="hover-pointer" (click)="updateStatus(tdtd)"
+                                                matTooltip="Update Status">
+                                                {{ tdtd.date | timeAgo }}
+                                            </span>
+                                            <!-- {{ tdtd.date | date: 'dd-MM' }} -->
                                         </td>
                                         <td>
                                             <textarea type="text" [(ngModel)]="tdtd.content" class="editable wd100"
@@ -84,10 +88,10 @@
                                             <!-- <input type="text" [(ngModel)]="tdtd.content" class="editable wd100"
                                                 (keyup.enter)="saveItem(tdtd.id, tdtd)"> -->
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             <span class="hover-pointer" (click)="updateStatus(tdtd)">
                                                 {{ tdtd.status }}</span>
-                                        </td>
+                                        </td> -->
                                         <!-- <td>
                                             {{ user.updateTime }}
                                         </td> -->
@@ -96,14 +100,12 @@
                                         <td colspan="100%">No data</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
+                                        <td colspan="100%">
                                             <button mat-raised-button type="button" matTooltip="Add Empty Row"
                                                 [disabled]="isLoadingResults" class="btn btn-info pull-right"
                                                 (click)="addToDoToDay()">
                                                 <i class="material-icons">add</i>
                                             </button>
-                                        </td>
-                                        <td colspan="1">
                                             <button mat-raised-button type="button" matTooltip="Delete Last"
                                                 [disabled]="isLoadingResults" class="btn btn-danger pull-right"
                                                 (click)="deleteLast()">

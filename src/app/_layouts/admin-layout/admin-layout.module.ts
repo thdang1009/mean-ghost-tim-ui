@@ -25,6 +25,7 @@ import { TodoTodayComponent } from '@app/views/todo-today/todo-today.component';
 import { MoneyComponent } from '@app/views/money/money.component';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { AutosizeModule } from 'ngx-autosize';
+import { TimeAgoPipe } from '@app/_pipes/custom-date.pipe';
 
 @NgModule({
   imports: [
@@ -57,6 +58,8 @@ import { AutosizeModule } from 'ngx-autosize';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+
+    TimeAgoPipe
   ],
   providers: [
   ]
