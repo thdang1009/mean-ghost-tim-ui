@@ -24,28 +24,19 @@ export class TodoTodayComponent implements OnInit {
   constructor(private todoTodayService: TodoTodayService) { }
 
   ngOnInit() {
-    // this.addToDoToDay();
     this.searchToDoToDay();
   }
 
   addToDoToDay() {
-    /*
-      date: { type: Date, default: Date.now },
-      user: { type: Schema.Types.ObjectId, ref: 'User' },
-      content: String, // json string
-      status: String
-    */
     const sample: TodoToday = {
       content: ''
     }
     this.todoTodayService.addTodoToday(sample)
       .subscribe((res: any) => {
-        // this.data = res;
-        // console.log(this.data);
-        this.searchToDoToDay();
+        this.data.push(res);
         this.isLoadingResults = false;
       }, err => {
-        console.log(err);
+        // console.log(err);
         this.isLoadingResults = false;
       });
   }
@@ -55,44 +46,26 @@ export class TodoTodayComponent implements OnInit {
   }
 
   getMyToDoToDay() {
-    // const fromDate = dateFns.startOfDay(this.searchDate && this.searchDate.value || new Date());
-    const fromDate = dateFns.startOfDay(dateFns.subDays(new Date(), 7));
-    const toDate = dateFns.endOfDay(dateFns.addDays(new Date(), 7));
-    // const toDate = dateFns.endOfDay(this.searchDate && this.searchDate.value || new Date());
+    const fromDate = dateFns.startOfDay(this.searchDate && this.searchDate.value || new Date());
+    const toDate = dateFns.endOfDay(this.searchDate && this.searchDate.value || new Date());
+    // const fromDate = dateFns.startOfDay(dateFns.subDays(new Date(), 7));
+    // const toDate = dateFns.endOfDay(dateFns.addDays(new Date(), 7));
     const req = {
       from: fromDate || undefined,
       to: toDate || undefined,
       status: this.searchStatus === 'NONE' && undefined || this.searchStatus
     }
     this.isLoadingResults = true;
-    // const formatDate = (input) => {
-    //   const _input = new Date(input);
-    //   const isYesterday = dateFns.isYesterday(_input);
-    //   const isTomorrow = dateFns.isTomorrow(_input);
-    //   const isToday = dateFns.isToday(_input);
-    //   if (isToday) {
-    //     return 'Hôm nay';
-    //   } else if (isYesterday) {
-    //     return 'Hôm qua';
-    //   } else if (isTomorrow) {
-    //     return 'Ngày mai';
-    //   } else {
-    //     return _input;
-    //   }
-    // }
     this.todoTodayService.getMyTodoToday(req)
       .subscribe((res: any) => {
         this.data = res;
-        console.log(this.data);
-        // showNoti(`Get Your ToDo ToDay success!`, 'success');
         this.isLoadingResults = false;
       }, err => {
-        console.log(err);
         this.isLoadingResults = false;
       });
   }
   updateStatus(item) {
-    console.log(item);
+    // console.log(item);
     const nextStatus = (oldStatus) => ({
       'NEW': 'DONE',
       'DONE': 'NOT_YET',
@@ -110,7 +83,6 @@ export class TodoTodayComponent implements OnInit {
         this.data[index] = res;
         this.isLoadingResults = false;
       }, err => {
-        console.log(err);
         this.isLoadingResults = false;
       });
   }
@@ -123,7 +95,6 @@ export class TodoTodayComponent implements OnInit {
         this.data[index] = res;
         this.isLoadingResults = false;
       }, err => {
-        console.log(err);
         this.isLoadingResults = false;
       });
   }
@@ -132,11 +103,10 @@ export class TodoTodayComponent implements OnInit {
     const id = this.data[this.data.length - 1].id;
     if (id) {
       this.todoTodayService.deleteTodoToday(id)
-        .subscribe((res: any) => {
+        .subscribe((_: any) => {
           this.data.pop();
           this.isLoadingResults = false;
         }, err => {
-          console.log(err);
           this.isLoadingResults = false;
         });
     }
