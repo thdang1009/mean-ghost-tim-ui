@@ -75,15 +75,15 @@
                                             {{ tdtd.id }}
                                         </td> -->
                                         <td>
-                                            <span class="hover-pointer" (click)="updateStatus(tdtd)"
+                                            <span class="hover-pointer" (click)="updateStatus(tdtd, index)"
                                                 matTooltip="Update Status">
-                                                {{ tdtd.date | timeAgo }}
+                                                {{ tdtd.date | simpleTime }}
                                             </span>
                                             <!-- {{ tdtd.date | date: 'dd-MM' }} -->
                                         </td>
                                         <td>
                                             <textarea type="text" [(ngModel)]="tdtd.content" class="editable wd100"
-                                                (keyup.enter)="saveItem(tdtd.id, tdtd);false" autosize [minRows]="1"
+                                                (keyup.enter)="saveItem(tdtd.id, tdtd, index);false" autosize [minRows]="1"
                                                 [maxRows]="3" [useImportant]="true"></textarea>
                                             <!-- <input type="text" [(ngModel)]="tdtd.content" class="editable wd100"
                                                 (keyup.enter)="saveItem(tdtd.id, tdtd)"> -->

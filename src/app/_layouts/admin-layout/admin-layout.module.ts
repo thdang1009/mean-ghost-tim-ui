@@ -26,6 +26,7 @@ import { MoneyComponent } from '@app/views/money/money.component';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { AutosizeModule } from 'ngx-autosize';
 import { TimeAgoPipe } from '@app/_pipes/custom-date.pipe';
+import { SimpleTimePipe } from '@app/_pipes/ghost-date.pipe';
 
 @NgModule({
   imports: [
@@ -58,8 +59,9 @@ import { TimeAgoPipe } from '@app/_pipes/custom-date.pipe';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-
-    TimeAgoPipe
+    // pipes
+    TimeAgoPipe,
+    SimpleTimePipe
   ],
   providers: [
   ]

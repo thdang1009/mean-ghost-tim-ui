@@ -4,6 +4,7 @@ import { TodoTodayService } from '@app/_services/todo-today.service';
 import { showNoti } from '@app/_shares/common';
 import { TodoToday } from '../../_models/todo-today';
 import * as dateFns from 'date-fns';
+// import { SimpleTimePipe } from '@app/_pipes/ghost-date.pipe';
 
 @Component({
   selector: 'app-todo-today',
@@ -21,7 +22,10 @@ export class TodoTodayComponent implements OnInit {
   searchStatus = 'NONE';
   statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];
 
-  constructor(private todoTodayService: TodoTodayService) { }
+  constructor(
+    private todoTodayService: TodoTodayService,
+    // private simpleTimePipe: SimpleTimePipe
+    ) { }
 
   ngOnInit() {
     this.searchToDoToDay();
@@ -46,8 +50,9 @@ export class TodoTodayComponent implements OnInit {
   }
 
   getMyToDoToDay() {
-    const fromDate = dateFns.startOfDay(this.searchDate && this.searchDate.value || new Date());
-    const toDate = dateFns.endOfDay(this.searchDate && this.searchDate.value || new Date());
+    const value = this.searchDate && this.searchDate.value || new Date();
+    const fromDate = dateFns.startOfDay(value);
+    const toDate = dateFns.endOfDay(value);
     // const fromDate = dateFns.startOfDay(dateFns.subDays(new Date(), 7));
     // const toDate = dateFns.endOfDay(dateFns.addDays(new Date(), 7));
     const req = {
@@ -59,12 +64,13 @@ export class TodoTodayComponent implements OnInit {
     this.todoTodayService.getMyTodoToday(req)
       .subscribe((res: any) => {
         this.data = res;
+        // this.searchDateDisplay = this.simpleTimePipe.transform(value);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
       });
   }
-  updateStatus(item) {
+  updateStatus(item, index) {
     // console.log(item);
     const nextStatus = (oldStatus) => ({
       'NEW': 'DONE',
@@ -79,19 +85,17 @@ export class TodoTodayComponent implements OnInit {
     this.isLoadingResults = true;
     this.todoTodayService.updateTodoToday(item.id, req)
       .subscribe((res: any) => {
-        const index = this.data.findIndex(el => el.id === item.id);
         this.data[index] = res;
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
       });
   }
-  saveItem(id, item) {
+  saveItem(id, item, index) {
     this.isLoadingResults = true;
     item.content = item.content.trim();
     this.todoTodayService.updateTodoToday(id, item)
       .subscribe((res: any) => {
-        const index = this.data.findIndex(el => el.id === item.id);
         this.data[index] = res;
         this.isLoadingResults = false;
       }, err => {
@@ -100,7 +104,11 @@ export class TodoTodayComponent implements OnInit {
   }
   deleteLast() {
     this.isLoadingResults = true;
-    const id = this.data[this.data.length - 1].id;
+    if (!this.data || !this.data.length) {
+      return;
+    }
+    const lastIndex = this.data.length - 1;
+    const id = this.data[lastIndex].id;
     if (id) {
       this.todoTodayService.deleteTodoToday(id)
         .subscribe((_: any) => {
