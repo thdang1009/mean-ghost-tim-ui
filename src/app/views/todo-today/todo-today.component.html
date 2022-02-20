@@ -4,23 +4,40 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-info">
-                        <h4 class="card-title ">Search Infomation</h4>
-                    </div>
-                    <!-- search date, default today -->
-
-                    <!-- search status, default all -->
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-info">
                         <h4 class="card-title ">List Todo {{ searchDateDisplay }}</h4>
                     </div>
+                    <form class="form-under-table-header row" (ngSubmit)="searchToDoToDay()">
+                        <div class="col-md-3">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Date</mat-label>
+                                <input matInput [matDatepicker]="picker" name="date" [formControl]="searchDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <!-- search status, default all -->
+                        <div class="col-md-3">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Trạng thái</mat-label>
+                                <mat-select [(ngModel)]="searchStatus" [ngModelOptions]="{standalone: true}">
+                                    <mat-option *ngFor="let item of statusList; let i = index"
+                                        [(value)]="statusList[i]">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <!-- button search -->
+                        <div class="col-md-3">
+                            <button mat-raised-button type="submit" [disabled]="isLoadingResults"
+                                class="btn btn-info pull-right">Search</button>
+                        </div>
+                        <!-- button add -->
+                        <div class="col-md-3">
+                            <button mat-raised-button type="button" [disabled]="isLoadingResults"
+                                class="btn btn-info pull-right">New</button>
+                        </div>
+                    </form>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
@@ -47,10 +64,10 @@
                                             {{ index + 1 }}
                                         </td>
                                         <td>
-                                            {{ tdtd.displayDate }}
+                                            {{ tdtd.date }}
                                         </td>
                                         <td>
-                                            {{ tdtd.displayContent }}
+                                            {{ tdtd.content }}
                                         </td>
                                         <td>
                                             {{ tdtd.status}}
@@ -59,7 +76,7 @@
                                             {{ user.updateTime }}
                                         </td> -->
                                     </tr>
-                                    <tr *ngIf="data.length === 0" class="text-center">No data</tr>
+                                    <tr *ngIf="data && data.length === 0" class="text-center">No data</tr>
                                 </tbody>
                             </table>
                         </div>

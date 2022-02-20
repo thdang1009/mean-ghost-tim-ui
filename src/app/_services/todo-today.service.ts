@@ -6,7 +6,7 @@ import { TodoToday } from '@app/_models/todo-today';
 import { environment } from '@environments/environment';
 import { buildQueryString } from '@app/_shares/common';
 
-const apiUrl = environment.apiUrl + '/api/todotoday/';
+const apiUrl = environment.apiUrl + '/api/todotoday';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class TodoTodayService {
 
   getMyTodoToday(req): Observable<TodoToday> {
     const queryString = buildQueryString(req);
-    const url = `${apiUrl}/my-tdtd/${queryString}`;
+    const url = `${apiUrl}/my-tdtd?${queryString}`;
     return this.http.get<TodoToday>(url).pipe(
       tap(_ => console.log(`fetched my tdtd`)),
       catchError(this.handleError<TodoToday>(`getMyTodoToday`))

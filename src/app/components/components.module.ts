@@ -22,7 +22,9 @@ import { GuestNavbarComponent } from './guest-navbar/guest-navbar.component';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    GuestNavbarComponent
+    GuestNavbarComponent,
+  ],
+  providers: [
   ]
 })
 export class ComponentsModule { }

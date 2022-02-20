@@ -22,7 +22,7 @@ import { HtmlIndexComponent } from './views/html-index/html-index.component';
 import { CssIndexComponent } from './views/css-index/css-index.component';
 import { AngularIndexComponent } from './views/angular-index/angular-index.component';
 import { RunJsComponent } from './views/run-js/run-js.component';
-import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor'
+import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 
 @NgModule({
   imports: [

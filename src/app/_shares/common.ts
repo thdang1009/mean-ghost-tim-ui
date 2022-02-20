@@ -21,7 +21,7 @@ export function showNotification(from, align, content, type) {
 
   }, {
     type: type,
-    timer: 4000,
+    timer: 2500,
     placement: {
       from: from,
       align: align

@@ -2,6 +2,7 @@ export class TodoToday {
   id?: Number;
   date?: Date;
   user?: Number;
-  content: String; // json string
+  content: String; // content
   status?: String;
+  updateTime?: Date;
 }

@@ -17,6 +17,8 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { CreateUserComponent } from '@app/views/create-user/create-user.component';
 import { ListUserComponent } from '@app/views/list-user/list-user.component';
 import { TodoTodayComponent } from '@app/views/todo-today/todo-today.component';
@@ -34,6 +36,8 @@ import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatTooltipModule,
     NgJsonEditorModule
   ],
@@ -43,7 +47,6 @@ import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
     ListUserComponent,
     TodoTodayComponent,
     MoneyComponent
-    // sample
     ,
     UserProfileComponent,
     TableListComponent,
@@ -52,6 +55,8 @@ import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+  ],
+  providers: [
   ]
 })
 

@@ -13,11 +13,11 @@ export class JsonBeautifierComponent implements OnInit {
   public visibleData: any;
 
   constructor() {
-    this.editorOptions = new JsonEditorOptions()
-    this.editorOptions.modes = ['code', 'text', 'tree', 'view'];
+    // this.editorOptions = new JsonEditorOptions()
+    // this.editorOptions.modes = ['code', 'text', 'tree', 'view'];
 
-    this.initialData = { "products": [{ "name": "car", "product": [{ "name": "honda", "model": [{ "id": "civic", "name": "civic" }, { "id": "accord", "name": "accord" }, { "id": "crv", "name": "crv" }, { "id": "pilot", "name": "pilot" }, { "id": "odyssey", "name": "odyssey" }] }] }] }
-    this.visibleData = this.initialData;
+    // this.initialData = { "products": [{ "name": "car", "product": [{ "name": "honda", "model": [{ "id": "civic", "name": "civic" }, { "id": "accord", "name": "accord" }, { "id": "crv", "name": "crv" }, { "id": "pilot", "name": "pilot" }, { "id": "odyssey", "name": "odyssey" }] }] }] }
+    // this.visibleData = this.initialData;
   }
 
   showJson(d: Event) {
