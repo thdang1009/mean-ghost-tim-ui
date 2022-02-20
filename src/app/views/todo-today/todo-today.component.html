@@ -78,8 +78,11 @@
                                             {{ tdtd.date | date: 'dd-MM' }}
                                         </td>
                                         <td>
-                                            <input type="text" [(ngModel)]="tdtd.content" class="editable wd100"
-                                                (keyup.enter)="saveItem(tdtd.id, tdtd)">
+                                            <textarea type="text" [(ngModel)]="tdtd.content" class="editable wd100"
+                                                (keyup.enter)="saveItem(tdtd.id, tdtd);false" autosize [minRows]="1"
+                                                [maxRows]="3" [useImportant]="true"></textarea>
+                                            <!-- <input type="text" [(ngModel)]="tdtd.content" class="editable wd100"
+                                                (keyup.enter)="saveItem(tdtd.id, tdtd)"> -->
                                         </td>
                                         <td>
                                             <span class="hover-pointer" (click)="updateStatus(tdtd)">

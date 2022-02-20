@@ -21,8 +21,6 @@ export class TodoTodayComponent implements OnInit {
   searchStatus = 'NONE';
   statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];
 
-  popupContent = '';
-
   constructor(private todoTodayService: TodoTodayService) { }
 
   ngOnInit() {
@@ -118,6 +116,7 @@ export class TodoTodayComponent implements OnInit {
   }
   saveItem(id, item) {
     this.isLoadingResults = true;
+    item.content = item.content.trim();
     this.todoTodayService.updateTodoToday(id, item)
       .subscribe((res: any) => {
         const index = this.data.findIndex(el => el.id === item.id);

@@ -24,6 +24,7 @@ import { AngularIndexComponent } from './views/angular-index/angular-index.compo
 import { RunJsComponent } from './views/run-js/run-js.component';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { DatePipe } from '@angular/common';
+import { AutosizeModule } from 'ngx-autosize';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { DatePipe } from '@angular/common';
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
-    NgJsonEditorModule
+    NgJsonEditorModule,
+    AutosizeModule
   ],
   declarations: [
     AppComponent,
