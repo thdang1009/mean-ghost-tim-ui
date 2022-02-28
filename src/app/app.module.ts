@@ -25,6 +25,7 @@ import { RunJsComponent } from './views/run-js/run-js.component';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { DatePipe } from '@angular/common';
 import { AutosizeModule } from 'ngx-autosize';
+import { NoteComponent } from './views/note/note.component';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { AutosizeModule } from 'ngx-autosize';
     CssIndexComponent,
     AngularIndexComponent,
     RunJsComponent,
+    NoteComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

@@ -16,12 +16,14 @@ import { AdminGuard } from '@app/views/auth/admin.guard';
 import { GrandAdminGuard } from '@app/views/auth/grand-admin.guard';
 import { LoginGuard } from '@app/views/auth/login.guard';
 import { ListUserComponent } from '@app/views/list-user/list-user.component';
+import { NoteComponent } from '@app/views/note/note.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
     { path: 'create-user', component: CreateUserComponent, canActivate: [GrandAdminGuard] },
     { path: 'list-user', component: ListUserComponent, canActivate: [GrandAdminGuard] },
     { path: 'todo-today', component: TodoTodayComponent, canActivate: [LoginGuard] },
+    { path: 'note', component: NoteComponent, canActivate: [LoginGuard] },
     { path: 'money', component: MoneyComponent, canActivate: [GrandAdminGuard] },
 
     //----- sample components

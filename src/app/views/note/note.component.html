@@ -1,0 +1,90 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title ">List Todo {{ searchDateDisplay }}</h4>
+                    </div>
+                    <form class="form-under-table-header row"
+                        (ngSubmit)="searchNote()">
+                        <!-- button search -->
+                        <div class="col-md-4">
+                            <button *ngIf="!itemSelected || !itemSelected.id" mat-raised-button type="submit" [disabled]="isLoadingResults"
+                                class="btn btn-info pull-right">
+                                <i class="material-icons">search</i>
+                                Search
+                            </button>
+                            <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button" (click)="back()" [disabled]="isLoadingResults"
+                                class="btn btn-info pull-right">
+                                <i class="material-icons">save</i>
+                                Back & Save
+                            </button>
+                        </div>
+                        <!-- button add -->
+                    </form>
+                    <div class="card-body">
+                        <div *ngIf="!itemSelected || !itemSelected.id; else noteView" class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th style="max-width: 120px; min-width: 120px; width: 120px;">
+                                        Date
+                                    </th>
+                                    <th>
+                                        Header
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let note of data; let index = index" [ngClass]="{
+                                        'warning': note.status === 'NOT_YET',
+                                        'success': note.status === 'DONE',
+                                        'primary': note.status === 'NEW',
+                                        'future': note.status === 'TOMORROW'
+                                    }">
+                                        <!-- <td>
+                                            {{ note.id }}
+                                        </td> -->
+                                        <td>
+                                            <span class="hover-pointer" (click)="updateStatus(note, index)">
+                                                {{ note.createTime | date: 'dd-MM HH:mm' }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span (click)="chooseThisItem(note)" class="editable-header">{{ note.header }}</span>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="data && data.length === 0" class="text-center">
+                                        <td colspan="100%">No data</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="100%">
+                                            <button mat-raised-button type="button" matTooltip="Add Empty Row"
+                                                [disabled]="isLoadingResults" class="btn btn-info pull-right"
+                                                (click)="addNote()">
+                                                <i class="material-icons">add</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Delete Last"
+                                                [disabled]="isLoadingResults" class="btn btn-danger pull-right"
+                                                (click)="deleteLast()">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ng-template #noteView>
+                            <textarea type="text" [(ngModel)]="itemSelected.header" class="editable editable-header wd100"
+                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1" [maxRows]="3"
+                                [useImportant]="true"></textarea>
+
+                            <textarea type="text" [(ngModel)]="itemSelected.content" class="editable wd100"
+                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1" [maxRows]="3"
+                                [useImportant]="true"></textarea>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
