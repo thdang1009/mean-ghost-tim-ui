@@ -28,7 +28,12 @@
         </a>
       </div>
       <div>
-        <strong>Ghost Site</strong>
+        <ng-container *ngIf="!isLogined">
+          <a [routerLink]="['/login']">LOGIN</a>
+        </ng-container>
+        <ng-container *ngIf="isLogined">
+          <strong>Ghost Site</strong>
+        </ng-container>
       </div>
       <div>
         <ul>

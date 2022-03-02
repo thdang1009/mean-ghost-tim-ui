@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   password = '';
   matcher = new MyErrorStateMatcher();
   isLoadingResults = false;
+  isRunning = false;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
 
@@ -37,14 +38,17 @@ export class LoginComponent implements OnInit {
   }
 
   onFormSubmit(form: NgForm) {
+    this.isRunning = true;
     this.authService.login(form)
       .subscribe(res => {
+        this.isRunning = false;
         if (res.token) {
           localStorage.setItem(CONSTANT.TOKEN, res.token);
           this.router.navigate(['/admin/dashboard']);
           showNoti('Login success!', 'success');
         }
       }, (err) => {
+        this.isRunning = false;
       });
   }
 

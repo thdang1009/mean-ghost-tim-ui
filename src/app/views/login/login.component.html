@@ -68,7 +68,7 @@
                   <p>Don't have account? <a href="javascript:void(0)" (click)="register()">Register</a></p>
                 </div>
               </div>
-              <button mat-raised-button type="submit" [disabled]="!loginForm.valid"
+              <button mat-raised-button type="submit" [disabled]="!loginForm.valid || isRunning"
                 class="btn btn-info pull-right">Login</button>
               <div class="clearfix"></div>
             </form>
