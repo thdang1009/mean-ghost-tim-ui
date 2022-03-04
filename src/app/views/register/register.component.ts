@@ -4,6 +4,7 @@ import { AuthService } from '../../_services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CONSTANT } from '@app/_shares/constant';
+import { AlertService } from '@app/_services/alert.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -27,7 +28,7 @@ export class RegisterComponent implements OnInit {
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private alertService: AlertService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -47,7 +48,7 @@ export class RegisterComponent implements OnInit {
         });
       }, (err) => {
         console.log(err);
-        alert(err.error);
+        this.alertService.error(err.error);
       });
   }
 

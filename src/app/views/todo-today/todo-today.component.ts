@@ -4,6 +4,7 @@ import { TodoTodayService } from '@app/_services/todo-today.service';
 import { showNoti } from '@app/_shares/common';
 import { TodoToday } from '../../_models/todo-today';
 import * as dateFns from 'date-fns';
+import { JobService } from '@app/_services/job.service';
 // import { SimpleTimePipe } from '@app/_pipes/ghost-date.pipe';
 
 @Component({
@@ -21,11 +22,13 @@ export class TodoTodayComponent implements OnInit {
   searchDateDisplay = 'ToDay';
   searchStatus = 'NONE';
   statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];
+  count = 0;
 
   constructor(
     private todoTodayService: TodoTodayService,
+    private jobService: JobService,
     // private simpleTimePipe: SimpleTimePipe
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.searchToDoToDay();
@@ -118,5 +121,29 @@ export class TodoTodayComponent implements OnInit {
           this.isLoadingResults = false;
         });
     }
+  }
+  increaseCount() {
+    this.count++;
+    if (this.count >= 5) {
+      this.count = 0;
+      this.triggerJobManually();
+    }
+  }
+  triggerJobManually() {
+    const req = {
+      jobName: [
+        'newToNotYet',
+        'tomorrowToNew'
+      ]
+    }
+    this.jobService.runJobManually(req, new Date)
+      .subscribe((_: any) => {
+        setTimeout(_ => {
+          this.searchToDoToDay();
+        }, 20 * 10e3);
+        this.isLoadingResults = false;
+      }, err => {
+        this.isLoadingResults = false;
+      });
   }
 }

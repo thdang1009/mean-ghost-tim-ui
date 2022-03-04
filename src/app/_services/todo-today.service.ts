@@ -54,7 +54,7 @@ export class TodoTodayService {
       catchError(this.handleError<any>('updateTodoToday'))
     );
   }
-
+  
   deleteTodoToday(id: any): Observable<TodoToday> {
     const url = `${apiUrl}/${id}`;
     return this.http.delete<TodoToday>(url).pipe(

@@ -6,6 +6,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { showNoti } from '@app/_shares/common';
 import { UserService } from '@app/_services/user.service';
 import { User } from '@app/_models/user';
+import { AlertService } from '@app/_services/alert.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -47,7 +48,7 @@ export class CreateUserComponent implements OnInit {
   ];
   permission = this.permissions[1]; // CONSTANT.PERMISSION.MEMBER;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService, private alertService: AlertService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -83,7 +84,7 @@ export class CreateUserComponent implements OnInit {
         }
       }, (err) => {
         console.log(err);
-        alert(err.error);
+        this.alertService.error(err.error);
       });
   }
 }

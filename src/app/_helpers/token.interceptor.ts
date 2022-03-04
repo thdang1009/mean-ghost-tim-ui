@@ -51,7 +51,7 @@ export class TokenInterceptor implements HttpInterceptor {
           this.router.navigate(['login']);
         }
         if (error.status === 400) {
-          alert(error.error);
+          // alert(error.error.msg);
         }
         showNoti(`Error: ${error.error.msg || error.message}`, 'danger');
         return throwError(error);
