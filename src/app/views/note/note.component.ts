@@ -16,7 +16,7 @@ export class NoteComponent implements OnInit {
   
   today = dateFns.startOfToday();
   searchDate = new FormControl(this.today);
-  searchDateDisplay = 'ToDay';
+  // searchDateDisplay = 'ToDay';
   searchStatus = 'NONE';
   statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];
   itemSelected = undefined;
