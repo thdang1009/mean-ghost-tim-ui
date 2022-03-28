@@ -38,6 +38,7 @@ export class TodoTodayComponent implements OnInit {
     const sample: TodoToday = {
       content: ''
     }
+    this.isLoadingResults = true;
     this.todoTodayService.addTodoToday(sample)
       .subscribe((res: any) => {
         this.data.push(res);
