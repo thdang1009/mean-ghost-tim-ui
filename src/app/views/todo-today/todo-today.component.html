@@ -75,12 +75,14 @@
                                             {{ tdtd.id }}
                                         </td> -->
                                         <td>
+                                            <span (click)="updateStatus(tdtd, index)" matTooltip="{{ nextStatus }}">{{ tdtd.status }}</span>
+                                        </td>
+                                        <!-- <td>
                                             <span class="hover-pointer" (click)="updateStatus(tdtd, index)"
                                                 matTooltip="Update Status">
                                                 {{ tdtd.date | simpleTime }}
                                             </span>
-                                            <!-- {{ tdtd.date | date: 'dd-MM' }} -->
-                                        </td>
+                                        </td> -->
                                         <td>
                                             <textarea type="text" [(ngModel)]="tdtd.content" class="editable wd100"
                                                 (blur)="saveItem(tdtd.id, tdtd, index);false" autosize [minRows]="1"

@@ -67,24 +67,28 @@ export class TodoTodayComponent implements OnInit {
     this.isLoadingResults = true;
     this.todoTodayService.getMyTodoToday(req)
       .subscribe((res: any) => {
-        this.data = res;
+        this.data = res.map(el => ({
+          ...el,
+          nextStatus: this.nextStatus(el.status)
+        }));
         // this.searchDateDisplay = this.simpleTimePipe.transform(value);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
       });
   }
+
+  nextStatus = (oldStatus) => ({
+    'NEW': 'DONE',
+    'DONE': 'TOMORROW',
+    'TOMORROW': 'NOT_YET',
+    'NOT_YET': 'NEW'
+  }[oldStatus])
+  
   updateStatus(item, index) {
-    // console.log(item);
-    const nextStatus = (oldStatus) => ({
-      'NEW': 'DONE',
-      'DONE': 'NOT_YET',
-      'NOT_YET': 'TOMORROW',
-      'TOMORROW': 'NEW'
-    }[oldStatus])
     const req = {
       ...item,
-      status: nextStatus(item.status)
+      status: this.nextStatus(item.status)
     };
     this.isLoadingResults = true;
     this.todoTodayService.updateTodoToday(item.id, req)
