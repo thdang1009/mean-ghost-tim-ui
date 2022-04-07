@@ -78,13 +78,15 @@ export class TodoTodayComponent implements OnInit {
       });
   }
 
-  nextStatus = (oldStatus) => ({
-    'NEW': 'DONE',
-    'DONE': 'TOMORROW',
-    'TOMORROW': 'NOT_YET',
-    'NOT_YET': 'NEW'
-  }[oldStatus])
-  
+  nextStatus(oldStatus) {
+    return {
+      'NEW': 'DONE',
+      'DONE': 'TOMORROW',
+      'TOMORROW': 'NOT_YET',
+      'NOT_YET': 'NEW'
+    }[oldStatus];
+  }
+
   updateStatus(item, index) {
     const req = {
       ...item,
