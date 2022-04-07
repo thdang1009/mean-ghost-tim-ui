@@ -15,19 +15,12 @@ import {
 
 import { AdminLayoutComponent } from '@layouts/admin-layout/admin-layout.component';
 import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.component';
-import { LogoutComponent } from './views/logout/logout.component';
 import { TokenInterceptor } from './_helpers/_index';
 import { AboutMeComponent } from './views/about-me/about-me.component';
-import { HtmlIndexComponent } from './views/html-index/html-index.component';
-import { CssIndexComponent } from './views/css-index/css-index.component';
-import { AngularIndexComponent } from './views/angular-index/angular-index.component';
-import { RunJsComponent } from './views/run-js/run-js.component';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { DatePipe } from '@angular/common';
 import { AutosizeModule } from 'ngx-autosize';
-import { NoteComponent } from './views/note/note.component';
-import { FoodComponent } from './views/food/food.component';
-
+import { AuthService, TodoTodayService, NoteService, JobService, HomeService } from './_services/_index';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -37,6 +30,7 @@ import { FoodComponent } from './views/food/food.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    // third party
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
@@ -47,18 +41,16 @@ import { FoodComponent } from './views/food/food.component';
     AppComponent,
     AdminLayoutComponent,
     GuestLayoutComponent,
-    LogoutComponent,
     AboutMeComponent,
-    HtmlIndexComponent,
-    CssIndexComponent,
-    AngularIndexComponent,
-    RunJsComponent,
-    NoteComponent,
-    FoodComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    DatePipe
+    DatePipe,
+    NoteService,
+    TodoTodayService,
+    JobService,
+    AuthService,
+    HomeService,
   ],
   bootstrap: [AppComponent]
 })

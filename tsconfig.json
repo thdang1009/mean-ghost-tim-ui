@@ -39,6 +39,9 @@
       "@layouts/*": [
         "app/_layouts/*"
       ],
+      "@pipes/*": [
+        "app/_pipes/*"
+      ],
       "@views/*": [
         "app/views/*"
       ],

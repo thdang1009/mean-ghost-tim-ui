@@ -4,9 +4,9 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CONSTANT } from '@app/_shares/constant';
-import { LoginResponse } from '@app/_shares/common';
-import { User } from '@app/_models/_index';
+import { CONSTANT } from '@shares/constant';
+import { LoginResponse } from '@shares/common';
+import { User } from '@models/_index';
 
 const apiUrl = environment.apiUrl + '/api/user/';
 

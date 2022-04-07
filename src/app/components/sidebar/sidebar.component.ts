@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, HomeService } from '@app/_services/_index';
+import { AuthService, HomeService } from '@services/_index';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -12,8 +12,8 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
   { path: 'dashboard', title: 'Dashboard', icon: 'dashboard', class: '', permission: 'isAdmin' },
-  { path: 'create-user', title: 'Create User', icon: 'person_add', class: '', permission: 'isGrandAdmin' },
-  { path: 'list-user', title: 'List User', icon: 'person_add', class: '', permission: 'isGrandAdmin' },
+  { path: 'user-management/add-user', title: 'Add User', icon: 'person_add', class: '', permission: 'isGrandAdmin' },
+  { path: 'user-management/user-list', title: 'List User', icon: 'person_add', class: '', permission: 'isGrandAdmin' },
   { path: 'todo-today', title: 'Todo Today', icon: 'checklist_rtl', class: '', permission: 'isMember' },
   { path: 'note', title: 'Note', icon: 'library_books', class: '', permission: 'isMember' },
   { path: 'money', title: 'Money', icon: 'attach_money', class: '', permission: 'isGrandAdmin' },

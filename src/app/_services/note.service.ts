@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Note } from '@app/_models/note';
+import { Note } from '@models/note';
 import { environment } from '@environments/environment';
-import { buildQueryString } from '@app/_shares/common';
+import { buildQueryString } from '@shares/common';
 
 const apiUrl = environment.apiUrl + '/api/note';
 

@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './_layouts/admin-layout/admin-layout.component';
 import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.component';
-import { LoginGuard } from './views/auth/login.guard';
+import { LoginGuard } from './views/auth-management/auth/login.guard';
 
 const routes: Routes = [
   {
@@ -39,10 +39,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes, {
-      useHash: false,
-      // enableTracing: true
-    })
+    RouterModule.forRoot(routes, {})
   ],
   exports: [
   ],

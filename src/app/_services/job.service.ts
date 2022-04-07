@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
-import { buildQueryString } from '@app/_shares/common';
+import { buildQueryString } from '@shares/common';
 
 const apiUrl = environment.apiUrl + '/api/job';
 
