@@ -19,12 +19,22 @@ export const AdminLayoutRoutes: Routes = [
             canActivate: [GrandAdminGuard]
         }]
     },
-    // { path: 'add-user', component: AddUserComponent, canActivate: [GrandAdminGuard] },
-    // { path: 'user-list', component: UserListComponent, canActivate: [GrandAdminGuard] },
-    { path: 'todo-today', component: TodoTodayComponent, canActivate: [LoginGuard] },
-    { path: 'note', component: NoteComponent, canActivate: [LoginGuard] },
-    { path: 'money', component: MoneyComponent, canActivate: [GrandAdminGuard] },
-    { path: 'food', component: FoodComponent, canActivate: [LoginGuard] },
+    {
+        path: 'blog-management',
+        children: [{
+            path: '',
+            loadChildren: () => import('../../views/blog-management/blog-management.module').then(m => { return m.BlogManagementModule }),
+            canActivate: [GrandAdminGuard]
+        }]
+    },
+    {
+        path: 'tool',
+        children: [{
+            path: '',
+            loadChildren: () => import('../../views/ghost-management/ghost-management.module').then(m => { return m.GhostManagementModule }),
+            canActivate: [GrandAdminGuard]
+        }]
+    }
 
     //----- sample components
     // { path: 'user-profile', component: UserProfileComponent },

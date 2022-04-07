@@ -14,10 +14,10 @@ export const ROUTES: RouteInfo[] = [
   { path: 'dashboard', title: 'Dashboard', icon: 'dashboard', class: '', permission: 'isAdmin' },
   { path: 'user-management/add-user', title: 'Add User', icon: 'person_add', class: '', permission: 'isGrandAdmin' },
   { path: 'user-management/user-list', title: 'List User', icon: 'person_add', class: '', permission: 'isGrandAdmin' },
-  { path: 'todo-today', title: 'Todo Today', icon: 'checklist_rtl', class: '', permission: 'isMember' },
-  { path: 'note', title: 'Note', icon: 'library_books', class: '', permission: 'isMember' },
-  { path: 'money', title: 'Money', icon: 'attach_money', class: '', permission: 'isGrandAdmin' },
-  { path: 'food', title: 'Food', icon: 'lunch_dining', class: '', permission: 'isMember' },
+  { path: 'tool/todo-today', title: 'Todo Today', icon: 'checklist_rtl', class: '', permission: 'isMember' },
+  { path: 'tool/note', title: 'Note', icon: 'library_books', class: '', permission: 'isMember' },
+  { path: 'tool/money', title: 'Money', icon: 'attach_money', class: '', permission: 'isGrandAdmin' },
+  { path: 'tool/food', title: 'Food', icon: 'lunch_dining', class: '', permission: 'isMember' },
 
 
   // { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TodoTodayService } from '@services/todo-today.service';
-import { TodoToday } from '../../../_models/todo-today';
+import { TodoToday } from '@models/todo-today';
 import * as dateFns from 'date-fns';
 import { JobService } from '@services/job.service';
 

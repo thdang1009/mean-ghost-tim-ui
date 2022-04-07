@@ -17,9 +17,20 @@ export const GuestLayoutRoutes: Routes = [
     { path: 'logout', component: LogoutComponent },
     { path: 'register', component: RegisterComponent, canActivate: [NotLoginGuard] },
     { path: 'about-me', component: AboutMeComponent },
-    // { path: 'angular-index', component: AngularIndexComponent },
-    // { path: 'css-index', component: CssIndexComponent },
-    // { path: 'html-index', component: HtmlIndexComponent },
-    // { path: 'run-js', component: RunJsComponent },
-    // { path: 'json-beautifier', component: JsonBeautifierComponent },
+    {
+        path: 'index',
+        children: [{
+            path: '',
+            loadChildren: () => import('../../views/code-index/code-index.module').then(m => { return m.CodeIndexModule }),
+            canActivate: []
+        }]
+    },
+    {
+        path: 'useful-app',
+        children: [{
+            path: '',
+            loadChildren: () => import('../../views/useful-app/useful-app.module').then(m => { return m.UsefulAppModule }),
+            canActivate: []
+        }]
+    },
 ];
