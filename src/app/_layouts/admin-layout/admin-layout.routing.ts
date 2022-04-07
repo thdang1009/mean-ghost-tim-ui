@@ -1,14 +1,8 @@
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '@views/dashboard/dashboard.component';
-import { TodoTodayComponent } from '@app/views/ghost-management/todo-today/todo-today.component';
-import { MoneyComponent } from '@app/views/ghost-management/money/money.component';
 import { AdminGuard } from '@app/views/auth-management/auth/admin.guard';
 import { GrandAdminGuard } from '@app/views/auth-management/auth/grand-admin.guard';
-import { LoginGuard } from '@app/views/auth-management/auth/login.guard';
-import { NoteComponent } from '@app/views/ghost-management/note/note.component';
-import { FoodComponent } from '@app/views/ghost-management/food/food.component';
-
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
     {
