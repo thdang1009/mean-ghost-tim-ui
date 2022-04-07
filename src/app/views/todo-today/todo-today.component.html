@@ -75,7 +75,9 @@
                                             {{ tdtd.id }}
                                         </td> -->
                                         <td>
-                                            <span class="hover-pointer" (click)="updateStatus(tdtd, index)" matTooltip="{{ nextStatus }}">{{ tdtd.status }}</span>
+                                            <span class="hover-pointer" (click)="updateStatus(tdtd, index)"
+                                                matTooltip="=> {{ tdtd.nextStatus || nextStatus(tdtd.status) }}">{{
+                                                tdtd.status }}</span>
                                         </td>
                                         <!-- <td>
                                             <span class="hover-pointer" (click)="updateStatus(tdtd, index)"
