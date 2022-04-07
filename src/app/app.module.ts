@@ -26,6 +26,7 @@ import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { DatePipe } from '@angular/common';
 import { AutosizeModule } from 'ngx-autosize';
 import { NoteComponent } from './views/note/note.component';
+import { FoodComponent } from './views/food/food.component';
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import { NoteComponent } from './views/note/note.component';
     AngularIndexComponent,
     RunJsComponent,
     NoteComponent,
+    FoodComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
