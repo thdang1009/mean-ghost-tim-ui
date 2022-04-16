@@ -8,7 +8,7 @@ import * as dateFns from 'date-fns';
 @Component({
   selector: 'note',
   templateUrl: './note.component.html',
-  styleUrls: ['./note.component.css']
+  styleUrls: ['../../../_styles/common.style.scss', './note.component.css']
 })
 export class NoteComponent implements OnInit {
 

@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { AutosizeModule } from 'ngx-autosize';
-import { SimpleTimePipe, TimeAgoPipe } from '@app/_pipes/_index';
+import { ScoreToTierPipe, SimpleTimePipe, TimeAgoPipe } from '@app/_pipes/_index';
 import { MatDialogModule } from '@angular/material/dialog';
 
 
@@ -19,7 +19,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     // put all the pipe, directive, component should be shared here
     // pipes
     TimeAgoPipe,
-    SimpleTimePipe
+    SimpleTimePipe,
+    ScoreToTierPipe
   ],
   imports: [
     CommonModule,
@@ -49,6 +50,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     // pipes
     TimeAgoPipe,
     SimpleTimePipe,
+    ScoreToTierPipe,
     // angular material
     MatButtonModule,
     MatRippleModule,

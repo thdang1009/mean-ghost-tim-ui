@@ -1,1 +1,88 @@
-<p>food works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title ">List Meal {{ searchDateDisplay }}</h4>
+                    </div>
+                    <form class="form-under-table-header row" (ngSubmit)="searchMeal()">
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Date</mat-label>
+                                <input matInput [matDatepicker]="picker" name="date" [formControl]="searchDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <!-- search status, default all -->
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Tier</mat-label>
+                                <mat-select [(ngModel)]="searchTier" [ngModelOptions]="{standalone: true}">
+                                    <mat-option *ngFor="let item of tierList; let i = index"
+                                        [(value)]="tierList[i]">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <!-- button search -->
+                        <div class="col-md-4">
+                            <button mat-raised-button type="submit" [disabled]="isLoadingResults"
+                                class="btn btn-info pull-right">
+                                <i class="material-icons">search</i>
+                                Search
+                            </button>
+                        </div>
+                    </form>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th style="max-width: 120px; min-width: 120px; width: 120px;">
+                                        Tier
+                                    </th>
+                                    <th>
+                                        Meal
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let meal of data; let index = index">
+                                        <td>
+                                            <span class="hover-pointer">
+                                                {{ meal.score | scoreToTier }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <textarea type="text" [(ngModel)]="meal.content" class="editable wd100"
+                                                (blur)="saveItem(meal.id, meal, index);false" autosize [minRows]="1"
+                                                [maxRows]="2" [useImportant]="true"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="data && data.length === 0" class="text-center">
+                                        <td colspan="100%">No data</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="100%">
+                                            <button mat-raised-button type="button" matTooltip="Add Empty Row"
+                                                [disabled]="isLoadingResults" class="btn btn-info pull-right"
+                                                (click)="addMeal()">
+                                                <i class="material-icons">add</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Delete Last"
+                                                [disabled]="isLoadingResults" class="btn btn-danger pull-right"
+                                                (click)="deleteLast()">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

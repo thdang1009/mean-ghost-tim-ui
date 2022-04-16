@@ -4,3 +4,4 @@ export * from './home.service';
 export * from './job.service';
 export * from './note.service';
 export * from './todo-today.service';
+export * from './meal.service';
