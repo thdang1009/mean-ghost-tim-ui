@@ -4,6 +4,8 @@ import { TodoTodayService } from '@services/todo-today.service';
 import { TodoToday } from '@models/todo-today';
 import * as dateFns from 'date-fns';
 import { JobService } from '@services/job.service';
+import { isImportant } from '@shares/common';
+import { DEBOUCE_TIME } from '@shares/constant';
 
 @Component({
   selector: 'app-todo-today',
@@ -14,6 +16,8 @@ export class TodoTodayComponent implements OnInit {
 
   data: TodoToday[] = [];
   isLoadingResults = true;
+  callListIdTimeout = undefined;
+  hoveredIndex = undefined;
 
   today = dateFns.startOfToday();
   searchDate = new FormControl(this.today);
@@ -51,7 +55,10 @@ export class TodoTodayComponent implements OnInit {
     this.getMyToDoToDay();
   }
 
-  getMyToDoToDay() {
+  getMyToDoToDay(timeout = 0) {
+    if (this.callListIdTimeout) {
+      clearTimeout(this.callListIdTimeout);
+    }
     const value = this.searchDate && this.searchDate.value || new Date();
     const fromDate = dateFns.startOfDay(value);
     const toDate = dateFns.endOfDay(value);
@@ -63,17 +70,19 @@ export class TodoTodayComponent implements OnInit {
       status: this.searchStatus === 'NONE' && undefined || this.searchStatus
     }
     this.isLoadingResults = true;
-    this.todoTodayService.getMyTodoToday(req)
-      .subscribe((res: any) => {
-        this.data = res.map(el => ({
-          ...el,
-          nextStatus: this.nextStatus(el.status)
-        }));
-        // this.searchDateDisplay = this.simpleTimePipe.transform(value);
-        this.isLoadingResults = false;
-      }, err => {
-        this.isLoadingResults = false;
-      });
+    this.callListIdTimeout = setTimeout(_ => {
+      this.todoTodayService.getMyTodoToday(req)
+        .subscribe((res: any) => {
+          this.data = res.map(el => ({
+            ...el,
+            nextStatus: this.nextStatus(el.status)
+          })).sort(el => isImportant(el.content) ? -1 : 1);
+          // this.searchDateDisplay = this.simpleTimePipe.transform(value);
+          this.isLoadingResults = false;
+        }, err => {
+          this.isLoadingResults = false;
+        });
+    }, timeout);
   }
 
   nextStatus(oldStatus) {
@@ -93,7 +102,9 @@ export class TodoTodayComponent implements OnInit {
     this.isLoadingResults = true;
     this.todoTodayService.updateTodoToday(item.id, req)
       .subscribe((res: any) => {
-        this.data[index] = res;
+        // this.data[index] = res;
+        // update to debouce call api
+        this.getMyToDoToDay(DEBOUCE_TIME);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
@@ -104,7 +115,9 @@ export class TodoTodayComponent implements OnInit {
     item.content = item.content.trim();
     this.todoTodayService.updateTodoToday(id, item)
       .subscribe((res: any) => {
-        this.data[index] = res;
+        // this.data[index] = res;
+        // update to debouce call api
+        this.getMyToDoToDay(DEBOUCE_TIME);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
@@ -120,7 +133,26 @@ export class TodoTodayComponent implements OnInit {
     if (id) {
       this.todoTodayService.deleteTodoToday(id)
         .subscribe((_: any) => {
-          this.data.pop();
+          // this.data.pop();
+          // update to debouce call api
+          this.getMyToDoToDay(DEBOUCE_TIME);
+          this.isLoadingResults = false;
+        }, err => {
+          this.isLoadingResults = false;
+        });
+    }
+  }
+  delete(id) {
+    this.isLoadingResults = true;
+    if (!this.data || !this.data.length) {
+      return;
+    }
+    if (id) {
+      this.todoTodayService.deleteTodoToday(id)
+        .subscribe((_: any) => {
+          // this.data.pop();
+          // update to debouce call api
+          this.getMyToDoToDay(DEBOUCE_TIME);
           this.isLoadingResults = false;
         }, err => {
           this.isLoadingResults = false;

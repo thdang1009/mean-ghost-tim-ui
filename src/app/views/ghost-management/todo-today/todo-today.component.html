@@ -64,13 +64,13 @@
                                         Update Time
                                     </th> -->
                                 </thead>
-                                <tbody>
+                                <tbody (mouseleave)="hoveredIndex=undefined">
                                     <tr *ngFor="let tdtd of data; let index = index" [ngClass]="{
                                         'warning': tdtd.status === 'NOT_YET',
                                         'success': tdtd.status === 'DONE',
                                         'primary': tdtd.status === 'NEW',
                                         'future': tdtd.status === 'TOMORROW'
-                                    }">
+                                    }" (mouseenter)="hoveredIndex=index">
                                         <!-- <td>
                                             {{ tdtd.id }}
                                         </td> -->
@@ -91,6 +91,18 @@
                                                 [maxRows]="3" [useImportant]="true"></textarea>
                                             <!-- <input type="text" [(ngModel)]="tdtd.content" class="editable wd100"
                                                 (keyup.enter)="saveItem(tdtd.id, tdtd)"> -->
+                                                <!-- <button mat-raised-button type="button" matTooltip="Delete this row"
+                                                    [disabled]="isLoadingResults" [ngClass]="{
+                                                        'btn': true,
+                                                        'btn-info': true,
+                                                        'pull-right': true,
+                                                        'show-on-hover': true,
+                                                        'hide-on-leave': false,
+                                                        'btn-show-on-hover': true
+                                                    }"
+                                                    (click)="delete(item.id)">
+                                                    <i class="material-icons">delete</i>
+                                                </button> -->
                                         </td>
                                         <!-- <td>
                                             <span class="hover-pointer" (click)="updateStatus(tdtd)">

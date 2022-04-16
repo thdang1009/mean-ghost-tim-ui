@@ -8,3 +8,5 @@ export const CONSTANT = {
     GUEST: 'GUEST'
   }
 }
+
+export const DEBOUCE_TIME = 200;

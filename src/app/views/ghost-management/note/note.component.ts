@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Note } from '@models/note';
 import { NoteService } from '@services/note.service';
 import * as dateFns from 'date-fns';
@@ -23,11 +24,17 @@ export class NoteComponent implements OnInit {
 
   constructor(
     private noteService: NoteService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private ref: ChangeDetectorRef
     // private simpleTimePipe: SimpleTimePipe
   ) { }
 
   ngOnInit() {
-    this.searchNote();
+    this.activatedRoute.queryParams.subscribe(params => {
+      const id = Number(params.id);
+      this.searchNote(id);
+    });
   }
 
   addNote() {
@@ -44,15 +51,22 @@ export class NoteComponent implements OnInit {
       });
   }
 
-  searchNote() {
-    this.getMyNote();
+  searchNote(id = undefined) {
+    this.getMyNote(id);
   }
 
   chooseThisItem(item) {
     this.itemSelected = item;
+    this.router.navigate(
+      [], 
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: { id: item.id },
+        queryParamsHandling: 'merge'
+      });
   }
 
-  getMyNote() {
+  getMyNote(id = undefined) {
     const value = this.searchDate && this.searchDate.value || new Date();
     const fromDate = dateFns.startOfDay(value);
     const toDate = dateFns.endOfDay(value);
@@ -67,6 +81,10 @@ export class NoteComponent implements OnInit {
     this.noteService.getMyNote(req)
       .subscribe((res: any) => {
         this.data = res;
+        if (id) {
+          this.itemSelected = res.filter(el => el.id === id)[0];
+          this.ref.markForCheck();
+        }
         // this.searchDateDisplay = this.simpleTimePipe.transform(value);
         this.isLoadingResults = false;
       }, err => {
@@ -124,5 +142,12 @@ export class NoteComponent implements OnInit {
   }
   back() {
     this.itemSelected = undefined;
+    this.router.navigate(
+      [], 
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: { id: null },
+        queryParamsHandling: 'merge'
+      });
   }
 }

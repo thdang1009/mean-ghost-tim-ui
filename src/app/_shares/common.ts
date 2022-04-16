@@ -46,3 +46,6 @@ export function buildQueryString(object) {
     }
   return str.join("&");
 }
+export function isImportant(content) {
+  return content.includes('**');
+}
