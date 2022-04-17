@@ -14,7 +14,7 @@ thêm list món ăn theo tier và để backend tự động update tier theo co
 @Component({
   selector: 'food',
   templateUrl: './food.component.html',
-  styleUrls: ['../../../_styles/common.style.scss', './food.component.css']
+  styleUrls: ['./food.component.css']
 })
 export class FoodComponent implements OnInit {
 

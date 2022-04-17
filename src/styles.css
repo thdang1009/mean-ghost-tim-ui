@@ -4,3 +4,75 @@
 .hover-pointer {
     cursor: pointer;
 }
+
+pdf-viewer {
+    height: 100vh !important;
+    width: auto !important;
+}
+
+button {
+    width: 100%;
+}
+
+.warning * {
+    color: #ff9e0f;
+}
+
+.success * {
+    color: #55b559;
+}
+
+.primary * {
+    color: #00cae3;
+}
+
+.future * {
+    color: #a72abd;
+}
+
+.editable {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.editable-header {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.wd100 {
+    width: 100%;
+}
+
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto !important;
+}
+
+.form-under-table-header {
+    padding: 10px 0;
+}
+
+.editable {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.show-on-hover {
+    display: block;
+}
+
+.hide-on-leave {
+    display: none;
+}
+
+.btn-show-on-hover {
+    display: block;
+
+}

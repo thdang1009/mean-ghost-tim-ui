@@ -10,3 +10,5 @@ export const CONSTANT = {
 }
 
 export const DEBOUCE_TIME = 200;
+
+export const PDF_ASSETS_PATH = 'http://localhost:4500/assets/pdf';

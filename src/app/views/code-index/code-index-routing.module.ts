@@ -2,13 +2,23 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularIndexComponent } from './angular-index/angular-index.component';
 import { CssIndexComponent } from './css-index/css-index.component';
+import { GitIndexComponent } from './git-index/git-index.component';
 import { HtmlIndexComponent } from './html-index/html-index.component';
+import { JsIndexComponent } from './js-index/js-index.component';
+import { MongodbIndexComponent } from './mongodb-index/mongodb-index.component';
+import { NodeJsIndexComponent } from './node-js-index/node-js-index.component';
+import { ReactIndexComponent } from './react-index/react-index.component';
 
 
 const routes: Routes = [
   { path: 'angular-index', component: AngularIndexComponent },
-  { path: 'css-index', component: CssIndexComponent },
   { path: 'html-index', component: HtmlIndexComponent },
+  { path: 'css-index', component: CssIndexComponent },
+  { path: 'js-index', component: JsIndexComponent },
+  { path: 'git-index', component: GitIndexComponent },
+  { path: 'node-js-index', component: NodeJsIndexComponent },
+  { path: 'mongodb-index', component: MongodbIndexComponent },
+  { path: 'react-index', component: ReactIndexComponent },
 
 ];
 
