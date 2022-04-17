@@ -1,5 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+/*
+  - Add loading process
+  - Add popup help: lên đầu trang, search, v.v...
+*/
+
+
 @Component({
   selector: 'ghost-pdf-viewer',
   templateUrl: './ghost-pdf-viewer.component.html',
