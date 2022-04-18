@@ -11,4 +11,4 @@ export const CONSTANT = {
 
 export const DEBOUCE_TIME = 200;
 
-export const PDF_ASSETS_PATH = window.location.origin + '/';
+export const PDF_ASSETS_PATH = window.location.origin + '/assets/pdf';
