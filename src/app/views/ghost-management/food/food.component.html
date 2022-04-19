@@ -30,7 +30,7 @@
                         <!-- button search -->
                         <div class="col-md-4">
                             <button mat-raised-button type="submit" [disabled]="isLoadingResults"
-                                class="btn btn-info pull-right">
+                                class="btn btn-info pull-right btn-w100">
                                 <i class="material-icons">search</i>
                                 Search
                             </button>
@@ -50,9 +50,10 @@
                                 <tbody>
                                     <tr *ngFor="let meal of data; let index = index">
                                         <td>
-                                            <span class="hover-pointer">
+                                            <!-- <span class="hover-pointer">
                                                 {{ meal.score | scoreToTier }}
-                                            </span>
+                                            </span> -->
+                                            {{ meal.tier }}
                                         </td>
                                         <td>
                                             <textarea type="text" [(ngModel)]="meal.content" class="editable wd100"
@@ -66,12 +67,12 @@
                                     <tr>
                                         <td colspan="100%">
                                             <button mat-raised-button type="button" matTooltip="Add Empty Row"
-                                                [disabled]="isLoadingResults" class="btn btn-info pull-right"
+                                                [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100"
                                                 (click)="addMeal()">
                                                 <i class="material-icons">add</i>
                                             </button>
                                             <button mat-raised-button type="button" matTooltip="Delete Last"
-                                                [disabled]="isLoadingResults" class="btn btn-danger pull-right"
+                                                [disabled]="isLoadingResults" class="btn btn-danger pull-right btn-w100"
                                                 (click)="deleteLast()">
                                                 <i class="material-icons">delete</i>
                                             </button>

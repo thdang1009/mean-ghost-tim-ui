@@ -10,8 +10,11 @@ pdf-viewer {
     width: auto !important;
 }
 
-button {
+.btn-w100 {
     width: 100%;
+}
+.navbar-wrapper .button {
+    width: auto !important;
 }
 
 .warning * {

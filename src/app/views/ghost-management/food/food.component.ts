@@ -25,13 +25,14 @@ export class FoodComponent implements OnInit {
   searchDate = new FormControl(this.today);
   searchDateDisplay = 'ToDay';
   tierList = [
+    'NONE',
     'S',
     'A',
     'B',
     'C',
     'D',
   ];
-  searchTier = undefined;
+  searchTier = this.tierList[0];
 
   constructor(
     private mealService: MealService
@@ -41,8 +42,11 @@ export class FoodComponent implements OnInit {
     this.searchMeal();
   }
   addMeal() {
+    const value = this.searchDate && this.searchDate.value || new Date();
+    const fromDate = dateFns.startOfDay(value);
+    fromDate.setHours(12);
     const sample: Meal = {
-      date: new Date(),
+      createTime: fromDate,
       content: ''
     }
     this.isLoadingResults = true;
@@ -67,7 +71,7 @@ export class FoodComponent implements OnInit {
     const req = {
       from: fromDate || undefined,
       to: toDate || undefined,
-      tier: this.searchTier === 'NONE' && undefined || this.searchTier
+      tier: this.searchTier === 'NONE' ? undefined : this.searchTier
     }
     this.isLoadingResults = true;
     this.mealService.getMyMeal(req)

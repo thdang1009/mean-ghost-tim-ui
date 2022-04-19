@@ -67,7 +67,7 @@ export class TodoTodayComponent implements OnInit {
     const req = {
       from: fromDate || undefined,
       to: toDate || undefined,
-      status: this.searchStatus === 'NONE' && undefined || this.searchStatus
+      status: this.searchStatus === 'NONE' ? undefined : this.searchStatus
     }
     this.isLoadingResults = true;
     // this.callListIdTimeout = setTimeout(_ => {

@@ -11,12 +11,12 @@
                         <!-- button search -->
                         <div class="col-md-4">
                             <button *ngIf="!itemSelected || !itemSelected.id" mat-raised-button type="submit" [disabled]="isLoadingResults"
-                                class="btn btn-info pull-right">
+                                class="btn btn-info pull-right btn-w100">
                                 <i class="material-icons">search</i>
                                 Search
                             </button>
                             <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button" (click)="back()" [disabled]="isLoadingResults"
-                                class="btn btn-info pull-right">
+                                class="btn btn-info pull-right btn-w100">
                                 <i class="material-icons">save</i>
                                 Back & Save
                             </button>
@@ -59,12 +59,12 @@
                                     <tr>
                                         <td colspan="100%">
                                             <button mat-raised-button type="button" matTooltip="Add Empty Row"
-                                                [disabled]="isLoadingResults" class="btn btn-info pull-right"
+                                                [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100"
                                                 (click)="addNote()">
                                                 <i class="material-icons">add</i>
                                             </button>
                                             <button mat-raised-button type="button" matTooltip="Delete Last"
-                                                [disabled]="isLoadingResults" class="btn btn-danger pull-right"
+                                                [disabled]="isLoadingResults" class="btn btn-danger pull-right btn-w100"
                                                 (click)="deleteLast()">
                                                 <i class="material-icons">delete</i>
                                             </button>

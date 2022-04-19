@@ -1,7 +1,7 @@
 //Meal
 export class Meal {
   id?: Number;
-  date?: Date;
+  createTime?: Date;
   user?: Number;
   content: String; // content
   score?: Number;
