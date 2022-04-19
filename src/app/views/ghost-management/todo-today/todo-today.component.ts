@@ -56,9 +56,9 @@ export class TodoTodayComponent implements OnInit {
   }
 
   getMyToDoToDay(timeout = 0) {
-    if (this.callListIdTimeout) {
-      clearTimeout(this.callListIdTimeout);
-    }
+    // if (this.callListIdTimeout) {
+    //   clearTimeout(this.callListIdTimeout);
+    // }
     const value = this.searchDate && this.searchDate.value || new Date();
     const fromDate = dateFns.startOfDay(value);
     const toDate = dateFns.endOfDay(value);
@@ -70,7 +70,7 @@ export class TodoTodayComponent implements OnInit {
       status: this.searchStatus === 'NONE' && undefined || this.searchStatus
     }
     this.isLoadingResults = true;
-    this.callListIdTimeout = setTimeout(_ => {
+    // this.callListIdTimeout = setTimeout(_ => {
       this.todoTodayService.getMyTodoToday(req)
         .subscribe((res: any) => {
           this.data = res.map(el => ({
@@ -82,7 +82,7 @@ export class TodoTodayComponent implements OnInit {
         }, err => {
           this.isLoadingResults = false;
         });
-    }, timeout);
+    // }, timeout);
   }
 
   nextStatus(oldStatus) {
@@ -175,9 +175,9 @@ export class TodoTodayComponent implements OnInit {
     }
     this.jobService.runJobManually(req, new Date)
       .subscribe((_: any) => {
-        setTimeout(_ => {
-          this.searchToDoToDay();
-        }, 20 * 10e3);
+        // setTimeout(_ => {
+        //   this.searchToDoToDay();
+        // }, 20 * 10e3);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
