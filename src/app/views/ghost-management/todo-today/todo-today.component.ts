@@ -102,9 +102,9 @@ export class TodoTodayComponent implements OnInit {
     this.isLoadingResults = true;
     this.todoTodayService.updateTodoToday(item.id, req)
       .subscribe((res: any) => {
-        // this.data[index] = res;
+        this.data[index] = res;
         // update to debouce call api
-        this.getMyToDoToDay(DEBOUCE_TIME);
+        // this.getMyToDoToDay(DEBOUCE_TIME);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
@@ -115,9 +115,9 @@ export class TodoTodayComponent implements OnInit {
     item.content = item.content.trim();
     this.todoTodayService.updateTodoToday(id, item)
       .subscribe((res: any) => {
-        // this.data[index] = res;
+        this.data[index] = res;
         // update to debouce call api
-        this.getMyToDoToDay(DEBOUCE_TIME);
+        // this.getMyToDoToDay(DEBOUCE_TIME);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
@@ -150,9 +150,9 @@ export class TodoTodayComponent implements OnInit {
     if (id) {
       this.todoTodayService.deleteTodoToday(id)
         .subscribe((_: any) => {
-          // this.data.pop();
+          this.data.pop();
           // update to debouce call api
-          this.getMyToDoToDay(DEBOUCE_TIME);
+          // this.getMyToDoToDay(DEBOUCE_TIME);
           this.isLoadingResults = false;
         }, err => {
           this.isLoadingResults = false;
