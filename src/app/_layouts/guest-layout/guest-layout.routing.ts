@@ -5,6 +5,7 @@ import { HomeComponent } from '@app/views/home/home.component';
 import { NotLoginGuard } from '@app/views/auth-management/auth/not-login.guard';
 import { LogoutComponent } from '@app/views/auth-management/logout/logout.component';
 import { AboutMeComponent } from '@app/views/about-me/about-me.component';
+import { ConfirmEmailComponent } from '@app/views/user-management/confirm-email/confirm-email.component';
 // import { AngularIndexComponent } from '@app/views/angular-index/angular-index.component';
 // import { CssIndexComponent } from '@app/views/css-index/css-index.component';
 // import { HtmlIndexComponent } from '@app/views/html-index/html-index.component';
@@ -32,5 +33,9 @@ export const GuestLayoutRoutes: Routes = [
             loadChildren: () => import('../../views/useful-app/useful-app.module').then(m => { return m.UsefulAppModule }),
             canActivate: []
         }]
+    },
+    {
+        path: 'confirm-email/:confirmationCode',
+        component: ConfirmEmailComponent
     },
 ];

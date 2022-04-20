@@ -5,12 +5,14 @@ import { UserManagementRoutingModule } from './user-management-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { SharedModuleModule } from '@shares/shared-module.module';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
 
 @NgModule({
   declarations: [
     UserListComponent,
-    AddUserComponent
+    AddUserComponent,
+    ConfirmEmailComponent
   ],
   imports: [
     CommonModule,

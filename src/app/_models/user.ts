@@ -5,4 +5,5 @@ export class User {
   permission: String;
   password?: String;
   createBy?: String;
+  status?: String;
 }

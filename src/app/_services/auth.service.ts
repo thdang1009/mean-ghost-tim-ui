@@ -68,6 +68,14 @@ export class AuthService {
       );
   }
 
+  confirmEmail(code) {
+    return this.http.get<any>(apiUrl + `confirm/${code}`)
+    .pipe(
+      tap(_ => this.log('confirm email')),
+      catchError(this.handleError('confirm email', []))
+    );
+  }
+
   getUserInfo() {
     return this.userInfo;
   }
