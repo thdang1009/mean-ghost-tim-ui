@@ -21,6 +21,7 @@ import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { DatePipe } from '@angular/common';
 import { AutosizeModule } from 'ngx-autosize';
 import { AuthService, TodoTodayService, NoteService, JobService, HomeService } from './_services/_index';
+import { CodeEditorModule } from '@ngstack/code-editor';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -36,6 +37,7 @@ import { AuthService, TodoTodayService, NoteService, JobService, HomeService } f
     }),
     NgJsonEditorModule,
     AutosizeModule,
+    CodeEditorModule.forRoot(),
   ],
   declarations: [
     AppComponent,
