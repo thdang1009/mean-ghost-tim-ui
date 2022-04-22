@@ -73,13 +73,13 @@
                         Admin View
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a *ngIf="isLogined; else notLogined" class="nav-link" (click)="logout()">
+                <li class="nav-item hover-pointer">
+                    <a *ngIf="isLogined; else notLogined" class="nav-link hover-pointer" (click)="logout()">
                         <i class="fas fa-sign-out-alt"></i>
                         Logout
                     </a>
                     <ng-template #notLogined>
-                        <a class="nav-link" (click)="login()">
+                        <a class="nav-link hover-pointer" (click)="login()">
                             <i class="fas fa-sign-in-alt"></i>
                             Login
                         </a>

@@ -44,7 +44,9 @@ export class LoginComponent implements OnInit {
         this.isRunning = false;
         if (res.token) {
           localStorage.setItem(CONSTANT.TOKEN, res.token);
-          this.router.navigate(['/admin/dashboard']);
+          setTimeout(_ => {
+            this.router.navigate(['/admin/dashboard']);
+          }, 1000);
           showNoti('Login success!', 'success');
         }
       }, (err) => {
