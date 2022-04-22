@@ -5,6 +5,7 @@ import { UsefulAppRoutingModule } from './useful-app-routing.module';
 import { JsonBeautifierComponent } from './json-beautifier/json-beautifier.component';
 import { RunJsComponent } from './run-js/run-js.component';
 import { SharedModuleModule } from '@shares/shared-module.module';
+import { CodeEditorModule } from '@ngstack/code-editor';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SharedModuleModule } from '@shares/shared-module.module';
   imports: [
     CommonModule,
     UsefulAppRoutingModule,
-    SharedModuleModule
+    SharedModuleModule,
+    CodeEditorModule.forChild(),
   ]
 })
 export class UsefulAppModule { }
