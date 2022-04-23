@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExampleCode } from '@app/_helpers/fake.data';
 import { showNoti } from '@app/_shares/common';
 import { CodeModel } from '@ngstack/code-editor';
-
+// declare var webGlObject: any;
 @Component({
   selector: 'run-js',
   templateUrl: './run-js.component.html',
@@ -24,12 +24,16 @@ export class RunJsComponent implements OnInit {
       enabled: true,
     },
   };
+  isLoadingResults = false;
+  store = [];
 
-  constructor() { }
+  constructor() {
+    // webGlObject.init();
+  }
 
   ngOnInit(): void {
     const handleFunction = this.handleCmdSave.bind(this);
-    showNoti('Command + S to run code', 'info');
+    // showNoti('Command + S to run code', 'info');
     (function () {
       var timer;
       var metaflag = false;
@@ -50,18 +54,33 @@ export class RunJsComponent implements OnInit {
   }
 
   onCodeChanged(value) {
-    console.log('CODE', value);
+    // console.log('CODE', value);
   }
 
   handleCmdSave() {
-    const codeFormated = this.formatCodeToRun(this.codeModel.value);
-    eval(codeFormated);
-    // alert(codeFormated);
-    // alert(result)
-    // console.log(codeFormated, result);
+    // const codeFormated = this.formatCodeToRun(this.codeModel.value);
+    let code = this.codeModel.value;
+    try {
+      const store = [];
+      const funcName = '___func';
+      window[funcName] = console.log;
+      console.log = function (value) {
+        window[funcName](value);
+        store.push(value);
+        return value;
+      };
+      eval(code);
+      this.store = store;
+      // store.forEach(value => window[funcName](value));
+      console.log = window[funcName];
+    }
+    catch(e) {
+      showNoti(e, 'danger');
+    }
   }
 
   formatCodeToRun(s) {
-    return `${s}`;
+    ;
+    return s;
   }
 }

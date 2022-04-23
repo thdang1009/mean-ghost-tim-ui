@@ -1,2 +1,18 @@
 <ngs-code-editor [theme]="theme" [codeModel]="codeModel" [options]="options" (valueChanged)="onCodeChanged($event)">
 </ngs-code-editor>
+<div class="output-container">
+    <div class="buttons-container">
+        <button id="execute" mat-raised-button type="button" [disabled]="isLoadingResults"
+            class="btn btn-info pull-right btn-w100" (click)="handleCmdSave()">
+            <i class="material-icons">arrow_forward_ios</i>
+            Run
+        </button>
+    </div>
+    <div id="console" class="output">
+        <ng-container *ngFor="let consoleValue of store;">
+            <code class="fade-in">{{ consoleValue }}
+            </code>
+            <br/>
+        </ng-container>
+    </div>
+</div>

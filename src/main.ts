@@ -24,7 +24,7 @@ import 'hammerjs';
 
 if (environment.production) {
   enableProdMode();
-  console.log = () => {};
+  // console.log = () => {};
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);

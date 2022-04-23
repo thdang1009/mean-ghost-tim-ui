@@ -2,3 +2,67 @@ ngs-code-editor {
     /* width: 90vw; */
     height: 60vh;
 }
+
+.output-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    align-self: flex-start;
+    width: 100%;
+    padding-bottom: 0.5rem;
+}
+
+.buttons-container {
+    display: inline-block;
+    width: 100px;
+    vertical-align: top;
+}
+
+.button {
+    display: block;
+    background-color: var(--button-secondary-default);
+    color: var(--text-primary);
+    padding: 0.5em;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--elem-radius);
+    width: 100px;
+    font: var(--type-emphasis-m);
+    cursor: pointer;
+}
+
+.button {
+    display: block;
+    background-color: var(--button-secondary-default);
+    color: var(--text-primary);
+    padding: 0.5em;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--elem-radius);
+    width: 100px;
+    font: var(--type-emphasis-m);
+    cursor: pointer;
+}
+
+.output {
+    display: flex;
+    flex: 10 150px;
+    align-items: center;
+}
+
+.output {
+    position: relative;
+    display: inline-block;
+    background-color: var(--background-secondary);
+    margin: 0;
+    padding: 0.8em;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--elem-radius);
+    width: 100%;
+    height: 120px;
+    font: var(--type-code-regular);
+}
