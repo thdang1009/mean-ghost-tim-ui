@@ -78,6 +78,7 @@
                 "fonts": true
               },
               "outputHashing": "all",
+              "sourceMap": true
             }
           }
         },

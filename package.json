@@ -7,7 +7,7 @@
     "start": "node server.js",
     "build": "ng build --aot --prod",
     "local": "ng serve --host dev.ghost.me --disable-host-check --port 4500",
-    "debug": "ng serve --host dev.ghost.me --disable-host-check --port 4500 --source-map=true",
+    "debug": "ng serve --host dev.ghost.me --disable-host-check --port 4500 -c development",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

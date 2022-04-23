@@ -156,4 +156,10 @@ export class GuestLayoutComponent implements OnInit {
         return bool;
     }
 
+    isMobileMenu() {
+        if ($(window).width() > 991) {
+            return false;
+        }
+        return true;
+    };
 }
