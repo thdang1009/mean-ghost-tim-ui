@@ -3,12 +3,12 @@
 <div class="output-container">
     <div class="buttons-container">
         <button id="execute" mat-raised-button type="button" [disabled]="isLoadingResults"
-            class="btn btn-info pull-right btn-w100" (click)="handleCmdSave()">
+            class="btn btn-info pull-right btn-w100 btn-run" (click)="handleCmdSave()">
             <i class="material-icons">arrow_forward_ios</i>
             Run
         </button>
     </div>
-    <div id="console" class="output">
+    <div id="console" class="output scrollable">
         <ng-container *ngFor="let consoleValue of store;">
             <code class="fade-in">{{ consoleValue }}
             </code>

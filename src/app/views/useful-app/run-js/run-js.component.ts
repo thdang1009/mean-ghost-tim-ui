@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ExampleCode } from '@app/_helpers/fake.data';
 import { showNoti } from '@app/_shares/common';
+import { SAVED_CODE } from '@app/_shares/constant';
 import { CodeModel } from '@ngstack/code-editor';
-// declare var webGlObject: any;
 @Component({
   selector: 'run-js',
   templateUrl: './run-js.component.html',
   styleUrls: ['./run-js.component.css']
 })
-export class RunJsComponent implements OnInit {
+export class RunJsComponent implements OnInit, OnDestroy {
 
   theme = 'vs-dark';
 
   codeModel: CodeModel = {
     language: 'javascript',
     uri: 'main.js',
-    value: ExampleCode,
+    value: localStorage.getItem(SAVED_CODE) || ExampleCode,
   };
 
   options = {
@@ -28,7 +28,10 @@ export class RunJsComponent implements OnInit {
   store = [];
 
   constructor() {
-    // webGlObject.init();
+  }
+
+  ngOnDestroy(): void {
+    this.saveOnLocal();
   }
 
   ngOnInit(): void {
@@ -53,12 +56,17 @@ export class RunJsComponent implements OnInit {
     })();
   }
 
+  saveOnLocal() {
+    console.log('saveOnLocal', this.codeModel.value);
+    localStorage.setItem(SAVED_CODE, this.codeModel.value);
+  }
+
   onCodeChanged(value) {
     // console.log('CODE', value);
   }
 
   handleCmdSave() {
-    // const codeFormated = this.formatCodeToRun(this.codeModel.value);
+    this.isLoadingResults = true;
     let code = this.codeModel.value;
     try {
       const store = [];
@@ -73,14 +81,11 @@ export class RunJsComponent implements OnInit {
       this.store = store;
       // store.forEach(value => window[funcName](value));
       console.log = window[funcName];
+      this.saveOnLocal();
     }
-    catch(e) {
+    catch (e) {
       showNoti(e, 'danger');
     }
-  }
-
-  formatCodeToRun(s) {
-    ;
-    return s;
+    this.isLoadingResults = false;
   }
 }

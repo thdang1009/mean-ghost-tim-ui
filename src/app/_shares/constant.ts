@@ -12,3 +12,5 @@ export const CONSTANT = {
 export const DEBOUCE_TIME = 200;
 
 export const PDF_ASSETS_PATH = window.location.origin + '/assets/pdf';
+
+export const SAVED_CODE = 'SAVED_CODE';
