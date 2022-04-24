@@ -22,7 +22,7 @@ export const GuestLayoutRoutes: Routes = [
         path: 'index',
         children: [{
             path: '',
-            loadChildren: () => import('../../views/code-index/code-index.module').then(m => { return m.CodeIndexModule }),
+            loadChildren: () => import('../../views/code-index/code-index.module').then(m => m.CodeIndexModule ),
             canActivate: []
         }]
     },
@@ -30,7 +30,7 @@ export const GuestLayoutRoutes: Routes = [
         path: 'useful-app',
         children: [{
             path: '',
-            loadChildren: () => import('../../views/useful-app/useful-app.module').then(m => { return m.UsefulAppModule }),
+            loadChildren: () => import('../../views/useful-app/useful-app.module').then(m => m.UsefulAppModule ),
             canActivate: []
         }]
     },

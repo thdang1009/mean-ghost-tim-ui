@@ -14,6 +14,8 @@ import { MongodbIndexComponent } from './mongodb-index/mongodb-index.component';
 import { NodeJsIndexComponent } from './node-js-index/node-js-index.component';
 import { ReactIndexComponent } from './react-index/react-index.component';
 import { GhostPdfViewerComponent } from './ghost-pdf-viewer/ghost-pdf-viewer.component';
+// import { DragDropModule } from '@angular/cdk/drag-drop';
+
 
 // đọc file pdf rồi parse ra thành cái html
 
@@ -33,7 +35,8 @@ import { GhostPdfViewerComponent } from './ghost-pdf-viewer/ghost-pdf-viewer.com
     CommonModule,
     CodeIndexRoutingModule,
     SharedModuleModule,
-    PdfViewerModule
+    PdfViewerModule,
+    // DragDropModule
   ]
 })
 export class CodeIndexModule { }

@@ -9,7 +9,6 @@ import { ROUTES } from '../guest-sidebar/guest-sidebar.component';
 })
 export class GuestNavbarComponent implements OnInit {
 
-  isLogined = false;
   isAdmin = false;
   private listTitles: any[];
   location: Location;
@@ -20,7 +19,6 @@ export class GuestNavbarComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private element: ElementRef) { }
 
   ngOnInit(): void {
-    this.isLogined = this.authService.isLogin();
     this.isAdmin = this.authService.isAdmin();
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
@@ -35,9 +33,13 @@ export class GuestNavbarComponent implements OnInit {
     });
   }
   gotoAdminView() {
-    if (this.isLogined) {
+    if (this.isLogined()) {
       this.router.navigate(['admin/dashboard']);
     }
+  }
+
+  isLogined() {
+    return this.authService.isLogin();
   }
 
   login() {

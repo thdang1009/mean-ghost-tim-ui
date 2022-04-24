@@ -23,7 +23,7 @@
   <div class="header-box">
     <div class="ghost-box">
       <div>
-        <a aria-current="page" class="" href="/"><img class="top-avatar" alt="ghost" src="assets/img/ghost.png"
+        <a aria-current="page" class="" [routerLink]="['/']"><img class="top-avatar" alt="ghost" src="assets/img/ghost.png"
             style="width:100px">
         </a>
       </div>
@@ -32,7 +32,7 @@
           <a [routerLink]="['/login']">LOGIN</a>
         </ng-container>
         <ng-container *ngIf="isLogined">
-          <strong>Ghost Site</strong>
+          <a [routerLink]="['/admin/dashboard']">Go To Admin View</a>
         </ng-container>
       </div>
       <div>
@@ -69,7 +69,7 @@
     <nav class="pull-left">
       <ul>
         <li>
-          <a href="/about-me">
+          <a [routerLink]="['/about-me']">
             About Me
           </a>
         </li>

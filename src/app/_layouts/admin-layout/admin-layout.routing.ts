@@ -9,7 +9,7 @@ export const AdminLayoutRoutes: Routes = [
         path: 'user-management',
         children: [{
             path: '',
-            loadChildren: () => import('../../views/user-management/user-management.module').then(m => { return m.UserManagementModule }),
+            loadChildren: () => import('../../views/user-management/user-management.module').then(m =>  m.UserManagementModule ),
             canActivate: [GrandAdminGuard]
         }]
     },
@@ -17,7 +17,7 @@ export const AdminLayoutRoutes: Routes = [
         path: 'blog-management',
         children: [{
             path: '',
-            loadChildren: () => import('../../views/blog-management/blog-management.module').then(m => { return m.BlogManagementModule }),
+            loadChildren: () => import('../../views/blog-management/blog-management.module').then(m => m.BlogManagementModule ),
             canActivate: [GrandAdminGuard]
         }]
     },
@@ -25,7 +25,7 @@ export const AdminLayoutRoutes: Routes = [
         path: 'tool',
         children: [{
             path: '',
-            loadChildren: () => import('../../views/ghost-management/ghost-management.module').then(m => { return m.GhostManagementModule }),
+            loadChildren: () => import('../../views/ghost-management/ghost-management.module').then(m => m.GhostManagementModule ),
             canActivate: [GrandAdminGuard]
         }]
     }

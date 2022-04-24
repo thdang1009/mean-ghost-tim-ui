@@ -3,21 +3,41 @@ import { Router } from '@angular/router';
 import { AuthService, HomeService } from '@services/_index';
 
 declare const $: any;
-declare interface RouteInfo {
+
+declare interface Child {
   path: string;
   title: string;
   icon: string;
   class: string;
   permission: string;
 }
+declare interface RouteInfo {
+  path: string;
+  title: string;
+  icon: string;
+  class: string;
+  permission: string;
+  hasChild: boolean;
+  children?: Array<Child>;
+}
 export const ROUTES: RouteInfo[] = [
-  { path: 'dashboard', title: 'Dashboard', icon: 'dashboard', class: '', permission: 'isAdmin' },
-  { path: 'user-management/add-user', title: 'Add User', icon: 'person_add', class: '', permission: 'isGrandAdmin' },
-  { path: 'user-management/user-list', title: 'List User', icon: 'people', class: '', permission: 'isGrandAdmin' },
-  { path: 'tool/todo-today', title: 'Todo Today', icon: 'checklist_rtl', class: '', permission: 'isMember' },
-  { path: 'tool/note', title: 'Note', icon: 'library_books', class: '', permission: 'isMember' },
-  { path: 'tool/money', title: 'Money', icon: 'attach_money', class: '', permission: 'isGrandAdmin' },
-  { path: 'tool/food', title: 'Food', icon: 'lunch_dining', class: '', permission: 'isMember' },
+  { path: 'dashboard', title: 'Dashboard', icon: 'dashboard', class: '', permission: 'isAdmin', hasChild: false },
+  {
+    path: 'user-management', title: 'User', icon: 'people', class: '', permission: 'isGrandAdmin', hasChild: true,
+    children: [
+      { path: 'user-management/add-user', title: 'Add User', icon: 'person_add', class: '', permission: 'isGrandAdmin' },
+      { path: 'user-management/user-list', title: 'List User', icon: 'people', class: '', permission: 'isGrandAdmin' }
+    ]
+  },
+  {
+    path: 'tool', title: 'Tool', icon: 'tool', class: '', permission: 'isMember', hasChild: true,
+    children: [
+      { path: 'tool/todo-today', title: 'Todo Today', icon: 'checklist_rtl', class: '', permission: 'isMember' },
+      { path: 'tool/note', title: 'Note', icon: 'library_books', class: '', permission: 'isMember' },
+      { path: 'tool/money', title: 'Money', icon: 'attach_money', class: '', permission: 'isMember' },
+      { path: 'tool/food', title: 'Food', icon: 'lunch_dining', class: '', permission: 'isMember' },
+    ]
+  }
 
 
   // { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
