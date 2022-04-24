@@ -1,5 +1,9 @@
 @import "~jsoneditor/dist/jsoneditor.min.css";
 
+textarea.jsoneditor-text {
+    min-height: 350px;
+}
+
 /* You can add global styles to this file, and also import other style files */
 .hover-pointer {
     cursor: pointer;
@@ -13,6 +17,7 @@ pdf-viewer {
 .btn-w100 {
     width: 100%;
 }
+
 .navbar-wrapper .button {
     width: auto !important;
 }
@@ -78,4 +83,7 @@ textarea {
 .btn-show-on-hover {
     display: block;
 
+}
+json-editor>div {
+    height: 80vh !important;
 }

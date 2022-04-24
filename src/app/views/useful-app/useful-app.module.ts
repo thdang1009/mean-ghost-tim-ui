@@ -6,6 +6,7 @@ import { JsonBeautifierComponent } from './json-beautifier/json-beautifier.compo
 import { RunJsComponent } from './run-js/run-js.component';
 import { SharedModuleModule } from '@shares/shared-module.module';
 import { CodeEditorModule } from '@ngstack/code-editor';
+import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CodeEditorModule } from '@ngstack/code-editor';
     UsefulAppRoutingModule,
     SharedModuleModule,
     CodeEditorModule.forChild(),
+    NgJsonEditorModule
   ]
 })
 export class UsefulAppModule { }

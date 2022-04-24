@@ -15,4 +15,6 @@ export const PDF_ASSETS_PATH = window.location.origin + '/assets/pdf';
 
 export const SAVED_CODE = 'SAVED_CODE';
 
+export const SAVED_JSON = 'SAVED_JSON';
+
 export const SAVED_PDF_PAGE = 'SAVE_PDF_PAGE';
