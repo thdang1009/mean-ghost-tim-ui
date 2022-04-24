@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@app/_services/_index';
+import { isInPDFView } from '@app/_shares/common';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -18,9 +19,9 @@ export const ROUTES: RouteInfo[] = [
   // { path: 'index/nodejs-index', title: 'NodeJS', icon: 'person_add', class: ''},
   // { path: 'index/mongodb-index', title: 'MongoDB', icon: 'person_add', class: ''},
   // { path: 'index/react-index', title: 'Add User', icon: 'person_add', class: ''},
-  { path: 'useful-app/run-js', title: 'RunJS', icon: 'javascript', class: ''},
-  { path: 'useful-app/json-beautifier', title: 'JSON Beautifier', icon: 'javascript', class: ''},
-  { path: 'admin/dashboard', title: 'Amin', icon: 'dashboard', class: ''},
+  { path: 'useful-app/run-js', title: 'RunJS', icon: 'javascript', class: '' },
+  { path: 'useful-app/json-beautifier', title: 'JSON Beautifier', icon: 'javascript', class: '' },
+  { path: 'admin/dashboard', title: 'Amin', icon: 'dashboard', class: '' },
 ];
 
 @Component({
@@ -41,6 +42,9 @@ export class GuestSidebarComponent implements OnInit {
   ngOnInit(): void {
 
     this.menuItems = ROUTES;
+  }
+  _isInPDFView() {
+    return isInPDFView();
   }
 
   isMobileMenu() {

@@ -57,7 +57,7 @@ export class RunJsComponent implements OnInit, OnDestroy {
   }
 
   saveOnLocal() {
-    console.log('saveOnLocal', this.codeModel.value);
+    // console.log('saveOnLocal', this.codeModel.value);
     localStorage.setItem(SAVED_CODE, this.codeModel.value);
   }
 
@@ -68,13 +68,17 @@ export class RunJsComponent implements OnInit, OnDestroy {
   handleCmdSave() {
     this.isLoadingResults = true;
     let code = this.codeModel.value;
+    const myJoin = (arr) => {
+      return arr.map(el => (typeof el === 'object' || el === undefined) ? JSON.stringify(el) : el).join(' ');
+    }
     try {
       const store = [];
       const funcName = '___func';
       window[funcName] = console.log;
-      console.log = function (value) {
-        window[funcName](value);
-        store.push(value);
+      console.log = function (...value) {
+        window[funcName](...value);
+        const joinedValue = myJoin(value);
+        store.push(joinedValue);
         return value;
       };
       eval(code);

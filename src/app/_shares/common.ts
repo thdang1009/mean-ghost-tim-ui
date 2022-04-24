@@ -49,3 +49,6 @@ export function buildQueryString(object) {
 export function isImportant(content) {
   return content.includes('**');
 }
+export function isInPDFView() {
+  return location.pathname.includes('index');
+}

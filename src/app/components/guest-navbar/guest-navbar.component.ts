@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { isInPDFView } from '@app/_shares/common';
 import { AuthService } from '@services/auth.service';
 import { ROUTES } from '../guest-sidebar/guest-sidebar.component';
 @Component({
@@ -31,6 +32,10 @@ export class GuestNavbarComponent implements OnInit {
         this.mobile_menu_visible = 0;
       }
     });
+  }
+
+  _isInPDFView() {
+    return isInPDFView();
   }
   gotoAdminView() {
     if (this.isLogined()) {

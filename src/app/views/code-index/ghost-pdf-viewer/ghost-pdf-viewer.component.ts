@@ -46,4 +46,11 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy {
     console.log(this.currentPage);
     localStorage.setItem(this.key, '' + this.currentPage);
   }
+  buttonClick() {
+    setTimeout(_ => {
+      this.pdf.pdfViewer.scrollPageIntoView({
+        pageNumber: 1
+      });
+    }, 0);
+  }
 }

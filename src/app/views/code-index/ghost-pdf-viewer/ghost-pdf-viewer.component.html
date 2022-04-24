@@ -1,8 +1,13 @@
-<pdf-viewer #pdf [src]="pdfSrc" [render-text]="true" [original-size]="false" [(page)]="currentPage"
-    style="width: 400px; height: 500px" (pagechanging)="pagechanging($event)">
-</pdf-viewer>
-<!-- <div class="dropdown show-dropdown open show" cdkDrag>
-    <a href="#" data-toggle="dropdown" aria-expanded="true">
-        <i class="fa fa-cog fa-2x"> </i>
-    </a>
-</div> -->
+<div class="example-boundary">
+    <pdf-viewer #pdf [src]="pdfSrc" [render-text]="true" [original-size]="false" [(page)]="currentPage"
+        style="width: 400px; height: 500px" (pagechanging)="pagechanging($event)">
+    </pdf-viewer>
+
+    <div class="fixed-plugin" cdkDrag cdkDragBoundary=".example-boundary">
+        <div class="dropdown show-dropdown open show">
+            <a (click)="buttonClick()" class="hover-pointer" data-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-arrow-up fa-2x"> </i>
+            </a>
+        </div>
+    </div>
+</div>
