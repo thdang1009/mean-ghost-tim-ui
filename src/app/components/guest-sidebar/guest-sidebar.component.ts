@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@app/_services/_index';
 import { isInPDFView } from '@app/_shares/common';
 
@@ -33,7 +34,8 @@ export class GuestSidebarComponent implements OnInit {
 
   menuItems: any[];
   isLogined = false;
-  constructor(private authService: AuthService) {
+  stringToSearch = '';
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) {
     this.isLogined = authService.isLogin();
     if (this.isLogined) {
     }
@@ -45,6 +47,23 @@ export class GuestSidebarComponent implements OnInit {
   }
   _isInPDFView() {
     return isInPDFView();
+  }
+
+  search() {
+    // alert(this.stringToSearch)
+    if (this._isInPDFView()) {
+      // call search in pdf
+      // just update the ?searchInPDF=...
+      this.router.navigate(
+        [], 
+        {
+          relativeTo: this.activatedRoute,
+          queryParams: { searchInPDF: this.stringToSearch },
+          queryParamsHandling: 'merge'
+        });
+    } else {
+      // call search normal in all page
+    }
   }
 
   isMobileMenu() {

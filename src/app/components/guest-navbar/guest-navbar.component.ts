@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { isInPDFView } from '@app/_shares/common';
 import { AuthService } from '@services/auth.service';
+// import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { ROUTES } from '../guest-sidebar/guest-sidebar.component';
 @Component({
   selector: 'app-guest-navbar',
@@ -9,15 +10,19 @@ import { ROUTES } from '../guest-sidebar/guest-sidebar.component';
   styleUrls: ['./guest-navbar.component.css']
 })
 export class GuestNavbarComponent implements OnInit {
-
   isAdmin = false;
   private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
   private toggleButton: any;
   private sidebarVisible: boolean;
+  stringToSearch = '';
 
-  constructor(private authService: AuthService, private router: Router, private element: ElementRef) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private element: ElementRef,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.isAdmin = this.authService.isAdmin();
@@ -32,6 +37,22 @@ export class GuestNavbarComponent implements OnInit {
         this.mobile_menu_visible = 0;
       }
     });
+  }
+
+  search() {
+    if (this._isInPDFView()) {
+      // call search in pdf
+      // just update the ?searchInPDF=...
+      this.router.navigate(
+        [], 
+        {
+          relativeTo: this.activatedRoute,
+          queryParams: { searchInPDF: this.stringToSearch },
+          queryParamsHandling: 'merge'
+        });
+    } else {
+      // call search normal in all page
+    }
   }
 
   _isInPDFView() {

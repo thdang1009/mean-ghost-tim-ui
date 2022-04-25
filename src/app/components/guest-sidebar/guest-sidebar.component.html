@@ -8,10 +8,10 @@
 </div> -->
 <div class="sidebar-wrapper">
     <div>
-        <form class="navbar-form">
+        <form class="navbar-form" (ngSubmit)="search">
             <span class="bmd-form-group">
                 <div class="input-group no-border">
-                    <input type="text"
+                    <input type="text" [(ngModel)]="stringToSearch" [ngModelOptions]="{standalone: true}"
                         placeholder="{{ _isInPDFView() ? 'Search in PDF' : 'Search in all page...' }}"
                         class="form-control">
                     <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -34,7 +34,8 @@
                     <a class="dropdown-item" [routerLink]="['/index/angular-index']">Angular</a>
                     <a class="dropdown-item" [routerLink]="['/index/html-index']">HTML</a>
                     <a class="dropdown-item" [routerLink]="['/index/css-index']">CSS</a>
-                    <a class="dropdown-item" [routerLink]="['/index/javascript-index']">Javascript</a>
+                    <a class="dropdown-item" [routerLink]="['/index/js-index']">Javascript</a>
+                    <a class="dropdown-item" [routerLink]="['/index/git-index']">GIT</a>
                     <a class="dropdown-item" [routerLink]="['/index/nodejs-index']">NodeJS</a>
                     <a class="dropdown-item" [routerLink]="['/index/mongodb-index']">MongoDB</a>
                     <a class="dropdown-item" [routerLink]="['/index/react-index']">React</a>

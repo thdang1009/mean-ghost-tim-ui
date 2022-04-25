@@ -61,7 +61,7 @@
             </li>
         </ul>
     </div>
-    <ul class="nav">
+    <ul class="nav navbar-nav nav-mobile-menu">
         <ng-container *ngFor="let menuItem of menuItems">
             <li *ngIf="!menuItem.hasChild" routerLinkActive="active" class="{{menuItem.class}} nav-item">
                 <a class="nav-link" [routerLink]="[menuItem.path]">

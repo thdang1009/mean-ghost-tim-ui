@@ -1,9 +1,14 @@
 <div class="example-boundary">
     <pdf-viewer #pdf [src]="pdfSrc" [render-text]="true" [original-size]="false" [(page)]="currentPage"
-        style="width: 400px; height: 500px" (pagechanging)="pagechanging($event)">
+        style="width: 400px; height: 500px" (pagechanging)="pagechanging($event)" [show-all]="true" (after-load-complete)="loadComplete()">
     </pdf-viewer>
 
     <div class="fixed-plugin" cdkDrag cdkDragBoundary=".example-boundary">
+        <div *ngIf="loadingOpacity" class="overlay" [style.opacity]="loadingOpacity">
+            <div class="overlay__inner">
+                <div class="overlay__content"><span class="spinner"></span></div>
+            </div>
+        </div>
         <div class="dropdown show-dropdown open show">
             <a (click)="buttonClick()" class="hover-pointer" data-toggle="dropdown" aria-expanded="true">
                 <i class="fa fa-arrow-up fa-2x"> </i>

@@ -7,11 +7,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { GuestNavbarComponent } from './guest-navbar/guest-navbar.component';
 import { GuestSidebarComponent } from './guest-sidebar/guest-sidebar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule
   ],
   declarations: [
     FooterComponent,

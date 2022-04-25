@@ -30,7 +30,7 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
   {
-    path: 'tool', title: 'Tool', icon: 'tool', class: '', permission: 'isMember', hasChild: true,
+    path: 'tool', title: 'Tool', icon: 'handyman', class: '', permission: 'isMember', hasChild: true,
     children: [
       { path: 'tool/todo-today', title: 'Todo Today', icon: 'checklist_rtl', class: '', permission: 'isMember' },
       { path: 'tool/note', title: 'Note', icon: 'library_books', class: '', permission: 'isMember' },
