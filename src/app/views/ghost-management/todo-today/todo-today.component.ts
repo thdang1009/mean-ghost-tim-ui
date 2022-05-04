@@ -144,11 +144,11 @@ export class TodoTodayComponent implements OnInit {
     }
   }
   delete(id) {
-    this.isLoadingResults = true;
     if (!this.data || !this.data.length) {
       return;
     }
     if (id) {
+      this.isLoadingResults = true;
       this.todoTodayService.deleteTodoToday(id)
         .subscribe((_: any) => {
           // this.data.pop();
