@@ -153,7 +153,7 @@ export class NoteComponent implements OnInit {
     if (id) {
       this.noteService.deleteNote(id)
         .subscribe((_: any) => {
-          this.searchNote();
+          this.data = this.data.filter(el => el.id != id);
           this.isLoadingResults = false;
         }, err => {
           this.isLoadingResults = false;

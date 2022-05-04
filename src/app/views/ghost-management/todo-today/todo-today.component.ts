@@ -153,7 +153,8 @@ export class TodoTodayComponent implements OnInit {
         .subscribe((_: any) => {
           // this.data.pop();
           // update to debouce call api
-          this.getMyToDoToDay();
+          // this.getMyToDoToDay();
+          this.data = this.data.filter(el => el.id != id);
           this.isLoadingResults = false;
         }, err => {
           this.isLoadingResults = false;
