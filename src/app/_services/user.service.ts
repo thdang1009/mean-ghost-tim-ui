@@ -3,12 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CONSTANT } from '@shares/constant';
-import { LoginResponse } from '@shares/common';
 import { User } from '@models/_index';
 
-const apiUrl = environment.apiUrl + '/api/user/';
+const apiUrl = environment.apiUrl + '/api/user';
 
 @Injectable({
   providedIn: 'root'

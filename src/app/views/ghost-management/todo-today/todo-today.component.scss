@@ -1,6 +1,4 @@
-button {
-    width: 100%;
-}
+
 
 .form-under-table-header {
     padding: 10px 0;
@@ -47,4 +45,12 @@ textarea {
 .btn-show-on-hover {
     display: block;
     
+}
+.btn-float-in-row {
+    position: absolute !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
 }

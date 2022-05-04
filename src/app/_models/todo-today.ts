@@ -5,4 +5,5 @@ export class TodoToday {
   content: String; // content
   status?: String;
   updateTime?: Date;
+  orderInDate?: Number;
 }

@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
@@ -43,7 +44,7 @@ export class NoteComponent implements OnInit {
     }
     this.noteService.addNote(sample)
       .subscribe((res: any) => {
-        this.data.push(res);
+        this.data.unshift(res);
         this.isLoadingResults = false;
       }, err => {
         // console.log(err);
@@ -130,15 +131,7 @@ export class NoteComponent implements OnInit {
     }
     const lastIndex = this.data.length - 1;
     const id = this.data[lastIndex].id;
-    if (id) {
-      this.noteService.deleteNote(id)
-        .subscribe((_: any) => {
-          this.data.pop();
-          this.isLoadingResults = false;
-        }, err => {
-          this.isLoadingResults = false;
-        });
-    }
+    this.callDeleteNote(id);
   }
   back() {
     this.itemSelected = undefined;
@@ -149,5 +142,25 @@ export class NoteComponent implements OnInit {
         queryParams: { id: null },
         queryParamsHandling: 'merge'
       });
+  }
+  deleteNote(note) {
+    const val = confirm(`Delete "${note.header}"?`);
+    if (val) {
+      this.callDeleteNote(note.id);
+    }
+  }
+  callDeleteNote(id) {
+    if (id) {
+      this.noteService.deleteNote(id)
+        .subscribe((_: any) => {
+          this.searchNote();
+          this.isLoadingResults = false;
+        }, err => {
+          this.isLoadingResults = false;
+        });
+    }
+  }
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.data, event.previousIndex, event.currentIndex);
   }
 }

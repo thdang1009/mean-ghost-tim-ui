@@ -61,7 +61,7 @@
             </li>
         </ul>
     </div>
-    <ul class="nav navbar-nav nav-mobile-menu">
+    <ul class="nav navbar-nav nav-menu-custom">
         <ng-container *ngFor="let menuItem of menuItems">
             <li *ngIf="!menuItem.hasChild" routerLinkActive="active" class="{{menuItem.class}} nav-item">
                 <a class="nav-link" [routerLink]="[menuItem.path]">
@@ -74,7 +74,7 @@
                     aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">{{menuItem.icon}}</i>
                     <p>
-                        <span class="d-lg-none d-md-block">{{menuItem.title}}</span>
+                        <span class="d-md-block">{{menuItem.title}}</span>
                     </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink2">

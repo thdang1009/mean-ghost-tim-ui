@@ -7,6 +7,7 @@ import { NoteComponent } from './note/note.component';
 import { TodoTodayComponent } from './todo-today/todo-today.component';
 import { FoodComponent } from './food/food.component';
 import { SharedModuleModule } from '@shares/shared-module.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SharedModuleModule } from '@shares/shared-module.module';
   imports: [
     CommonModule,
     GhostManagementRoutingModule,
-    SharedModuleModule
+    SharedModuleModule,
+    DragDropModule
   ],
   providers: [
     DatePipe,

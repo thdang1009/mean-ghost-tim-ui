@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 
-const apiUrl = environment.apiUrl + '/api/public/';
+const apiUrl = environment.apiUrl + '/api/public';
 
 @Injectable({
   providedIn: 'root'

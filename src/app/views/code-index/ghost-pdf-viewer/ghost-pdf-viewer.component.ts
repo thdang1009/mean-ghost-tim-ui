@@ -1,11 +1,16 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SAVED_PDF_PAGE } from '@app/_shares/constant';
+import { PDF_OBJ } from '@app/_shares/constant';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 
 /*
-  - Add loading process
-  - Add popup help: lên đầu trang, search, v.v...
+  - Add loading process => done
+  - Add popup help: lên đầu trang, search, v.v... => done, nếu được thì improve cái search in pdf cho nhiều kết quả chứ đừn đứng yên 1 chỗ như thế
+  - Tính năng mới nhất sẽ là cho phép user (đã đăng nhập) truy cập vào link three-book để upload 3 quyển sách
+  - Kéo thả file (tất nhiên là pdf)
+  - Upload file đó lên server
+  - Mở lên đọc (tất nhiên là từ server), lưu lại last page visit
+  - Có chức năng bỏ sách (đọc dở quá ko thèm đọc nữa), và chức năng done => lưu lại danh sách sách đã đọc => đưa vào admin site
 */
 
 
@@ -27,7 +32,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
 
   ngOnInit(): void {
     this.pdfSrc = this.src;
-    this.key = SAVED_PDF_PAGE + '_' + this.pdfFileName;
+    this.key = PDF_OBJ + '_' + this.pdfFileName;
     this.savedPage = Number(localStorage.getItem(this.key));
     // console.log(typeof this.savedPage, typeof this.key);
     // const element: HTMLElement = this.element.nativeElement;
@@ -63,8 +68,18 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     // console.log(this.currentPage);
   }
 
+  parseSavedObject(objString) {
+
+  }
+
+  createSavedObject() {
+    const obj = {};
+    return JSON.stringify(obj);
+  }
+
   ngOnDestroy(): void {
-    console.log(this.currentPage);
+    // console.log(this.currentPage);
+    const objSaved = this.createSavedObject();
     localStorage.setItem(this.key, '' + this.currentPage);
   }
   buttonClick() {

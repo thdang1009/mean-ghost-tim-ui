@@ -7,3 +7,7 @@ export class User {
   createBy?: String;
   status?: String;
 }
+
+export class UserReadingInfo {
+  jsonString: any;
+}

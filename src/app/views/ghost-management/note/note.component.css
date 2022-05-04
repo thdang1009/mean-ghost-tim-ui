@@ -1,0 +1,9 @@
+
+.btn-float-in-row {
+    position: absolute !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+}

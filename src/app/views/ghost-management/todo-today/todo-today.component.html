@@ -64,8 +64,8 @@
                                         Update Time
                                     </th> -->
                                 </thead>
-                                <tbody (mouseleave)="hoveredIndex=undefined">
-                                    <tr *ngFor="let tdtd of data; let index = index" [ngClass]="{
+                                <tbody (mouseleave)="hoveredIndex=undefined" cdkDropList (cdkDropListDropped)="drop($event)">
+                                    <tr *ngFor="let tdtd of data; let index = index" cdkDrag [ngClass]="{
                                         'warning': tdtd.status === 'NOT_YET',
                                         'success': tdtd.status === 'DONE',
                                         'primary': tdtd.status === 'NEW',
@@ -91,7 +91,7 @@
                                                 [maxRows]="3" [useImportant]="true"></textarea>
                                             <!-- <input type="text" [(ngModel)]="tdtd.content" class="editable wd100"
                                                 (keyup.enter)="saveItem(tdtd.id, tdtd)"> -->
-                                                <!-- <button mat-raised-button type="button" matTooltip="Delete this row"
+                                            <!-- <button mat-raised-button type="button" matTooltip="Delete this row"
                                                     [disabled]="isLoadingResults" [ngClass]="{
                                                         'btn': true,
                                                         'btn-info': true,
@@ -103,6 +103,12 @@
                                                     (click)="delete(item.id)">
                                                     <i class="material-icons">delete</i>
                                                 </button> -->
+                                            <button mat-raised-button type="button" matTooltip="Delete"
+                                                [disabled]="isLoadingResults"
+                                                class="btn btn-float-in-row btn-round btn-danger pull-right"
+                                                (click)="deleteTDTD(tdtd)">
+                                                <i class="material-icons red">delete</i>
+                                            </button>
                                         </td>
                                         <!-- <td>
                                             <span class="hover-pointer" (click)="updateStatus(tdtd)">
@@ -122,11 +128,11 @@
                                                 (click)="addToDoToDay()">
                                                 <i class="material-icons">add</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Delete Last"
+                                            <!-- <button mat-raised-button type="button" matTooltip="Delete Last"
                                                 [disabled]="isLoadingResults" class="btn btn-danger pull-right btn-w100"
                                                 (click)="deleteLast()">
                                                 <i class="material-icons">delete</i>
-                                            </button>
+                                            </button> -->
                                         </td>
                                     </tr>
                                 </tbody>

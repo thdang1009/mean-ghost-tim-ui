@@ -6,22 +6,29 @@
                     <div class="card-header card-header-info">
                         <h4 class="card-title ">Your Note</h4>
                     </div>
-                    <form class="form-under-table-header row"
-                        (ngSubmit)="searchNote()">
+                    <form class="form-under-table-header row" (ngSubmit)="searchNote()">
                         <!-- button search -->
                         <div class="col-md-4">
-                            <button *ngIf="!itemSelected || !itemSelected.id" mat-raised-button type="submit" [disabled]="isLoadingResults"
-                                class="btn btn-info pull-right btn-w100">
+                            <button *ngIf="!itemSelected || !itemSelected.id" mat-raised-button type="submit"
+                                [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100">
                                 <i class="material-icons">search</i>
                                 Search
                             </button>
-                            <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button" (click)="back()" [disabled]="isLoadingResults"
-                                class="btn btn-info pull-right btn-w100">
+                            <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button"
+                                (click)="back()" [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100">
                                 <i class="material-icons">save</i>
                                 Back & Save
                             </button>
                         </div>
                         <!-- button add -->
+                        <div class="col-md-4">
+                            <button mat-raised-button type="button" matTooltip="Add Empty Row"
+                                [disabled]="isLoadingResults" class="btn btn-success pull-right btn-w100"
+                                (click)="addNote()">
+                                <i class="material-icons">add</i>
+                                Add Empty Note
+                            </button>
+                        </div>
                     </form>
                     <div class="card-body">
                         <div *ngIf="!itemSelected || !itemSelected.id; else noteView" class="table-responsive">
@@ -34,8 +41,8 @@
                                         Header
                                     </th>
                                 </thead>
-                                <tbody>
-                                    <tr *ngFor="let note of data; let index = index" [ngClass]="{
+                                <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+                                    <tr *ngFor="let note of data; let index = index" cdkDrag [ngClass]="{
                                         'warning': note.status === 'NOT_YET',
                                         'success': note.status === 'DONE',
                                         'primary': note.status === 'NEW',
@@ -45,42 +52,46 @@
                                             {{ note.id }}
                                         </td> -->
                                         <td>
-                                            <span class="hover-pointer" (click)="updateStatus(note, index)">
+                                            <span class="hover-pointer" (click)="chooseThisItem(note)">
                                                 {{ note.createTime | date: 'dd-MM HH:mm' }}
                                             </span>
                                         </td>
                                         <td>
-                                            <span (click)="chooseThisItem(note)" class="editable-header hover-pointer">{{ note.header }}</span>
+                                            <span (click)="chooseThisItem(note)"
+                                                class="editable-header hover-pointer">{{ note.header }}
+                                            </span>
+                                            <button mat-raised-button type="button" matTooltip="Delete Note"
+                                                [disabled]="isLoadingResults"
+                                                class="btn btn-float-in-row btn-round btn-danger pull-right"
+                                                (click)="deleteNote(note)">
+                                                <i class="material-icons red">delete</i>
+                                            </button>
                                         </td>
                                     </tr>
                                     <tr *ngIf="data && data.length === 0" class="text-center">
                                         <td colspan="100%">No data</td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td colspan="100%">
-                                            <button mat-raised-button type="button" matTooltip="Add Empty Row"
-                                                [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100"
-                                                (click)="addNote()">
-                                                <i class="material-icons">add</i>
-                                            </button>
                                             <button mat-raised-button type="button" matTooltip="Delete Last"
                                                 [disabled]="isLoadingResults" class="btn btn-danger pull-right btn-w100"
                                                 (click)="deleteLast()">
                                                 <i class="material-icons">delete</i>
                                             </button>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
                         <ng-template #noteView>
-                            <textarea type="text" [(ngModel)]="itemSelected.header" class="editable editable-header wd100"
-                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1" [maxRows]="3"
-                                [useImportant]="true"></textarea>
+                            <textarea type="text" [(ngModel)]="itemSelected.header"
+                                class="editable editable-header wd100"
+                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
+                                [maxRows]="3" [useImportant]="true"></textarea>
 
                             <textarea type="text" [(ngModel)]="itemSelected.content" class="editable wd100"
-                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1" [maxRows]="100"
-                                [useImportant]="true"></textarea>
+                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
+                                [maxRows]="100" [useImportant]="true"></textarea>
                         </ng-template>
                     </div>
                 </div>

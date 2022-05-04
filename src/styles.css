@@ -133,3 +133,12 @@ json-editor>div {
 
 
 /* end loading overlay */
+
+.mat-raised-button.btn-float-in-row {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+.red {
+    color: #f44336 !important;
+}

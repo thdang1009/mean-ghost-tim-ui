@@ -6,6 +6,7 @@ import * as dateFns from 'date-fns';
 import { JobService } from '@services/job.service';
 import { isImportant } from '@shares/common';
 import { DEBOUCE_TIME } from '@shares/constant';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-todo-today',
@@ -150,9 +151,9 @@ export class TodoTodayComponent implements OnInit {
     if (id) {
       this.todoTodayService.deleteTodoToday(id)
         .subscribe((_: any) => {
-          this.data.pop();
+          // this.data.pop();
           // update to debouce call api
-          // this.getMyToDoToDay(DEBOUCE_TIME);
+          this.getMyToDoToDay();
           this.isLoadingResults = false;
         }, err => {
           this.isLoadingResults = false;
@@ -182,5 +183,14 @@ export class TodoTodayComponent implements OnInit {
       }, err => {
         this.isLoadingResults = false;
       });
+  }
+  deleteTDTD(tdtd) {
+    const val = confirm(`Delete "${tdtd.content}"?`);
+    if (val) {
+      this.delete(tdtd.id);
+    }
+  }
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.data, event.previousIndex, event.currentIndex);
   }
 }

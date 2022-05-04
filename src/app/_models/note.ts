@@ -5,4 +5,5 @@ export class Note {
   header?: String;
   content: String; // content
   updateTime?: Date;
+  order?: Number;
 }
