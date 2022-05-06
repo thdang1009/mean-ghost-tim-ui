@@ -7,12 +7,14 @@ import { RunJsComponent } from './run-js/run-js.component';
 import { SharedModuleModule } from '@shares/shared-module.module';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
+import { JsonExcelComponent } from './json-excel/json-excel.component';
 
 
 @NgModule({
   declarations: [
     JsonBeautifierComponent,
-    RunJsComponent
+    RunJsComponent,
+    JsonExcelComponent
   ],
   imports: [
     CommonModule,

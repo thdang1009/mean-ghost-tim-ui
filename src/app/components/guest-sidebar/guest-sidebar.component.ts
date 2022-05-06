@@ -20,8 +20,9 @@ export const ROUTES: RouteInfo[] = [
   // { path: 'index/nodejs-index', title: 'NodeJS', icon: 'person_add', class: ''},
   // { path: 'index/mongodb-index', title: 'MongoDB', icon: 'person_add', class: ''},
   // { path: 'index/react-index', title: 'Add User', icon: 'person_add', class: ''},
+  { path: 'useful-app/json-beautifier', title: 'JSON Beautifier', icon: 'code', class: '' },
+  { path: 'useful-app/json-excel', title: 'JSON Excel', icon: 'code', class: '' },
   { path: 'useful-app/run-js', title: 'RunJS', icon: 'javascript', class: '' },
-  { path: 'useful-app/json-beautifier', title: 'JSON Beautifier', icon: 'javascript', class: '' },
   { path: 'admin/dashboard', title: 'Amin', icon: 'dashboard', class: '' },
 ];
 

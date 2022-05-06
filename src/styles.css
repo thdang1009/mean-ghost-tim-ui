@@ -87,6 +87,9 @@ textarea {
 json-editor>div {
     height: 80vh !important;
 }
+json-beautifier {
+    display: flex;
+}
 
 /* begin loading overlay */
 .overlay {
