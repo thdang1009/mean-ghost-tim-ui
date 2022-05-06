@@ -142,3 +142,22 @@ json-editor>div {
 .red {
     color: #f44336 !important;
 }
+
+.drag-to-reorder {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(-50%, -50%);
+    cursor: move;
+    color: #262b2f !important;
+}
+.align-children-middle {
+    display: flex !important;
+    align-items: center;
+}
+donation {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

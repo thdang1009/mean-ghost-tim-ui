@@ -22,6 +22,7 @@ import { DatePipe } from '@angular/common';
 import { AutosizeModule } from 'ngx-autosize';
 import { AuthService, TodoTodayService, NoteService, JobService, HomeService } from './_services/_index';
 import { CodeEditorModule } from '@ngstack/code-editor';
+import { DonationComponent } from './views/donation/donation.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -44,6 +45,7 @@ import { CodeEditorModule } from '@ngstack/code-editor';
     AdminLayoutComponent,
     GuestLayoutComponent,
     AboutMeComponent,
+    DonationComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
