@@ -4,7 +4,7 @@ import { TodoTodayService } from '@services/todo-today.service';
 import { TodoToday } from '@models/todo-today';
 import * as dateFns from 'date-fns';
 import { JobService } from '@services/job.service';
-import { isImportant } from '@shares/common';
+import { isImportant, nextStatus } from '@shares/common';
 import { DEBOUCE_TIME } from '@shares/constant';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
@@ -76,7 +76,7 @@ export class TodoTodayComponent implements OnInit {
         .subscribe((res: any) => {
           this.data = res.map(el => ({
             ...el,
-            nextStatus: this.nextStatus(el.status)
+            nextStatus: nextStatus(el.status)
           })).sort(el => isImportant(el.content) ? -1 : 1);
           // this.searchDateDisplay = this.simpleTimePipe.transform(value);
           this.isLoadingResults = false;
@@ -86,19 +86,10 @@ export class TodoTodayComponent implements OnInit {
     // }, timeout);
   }
 
-  nextStatus(oldStatus) {
-    return {
-      'NEW': 'DONE',
-      'DONE': 'TOMORROW',
-      'TOMORROW': 'NOT_YET',
-      'NOT_YET': 'NEW'
-    }[oldStatus];
-  }
-
   updateStatus(item, index) {
     const req = {
       ...item,
-      status: this.nextStatus(item.status)
+      status: nextStatus(item.status)
     };
     this.isLoadingResults = true;
     this.todoTodayService.updateTodoToday(item.id, req)
@@ -112,16 +103,16 @@ export class TodoTodayComponent implements OnInit {
       });
   }
   saveItem(id, item, index) {
-    this.isLoadingResults = true;
+    // this.isLoadingResults = true;
     item.content = item.content.trim();
     this.todoTodayService.updateTodoToday(id, item)
       .subscribe((res: any) => {
         this.data[index] = res;
         // update to debouce call api
         // this.getMyToDoToDay(DEBOUCE_TIME);
-        this.isLoadingResults = false;
+        // this.isLoadingResults = false;
       }, err => {
-        this.isLoadingResults = false;
+        // this.isLoadingResults = false;
       });
   }
   deleteLast() {

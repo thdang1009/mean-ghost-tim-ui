@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
+import { AnalyticService } from './_services/analytic.service';
 
 
 @Component({
@@ -12,7 +13,9 @@ export class AppComponent {
   public initialData: any;
   public visibleData: any;
 
-  constructor() {
+  constructor(
+    private analyticService: AnalyticService
+  ) {
     // this.editorOptions = new JsonEditorOptions()
     // this.editorOptions.modes = ['code', 'text', 'tree', 'view'];
 
@@ -24,7 +27,8 @@ export class AppComponent {
     // this.visibleData = d;
   }
 
-
   ngOnInit(): void {
+    this.analyticService.logAccess()
+    .subscribe(_ => {}, _ => {});
   }
 }

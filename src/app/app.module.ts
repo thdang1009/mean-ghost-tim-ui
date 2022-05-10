@@ -23,6 +23,7 @@ import { AutosizeModule } from 'ngx-autosize';
 import { AuthService, TodoTodayService, NoteService, JobService, HomeService } from './_services/_index';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { DonationComponent } from './views/donation/donation.component';
+// import { ReuseComponentModule } from './_reuse/reuse.module';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -32,6 +33,7 @@ import { DonationComponent } from './views/donation/donation.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    // ReuseComponentModule,
     // third party
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'

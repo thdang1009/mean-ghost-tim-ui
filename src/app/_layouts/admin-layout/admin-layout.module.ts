@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ReuseComponentModule } from '@app/_reuse/reuse.module';
 
 @NgModule({
   imports: [
@@ -25,11 +26,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatNativeDateModule,
     MatTooltipModule,
     MatDialogModule,
+    ReuseComponentModule
   ],
   declarations: [
     DashboardComponent,
   ],
   providers: [
+    
   ]
 })
 

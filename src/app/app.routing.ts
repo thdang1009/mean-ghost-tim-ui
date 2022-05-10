@@ -17,7 +17,7 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     children: [{
       path: '',
-      loadChildren: () => import('./_layouts/admin-layout/admin-layout.module').then(m =>  m.AdminLayoutModule ),
+      loadChildren: () => import('./_layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule),
       canActivate: [LoginGuard]
     }]
   }, {
@@ -25,7 +25,7 @@ const routes: Routes = [
     component: GuestLayoutComponent,
     children: [{
       path: '',
-      loadChildren: () => import('./_layouts/guest-layout/guest-layout.module').then(m => m.GuestLayoutModule ),
+      loadChildren: () => import('./_layouts/guest-layout/guest-layout.module').then(m => m.GuestLayoutModule),
     }]
   },
   {

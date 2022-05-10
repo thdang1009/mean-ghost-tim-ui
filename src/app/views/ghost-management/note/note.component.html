@@ -42,52 +42,50 @@
                                     </th>
                                 </thead>
                                 <tbody cdkDropList (cdkDropListDropped)="drop($event)">
-                                    <tr *ngFor="let note of data; let index = index" cdkDrag [ngClass]="{
+                                    <ng-container *ngIf="data && data.length; else noDataBlock">
+                                        <tr *ngFor="let note of data; let index = index" cdkDrag [ngClass]="{
                                         'warning': note.status === 'NOT_YET',
                                         'success': note.status === 'DONE',
                                         'primary': note.status === 'NEW',
                                         'future': note.status === 'TOMORROW'
                                     }">
-                                        <!-- <td>
+                                            <!-- <td>
                                             {{ note.id }}
                                         </td> -->
-                                        <td class="text-center">
-                                            <span class="hover-pointer" (click)="chooseThisItem(note)">
-                                                {{ note.createTime | date: 'dd-MM HH:mm' }}
-                                            </span>
-                                            <div class="drag-to-reorder" cdkDragHandle>
-                                                <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
-                                                    </path>
-                                                    <path d="M0 0h24v24H0z" fill="none"></path>
-                                                </svg>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span (click)="chooseThisItem(note)"
-                                                class="editable-header hover-pointer">{{ note.header }}
-                                            </span>
-                                            <button mat-raised-button type="button" matTooltip="Delete Note"
-                                                [disabled]="isLoadingResults"
-                                                class="btn btn-float-in-row btn-round btn-danger pull-right"
-                                                (click)="deleteNote(note)">
-                                                <i class="material-icons red">delete</i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr *ngIf="data && data.length === 0" class="text-center">
-                                        <td colspan="100%">No data</td>
-                                    </tr>
-                                    <!-- <tr>
-                                        <td colspan="100%">
-                                            <button mat-raised-button type="button" matTooltip="Delete Last"
-                                                [disabled]="isLoadingResults" class="btn btn-danger pull-right btn-w100"
-                                                (click)="deleteLast()">
-                                                <i class="material-icons">delete</i>
-                                            </button>
-                                        </td>
-                                    </tr> -->
+                                            <td class="text-center">
+                                                <span class="hover-pointer" (click)="chooseThisItem(note)">
+                                                    {{ note.createTime | date: 'dd-MM HH:mm' }}
+                                                </span>
+                                                <div class="drag-to-reorder" cdkDragHandle>
+                                                    <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                                                        </path>
+                                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                                    </svg>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span (click)="chooseThisItem(note)"
+                                                    class="editable-header hover-pointer">{{ note.header }}
+                                                </span>
+                                                <button mat-raised-button type="button" matTooltip="Delete Note"
+                                                    [disabled]="isLoadingResults"
+                                                    class="btn btn-float-in-row btn-round btn-danger pull-right"
+                                                    (click)="deleteNote(note)">
+                                                    <i class="material-icons red">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                    <ng-template #noDataBlock>
+                                        <tr class="text-center">
+                                            <td colspan="100%" class="text-center">
+                                                <app-table-loading (size)="'sm'"></app-table-loading>
+                                                No data
+                                            </td>
+                                        </tr>
+                                    </ng-template>
                                 </tbody>
                             </table>
                         </div>

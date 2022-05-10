@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   login(data: any): Observable<any> {
-    return this.http.post<any>(apiUrl + 'login', data)
+    return this.http.post<any>(apiUrl + '/login', data)
       .pipe(
         tap((resp: LoginResponse) => {
           this.loggedInStatus = true;
@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post<any>(apiUrl + 'logout', {})
+    return this.http.post<any>(apiUrl + '/logout', {})
       .pipe(
         tap(_ => {
           this.isLoggedIn.emit(false);
@@ -61,7 +61,7 @@ export class AuthService {
   }
 
   register(data: any): Observable<any> {
-    return this.http.post<any>(apiUrl + 'register', data)
+    return this.http.post<any>(apiUrl + '/register', data)
       .pipe(
         tap(_ => this.log('login')),
         catchError(this.handleError('login', []))
@@ -69,7 +69,7 @@ export class AuthService {
   }
 
   confirmEmail(code) {
-    return this.http.get<any>(apiUrl + `confirm/${code}`)
+    return this.http.get<any>(apiUrl + `/confirm/${code}`)
     .pipe(
       tap(_ => this.log('confirm email')),
       catchError(this.handleError('confirm email', []))

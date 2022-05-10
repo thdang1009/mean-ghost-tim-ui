@@ -66,19 +66,20 @@
                                 </thead>
                                 <tbody (mouseleave)="hoveredIndex=undefined" cdkDropList
                                     (cdkDropListDropped)="drop($event)">
-                                    <tr *ngFor="let tdtd of data; let index = index" cdkDrag [ngClass]="{
+                                    <ng-container *ngIf="data && data.length; else noDataBlock">
+                                        <tr *ngFor="let tdtd of data; let index = index" cdkDrag [ngClass]="{
                                         'warning': tdtd.status === 'NOT_YET',
                                         'success': tdtd.status === 'DONE',
                                         'primary': tdtd.status === 'NEW',
                                         'future': tdtd.status === 'TOMORROW'
                                     }" (mouseenter)="hoveredIndex=index">
-                                        <!-- <td>
+                                            <!-- <td>
                                             {{ tdtd.id }}
                                         </td> -->
-                                        <td class="text-center">
-                                            <span class="hover-pointer" (click)="updateStatus(tdtd, index)"
-                                                matTooltip="=> {{ tdtd.nextStatus || nextStatus(tdtd.status) }}">{{
-                                                tdtd.status }}</span>
+                                            <td class="text-center">
+                                                <span class="hover-pointer" (click)="updateStatus(tdtd, index)"
+                                                    matTooltip="=> {{ tdtd.nextStatus || nextStatus(tdtd.status) }}">{{
+                                                    tdtd.status }}</span>
                                                 <div class="drag-to-reorder" cdkDragHandle>
                                                     <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
                                                         <path
@@ -87,49 +88,28 @@
                                                         <path d="M0 0h24v24H0z" fill="none"></path>
                                                     </svg>
                                                 </div>
-                                        </td>
-                                        <!-- <td>
-                                            <span class="hover-pointer" (click)="updateStatus(tdtd, index)"
-                                                matTooltip="Update Status">
-                                                {{ tdtd.date | simpleTime }}
-                                            </span>
-                                        </td> -->
-                                        <td>
-                                            <textarea type="text" [(ngModel)]="tdtd.content" class="editable wd100"
-                                                (blur)="saveItem(tdtd.id, tdtd, index);false" autosize [minRows]="1"
-                                                [maxRows]="3" [useImportant]="true"></textarea>
-                                            <!-- <input type="text" [(ngModel)]="tdtd.content" class="editable wd100"
-                                                (keyup.enter)="saveItem(tdtd.id, tdtd)"> -->
-                                            <!-- <button mat-raised-button type="button" matTooltip="Delete this row"
-                                                    [disabled]="isLoadingResults" [ngClass]="{
-                                                        'btn': true,
-                                                        'btn-info': true,
-                                                        'pull-right': true,
-                                                        'show-on-hover': true,
-                                                        'hide-on-leave': false,
-                                                        'btn-show-on-hover': true
-                                                    }"
-                                                    (click)="delete(item.id)">
-                                                    <i class="material-icons">delete</i>
-                                                </button> -->
-                                            <button mat-raised-button type="button" matTooltip="Delete"
-                                                [disabled]="isLoadingResults"
-                                                class="btn btn-float-in-row btn-round btn-danger pull-right"
-                                                (click)="deleteTDTD(tdtd)">
-                                                <i class="material-icons red">delete</i>
-                                            </button>
-                                        </td>
-                                        <!-- <td>
-                                            <span class="hover-pointer" (click)="updateStatus(tdtd)">
-                                                {{ tdtd.status }}</span>
-                                        </td> -->
-                                        <!-- <td>
-                                            {{ user.updateTime }}
-                                        </td> -->
-                                    </tr>
-                                    <tr *ngIf="data && data.length === 0" class="text-center">
-                                        <td colspan="100%">No data</td>
-                                    </tr>
+                                            </td>
+                                            <td>
+                                                <textarea type="text" [(ngModel)]="tdtd.content" class="editable wd100"
+                                                    (blur)="saveItem(tdtd.id, tdtd, index);false" autosize [minRows]="1"
+                                                    [maxRows]="3" [useImportant]="true"></textarea>
+                                                <button mat-raised-button type="button" matTooltip="Delete"
+                                                    [disabled]="isLoadingResults"
+                                                    class="btn btn-float-in-row btn-round btn-danger pull-right"
+                                                    (click)="deleteTDTD(tdtd)">
+                                                    <i class="material-icons red">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                    <ng-template #noDataBlock>
+                                        <tr class="text-center">
+                                            <td colspan="100%" class="text-center">
+                                                <app-table-loading (size)="'sm'"></app-table-loading>
+                                                No data
+                                            </td>
+                                        </tr>
+                                    </ng-template>
                                     <tr>
                                         <td colspan="100%">
                                             <button mat-raised-button type="button" matTooltip="Add Empty Row"
@@ -137,11 +117,6 @@
                                                 (click)="addToDoToDay()">
                                                 <i class="material-icons">add</i>
                                             </button>
-                                            <!-- <button mat-raised-button type="button" matTooltip="Delete Last"
-                                                [disabled]="isLoadingResults" class="btn btn-danger pull-right btn-w100"
-                                                (click)="deleteLast()">
-                                                <i class="material-icons">delete</i>
-                                            </button> -->
                                         </td>
                                     </tr>
                                 </tbody>

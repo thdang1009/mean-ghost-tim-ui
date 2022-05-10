@@ -8,6 +8,7 @@ import { TodoTodayComponent } from './todo-today/todo-today.component';
 import { FoodComponent } from './food/food.component';
 import { SharedModuleModule } from '@shares/shared-module.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ReuseComponentModule } from '@app/_reuse/reuse.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     CommonModule,
     GhostManagementRoutingModule,
     SharedModuleModule,
-    DragDropModule
+    DragDropModule,
+    ReuseComponentModule
   ],
   providers: [
     DatePipe,

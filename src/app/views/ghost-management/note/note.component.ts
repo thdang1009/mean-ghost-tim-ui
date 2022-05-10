@@ -114,14 +114,14 @@ export class NoteComponent implements OnInit {
       });
   }
   saveItem(id, item, index) {
-    this.isLoadingResults = true;
+    // this.isLoadingResults = true;
     item.content = item.content.trim();
     this.noteService.updateNote(id, item)
       .subscribe((res: any) => {
         this.data[index] = res;
-        this.isLoadingResults = false;
+        // this.isLoadingResults = false;
       }, err => {
-        this.isLoadingResults = false;
+        // this.isLoadingResults = false;
       });
   }
   deleteLast() {

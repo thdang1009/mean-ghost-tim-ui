@@ -6,6 +6,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { SharedModuleModule } from '@shares/shared-module.module';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { ReuseComponentModule } from '@app/_reuse/reuse.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
   imports: [
     CommonModule,
     UserManagementRoutingModule,
-    SharedModuleModule
+    SharedModuleModule,
+    ReuseComponentModule
   ]
 })
 export class UserManagementModule { }

@@ -14,7 +14,7 @@ export class HomeService {
   constructor(private http: HttpClient) { }
   // 
   //   getCategories(): Observable<Category[]> {
-  //     return this.http.get<Category[]>(apiUrl + 'category')
+  //     return this.http.get<Category[]>(apiUrl + '/category')
   //       .pipe(
   //         tap(_ => this.log('fetched Categories')),
   //         catchError(this.handleError('getCategories', []))
@@ -22,7 +22,7 @@ export class HomeService {
   //   }
   // 
   //   getPosts(): Observable<Post[]> {
-  //     return this.http.get<Post[]>(apiUrl + 'post')
+  //     return this.http.get<Post[]>(apiUrl + '/post')
   //       .pipe(
   //         tap(_ => this.log('fetched Posts')),
   //         catchError(this.handleError('getPosts', []))
@@ -30,7 +30,7 @@ export class HomeService {
   //   }
   // 
   //   getPostsByCategory(id: any): Observable<Post[]> {
-  //     return this.http.get<Post[]>(apiUrl + 'bycategory/' + id)
+  //     return this.http.get<Post[]>(apiUrl + '/bycategory/' + id)
   //       .pipe(
   //         tap(_ => this.log('fetched Posts')),
   //         catchError(this.handleError('getPosts', []))
@@ -38,7 +38,7 @@ export class HomeService {
   //   }
   // 
   //   getPost(id: any): Observable<Post> {
-  //     return this.http.get<Post>(apiUrl + 'post/' + id).pipe(
+  //     return this.http.get<Post>(apiUrl + '/post/' + id).pipe(
   //       tap(_ => console.log(`fetched post by id=${id}`)),
   //       catchError(this.handleError<Post>(`getPost id=${id}`))
   //     );

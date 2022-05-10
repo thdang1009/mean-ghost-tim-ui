@@ -52,3 +52,12 @@ export function isImportant(content) {
 export function isInPDFView() {
   return location.pathname.includes('index');
 }
+
+export function nextStatus(oldStatus) {
+  return {
+    'NEW': 'DONE',
+    'DONE': 'TOMORROW',
+    'TOMORROW': 'NOT_YET',
+    'NOT_YET': 'NEW'
+  }[oldStatus];
+}
