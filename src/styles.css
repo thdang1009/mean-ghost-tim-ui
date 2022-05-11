@@ -89,6 +89,13 @@ json-editor>div {
 }
 json-beautifier {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+@media (min-width: 992px) {
+    json-beautifier {
+        flex-direction: row;
+    }
 }
 
 /* begin loading overlay */

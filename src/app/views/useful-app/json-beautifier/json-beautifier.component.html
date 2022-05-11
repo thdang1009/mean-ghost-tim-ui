@@ -1,3 +1,14 @@
-<json-editor class="json-editor-left" [options]="editorOptions" [data]="initialData" (change)="showJson($event)"></json-editor>
-<json-editor class="json-editor-right" [options]="editorOptions" [data]="initialData2" (change)="showJson($event)"></json-editor>
+<json-editor id="json-editor-left" name="json-editor-left" class="json-editor-left" [options]="editorOptions"
+    [data]="initialData" (change)="showJson($event);">
+</json-editor>
+<div class="json-controler">
+    <button id="find-diff" mat-raised-button type="button" [disabled]="isLoadingResults"
+        class="btn btn-info pull-right btn-responsive" (click)="findDiff()">
+        <i class="material-icons">difference</i>
+        Diff
+    </button>
+</div>
+<json-editor id="json-editor-right" name="json-editor-right" class="json-editor-right" [options]="editorOptions2"
+    [data]="initialData2" (change)="showJson2($event);">
+</json-editor>
 <!-- '<div>{{ visibleData | json }}</div> -->
