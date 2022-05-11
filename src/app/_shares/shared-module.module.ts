@@ -20,7 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     // pipes
     TimeAgoPipe,
     SimpleTimePipe,
-    ScoreToTierPipe
+    ScoreToTierPipe,
   ],
   imports: [
     CommonModule,

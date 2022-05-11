@@ -15,8 +15,10 @@ import * as dateFns from 'date-fns';
 export class DashboardComponent implements OnInit {
 
   totalAccess = 0;
+  allSpace = 512;
+  usagedSpace = 0;
 
-  loadingTDTD = false;
+  loadingTDTD = [];
   loadingUser = false;
 
   users = [];
@@ -171,7 +173,20 @@ export class DashboardComponent implements OnInit {
   init() {
     this.getMyUser();
     this.getMyToDoToDay();
-    this.getTotalAccess()
+    this.getTotalAccess();
+    this.getStoragedSpace();
+  }
+
+  getStoragedSpace() {
+    this.analyticService.getStoragedSpace()
+    .subscribe(res => {
+      this.usagedSpace = (
+          res.stats.indexSize + res.stats.dataSize
+        ) || 0;
+    }, (err) => {
+      console.log(err);
+      showNoti(`getStoragedSpace fail!`, 'danger');
+    });;
   }
 
   getTotalAccess() {
@@ -191,7 +206,7 @@ export class DashboardComponent implements OnInit {
         this.users = users.slice(0, 5);
       }, (err) => {
         console.log(err);
-        showNoti(`Get user fail!`, 'danger');
+        showNoti(`getMyUserß fail!`, 'danger');
       });
   }
 
@@ -219,37 +234,37 @@ export class DashboardComponent implements OnInit {
   checkboxChange(item, index) {
     this.update({
       ...item,
-      status: item.status === 'DONE' ? 'NOT_YET' : 'DONE'
+      status: item.status === 'DONE' ? 'NEW' : 'DONE'
     }, index);
   }
   update(item, index) {
-    this.loadingTDTD = true;
+    this.loadingTDTD[index] = true;
     this.todoTodayService.updateTodoToday(item.id, item)
       .subscribe((res: any) => {
         this.tdtds[index] = {
           ...res,
           checked: res.status === 'DONE',
         };
-        this.loadingTDTD = false;
+        this.loadingTDTD[index] = false;
       }, err => {
-        this.loadingTDTD = false;
+        this.loadingTDTD[index] = false;
       });
   }
-  deleteTDTD(tdtd) {
+  deleteTDTD(tdtd, index) {
     const val = confirm(`Delete "${tdtd.content}"?`);
     if (val) {
-      this.callDeleteTDTD(tdtd.id);
+      this.callDeleteTDTD(tdtd.id, index);
     }
   }
-  callDeleteTDTD(id) {
+  callDeleteTDTD(id, index) {
     if (id) {
-      this.loadingTDTD = true;
+      this.loadingTDTD[index] = true;
       this.todoTodayService.deleteTodoToday(id)
         .subscribe((_: any) => {
-          this.loadingTDTD = false;
+          this.loadingTDTD[index] = false;
           this.tdtds = this.tdtds.filter(el => el.id != id);
         }, err => {
-          this.loadingTDTD = false;
+          this.loadingTDTD[index] = false;
         });
     }
   }

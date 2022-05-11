@@ -2,6 +2,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { showNoti } from '@app/_shares/common';
 import { Note } from '@models/note';
 import { NoteService } from '@services/note.service';
 import * as dateFns from 'date-fns';
@@ -161,7 +162,31 @@ export class NoteComponent implements OnInit {
         });
     }
   }
-  drop(event: CdkDragDrop<string[]>) {
+  async drop(event: CdkDragDrop<string[]>) {
+    const result = await this.sort(event.previousIndex, event.currentIndex);
+    if (result === 'fail') {
+      showNoti('Sort Fail!', 'danger');
+      return;
+    }
     moveItemInArray(this.data, event.previousIndex, event.currentIndex);
+  }
+  sort(preIndex, curIndex) {
+    const item = this.data[preIndex];
+    const newOrder = Number(this.data[curIndex].order);
+    const delta = preIndex > curIndex ? -1 : 1;
+    return new Promise<any>((resolve, reject) => {
+      const req = {
+        ...item,
+        order: newOrder + delta
+      };
+      this.noteService.updateNote(item.id, req)
+        .subscribe((_: any) => {
+          this.isLoadingResults = false;
+          resolve('success');
+        }, err => {
+          this.isLoadingResults = false;
+          reject('fail');
+        });
+    });
   }
 }

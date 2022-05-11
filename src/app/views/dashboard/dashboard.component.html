@@ -22,17 +22,18 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">view_agenda</i>
+                            <i class="material-icons">storage</i>
                         </div>
                         <p class="card-category">Database</p>
-                        <h3 class="card-title">1/5
-                            <small>GB</small>
+                        <h3 class="card-title">
+                            <small>{{usagedSpace | unitConversion:'B-kB'}}kB</small>
+                            /{{allSpace}}MB
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons text-danger">warning</i>
-                            <a href="javascript:void(0)">Get More Space...</a>
+                            <i class="material-icons text-success">verified</i>
+                            <a href="javascript:void(0)">Get from MongoDB...</a>
                         </div>
                     </div>
                 </div>
@@ -160,15 +161,15 @@
                                 <table class="table">
                                     <tbody>
                                         <ng-container *ngIf="tdtds.length; else waitingTDTDBlock">
-                                            <tr *ngFor="let item of tdtds; let index2 = index">
-                                                <app-table-loading *ngIf="loadingTDTD" (size)="'sm'"></app-table-loading>
+                                            <tr *ngFor="let item of tdtds; let index = index">
+                                                <app-table-loading *ngIf="loadingTDTD[index]" (size)="'sm'"></app-table-loading>
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
                                                             <input class="form-check-input" type="checkbox"
                                                                 [ngModelOptions]="{standalone: true}"
                                                                 [(ngModel)]="item.checked"
-                                                                (change)="checkboxChange(item, index2)"
+                                                                (change)="checkboxChange(item, index)"
                                                                 [checked]="item.checked">
                                                             <span class="form-check-sign">
                                                                 <span class="check"></span>
@@ -187,7 +188,7 @@
                                                         <i class="material-icons">more_vert</i>
                                                     </button>
                                                     <button mat-raised-button type="button" matTooltip="Remove"
-                                                        [matTooltipPosition]="'above'" (click)="deleteTDTD(item)"
+                                                        [matTooltipPosition]="'above'" (click)="deleteTDTD(item, index)"
                                                         class="btn btn-danger btn-link btn-sm btn-just-icon">
                                                         <i class="material-icons">close</i>
                                                     </button>

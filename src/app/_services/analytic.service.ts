@@ -34,6 +34,14 @@ export class AnalyticService {
     );
   }
 
+  getStoragedSpace(): Observable<any> {
+    const url = `${apiUrl}/db/storaged-space`;
+    return this.http.get<any>(url).pipe(
+      tap(_ => console.log(`getStoragedSpace`)),
+      catchError(this.handleError<any>(`getStoragedSpace`))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
