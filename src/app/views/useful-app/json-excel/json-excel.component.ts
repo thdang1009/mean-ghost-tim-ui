@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ExampleJSON2 } from '@app/_helpers/fake.data';
+import { showNoti } from '@app/_shares/common';
+import { SAVED_JSON_EXCEL, SAVED_JSON_EXCEL_2 } from '@app/_shares/constant';
+import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
+import * as XLSX from 'xlsx';
+
 
 @Component({
   selector: 'json-excel',
@@ -7,9 +13,90 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JsonExcelComponent implements OnInit {
 
-  constructor() { }
+  public editorOptions: JsonEditorOptions;
+  public editorOptions2: JsonEditorOptions;
+  public initialData: any;
+  public initialData2: any;
+  public visibleData: any;
+  public visibleData2: any;
 
-  ngOnInit(): void {
+  mod = 'jsonToExcel';
+
+  isLoadingResults = false;
+
+  StringToReadableObject(s: string) {
+    return JSON.parse(s);
   }
 
+  ngOnInit(): void {
+    this.editorOptions = new JsonEditorOptions()
+    this.editorOptions.modes = ['code', 'text', 'tree', 'view'];
+    this.editorOptions.mode = this.editorOptions.modes[0];
+    this.editorOptions2 = new JsonEditorOptions()
+    this.editorOptions2.modes = ['code', 'text', 'tree', 'view'];
+    this.editorOptions2.mode = this.editorOptions2.modes[0];
+    const sampleJSON = ExampleJSON2;
+    this.initialData = this.StringToReadableObject(localStorage.getItem(SAVED_JSON_EXCEL) || sampleJSON);
+    this.initialData2 = this.StringToReadableObject(localStorage.getItem(SAVED_JSON_EXCEL_2) || sampleJSON);
+    this.visibleData = JSON.parse(JSON.stringify(this.initialData));
+    this.visibleData2 = JSON.parse(JSON.stringify(this.initialData2))
+  }
+
+  showJson(d: Event) {
+    if (d.isTrusted) {
+      return;
+    }
+    this.visibleData = d;
+  }
+
+  showJson2(d: Event) {
+    if (d.isTrusted) {
+      return;
+    }
+    this.visibleData2 = d;
+  }
+
+  ngOnDestroy(): void {
+    localStorage.setItem(SAVED_JSON_EXCEL, JSON.stringify(this.visibleData));
+    localStorage.setItem(SAVED_JSON_EXCEL_2, JSON.stringify(this.visibleData2));
+  }
+
+  excelToJSON() {
+    this.mod = 'excelToJson';
+  }
+  jsonToExcel() {
+    this.mod = 'jsonToExcel';
+  }
+  execute() {
+    if (this.mod === 'excelToJson') {
+      this.exportJSON();
+    } else {
+      this.exportExcel();
+    }
+  }
+  exportJSON() {
+
+  }
+  exportExcel(): void {
+    let json: any;
+    try {
+      json = this.visibleData;
+      // alert(json)
+    } catch(e) {
+      showNoti('Error JSON', 'danger');
+    }
+    try {
+      /* generate workbook and add the worksheet */
+      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+      /* json to sheet */
+      var ws = XLSX.utils.json_to_sheet(json);
+      /* book add sheet */
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+      /* save to file */
+      XLSX.writeFile(wb, `Excel_${new Date}.xlsx`);
+    } catch(e) {
+      showNoti('Error: ' + e, 'danger');
+      showNoti('Only Support Array', 'info');
+    }
+  }
 }

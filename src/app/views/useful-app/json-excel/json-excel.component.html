@@ -1,1 +1,23 @@
-<p>json-excel works!</p>
+<json-editor *ngIf="mod === 'jsonToExcel'" id="json-editor-left" name="json-editor-left" class="json-editor-left"
+    [options]="editorOptions" [data]="initialData" (change)="showJson($event);">
+</json-editor>
+<div class="json-controler">
+    <div>
+        <input id="json-to-excel" type="radio" class="radio" [value]="'jsonToExcel'" name="radio-name"
+            [(ngModel)]="mod">
+        <label for="json-to-excel">JSON Array to Excel</label>
+    </div>
+    <div>
+        <input id="excel-to-json" type="radio" class="radio" [value]="'excelToJSON'" name="radio-name"
+            [(ngModel)]="mod">
+        <label for="excel-to-json">Excel to JSON</label>
+    </div>
+
+    <button id="execute" mat-raised-button type="button" [disabled]="isLoadingResults"
+        class="btn btn-info pull-right btn-responsive" (click)="execute()">
+        Execute
+    </button>
+</div>
+<json-editor *ngIf="mod === 'excelToJSON'" id="json-editor-right" name="json-editor-right" class="json-editor-right"
+    [options]="editorOptions2" [data]="initialData2" (change)="showJson2($event);">
+</json-editor>

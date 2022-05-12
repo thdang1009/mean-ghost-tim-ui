@@ -17,3 +17,20 @@ export const ExampleCode = `function longestSlideDown(pyramid) {
     [8, 5, 9, 3]]);
   console.log(result);`;
 export const ExampleJSON = `{ "products": [{ "name": "car", "product": [{ "name": "honda", "model": [{ "id": "civic", "name": "civic" }, { "id": "accord", "name": "accord" }, { "id": "crv", "name": "crv" }, { "id": "pilot", "name": "pilot" }, { "id": "odyssey", "name": "odyssey" }] }] }] }`
+export const ExampleJSON2 = `[{
+  "first_name": "david",
+  "gender": "Female",
+  "last_name": "john",
+  "password": "asdasd",
+  "status": 1,
+  "user_id": 1,
+  "username": "rogers63"
+}, {
+  "first_name": "rogers",
+  "gender": "Male",
+  "last_name": "paul",
+  "password": "qweqwe",
+  "status": 1,
+  "user_id": 2,
+  "username": "mike28"
+}]`;

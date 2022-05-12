@@ -97,6 +97,16 @@ json-beautifier {
         flex-direction: row;
     }
 }
+json-excel {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+@media (min-width: 992px) {
+    json-excel {
+        flex-direction: row;
+    }
+}
 
 /* begin loading overlay */
 .overlay {
