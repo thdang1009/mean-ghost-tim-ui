@@ -54,6 +54,7 @@ export class RunJsComponent implements OnInit, OnDestroy {
         }
       });
     })();
+    window.onbeforeunload = () => this.ngOnDestroy();
   }
 
   saveOnLocal() {

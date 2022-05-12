@@ -39,7 +39,8 @@ export class JsonExcelComponent implements OnInit {
     this.initialData = this.StringToReadableObject(localStorage.getItem(SAVED_JSON_EXCEL) || sampleJSON);
     this.initialData2 = this.StringToReadableObject(localStorage.getItem(SAVED_JSON_EXCEL_2) || sampleJSON);
     this.visibleData = JSON.parse(JSON.stringify(this.initialData));
-    this.visibleData2 = JSON.parse(JSON.stringify(this.initialData2))
+    this.visibleData2 = JSON.parse(JSON.stringify(this.initialData2));
+    window.onbeforeunload = () => this.ngOnDestroy();
   }
 
   showJson(d: Event) {
