@@ -4,10 +4,11 @@
     padding: 20px;
 }
 
-.wrapper {
+.ghost-wrapper {
     margin: auto;
     max-width: 1024px;
     position: relative;
+    height: 84vh !important;
 }
 
 .content-box,

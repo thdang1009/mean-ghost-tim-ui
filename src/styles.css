@@ -85,7 +85,7 @@ textarea {
 
 }
 json-editor>div {
-    height: 80vh !important;
+    height: 84vh !important;
 }
 json-beautifier {
     display: flex;
@@ -176,7 +176,7 @@ json-excel {
     align-items: center;
 }
 donation {
-    height: 80vh;
+    height: 84vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -184,4 +184,8 @@ donation {
 app-table-loading {
     width: 100vw;
     height: 100vh;
+}
+.bmc-logo {
+    width: 1em !important;
+    height: 1em !important;
 }
