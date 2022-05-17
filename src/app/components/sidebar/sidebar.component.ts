@@ -35,7 +35,7 @@ export const ROUTES: RouteInfo[] = [
       { path: 'tool/todo-today', title: 'Todo Today', icon: 'checklist_rtl', class: '', permission: 'isMember' },
       { path: 'tool/note', title: 'Note', icon: 'library_books', class: '', permission: 'isMember' },
       // { path: 'tool/money', title: 'Money', icon: 'attach_money', class: '', permission: 'isMember' },
-      { path: 'tool/food', title: 'Food', icon: 'lunch_dining', class: '', permission: 'isMember' },
+      // { path: 'tool/food', title: 'Food', icon: 'lunch_dining', class: '', permission: 'isMember' },
     ]
   }
 
