@@ -37,6 +37,13 @@ export const ROUTES: RouteInfo[] = [
       // { path: 'tool/money', title: 'Money', icon: 'attach_money', class: '', permission: 'isMember' },
       // { path: 'tool/food', title: 'Food', icon: 'lunch_dining', class: '', permission: 'isMember' },
     ]
+  },
+  {
+    path: 'blog', title: 'Blog', icon: 'library_books', class: '', permission: 'isAdmin', hasChild: true,
+    children: [
+      { path: 'blog/post-list', title: 'All Post', icon: 'library_books', class: '', permission: 'isAdmin' },
+      { path: 'blog/post-add', title: 'Add A Post', icon: 'post_add', class: '', permission: 'isAdmin' }
+    ]
   }
 
 

@@ -15,6 +15,29 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 -->
+<!-- 
+  window.consoleLogNative = window.console.log.bind(console);
+
+  // console.log for the main window
+  // js code always has globalThis.__codeBoxId
+  // trusted iframe uses its own console.log (created in codeBox.js)
+  // untrusted uses lookatcode/consoleLog module and window.name
+  console.log = function(...args) {
+    consoleLogNative(...args);
+
+    let formattedArgs = consoleFormat(args);
+    // in the main window we have: window.__codeBoxId,
+    let message = {
+      type: 'console-log',
+      log: formattedArgs,
+      codeBoxId: window.__codeBoxId
+    };
+
+    // console.info("message sent", message);
+    window.postMessage(message, '*');
+  };
+
+ -->
 <!doctype html>
 <html>
 

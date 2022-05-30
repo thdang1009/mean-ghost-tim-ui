@@ -23,7 +23,7 @@ export const ROUTES: RouteInfo[] = [
   { path: 'useful-app/json-beautifier', title: 'JSON Beautifier', icon: 'code', class: '' },
   { path: 'useful-app/json-excel', title: 'JSON Excel', icon: 'code', class: '' },
   { path: 'useful-app/run-js', title: 'RunJS', icon: 'javascript', class: '' },
-  { path: 'admin/dashboard', title: 'Amin', icon: 'dashboard', class: '' },
+  { path: 'admin/dashboard', title: 'Amin', icon: 'dashboard', class: '' }
 ];
 
 @Component({
@@ -56,7 +56,7 @@ export class GuestSidebarComponent implements OnInit {
       // call search in pdf
       // just update the ?searchInPDF=...
       this.router.navigate(
-        [], 
+        [],
         {
           relativeTo: this.activatedRoute,
           queryParams: { searchInPDF: this.stringToSearch },

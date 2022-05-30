@@ -7,6 +7,7 @@ import { LogoutComponent } from '@app/views/auth-management/logout/logout.compon
 import { AboutMeComponent } from '@app/views/about-me/about-me.component';
 import { ConfirmEmailComponent } from '@app/views/user-management/confirm-email/confirm-email.component';
 import { DonationComponent } from '@app/views/donation/donation.component';
+import { PostDetailComponent } from '@app/views/blog-management/post-detail/post-detail.component';
 // import { AngularIndexComponent } from '@app/views/angular-index/angular-index.component';
 // import { CssIndexComponent } from '@app/views/css-index/css-index.component';
 // import { HtmlIndexComponent } from '@app/views/html-index/html-index.component';
@@ -14,6 +15,7 @@ import { DonationComponent } from '@app/views/donation/donation.component';
 // import { JsonBeautifierComponent } from '@app/views/json-beautifier/json-beautifier.component';
 
 export const GuestLayoutRoutes: Routes = [
+    { path: 'post-read', component: PostDetailComponent },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent, canActivate: [NotLoginGuard] },
     { path: 'logout', component: LogoutComponent },
