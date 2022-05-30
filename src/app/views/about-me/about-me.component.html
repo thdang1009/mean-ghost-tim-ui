@@ -8,27 +8,27 @@
                 </a>
             </div>
             <div class="nav-container">
-                <ul class="nav">
+                <ul class="nav list list-with-divider">
                     <li>
-                        <a href="#about-me">
+                        <a (click)="scrollTo('about-me')">
                             <i class="fa fa-user"> </i>
                             About Me
                         </a>
                     </li>
                     <li>
-                        <a href="#services">
+                        <a (click)="scrollTo('services')">
                             <i class="fa fa-list"> </i>
                             Services
                         </a>
                     </li>
                     <li>
-                        <a href="#portfolio">
+                        <a (click)="scrollTo('portfolio')">
                             <i class="fa fa-briefcase"> </i>
                             Portfolio
                         </a>
                     </li>
                     <li>
-                        <a href="#contact">
+                        <a (click)="scrollTo('contact')">
                             <i class="fa fa-comments"> </i>
                             Contact
                         </a>
@@ -51,11 +51,11 @@
                 </h2>
             </div>
             <div class="who-am-i-container">
-                <h3 class="who-am-i">
-                    I'm a Fullstack Web Developer
+                <h3>
+                    I'm Ghost - a Fullstack Web Engineer
                 </h3>
                 <p>
-                    I'm a Javascript lover.
+                    Also a Javascript lover.
                 </p>
                 <p class="description">
                     I'm looking for a challenging and rewarding position in an environment that offers an opportunity to
@@ -67,19 +67,237 @@
                 </p>
             </div>
             <div class="detail-info">
-                <div class="info-container">
+                <!-- <div class="info-container"> -->
+                <ul class="list list-with-divider">
+                    <li>
+                        <p>
+                            <strong>
+                                Birthday:
+                            </strong>
+                            10/09/1996
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>
+                                Website:
+                            </strong>
+                            <a href="https://ghost-site.dev">
+                                ghost-site.dev
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>
+                                Degree:
+                            </strong>
+                            CS
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>
+                                City:
+                            </strong>
+                            HO CHI MINH City
+                        </p>
+                    </li>
+                </ul>
 
+                <ul class="list list-with-divider">
+                    <li>
+                        <p>
+                            <strong>
+                                Age:
+                            </strong>
+                            {{ yearOlds }}
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>
+                                Email:
+                            </strong>
+                            <a href="mailto:mean.ghost.site@gmail.com">
+                                mean.ghost.site@gmail.com
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>
+                                Phone:
+                            </strong>
+                            <a href="phoneto:+84327123239">
+                                +84 327 123 239
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>
+                                Freelance:
+                            </strong>
+                            Available
+                        </p>
+                    </li>
+                </ul>
+                <!-- </div>
+                <div class="skill-container"> -->
+                <ul class="list">
+                    <li>
+                        <progress-with-label [percent]="85" [label]="'Javascript'"></progress-with-label>
+                    </li>
+                    <li>
+                        <progress-with-label [percent]="70" [label]="'HTML/CSS'"></progress-with-label>
+                    </li>
+                    <li>
+                        <progress-with-label [percent]="75" [label]="'Angular'"></progress-with-label>
+                    </li>
+                    <li>
+                        <progress-with-label [percent]="75" [label]="'React'"></progress-with-label>
+                    </li>
+                    <li>
+                        <progress-with-label [percent]="75" [label]="'MongoDB'"></progress-with-label>
+                    </li>
+                </ul>
+                <!-- </div> -->
+
+                <ghost-site-btn (click)="downloadCV()" type="link" class="btn-float-bottom">
+                    Download CV
+                </ghost-site-btn>
+                <ghost-site-btn (click)="hireMe()" type="link" class="btn-float-bottom" style="left: calc(100px + 10%)">
+                    Hire Me
+                </ghost-site-btn>
+            </div>
+            <div class="two-col row">
+                <div class="time-line-container col-sm-12 col-lg-6">
+                    <h3>
+                        Education
+                    </h3>
+                    <div class="card">
+                        <!-- Stepper HTML -->
+                        <div class="step">
+                            <div>
+                                <div class="circle"></div>
+                            </div>
+                            <div>
+                                <div class="title">
+                                    <i class="fa fa-calendar"></i>
+                                    2014 - 2018
+                                </div>
+                                <div class="content base dark400">
+                                    Software Engineer<br />
+                                    HCMUS (Khoa học tự nhiên)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div>
+                                <div class="circle"></div>
+                            </div>
+                            <div>
+                                <div class="title">
+                                    <i class="fa fa-calendar"></i>
+                                    2014 - 2018
+                                </div>
+                                <div class="content base dark400">
+                                    Software Engineer<br />
+                                    HCMUS (Khoa học tự nhiên)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div>
+                                <div class="circle"></div>
+                            </div>
+                            <div>
+                                <div class="title">
+                                    <i class="fa fa-calendar"></i>
+                                    2014 - 2018
+                                </div>
+                                <div class="content base dark400">
+                                    Software Engineer<br />
+                                    HCMUS (Khoa học tự nhiên)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div>
+                                <div class="circle"></div>
+                            </div>
+                            <div>
+                                <div class="title">
+                                    <i class="fa fa-calendar"></i>
+                                    2014 - 2018
+                                </div>
+                                <div class="content base dark400">
+                                    Software Engineer<br />
+                                    HCMUS (Khoa học tự nhiên)
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Step -->
+                    </div>
                 </div>
-                <div class="skill-container">
-
+                <div class="time-line-container col-sm-12 col-lg-6">
+                    <h3>
+                        Experience
+                    </h3>
+                    <div class="card">
+                        <!-- Stepper HTML -->
+                        <div class="step">
+                            <div>
+                                <div class="circle"></div>
+                            </div>
+                            <div>
+                                <div class="title">
+                                    <i class="fa fa-calendar"></i>
+                                    2017 - 2018
+                                </div>
+                                <div class="content base dark400">
+                                    VNG Corp<br />
+                                    Javascript Fresher
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div>
+                                <div class="circle"></div>
+                            </div>
+                            <div>
+                                <div class="title">
+                                    <i class="fa fa-calendar"></i>
+                                    2018 - 2021
+                                </div>
+                                <div class="content base dark400">
+                                    ZION<br />
+                                    Frontend Engineer
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div>
+                                <div class="circle"></div>
+                            </div>
+                            <div>
+                                <div class="title">
+                                    <i class="fa fa-calendar"></i>
+                                    2022 - present
+                                </div>
+                                <div class="content base dark400">
+                                    ZION, Freelancer<br />
+                                    Fullstack Web Engineer
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Step -->
+                    </div>
                 </div>
             </div>
-            <div class="education-container">
 
-            </div>
-            <div class="experience-container">
-
-            </div>
         </section>
         <!-- **** **** **** **** ABOUT ME END **** **** **** ****-->
 

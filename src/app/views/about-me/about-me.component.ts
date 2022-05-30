@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-me.component.css']
 })
 export class AboutMeComponent implements OnInit {
-
+  yearOlds: number;
   constructor() { }
 
   ngOnInit(): void {
+    this.yearOlds = new Date().getFullYear() - 1996;
   }
+  scrollTo(s) {
+    const element = document.getElementById(s);
+    element.scrollIntoView({ block: 'start',  behavior: 'smooth' });
+  }
+  downloadCV() {
 
+  }
+  hireMe() {
+    
+  }
 }

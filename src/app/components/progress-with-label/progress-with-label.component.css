@@ -1,0 +1,16 @@
+.progress-label {
+    height: auto !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+p {
+    margin-bottom: 0 !important;
+}
+strong {
+    font-weight: bold;
+}
+
+.h10px {
+    height: 10px;
+}

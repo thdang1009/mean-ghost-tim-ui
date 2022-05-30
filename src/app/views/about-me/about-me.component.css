@@ -5,12 +5,13 @@
     justify-content: space-around;
     align-items: stretch;
 
-    padding: 16px;
+    padding: 8px;
     height: 84vh;
 }
+
 section {
     min-height: 100vh;
-    background: var(--bg-black-100);
+    /* background: var(--bg-black-100); */
     display: block;
 }
 
@@ -24,7 +25,34 @@ section {
     background: var(--bg-black-100);
 }
 
-.nav-container {}
+ul.list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+ul.list.list-with-divider li {
+    border-bottom: 1px solid black;
+}
+
+ul.list.list-with-divider li:last-child {
+    border-bottom: none;
+}
+
+ul.list li {
+    padding: 8px 0;
+}
+
+.nav-container a {
+    cursor: pointer;
+}
+
+.nav-container {
+    width: 150px;
+}
 
 .my-logo {}
 
@@ -40,36 +68,91 @@ section {
 
 .about-me-content {
     width: 80%;
-    padding: 0 16px 0 16px;
+    padding: 0 8px;
     overflow-y: scroll;
+}
+
+p {
+    margin-bottom: 0px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: bold;
 }
 
 .nav {
     flex-direction: column;
 }
 
+section {
+    padding: 16px;
+}
+
+.base {
+    font-size: 14px;
+    line-height: 18px;
+}
+
 /* first section */
-.about-me {}
+.about-me {
+    /* position: relative; */
+}
+
+.dark400 {
+    color: #334C65
+}
+
+.two-col {
+    /* display: flex; */
+
+}
+
+.btn-float-bottom {
+    position: absolute;
+    z-index: 100;
+    top: 70%;
+}
+
+.card {
+    padding: 8px;
+    background: var(--bg-black-100);
+    height: calc(100% - 80px);
+    width: 100%;
+    overflow: hidden;
+}
 
 .section-header-container {}
 
 .section-header {}
 
-.who-am-i-container {}
-
-.who-am-i {}
+.who-am-i-container {
+    margin-bottom: 32px;
+}
 
 .description {}
 
-.detail-info {}
+.detail-info {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-between;
+}
 
-.info-container {}
+.detail-info ul {
+    min-width: 30%;
+}
 
-.skill-container {}
+strong {
+    font-weight: bold;
+}
 
-.education-container {}
+.time-line-container {}
 
-.experience-container {}
+.time-line-container {}
 
 /* second section */
 .services {}
@@ -79,3 +162,7 @@ section {
 
 /* fourth section */
 .contact {}
+
+
+
+/*  */

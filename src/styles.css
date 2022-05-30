@@ -8,6 +8,7 @@
     --text-black-900: #302e4d;
     --text-black-700: #504e70;
 }
+
 textarea.jsoneditor-text {
     min-height: 350px;
 }
@@ -92,24 +93,29 @@ textarea {
     display: block;
 
 }
+
 json-editor>div {
     height: 84vh !important;
 }
+
 json-beautifier {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 }
+
 @media (min-width: 992px) {
     json-beautifier {
         flex-direction: row;
     }
 }
+
 json-excel {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 }
+
 @media (min-width: 992px) {
     json-excel {
         flex-direction: row;
@@ -154,9 +160,9 @@ json-excel {
 }
 
 @keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 
@@ -167,6 +173,7 @@ json-excel {
     border-color: transparent !important;
     box-shadow: none !important;
 }
+
 .red {
     color: #f44336 !important;
 }
@@ -179,21 +186,121 @@ json-excel {
     cursor: move;
     color: #262b2f !important;
 }
+
 .align-children-middle {
     display: flex !important;
     align-items: center;
 }
+
 donation {
     height: 84vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 app-table-loading {
     width: 100vw;
     height: 100vh;
 }
+
 .bmc-logo {
     width: 1em !important;
     height: 1em !important;
+}
+
+
+/* Steps */
+.step {
+    position: relative;
+    min-height: 1em;
+    color: gray;
+}
+
+.step+.step {
+    margin-top: 16px;
+}
+
+.step>div:first-child {
+    position: static;
+    height: 0;
+}
+
+.step>div:not(:first-child) {
+    /* margin-left: 32px; */
+    padding-left: 32px;
+}
+
+/* .step.step-active .circle {
+    color: #FFFFFF;
+    background-color: #0068FF;
+    outline: 1px solid white;
+    outline-offset: -3px;
+  } */
+
+.step.step-active .title {
+    color: #0068FF;
+}
+
+.step.step-active .caption {
+    display: block;
+    margin-bottom: -8px;
+}
+
+.step.step-active .caption:last-child {
+    margin-bottom: 0px;
+}
+
+
+/* Circle */
+.circle {
+    cursor: pointer;
+    background: #0068FF;
+    position: relative;
+    line-height: 1.5em;
+    border-radius: 100%;
+    color: #0068FF;
+    text-align: center;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
+}
+
+/* Vertical Line */
+.circle:after {
+    content: ' ';
+    position: absolute;
+    display: block;
+    bottom: 0px;
+    left: 47%;
+    height: 300px;
+    width: 1px;
+    transform: scale(1, 2);
+    transform-origin: 50% -100%;
+    background-color: #fdf9ff;
+    border: dashed 1px #0068ff57;
+    z-index: 0;
+}
+
+.step:last-child .circle:after {
+    display: block;
+    border: solid 1px #fdf9ff;
+}
+
+/* Stepper Titles */
+.title {
+    cursor: pointer;
+    /* line-height: 32px; */
+    font-weight: bold;
+    /* height: 32px; */
+    margin-bottom: 8px;
+}
+
+.caption {
+    display: none;
+}
+
+.steps-process {
+    overflow: hidden;
 }

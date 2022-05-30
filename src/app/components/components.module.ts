@@ -8,6 +8,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { GuestNavbarComponent } from './guest-navbar/guest-navbar.component';
 import { GuestSidebarComponent } from './guest-sidebar/guest-sidebar.component';
 import { FormsModule } from '@angular/forms';
+import { ProgressWithLabelComponent } from './progress-with-label/progress-with-label.component';
+import { GhostSiteBtnComponent } from './ghost-site-btn/ghost-site-btn.component';
 
 @NgModule({
   imports: [
@@ -21,13 +23,17 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     GuestNavbarComponent,
     GuestSidebarComponent,
+    ProgressWithLabelComponent,
+    GhostSiteBtnComponent,
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
     GuestNavbarComponent,
-    GuestSidebarComponent
+    GuestSidebarComponent,
+    ProgressWithLabelComponent,
+    GhostSiteBtnComponent
   ],
   providers: [
   ]
