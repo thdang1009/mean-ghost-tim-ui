@@ -8,6 +8,7 @@
     "build": "ng build --aot --prod",
     "local": "ng serve --open --host ghost-site.dev --disable-host-check --port 4500",
     "debug": "ng serve --open --host ghost-site.dev --disable-host-check --port 4500 -c development",
+    "deploy": "ng build && firebase deploy",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
