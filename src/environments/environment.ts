@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: `https://ghost-site-be.vercel.app`,
+  apiUrl: `https://mean-ghost-site-be.herokuapp.com`,
   // apiUrl: `http://localhost:3000`,
 };
 
