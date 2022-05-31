@@ -1,0 +1,43 @@
+[debug] [2022-05-31T03:58:18.456Z] ----------------------------------------------------------------------
+[debug] [2022-05-31T03:58:18.457Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2022-05-31T03:58:18.457Z] CLI Version:   11.0.1
+[debug] [2022-05-31T03:58:18.457Z] Platform:      darwin
+[debug] [2022-05-31T03:58:18.457Z] Node Version:  v16.14.2
+[debug] [2022-05-31T03:58:18.458Z] Time:          Tue May 31 2022 10:58:18 GMT+0700 (Indochina Time)
+[debug] [2022-05-31T03:58:18.458Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-31T03:58:18.484Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-31T03:58:18.484Z] > authorizing via signed-in user (thdang1009@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/lap15054-local
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-05-31T03:58:24.227Z] Using project from CLI flag: ghost-site-fe
+[debug] [2022-05-31T03:58:24.230Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ghost-site-fe [none]
+[debug] [2022-05-31T03:58:25.004Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ghost-site-fe 403
+[debug] [2022-05-31T03:58:25.004Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ghost-site-fe {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2022-05-31T03:58:25.005Z] HTTP Error: 403, The caller does not have permission
+[debug] [2022-05-31T03:58:25.007Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:47:12)
+    at RetryOperation._fn (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:286:39)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project ghost-site-fe. Please make sure the project exists and your account has permission to access it.
