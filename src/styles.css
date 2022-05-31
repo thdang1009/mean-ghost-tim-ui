@@ -7,8 +7,29 @@
     --bg-black-50: #e8dfec;
     --text-black-900: #302e4d;
     --text-black-700: #504e70;
+    --anchor-color: #0074cc;
 }
 
+a {
+    color: var(--anchor-color);
+}
+
+/* Unvisited link  */
+a:visited {
+    color: var(--anchor-color);
+}
+
+/* Visited link    */
+a:hover {
+    color: var(--anchor-color);
+}
+
+/* Mouse over link */
+a:active {
+    color: var(--anchor-color);
+}
+
+/* Selected link   */
 textarea.jsoneditor-text {
     min-height: 350px;
 }

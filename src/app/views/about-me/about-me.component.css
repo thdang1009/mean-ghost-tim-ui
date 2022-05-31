@@ -13,6 +13,13 @@ section {
     min-height: 100vh;
     /* background: var(--bg-black-100); */
     display: block;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: double #00000030 1px;
+    border-radius: 8px;
+}
+section:last-child {
+    margin-bottom: 0;
 }
 
 
@@ -23,6 +30,7 @@ section {
     justify-content: center;
     align-items: center;
     background: var(--bg-black-100);
+    border-radius: 8px;
 }
 
 ul.list {
@@ -43,7 +51,7 @@ ul.list.list-with-divider li:last-child {
 }
 
 ul.list li {
-    padding: 8px 0;
+    padding: 12px 0;
 }
 
 .nav-container a {
@@ -51,10 +59,22 @@ ul.list li {
 }
 
 .nav-container {
-    width: 150px;
+    /* width: 150px; */
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+a.ghost-nav-hight-light {
+    color: #2196f3;
+    font-weight: bold;
 }
 
-.my-logo {}
+.my-logo {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
 
 .my-logo img {
     width: 50px;
@@ -86,11 +106,6 @@ h4 {
 .nav {
     flex-direction: column;
 }
-
-section {
-    padding: 16px;
-}
-
 .base {
     font-size: 14px;
     line-height: 18px;
@@ -113,15 +128,19 @@ section {
 .btn-float-bottom {
     position: absolute;
     z-index: 100;
-    top: 70%;
+    top: 80%;
 }
-
+.pdx-2 li {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
 .card {
     padding: 8px;
     background: var(--bg-black-100);
     height: calc(100% - 80px);
     width: 100%;
     overflow: hidden;
+    margin-bottom: 0;
 }
 
 .section-header-container {}
