@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ghost-site-fe-ae2f4": {
+      "hosting": {
+        "mean-ghost-tim-ui": [
+          "ghost-site"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ghost-site-fe-ae2f4"
+  }
+}

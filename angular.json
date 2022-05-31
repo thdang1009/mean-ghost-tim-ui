@@ -141,6 +141,16 @@
             ],
             "exclude": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "mean-ghost-tim-ui:build:production",
+            "firebaseProject": "ghost-site-fe-ae2f4",
+            "firebaseHostingSite": "ghost-site"
+          }
         }
       }
     },
