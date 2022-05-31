@@ -35,7 +35,7 @@ ul.list {
 }
 
 ul.list.list-with-divider li {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #00000030;
 }
 
 ul.list.list-with-divider li:last-child {
