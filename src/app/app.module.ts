@@ -23,6 +23,7 @@ import { AutosizeModule } from 'ngx-autosize';
 import { AuthService, TodoTodayService, NoteService, JobService, HomeService } from './_services/_index';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { DonationComponent } from './views/donation/donation.component';
+import { NgxTypedJsModule } from 'ngx-typed-js';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -39,6 +40,7 @@ import { DonationComponent } from './views/donation/donation.component';
     NgJsonEditorModule,
     AutosizeModule,
     CodeEditorModule.forRoot(),
+    NgxTypedJsModule
   ],
   declarations: [
     AppComponent,

@@ -59,31 +59,14 @@
                 </h2>
             </div>
             <div class="who-am-i-container">
-                <h3 style="display: flex">
-                    <span class="static-text">I'm Ghost -&nbsp;</span>
-                    <ul class="dynamic-text">
-                        <li *ngIf="indexInterval === 0">
-                            <span>
-                                a Fullstack Web Engineer
-                            </span>
-                        </li>
-                        <li *ngIf="indexInterval === 1">
-                            <span>
-                                a Javascript Lover
-                            </span>
-                        </li>
-                        <li *ngIf="indexInterval === 2">
-                            <span>
-                                a Minimalism
-                            </span>
-                        </li>
-                        <li *ngIf="indexInterval === 3">
-                            <span>
-                                a Book Reviewer
-                            </span>
-                        </li>
-                    </ul>
-                </h3>
+
+                <ngx-typed-js [strings]="arrString" [shuffle]="true" [typeSpeed]="40" [loop]="true">
+                    <h3>
+                        <span class="static-text">I'm Ghost -&nbsp;</span>
+                        <span class="typing"></span>
+                    </h3>
+                </ngx-typed-js>
+
                 <list-badge [myStyles]="{'display': 'flex', 'margin': 'inherit', 'padding': '0 0 12px 0'}"></list-badge>
                 <br />
                 <p>
