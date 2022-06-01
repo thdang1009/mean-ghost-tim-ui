@@ -78,11 +78,25 @@ export class JsonExcelComponent implements OnInit {
   exportJSON() {
 
   }
+  formatJSONArray(jsonObject) {
+    const regex = new RegExp('\:\[.*?\]', 'g');
+    const s = JSON.stringify(jsonObject);
+    const temp = s.replace(regex, subString => {
+      console.log(subString);
+      const content = `"${(subString.match(/\[.*\]/)[0] || '')}"`;
+      return `:${content}`;
+    });
+    console.log(temp);
+    return JSON.parse(temp);
+  }
   exportExcel(): void {
     let json: any;
+    let formatedJSON: any;
     try {
       json = this.visibleData;
       // alert(json)
+      formatedJSON = this.formatJSONArray(json);
+      console.log('formatedJSON', formatedJSON);
     } catch(e) {
       showNoti('Error JSON', 'danger');
     }
@@ -90,7 +104,7 @@ export class JsonExcelComponent implements OnInit {
       /* generate workbook and add the worksheet */
       const wb: XLSX.WorkBook = XLSX.utils.book_new();
       /* json to sheet */
-      var ws = XLSX.utils.json_to_sheet(json);
+      var ws = XLSX.utils.json_to_sheet(formatedJSON);
       /* book add sheet */
       XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
       /* save to file */
