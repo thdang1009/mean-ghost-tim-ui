@@ -79,32 +79,29 @@ export class JsonExcelComponent implements OnInit {
 
   }
   formatJSONArray(jsonObject) {
-    const regex = /\:\[.*?\]/g;
-    let s = JSON.stringify(jsonObject);
-    let content = [];
-    const temp = s.replace(regex, (subString) => {
-      try {
-        content = subString ? eval(subString.slice(1, subString.length)) : [];
-      } catch(e) {
-        content = [];
+    let result = jsonObject;
+    if (!Array.isArray(result)) {
+      throw ('Để cái mảng vô pa ơi');
+    }
+
+    return result.map(item => {
+      for (let prop in item) {
+        if (item.hasOwnProperty(prop)) {
+          if (Array.isArray(item[prop] || typeof item[prop] === 'object')) {
+            item[prop] = JSON.stringify(item[prop]);
+          }
+        }
       }
-      let joined = content.join(',');
-      if (joined === '[object Object]') {
-        joined = '';
-      }
-      return `:"${joined}"`;
+      return item;
     });
-    const parse = JSON.parse(temp);
-    return parse;
   }
   exportExcel(): void {
     let json: any;
     let formatedJSON: any;
     try {
       json = this.visibleData;
-      // alert(json)
       formatedJSON = this.formatJSONArray(json);
-      console.log('formatedJSON', formatedJSON);
+      // console.log('formatedJSON', formatedJSON);
     } catch(e) {
       showNoti('Error JSON: ' + e, 'danger');
     }
