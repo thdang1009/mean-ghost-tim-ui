@@ -79,15 +79,23 @@ export class JsonExcelComponent implements OnInit {
 
   }
   formatJSONArray(jsonObject) {
-    const regex = new RegExp('\:\[.*?\]', 'g');
-    const s = JSON.stringify(jsonObject);
-    const temp = s.replace(regex, subString => {
-      console.log(subString);
-      const content = `"${(subString.match(/\[.*\]/)[0] || '')}"`;
-      return `:${content}`;
+    const regex = /\:\[.*?\]/g;
+    let s = JSON.stringify(jsonObject);
+    let content = [];
+    const temp = s.replace(regex, (subString) => {
+      try {
+        content = subString ? eval(subString.slice(1, subString.length)) : [];
+      } catch(e) {
+        content = [];
+      }
+      let joined = content.join(',');
+      if (joined === '[object Object]') {
+        joined = '';
+      }
+      return `:"${joined}"`;
     });
-    console.log(temp);
-    return JSON.parse(temp);
+    const parse = JSON.parse(temp);
+    return parse;
   }
   exportExcel(): void {
     let json: any;
@@ -98,7 +106,7 @@ export class JsonExcelComponent implements OnInit {
       formatedJSON = this.formatJSONArray(json);
       console.log('formatedJSON', formatedJSON);
     } catch(e) {
-      showNoti('Error JSON', 'danger');
+      showNoti('Error JSON: ' + e, 'danger');
     }
     try {
       /* generate workbook and add the worksheet */
