@@ -53,18 +53,39 @@
 
         <!-- **** **** **** **** ABOUT ME  **** **** **** ****-->
         <section class="about-me" id="about-me" #aboutMe>
-            <div class="section-header-container">
+            <div class="section-header-container box-border-tl-br" (click)="scrollTo('about-me')">
                 <h2 class="section-header">
                     About Me
                 </h2>
             </div>
             <div class="who-am-i-container">
-                <h3>
-                    I'm Ghost - a Fullstack Web Engineer
+                <h3 style="display: flex">
+                    <span class="static-text">I'm Ghost -&nbsp;</span>
+                    <ul class="dynamic-text">
+                        <li *ngIf="indexInterval === 0">
+                            <span>
+                                a Fullstack Web Engineer
+                            </span>
+                        </li>
+                        <li *ngIf="indexInterval === 1">
+                            <span>
+                                a Javascript Lover
+                            </span>
+                        </li>
+                        <li *ngIf="indexInterval === 2">
+                            <span>
+                                a Minimalism
+                            </span>
+                        </li>
+                        <li *ngIf="indexInterval === 3">
+                            <span>
+                                a Book Reviewer
+                            </span>
+                        </li>
+                    </ul>
                 </h3>
-                <p>
-                    Also a Javascript lover <i class="fa fa-heart"></i>
-                </p>
+                <list-badge [myStyles]="{'display': 'flex', 'margin': 'inherit', 'padding': '0 0 12px 0'}"></list-badge>
+                <br />
                 <p>
                     I'm looking for a challenging and rewarding position in an environment that offers an opportunity to
                     learn as well as gain experience in order to achieve organizational goals while attaining personal
@@ -303,7 +324,7 @@
 
         <!-- **** **** **** **** SERVICES  **** **** **** ****-->
         <section class="services" id="services" #services>
-            <div class="section-header-container">
+            <div class="section-header-container  box-border-tl-br" (click)="scrollTo('services')">
                 <h2 class="section-header">
                     Services
                 </h2>
@@ -315,7 +336,7 @@
 
         <!-- **** **** **** **** PORTFOLIO **** **** **** ****-->
         <section class="portfolio" id="portfolio" #portfolio>
-            <div class="section-header-container">
+            <div class="section-header-container  box-border-tl-br" (click)="scrollTo('portfolio')">
                 <h2 class="section-header">
                     Portfolio
                 </h2>
@@ -326,7 +347,7 @@
 
         <!-- **** **** **** **** CONTACT **** **** **** ****-->
         <section class="contact" id="contact" #contact>
-            <div class="section-header-container">
+            <div class="section-header-container  box-border-tl-br" (click)="scrollTo('contact')">
                 <h2 class="section-header">
                     Contact
                 </h2>

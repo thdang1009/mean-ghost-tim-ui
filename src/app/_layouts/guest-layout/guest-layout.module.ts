@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ComponentsModule } from '@app/components/components.module';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatNativeDateModule,
     MatTooltipModule,
     MatDialogModule,
+    ComponentsModule
   ],
   declarations: [
     HomeComponent,

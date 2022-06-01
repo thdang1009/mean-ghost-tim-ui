@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'money',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoneyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    // this.router.navigateByUrl('https://https://web.moneylover.me/');
   }
 
 }

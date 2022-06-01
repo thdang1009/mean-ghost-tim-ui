@@ -16,10 +16,21 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   yearOlds: number;
   currentActive: number = 0;
   debounceID = undefined;
+  intervalID = undefined;
+  arrString = [];
+
+  indexInterval = 0;
   constructor() { }
 
   ngOnInit(): void {
     this.yearOlds = new Date().getFullYear() - 1996;
+    this.intervalID = setInterval(_ => {
+      this.indexInterval = (this.indexInterval + 1) % 4
+    }, 1500);
+    window.onbeforeunload = () => this.ngOnDestroy();
+  }
+  ngOnDestroy(): void {
+    clearInterval(this.intervalID);
   }
   ngAfterViewInit(): void {
     this.heights = [
@@ -49,7 +60,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
     // }
     // this.debounceID = setTimeout(_ => {
     const val = this.aboutMeContent.nativeElement.scrollTop;
-    // console.log(this.heights, val);
+    console.log(this.heights, val);
     if (val >= this.heights[0] && val < this.heights[1]) {
       this.currentActive = 0;
     } else if (val >= this.heights[1] && val < this.heights[2]) {

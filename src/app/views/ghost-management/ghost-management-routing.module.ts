@@ -10,7 +10,7 @@ import { TodoTodayComponent } from './todo-today/todo-today.component';
 const routes: Routes = [
   { path: 'todo-today', component: TodoTodayComponent, canActivate: [LoginGuard] },
   { path: 'note', component: NoteComponent, canActivate: [LoginGuard] },
-  // { path: 'money', component: MoneyComponent, canActivate: [GrandAdminGuard] },
+  { path: 'money', component: MoneyComponent, canActivate: [GrandAdminGuard] },
   // { path: 'food', component: FoodComponent, canActivate: [LoginGuard] },
 ];
 

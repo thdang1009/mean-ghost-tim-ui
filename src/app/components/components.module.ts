@@ -10,6 +10,7 @@ import { GuestSidebarComponent } from './guest-sidebar/guest-sidebar.component';
 import { FormsModule } from '@angular/forms';
 import { ProgressWithLabelComponent } from './progress-with-label/progress-with-label.component';
 import { GhostSiteBtnComponent } from './ghost-site-btn/ghost-site-btn.component';
+import { ListBadgeComponent } from './list-badge/list-badge.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { GhostSiteBtnComponent } from './ghost-site-btn/ghost-site-btn.component
     GuestSidebarComponent,
     ProgressWithLabelComponent,
     GhostSiteBtnComponent,
+    ListBadgeComponent,
   ],
   exports: [
     FooterComponent,
@@ -33,7 +35,8 @@ import { GhostSiteBtnComponent } from './ghost-site-btn/ghost-site-btn.component
     GuestNavbarComponent,
     GuestSidebarComponent,
     ProgressWithLabelComponent,
-    GhostSiteBtnComponent
+    GhostSiteBtnComponent,
+    ListBadgeComponent,
   ],
   providers: [
   ]

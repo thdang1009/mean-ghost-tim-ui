@@ -325,3 +325,23 @@ app-table-loading {
 .steps-process {
     overflow: hidden;
 }
+
+.box-border-tl-br {
+    /* height: 200px;
+    width: 400px; */
+    background:
+        linear-gradient(#0068FF, #0068FF) 0 0,
+        linear-gradient(#0068FF, #0068FF) 0 0,
+        linear-gradient(#0068FF, #0068FF) 100% 100%,
+        linear-gradient(#0068FF, #0068FF) 100% 100%;
+    /* padding: 5px; */
+    background-size: 20% 5px, 5px 30%;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    transition: 1s;
+    height: fit-content;
+    width: fit-content;
+}
+.box-border-tl-br:hover {
+    background-size: 40% 5px, 5px 50%;
+}
