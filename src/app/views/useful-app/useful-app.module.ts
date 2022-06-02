@@ -9,13 +9,15 @@ import { CodeEditorModule } from '@ngstack/code-editor';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { JsonExcelComponent } from './json-excel/json-excel.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
+import { TextDiffComponent } from './text-diff/text-diff.component';
 
 
 @NgModule({
   declarations: [
     JsonBeautifierComponent,
     RunJsComponent,
-    JsonExcelComponent
+    JsonExcelComponent,
+    TextDiffComponent
   ],
   imports: [
     CommonModule,

@@ -20,7 +20,7 @@ import { AboutMeComponent } from './views/about-me/about-me.component';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { DatePipe } from '@angular/common';
 import { AutosizeModule } from 'ngx-autosize';
-import { AuthService, TodoTodayService, NoteService, JobService, HomeService } from './_services/_index';
+import { AuthService, TodoTodayService, NoteService, JobService, HomeService, IssueService } from './_services/_index';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { DonationComponent } from './views/donation/donation.component';
 import { NgxTypedJsModule } from 'ngx-typed-js';
@@ -57,6 +57,7 @@ import { NgxTypedJsModule } from 'ngx-typed-js';
     JobService,
     AuthService,
     HomeService,
+    IssueService
   ],
   bootstrap: [AppComponent]
 })

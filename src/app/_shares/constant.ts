@@ -21,4 +21,7 @@ export const SAVED_JSON_2 = 'SAVED_JSON_2';
 export const SAVED_JSON_EXCEL = 'SAVED_JSON_EXCEL';
 export const SAVED_JSON_EXCEL_2 = 'SAVED_JSON_EXCEL_2';
 
+export const SAVED_TEXT = 'SAVED_TEXT';
+export const SAVED_TEXT_2 = 'SAVED_TEXT_2';
+
 export const PDF_OBJ = 'PDF_OBJ';

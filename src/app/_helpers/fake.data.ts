@@ -34,3 +34,6 @@ export const ExampleJSON2 = `[{
   "user_id": 2,
   "username": "mike28"
 }]`;
+
+export const ExampleText = `123456789`;
+export const ExampleText2 = `123457890`;

@@ -1,0 +1,14 @@
+<div class="text-diff-container">
+
+    <textarea class="ghost-text-area text-area-left" [(ngModel)]="visibleData">
+    </textarea>
+    <div class="json-controler">
+        <button id="find-diff" mat-raised-button type="button" [disabled]="isLoadingResults"
+            class="btn btn-info pull-right btn-responsive" (click)="findDiff()">
+            <i class="material-icons">difference</i>
+            Diff
+        </button>
+    </div>
+    <textarea class="ghost-text-area text-area-right" [(ngModel)]="visibleData2">
+    </textarea>
+</div>

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
     private listTitles: any[];
+    title: string = '';
     location: Location;
     mobile_menu_visible: any = 0;
     private toggleButton: any;
@@ -21,7 +22,12 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.listTitles = ROUTES.filter(listTitle => listTitle);
+        this.listTitles = ROUTES.reduce((pre, cur) => {
+            const arr = [cur, ...(cur.children && cur.children.map(el => el) || [])];
+            return [...pre, ...arr];
+        }, []);
+        // this.title = this.getTitle();
+        console.log('listTitles= ', this.listTitles);
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
         this.router.events.subscribe((event) => {
@@ -114,7 +120,7 @@ export class NavbarComponent implements OnInit {
         const subpath = titlee.split('/').slice(-1)[0];
         // console.log(subpath);
         // console.log(this.listTitles);
-        const found = (this.listTitles.filter(item => item.path === subpath) || [])[0] || {};
+        const found = (this.listTitles.filter(item => item.path.includes(subpath)) || [])[0] || {};
         const title = found.title || 'Dashboard';
         // console.log(title);
         return title

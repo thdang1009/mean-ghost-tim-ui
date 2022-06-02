@@ -67,8 +67,10 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
   }
 
   findDiff() {
-    const a = JSON.stringify(this.visibleData);
-    const b = JSON.stringify(this.visibleData2);
+    const a = JSON.stringify(this.visibleData, null, 2);
+    const b = JSON.stringify(this.visibleData2, null, 2);
+    // const a = ['a', 'b', 'c', 'd'];
+    // const b = ['a', 'b', 'd'];
     let count = 0;
     function isCommon(aIndex, bIndex) {
       return a[aIndex] === b[bIndex];
@@ -76,8 +78,11 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
     function foundSubsequence(nCommon, aCommon, bCommon) {
       // see examples
       ++count;
-      console.log(nCommon, aCommon, bCommon);
+      // console.log(nCommon, aCommon, bCommon);
+      // console.log(nCommon, aCommon, bCommon);
       // console.log(nCommon, a[aCommon], b[bCommon]);
+      // console.log(nCommon, a.slice(aCommon, aCommon + nCommon));
+      console.log(nCommon, a.slice(bCommon, bCommon + nCommon));
     }
     diff(a.length, b.length, isCommon, foundSubsequence);
   }

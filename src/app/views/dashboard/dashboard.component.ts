@@ -3,9 +3,11 @@ import { Router } from '@angular/router';
 import { AnalyticService } from '@app/_services/analytic.service';
 import { TodoTodayService } from '@app/_services/todo-today.service';
 import { UserService } from '@app/_services/user.service';
+import { IssueService } from '@app/_services/_index';
 import { nextStatus, showNoti } from '@app/_shares/common';
 import * as Chartist from 'chartist';
 import * as dateFns from 'date-fns';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,11 +26,16 @@ export class DashboardComponent implements OnInit {
   users = [];
   tdtds = []
   loadingOpacity = 1;
+
+  issues: Observable<any>;
+  issuesLength = 0;
+  pageLinks: object;
   constructor(
     private userService: UserService,
     private todoTodayService: TodoTodayService,
     private analyticService: AnalyticService,
-    private router: Router
+    private router: Router,
+    private issueService: IssueService
   ) { }
   //#region don't touch
   startAnimationForLineChart(chart) {
@@ -175,18 +182,19 @@ export class DashboardComponent implements OnInit {
     this.getMyToDoToDay();
     this.getTotalAccess();
     this.getStoragedSpace();
+    this.getIssues();
   }
 
   getStoragedSpace() {
     this.analyticService.getStoragedSpace()
-    .subscribe(res => {
-      this.usagedSpace = (
+      .subscribe(res => {
+        this.usagedSpace = (
           res.stats.indexSize + res.stats.dataSize
         ) || 0;
-    }, (err) => {
-      console.log(err);
-      showNoti(`getStoragedSpace fail!`, 'danger');
-    });;
+      }, (err) => {
+        console.log(err);
+        showNoti(`getStoragedSpace fail!`, 'danger');
+      });;
   }
 
   getTotalAccess() {
@@ -273,5 +281,33 @@ export class DashboardComponent implements OnInit {
   }
   redirectToTDTD() {
     this.router.navigateByUrl('/admin/tool/todo-today');
+  }
+
+  getIssues(url?: string): void {
+    this.issueService.getIssues(url).subscribe((data) => {
+      const link = data.headers.get('Link');
+      if (link) {
+        this.pageLinks = this.parseLinkHeader(link);
+        console.log(this.pageLinks);
+      }
+      this.issues = data.body;
+      this.issuesLength = data.body.length || 0;
+    });
+  }
+
+  /**
+  * Returns pagination links from "Link" header parameter
+  * in form of an object.
+  *
+  * @param header: string - "Link" header parameter string for parsing.
+  */
+  parseLinkHeader(header: string) {
+    const links = {};
+
+    header.split(',').forEach(element => {
+      const m = element.match(/<([^>]*)>; rel="(.*)"/);
+      links[m[2]] = m[1];
+    });
+    return links;
   }
 }

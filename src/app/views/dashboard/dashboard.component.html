@@ -44,12 +44,14 @@
                         <div class="card-icon">
                             <i class="material-icons">info_outline</i>
                         </div>
-                        <p class="card-category">Fixed Issues</p>
-                        <h3 class="card-title">75</h3>
+                        <p class="card-category">Issues</p>
+                        <h3 class="card-title">{{issuesLength}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">local_offer</i> Tracked from Github
+                            <i class="material-icons">local_offer</i>
+                            <a href="https://github.com/thdang1009/mean-ghost-tim-ui/issues" target="_blank"
+                                rel="noopener noreferrer">Tracked from Github</a>
                         </div>
                     </div>
                 </div>
@@ -134,7 +136,8 @@
                                 <!-- <span class="nav-tabs-title">Tasks:</span> -->
                                 <ul class="nav nav-tabs" data-tabs="tabs">
                                     <li class="nav-item">
-                                        <a (click)="reloadTDTD()" mat-button class="nav-link active" href="#profile" data-toggle="tab">
+                                        <a (click)="reloadTDTD()" mat-button class="nav-link active" href="#profile"
+                                            data-toggle="tab">
                                             <i class="material-icons">checklist_rtl</i> TDTD
                                             <div class="ripple-container"></div>
                                         </a>
@@ -162,7 +165,8 @@
                                     <tbody>
                                         <ng-container *ngIf="tdtds.length; else waitingTDTDBlock">
                                             <tr *ngFor="let item of tdtds; let index = index">
-                                                <app-table-loading *ngIf="loadingTDTD[index]" (size)="'sm'"></app-table-loading>
+                                                <app-table-loading *ngIf="loadingTDTD[index]" (size)="'sm'">
+                                                </app-table-loading>
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">

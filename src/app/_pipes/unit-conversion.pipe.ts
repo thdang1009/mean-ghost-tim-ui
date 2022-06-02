@@ -12,7 +12,7 @@ export class UnitConversionPipe implements PipeTransform {
   }
 
   transform(value: any, ...args: any[]): number {
-    console.log('abo', value, args);
+    // console.log('abo', value, args);
     const arr = args[0].split('-') || [];
     const from = this.config[arr[0]];
     const to = this.config[arr[1]];
