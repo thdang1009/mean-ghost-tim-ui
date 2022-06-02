@@ -14,7 +14,7 @@ export const AdminLayoutRoutes: Routes = [
         }]
     },
     {
-        path: 'blog-management',
+        path: 'blog',
         children: [{
             path: '',
             loadChildren: () => import('../../views/blog-management/blog-management.module').then(m => m.BlogManagementModule ),

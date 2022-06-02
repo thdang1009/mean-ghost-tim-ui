@@ -61,3 +61,11 @@ export function nextStatus(oldStatus) {
     'NOT_YET': 'NEW'
   }[oldStatus];
 }
+export function previousStatus(oldStatus) {
+  return {
+    'DONE': 'NEW',
+    'TOMORROW': 'DONE',
+    'NOT_YET': 'TOMORROW',
+    'NEW': 'NOT_YET'
+  }[oldStatus];
+}

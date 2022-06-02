@@ -69,7 +69,7 @@
                     <p>{{menuItem.title}}</p>
                 </a>
             </li>
-            <li *ngIf="menuItem.hasChild && menuItem.children.length" class="nav-item dropdown">
+            <li *ngIf="menuItem.hasChild && menuItem.children.length" routerLinkActive="active" class="nav-item dropdown">
                 <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink2" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">{{menuItem.icon}}</i>

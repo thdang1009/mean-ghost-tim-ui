@@ -24,8 +24,8 @@ export class TextDiffComponent implements OnInit {
 
   ngOnDestroy(): void {
     try {
-      localStorage.setItem(SAVED_TEXT, JSON.stringify(this.visibleData));
-      localStorage.setItem(SAVED_TEXT_2, JSON.stringify(this.visibleData2));
+      localStorage.setItem(SAVED_TEXT, this.visibleData);
+      localStorage.setItem(SAVED_TEXT_2, this.visibleData2);
     } catch (e) {
       showNoti('Lỗi lưu local: ' + e, 'danger');
     }

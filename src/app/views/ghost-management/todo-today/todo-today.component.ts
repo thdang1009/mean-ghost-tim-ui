@@ -4,7 +4,7 @@ import { TodoTodayService } from '@services/todo-today.service';
 import { TodoToday } from '@models/todo-today';
 import * as dateFns from 'date-fns';
 import { JobService } from '@services/job.service';
-import { isImportant, nextStatus, showNoti } from '@shares/common';
+import { isImportant, nextStatus, previousStatus, showNoti } from '@shares/common';
 import { DEBOUCE_TIME } from '@shares/constant';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
@@ -77,6 +77,7 @@ export class TodoTodayComponent implements OnInit {
       });
   }
   nextStatus = nextStatus;
+  previousStatus = previousStatus;
 
   updateStatus(item, index) {
     const req = {
@@ -189,5 +190,19 @@ export class TodoTodayComponent implements OnInit {
           reject('fail');
         });
     });
+  }
+  increaseDate() {
+    const val = dateFns.addDays(this.searchDate.value, 1);
+    this.searchDate.setValue(val);
+  }
+  decreaseDate() {
+    const val = dateFns.addDays(this.searchDate.value, -1);
+    this.searchDate.setValue(val);
+  }
+  increaseStatus() {
+    this.searchStatus = this.nextStatus(this.searchStatus);
+  }
+  decreaseStatus() {
+    this.searchStatus = this.previousStatus(this.searchStatus);
   }
 }

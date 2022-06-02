@@ -7,16 +7,31 @@
                         <h4 class="card-title ">Your Todo {{ searchDateDisplay }}</h4>
                     </div>
                     <form class="form-under-table-header row" (ngSubmit)="searchToDoToDay()">
-                        <div class="col-md-4">
+                        <div class="col-md-4 control-and-btn-container">
+                            <button class="btn btn-move" (click)="decreaseDate()">
+                                <span class="material-icons">
+                                    arrow_back_ios
+                                </span>
+                            </button>
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Date</mat-label>
                                 <input matInput [matDatepicker]="picker" name="date" [formControl]="searchDate">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field>
+                            <button class="btn btn-move" (click)="increaseDate()">
+                                <span class="material-icons">
+                                    arrow_forward_ios
+                                    </span>
+                            </button>
                         </div>
                         <!-- search status, default all -->
                         <div class="col-md-4">
+                            <!-- <button class="btn btn-move" (click)="decreaseStatus()">
+                                <span class="material-icons">
+                                    arrow_back_ios
+                                </span>
+                            </button> -->
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Trạng thái</mat-label>
                                 <mat-select [(ngModel)]="searchStatus" [ngModelOptions]="{standalone: true}">
@@ -26,6 +41,11 @@
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
+                            <!-- <button class="btn btn-move" (click)="increaseStatus()">
+                                <span class="material-icons">
+                                    arrow_forward_ios
+                                    </span>
+                            </button> -->
                         </div>
                         <!-- button search -->
                         <div class="col-md-4">
