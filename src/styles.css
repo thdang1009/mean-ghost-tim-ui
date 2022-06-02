@@ -345,3 +345,12 @@ app-table-loading {
 .box-border-tl-br:hover {
     background-size: 40% 5px, 5px 50%;
 }
+
+ngx-file-drop>div.ngx-file-drop__drop-zone {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

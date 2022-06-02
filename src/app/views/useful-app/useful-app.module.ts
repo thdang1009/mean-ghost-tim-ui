@@ -8,6 +8,7 @@ import { SharedModuleModule } from '@shares/shared-module.module';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { JsonExcelComponent } from './json-excel/json-excel.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { JsonExcelComponent } from './json-excel/json-excel.component';
     UsefulAppRoutingModule,
     SharedModuleModule,
     CodeEditorModule.forChild(),
-    NgJsonEditorModule
+    NgJsonEditorModule,
+    NgxFileDropModule
   ]
 })
 export class UsefulAppModule { }

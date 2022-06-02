@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ExampleJSON } from '@app/_helpers/fake.data';
+import { showNoti } from '@app/_shares/common';
 import { SAVED_JSON, SAVED_JSON_2 } from '@app/_shares/constant';
 import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
 import diff from 'diff-sequences';
@@ -57,8 +58,12 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    localStorage.setItem(SAVED_JSON, JSON.stringify(this.visibleData));
-    localStorage.setItem(SAVED_JSON_2, JSON.stringify(this.visibleData2));
+    try {
+      localStorage.setItem(SAVED_JSON, JSON.stringify(this.visibleData));
+      localStorage.setItem(SAVED_JSON_2, JSON.stringify(this.visibleData2));
+    } catch (e) {
+      showNoti('Lỗi lưu local: ' + e, 'danger');
+    }
   }
 
   findDiff() {

@@ -15,9 +15,44 @@
     justify-content: center;
     align-items: center;
 }
+
 .btn-responsive {
     width: 100vw;
 }
+
+.drop-zone-container {
+    width: 42vw;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.drop-zone-container ngx-file-drop {
+    width: 90%;
+}
+
+ngx-file-drop {
+    align-items: center;
+    color: #0782d0;
+    display: flex;
+    height: 100px;
+}
+
+.ghost-ngx-file-drop-content-style {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.upload-table {
+    
+}
+
 
 @media (min-width: 992px) {
     .json-editor-left {
@@ -32,8 +67,9 @@
         width: 16vw;
         flex-direction: column;
     }
+
     .btn-responsive {
         width: auto;
     }
-    
+
 }

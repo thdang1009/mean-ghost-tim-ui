@@ -59,7 +59,11 @@ export class RunJsComponent implements OnInit, OnDestroy {
 
   saveOnLocal() {
     // console.log('saveOnLocal', this.codeModel.value);
-    localStorage.setItem(SAVED_CODE, this.codeModel.value);
+    try {
+      localStorage.setItem(SAVED_CODE, this.codeModel.value);
+    } catch (e) {
+      showNoti('Lỗi lưu local: ' + e, 'danger');
+    }
   }
 
   onCodeChanged(value) {

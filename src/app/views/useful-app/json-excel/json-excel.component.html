@@ -1,3 +1,27 @@
+<div *ngIf="mod === 'excelToJSON'" class="center drop-zone-container">
+    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)"
+        (onFileLeave)="fileLeave($event)" accept=".xlsx,.xls,.csv"
+        contentClassName="ghost-ngx-file-drop-content-style" multiple="false">
+        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+            Press the button or drag file here
+            <button class="btn btn-info" type="button" (click)="openFileSelector()">Browse Files</button>
+        </ng-template>
+    </ngx-file-drop>
+    <div class="upload-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody class="upload-name-style">
+                <tr *ngFor="let item of files; let i=index">
+                    <td><strong>{{ item.relativePath }}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 <json-editor *ngIf="mod === 'jsonToExcel'" id="json-editor-left" name="json-editor-left" class="json-editor-left"
     [options]="editorOptions" [data]="initialData" (change)="showJson($event);">
 </json-editor>
@@ -14,7 +38,7 @@
     </div>
 
     <button id="execute" mat-raised-button type="button" [disabled]="isLoadingResults"
-        class="btn btn-info pull-right btn-responsive" (click)="execute()">
+        class="btn btn-info pull-right btn-responsive" (click)="execute(mod)">
         Execute
     </button>
 </div>
