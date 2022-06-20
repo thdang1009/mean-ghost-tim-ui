@@ -18,12 +18,13 @@ import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.compo
 import { TokenInterceptor } from './_helpers/_index';
 import { AboutMeComponent } from './views/about-me/about-me.component';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { AutosizeModule } from 'ngx-autosize';
 import { AuthService, TodoTodayService, NoteService, JobService, HomeService, IssueService } from './_services/_index';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { DonationComponent } from './views/donation/donation.component';
 import { NgxTypedJsModule } from 'ngx-typed-js';
+import { SharedModuleModule } from './_shares/shared-module.module';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -33,6 +34,8 @@ import { NgxTypedJsModule } from 'ngx-typed-js';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    CommonModule,
+    SharedModuleModule,
     // third party
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'

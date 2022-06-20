@@ -1,4 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UserService } from '@app/_services/user.service';
+import { showNoti } from '@app/_shares/common';
 
 @Component({
   selector: 'about-me',
@@ -8,10 +11,13 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 export class AboutMeComponent implements OnInit, AfterViewInit {
   @ViewChild('aboutMe') aboutMeElement: ElementRef;
   @ViewChild('services') servicesElement: ElementRef;
-  @ViewChild('portfolio') portfolioElement: ElementRef;
+  // @ViewChild('portfolio') portfolioElement: ElementRef;
   @ViewChild('contact') contactElement: ElementRef;
   @ViewChild('aboutMeContent') aboutMeContent: ElementRef;
 
+
+  isRunning = false;
+  contactForm: FormGroup;
   heights = [];
   yearOlds: number;
   currentActive: number = 0;
@@ -20,7 +26,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   arrString = ['A Fullstack Web Engineer', 'A Javascript Lover', 'A Minimalism', 'A Book Reviewer'];
 
   indexInterval = 0;
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
     this.yearOlds = new Date().getFullYear() - 1996;
@@ -28,6 +34,13 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
     //   this.indexInterval = (this.indexInterval + 1) % 4
     // }, 1500);
     // window.onbeforeunload = () => this.ngOnDestroy();
+    this.contactForm = this.formBuilder.group({
+      name: [null, Validators.required],
+      email: [null, Validators.required],
+      subject: [null, Validators.required],
+      message: [null, Validators.required],
+
+    });
   }
   ngOnDestroy(): void {
     // clearInterval(this.intervalID);
@@ -37,10 +50,25 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
       0,
       this.aboutMeElement.nativeElement.offsetTop,
       this.servicesElement.nativeElement.offsetTop,
-      this.portfolioElement.nativeElement.offsetTop,
+      // this.portfolioElement.nativeElement.offsetTop,
       this.contactElement.nativeElement.offsetTop
     ];
     // console.log(this.heights);
+  }
+  sendMessageToMe(form: NgForm) {
+    this.isRunning = true;
+    this.userService.sendGuestMessage(form)
+    .subscribe(res => {
+      this.isRunning = false;
+      if (res && res.id) {
+        showNoti('Send success!', 'success');
+      }
+    }, (err) => {
+      this.isRunning = false;
+      showNoti('Send Fail! ' + err.error, 'danger');
+    });
+
+    // call api save guest message
   }
   scrollTo(s) {
     const element = document.getElementById(s);
@@ -75,4 +103,10 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
     // }, 50);
   }
 
+  openAD() {
+    window.open('https://ad.zalopay.vn', "_blank");
+  }
+  openMC() {
+    window.open('https://mc.zalopay.vn', "_blank");
+  }
 }

@@ -1,7 +1,14 @@
 <div class="text-diff-container">
 
-    <textarea class="ghost-text-area text-area-left" [(ngModel)]="visibleData">
-    </textarea>
+    <div class="textarea-container">
+        <div class="ghost-backdrop">
+            <div class="highlights" innerHTML="{{ highlights1 }}">
+            </div>
+        </div>
+        <textarea class="ghost-text-area text-area-left" [(ngModel)]="visibleData1" (ngModelChange)="findDiff()"
+            (scroll)="onScroll1($event)">
+        </textarea>
+    </div>
     <div class="json-controler">
         <button id="find-diff" mat-raised-button type="button" [disabled]="isLoadingResults"
             class="btn btn-info pull-right btn-responsive" (click)="findDiff()">
@@ -9,6 +16,14 @@
             Diff
         </button>
     </div>
-    <textarea class="ghost-text-area text-area-right" [(ngModel)]="visibleData2">
-    </textarea>
+
+    <div class="textarea-container">
+        <div class="ghost-backdrop">
+            <div class="highlights" innerHTML="{{ highlights2 }}">
+            </div>
+        </div>
+        <textarea class="ghost-text-area text-area-right" [(ngModel)]="visibleData2" (ngModelChange)="findDiff()"
+            (scroll)="onScroll2($event)">
+        </textarea>
+    </div>
 </div>

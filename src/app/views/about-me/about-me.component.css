@@ -1,4 +1,3 @@
-
 .about-me-components {
     display: flex;
     flex-direction: row;
@@ -11,7 +10,7 @@
 }
 
 section {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     /* background: var(--bg-black-100); */
     display: block;
     padding: 16px;
@@ -26,8 +25,8 @@ section:last-child {
 
 
 .left-navigation {
+    display: none;
     width: 20%;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -90,7 +89,7 @@ a.ghost-nav-hight-light {
 }
 
 .about-me-content {
-    width: 80%;
+    width: 100%;
     padding: 0 8px;
     overflow-y: scroll;
 }
@@ -132,7 +131,7 @@ h4 {
 .btn-float-bottom {
     position: absolute;
     z-index: 100;
-    top: 80%;
+    top: -35px;
 }
 
 .pdx-2 li {
@@ -166,13 +165,13 @@ h4 {
 .detail-info {
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     /* align-items: center; */
     justify-content: space-between;
 }
 
 .detail-info ul {
-    min-width: 30%;
+    min-width: 100%;
 }
 
 strong {
@@ -218,10 +217,52 @@ strong {
     }
 } */
 
+.services-container object {
+    padding-top: 20px;
+    cursor: pointer;
+    width: 100%;
+    height: 500px;
+}
+
+.services-container embed {
+    width: 100%;
+}
+
 
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: inline-block;
+}
+
+.contact-us-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-us-container>form {
+    width: 100%;
+}
+
+
+@media (min-width: 1200px) {
+    .left-navigation {
+        display: flex;
+    }
+
+    .about-me-content {
+        width: 80%;
+    }
+
+    .detail-info ul {
+        min-width: 30%;
+    }
+    .detail-info {
+        flex-direction: row;
+    }
+    .btn-float-bottom {
+        top: 80%;
+    }
 }
