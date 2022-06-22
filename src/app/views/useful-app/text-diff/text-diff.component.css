@@ -1,6 +1,7 @@
 .text-diff-container {
     height: 84vh;
     display: flex;
+    padding: 10px;
 }
 
 .ghost-text-area {
@@ -31,7 +32,8 @@ textarea {
 
 .textarea-container {
     width: 100%;
-    padding: 10px;
+    position: relative;
+    /* padding: 10px; */
 }
 
 .backdrop {
@@ -45,6 +47,7 @@ textarea {
     letter-spacing: 1.5px;
     line-height: 20px;
     color: transparent;
+    font-family: monospace;
 }
 
 textarea {
@@ -53,6 +56,7 @@ textarea {
     background-color: transparent;
     letter-spacing: 1.5px;
     line-height: 20px !important;
+    font-family: monospace;
 }
 
 /* mark-as-add {
@@ -71,6 +75,8 @@ mark-as-edit {
     z-index: -1000;
     overflow-x: hidden;
     overflow-y: scroll;
+    width: 100%;
+    height: 100%;
     /* or whatever */
 }
 
