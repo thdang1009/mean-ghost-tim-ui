@@ -48,6 +48,7 @@ textarea {
     line-height: 20px;
     color: transparent;
     font-family: monospace;
+    border: 1px solid  transparent;
 }
 
 textarea {
