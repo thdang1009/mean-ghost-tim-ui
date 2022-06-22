@@ -43,6 +43,8 @@ textarea {
     white-space: pre-wrap;
     word-wrap: break-word;
     letter-spacing: 1.5px;
+    line-height: 20px;
+    color: transparent;
 }
 
 textarea {
@@ -50,10 +52,7 @@ textarea {
     /* or whatever */
     background-color: transparent;
     letter-spacing: 1.5px;
-}
-
-.highlights {
-    color: transparent;
+    line-height: 20px !important;
 }
 
 /* mark-as-add {
