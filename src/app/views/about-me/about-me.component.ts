@@ -23,7 +23,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   currentActive: number = 0;
   debounceID = undefined;
   // intervalID = undefined;
-  arrString = ['A Fullstack Web Engineer', 'A Javascript Lover', 'A Minimalism', 'A Book Reviewer'];
+  arrString = ['A Fullstack Web Engineer', 'A Javascript Lover', 'A Minimalist', 'A Book Reviewer'];
 
   indexInterval = 0;
   constructor(private formBuilder: FormBuilder, private userService: UserService) { }
