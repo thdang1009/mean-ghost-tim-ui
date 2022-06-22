@@ -2,6 +2,7 @@
     height: 84vh;
     display: flex;
     padding: 10px;
+    flex-direction: column;
 }
 
 .ghost-text-area {
@@ -22,10 +23,11 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 textarea {
-    padding: 0 !important;
+    padding: 10px !important;
     margin: 0 !important;
     border-radius: 0 !important;
 }
@@ -33,6 +35,7 @@ textarea {
 .textarea-container {
     width: 100%;
     position: relative;
+    min-height: 200px;
     /* padding: 10px; */
 }
 
@@ -48,7 +51,8 @@ textarea {
     line-height: 20px;
     color: transparent;
     font-family: monospace;
-    border: 1px solid  transparent;
+    border: 1px solid transparent;
+    padding: 10px !important;
 }
 
 textarea {
@@ -86,5 +90,12 @@ mark-as-edit {
     .json-controler {
         width: 10vw;
         flex-direction: column;
+    }
+
+    .text-diff-container {
+        flex-direction: row;
+    }
+    .textarea-container {
+        min-height: auto;
     }
 }
