@@ -6,7 +6,7 @@ import { CodeModel } from '@ngstack/code-editor';
 @Component({
   selector: 'run-js',
   templateUrl: './run-js.component.html',
-  styleUrls: ['./run-js.component.css']
+  styleUrls: ['./run-js.component.scss']
 })
 export class RunJsComponent implements OnInit, OnDestroy {
 

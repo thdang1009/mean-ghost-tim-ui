@@ -5,7 +5,7 @@ import { showNoti } from '@shares/common';
 @Component({
   selector: 'logout',
   templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.css']
+  styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent implements OnInit {
   @Output() isLoggedIn: EventEmitter<any> = new EventEmitter();

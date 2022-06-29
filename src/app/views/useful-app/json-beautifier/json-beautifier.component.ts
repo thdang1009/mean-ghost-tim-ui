@@ -8,7 +8,7 @@ import diff from 'diff-sequences';
 @Component({
   selector: 'json-beautifier',
   templateUrl: './json-beautifier.component.html',
-  styleUrls: ['./json-beautifier.component.css']
+  styleUrls: ['./json-beautifier.component.scss']
 })
 export class JsonBeautifierComponent implements OnInit, OnDestroy {
 

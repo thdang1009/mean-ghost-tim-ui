@@ -10,7 +10,7 @@ import * as XLSX from 'xlsx';
 @Component({
   selector: 'json-excel',
   templateUrl: './json-excel.component.html',
-  styleUrls: ['./json-excel.component.css']
+  styleUrls: ['./json-excel.component.scss']
 })
 export class JsonExcelComponent implements OnInit {
 

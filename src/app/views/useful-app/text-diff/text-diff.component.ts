@@ -8,7 +8,7 @@ import diff from 'diff-sequences';
 @Component({
   selector: 'text-diff',
   templateUrl: './text-diff.component.html',
-  styleUrls: ['./text-diff.component.css']
+  styleUrls: ['./text-diff.component.scss']
 })
 export class TextDiffComponent implements OnInit {
   @ViewChild('text1') text1: ElementRef;

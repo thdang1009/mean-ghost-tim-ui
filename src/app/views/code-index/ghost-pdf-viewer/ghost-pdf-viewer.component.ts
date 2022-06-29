@@ -17,7 +17,7 @@ import { PdfViewerComponent } from 'ng2-pdf-viewer';
 @Component({
   selector: 'ghost-pdf-viewer',
   templateUrl: './ghost-pdf-viewer.component.html',
-  styleUrls: ['./ghost-pdf-viewer.component.css']
+  styleUrls: ['./ghost-pdf-viewer.component.scss']
 })
 export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('pdf') pdf: PdfViewerComponent;
