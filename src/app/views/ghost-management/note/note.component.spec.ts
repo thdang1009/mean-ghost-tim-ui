@@ -1,10 +1,25 @@
 import { ChangeDetectorRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
+import { AbstractMockObservableService } from '@helpers/mockservice.service';
 import { NoteService } from '@services/_index';
 import { of, ReplaySubject } from 'rxjs';
 
 import { NoteComponent } from './note.component';
+class _NoteService extends AbstractMockObservableService {
+  addNote() {
+    return this;
+  }
+  getMyNote() {
+    return this;
+  }
+  updateNote() {
+    return this;
+  }
+  deleteNote() {
+    return this;
+  }
+}
 
 describe('NoteComponent', () => {
   let component: NoteComponent;
@@ -14,7 +29,6 @@ describe('NoteComponent', () => {
   let routerMock;
 
   beforeEach(async () => {
-    const noteServiceSpy = jasmine.createSpyObj('NoteService', ['addNote', 'getMyNote', 'updateNote', 'deleteNote']);
     routerEventReplaySubject = new ReplaySubject<RouterEvent>(1);
     routerMock = {
       events: routerEventReplaySubject.asObservable()
@@ -24,7 +38,7 @@ describe('NoteComponent', () => {
         NoteComponent,
       ],
       providers: [
-        { provide: NoteService, useValue: noteServiceSpy },
+        { provide: NoteService, useValue: new _NoteService() },
 
         { provide: Router, useValue: routerMock },
         {

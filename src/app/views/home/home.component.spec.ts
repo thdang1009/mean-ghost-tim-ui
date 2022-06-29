@@ -8,10 +8,13 @@ describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async(() => {
+    const authenServiceSpy = jasmine.createSpyObj('AuthService', ['isLogin']);
     TestBed.configureTestingModule({
       declarations: [
         HomeComponent,
-        { provide: AuthService, useValue: {}}
+      ],
+      providers: [
+        { provide: AuthService, useValue: authenServiceSpy },
       ]
     })
     .compileComponents();

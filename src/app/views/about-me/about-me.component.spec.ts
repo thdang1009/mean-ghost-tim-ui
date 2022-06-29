@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
 import { UserService } from '@services/_index';
 
 import { AboutMeComponent } from './about-me.component';
@@ -8,13 +9,14 @@ describe('AboutMeComponent', () => {
   let fixture: ComponentFixture<AboutMeComponent>;
 
   beforeEach(async () => {
+    const userServiceSpy = jasmine.createSpyObj('UserService', ['sendGuestMessage']);
     await TestBed.configureTestingModule({
       declarations: [
         AboutMeComponent,
-        { provide: UserService, useValue: {} }
       ],
-      imports: [
-        UserService
+      providers: [
+        { provide: UserService, useValue: userServiceSpy },
+        FormBuilder
       ]
     })
     .compileComponents();

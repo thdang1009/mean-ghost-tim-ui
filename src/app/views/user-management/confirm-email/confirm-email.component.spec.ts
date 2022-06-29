@@ -1,10 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterEvent, ActivatedRoute } from '@angular/router';
+import { AbstractMockObservableService } from '@helpers/mockservice.service';
 import { AuthService } from '@app/_services/auth.service';
 import { NavigationService } from '@services/_index';
 import { of, ReplaySubject } from 'rxjs';
 
 import { ConfirmEmailComponent } from './confirm-email.component';
+
+class _AuthService extends AbstractMockObservableService {
+  confirmEmail() {
+    return this;
+  }
+}
+class _NavigationService extends AbstractMockObservableService {
+  gotoHome() {
+    return this;
+  }
+}
 
 describe('ConfirmEmailComponent', () => {
   let component: ConfirmEmailComponent;
@@ -13,8 +25,8 @@ describe('ConfirmEmailComponent', () => {
   let routerMock;
 
   beforeEach(async () => {
-    const authServiceSpy = jasmine.createSpyObj('AuthService', ['confirmEmail']);
-    const NavigationServiceSpy = jasmine.createSpyObj('NavigationService', ['gotoHome']);
+    // const authServiceSpy = jasmine.createSpyObj('AuthService', ['confirmEmail']);
+    // const NavigationServiceSpy = jasmine.createSpyObj('NavigationService', ['gotoHome']);
     routerEventReplaySubject = new ReplaySubject<RouterEvent>(1);
     routerMock = {
       events: routerEventReplaySubject.asObservable()
@@ -22,8 +34,8 @@ describe('ConfirmEmailComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ConfirmEmailComponent],
       providers: [
-        { provide: AuthService, useValue: authServiceSpy },
-        { provide: NavigationService, useValue: NavigationServiceSpy },
+        { provide: AuthService, useValue: new _AuthService() },
+        { provide: NavigationService, useValue: new _NavigationService() },
         {
           provide: ActivatedRoute,
           useValue: {

@@ -51,10 +51,10 @@ export class TodoTodayComponent implements OnInit {
   }
 
   searchToDoToDay() {
-    this.getMyToDoToDay();
+    this._getMyToDoToDay();
   }
 
-  getMyToDoToDay(timeout = 0) {
+  _getMyToDoToDay(timeout = 0) {
     const value = this.searchDate && this.searchDate.value || new Date();
     const fromDate = dateFns.startOfDay(value);
     const toDate = dateFns.endOfDay(value);
@@ -113,7 +113,7 @@ export class TodoTodayComponent implements OnInit {
     if (id) {
       this.todoTodayService.deleteTodoToday(id)
         .subscribe((_: any) => {
-          this.getMyToDoToDay(DEBOUCE_TIME);
+          this._getMyToDoToDay(DEBOUCE_TIME);
           this.isLoadingResults = false;
         }, err => {
           this.isLoadingResults = false;

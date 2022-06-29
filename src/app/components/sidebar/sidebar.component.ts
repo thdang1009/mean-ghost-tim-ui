@@ -72,7 +72,7 @@ export class SidebarComponent implements OnInit {
   fullName = 'Guest';
   permission = 'GUEST';
 
-  constructor(private api: HomeService, private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
     this.isLogined = authService.isLogin();
     if (this.isLogined) {
       this.setUserInfo();

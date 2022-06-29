@@ -1,7 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AbstractMockObservableService } from '@helpers/mockservice.service';
 import { JobService, TodoTodayService } from '@services/_index';
 
 import { TodoTodayComponent } from './todo-today.component';
+class _TodoTodayService extends AbstractMockObservableService {
+  addTodoToday() {
+    return this;
+  }
+  updateTodoToday() {
+    return this;
+  }
+  getMyTodoToday() {
+    return this;
+  }
+  deleteTodoToday() {
+    return this;
+  }
+}
+class _JobService extends AbstractMockObservableService {
+  runJobManually() {
+    return this;
+  }
+}
 
 describe('TodoTodayComponent', () => {
   let component: TodoTodayComponent;
@@ -11,13 +31,14 @@ describe('TodoTodayComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         TodoTodayComponent,
-        { provide: TodoTodayService, useValue: {} },
-        { provide: JobService, useValue: {} },
       ],
-      imports: [
-
-        TodoTodayService,
-        JobService,
+      providers: [
+        {
+          provide: TodoTodayService, useValue: new _TodoTodayService()
+        },
+        {
+          provide: JobService, useValue: new _JobService()
+        },
       ]
     })
       .compileComponents();

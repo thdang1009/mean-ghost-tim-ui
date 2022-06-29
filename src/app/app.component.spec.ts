@@ -1,6 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
+import { AbstractMockObservableService } from './_helpers/mockservice.service';
+import { AnalyticService } from './_services/analytic.service';
+class _AnalyticService extends AbstractMockObservableService {
+  logAccess() {
+    return this;
+  }
+}
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -8,6 +15,11 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [
+        {
+          provide: AnalyticService, useValue: new _AnalyticService()
+        }
+      ]
     }).compileComponents();
   }));
 
@@ -17,7 +29,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 
-  // it(`should have as title 'app works!'`, async(() => {
+  // it(`should have as title 'Ghost Site'`, async(() => {
   //   const fixture = TestBed.createComponent(AppComponent);
   //   const app = fixture.debugElement.componentInstance;
   //   expect(app.title).toEqual('app works!');

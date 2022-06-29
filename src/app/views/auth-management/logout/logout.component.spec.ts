@@ -1,7 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AbstractMockObservableService } from '@helpers/mockservice.service';
 import { AuthService } from '@services/_index';
 
 import { LogoutComponent } from './logout.component';
+class _AuthService extends AbstractMockObservableService {
+  logout() {
+    return this;
+  }
+}
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -11,9 +17,9 @@ describe('LogoutComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [
         LogoutComponent,
-        { provide: AuthService, useValue: {} }
       ],
-      imports: [
+      providers: [
+        { provide: AuthService, useValue: new _AuthService() }
       ]
     })
       .compileComponents();

@@ -24,6 +24,8 @@ describe('GuestNavbarComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         GuestNavbarComponent,
+      ],
+      providers: [
         { provide: AuthService, useValue: authenServiceSpy },
         { provide: Router, useValue: routerMock },
         {

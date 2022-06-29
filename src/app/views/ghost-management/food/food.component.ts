@@ -61,10 +61,10 @@ export class FoodComponent implements OnInit {
   }
 
   searchMeal() {
-    this.getMyMeal();
+    this._getMyMeal();
   }
 
-  getMyMeal() {
+  _getMyMeal() {
     const value = this.searchDate && this.searchDate.value || new Date();
     const fromDate = dateFns.startOfDay(value);
     const toDate = dateFns.endOfDay(value);
@@ -91,7 +91,7 @@ export class FoodComponent implements OnInit {
       .subscribe((res: any) => {
         this.data[index] = res;
         // update to debouce call api
-        this.getMyMeal();
+        this._getMyMeal();
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
@@ -109,7 +109,7 @@ export class FoodComponent implements OnInit {
         .subscribe((_: any) => {
           this.data.pop();
           // update to debouce call api
-          this.getMyMeal();
+          this._getMyMeal();
           this.isLoadingResults = false;
         }, err => {
           this.isLoadingResults = false;
@@ -126,7 +126,7 @@ export class FoodComponent implements OnInit {
         .subscribe((_: any) => {
           // this.data.pop();
           // update to debouce call api
-          this.getMyMeal();
+          this._getMyMeal();
           this.isLoadingResults = false;
         }, err => {
           this.isLoadingResults = false;
