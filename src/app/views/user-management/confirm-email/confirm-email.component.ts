@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '@app/_services/auth.service';
-import { NavigationService } from '@app/_services/navigation.service';
-import { showNoti } from '@app/_shares/common';
+import { NavigationService, AuthService } from '@services/_index';
+import { showNoti } from '@shares/common';
 
 @Component({
   selector: 'confirm-email',

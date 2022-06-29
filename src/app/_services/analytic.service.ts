@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
-import { AccessLog } from '@app/_models/accesslog';
+import { AccessLog } from '@models/_index';
 
 const apiUrl = environment.apiUrl + '/api/analytic';
 

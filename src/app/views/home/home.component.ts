@@ -11,8 +11,9 @@ export class HomeComponent implements OnInit {
   isLoadingResults = true;
   thisYear = (new Date).getFullYear();
 
-  constructor(private api: HomeService,
-    private authService: AuthService) {
+  constructor(
+    private authService: AuthService
+    ) {
   }
 
   ngOnInit() {

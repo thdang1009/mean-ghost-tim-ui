@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserService } from '@services/_index';
 
 import { UserListComponent } from './user-list.component';
 
@@ -7,8 +8,12 @@ describe('UserListComponent', () => {
   let fixture: ComponentFixture<UserListComponent>;
 
   beforeEach(async () => {
+    const userServiceSpy = jasmine.createSpyObj('UserService', ['getUsers']);
     await TestBed.configureTestingModule({
-      declarations: [ UserListComponent ]
+      declarations: [ UserListComponent ],
+      providers: [
+        { provide: UserService, useValue: userServiceSpy}
+      ]
     })
     .compileComponents();
   });

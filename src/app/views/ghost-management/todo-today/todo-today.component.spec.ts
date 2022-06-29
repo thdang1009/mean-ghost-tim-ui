@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { JobService, TodoTodayService } from '@services/_index';
 
 import { TodoTodayComponent } from './todo-today.component';
 
@@ -8,7 +9,16 @@ describe('TodoTodayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TodoTodayComponent]
+      declarations: [
+        TodoTodayComponent,
+        { provide: TodoTodayService, useValue: {} },
+        { provide: JobService, useValue: {} },
+      ],
+      imports: [
+
+        TodoTodayService,
+        JobService,
+      ]
     })
       .compileComponents();
   }));

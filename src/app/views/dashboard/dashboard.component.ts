@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AnalyticService } from '@app/_services/analytic.service';
-import { TodoTodayService } from '@app/_services/todo-today.service';
-import { UserService } from '@app/_services/user.service';
-import { IssueService } from '@app/_services/_index';
-import { nextStatus, showNoti } from '@app/_shares/common';
+import { IssueService, AnalyticService, UserService, TodoTodayService } from '@services/_index';
+import { nextStatus, showNoti } from '@shares/common';
 import * as Chartist from 'chartist';
 import * as dateFns from 'date-fns';
 import { Observable } from 'rxjs/internal/Observable';

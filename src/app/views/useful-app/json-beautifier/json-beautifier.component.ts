@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ExampleJSON } from '@app/_helpers/fake.data';
-import { showNoti } from '@app/_shares/common';
-import { SAVED_JSON, SAVED_JSON_2 } from '@app/_shares/constant';
+import { ExampleJSON } from '@helpers/fake.data';
+import { showNoti } from '@shares/common';
+import { SAVED_JSON, SAVED_JSON_2 } from '@shares/constant';
 import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
 import diff from 'diff-sequences';
 

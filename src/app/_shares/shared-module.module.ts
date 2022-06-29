@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { AutosizeModule } from 'ngx-autosize';
-import { ScoreToTierPipe, SimpleTimePipe, TimeAgoPipe } from '@app/_pipes/_index';
+import { ScoreToTierPipe, SimpleTimePipe, TimeAgoPipe } from '@pipes/_index';
 import { MatDialogModule } from '@angular/material/dialog';
 
 

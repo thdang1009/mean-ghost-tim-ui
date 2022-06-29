@@ -6,3 +6,6 @@ export * from './note.service';
 export * from './todo-today.service';
 export * from './meal.service';
 export * from './issue.service';
+export * from './user.service';
+export * from './analytic.service';
+export * from './navigation.service';

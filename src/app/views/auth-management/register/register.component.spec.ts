@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertService, AuthService } from '@services/_index';
 
 import { RegisterComponent } from './register.component';
 
@@ -7,10 +10,23 @@ describe('RegisterComponent', () => {
   let fixture: ComponentFixture<RegisterComponent>;
 
   beforeEach(async(() => {
+    const alertServiceSpy = jasmine.createSpyObj('AlertService', ['error']);
+    const authenServiceSpy = jasmine.createSpyObj('AuthService', ['register']);
+    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
     TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      providers: [
+        FormBuilder,
+        { provide: AlertService, useValue: alertServiceSpy },
+        { provide: AuthService, useValue: authenServiceSpy },
+        { provide: Router, useValue: routerSpy },
+      ],
+      declarations: [
+        RegisterComponent,
+      ],
+      imports: [
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

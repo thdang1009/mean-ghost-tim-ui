@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { TodoToday } from '@models/todo-today';
+import { TodoToday } from '@models/_index';
 import { environment } from '@environments/environment';
 import { buildQueryString } from '@shares/common';
 

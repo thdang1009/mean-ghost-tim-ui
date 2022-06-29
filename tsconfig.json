@@ -45,6 +45,9 @@
       "@views/*": [
         "app/views/*"
       ],
+      "@reuse/*": [
+        "app/reuse/*"
+      ],
       "@environments/*": [
         "environments/*"
       ]

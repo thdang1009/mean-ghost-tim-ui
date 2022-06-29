@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ExampleJSON2 } from '@app/_helpers/fake.data';
-import { showNoti } from '@app/_shares/common';
-import { SAVED_JSON_EXCEL, SAVED_JSON_EXCEL_2 } from '@app/_shares/constant';
+import { ExampleJSON2 } from '@helpers/fake.data';
+import { showNoti } from '@shares/common';
+import { SAVED_JSON_EXCEL, SAVED_JSON_EXCEL_2 } from '@shares/constant';
 import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
 import { NgxFileDropEntry } from 'ngx-file-drop';
 import * as XLSX from 'xlsx';

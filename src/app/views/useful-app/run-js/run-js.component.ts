@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ExampleCode } from '@app/_helpers/fake.data';
-import { showNoti } from '@app/_shares/common';
-import { SAVED_CODE } from '@app/_shares/constant';
+import { ExampleCode } from '@helpers/fake.data';
+import { showNoti } from '@shares/common';
+import { SAVED_CODE } from '@shares/constant';
 import { CodeModel } from '@ngstack/code-editor';
 @Component({
   selector: 'run-js',

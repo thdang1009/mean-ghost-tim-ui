@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '@app/_services/_index';
-import { isInPDFView } from '@app/_shares/common';
+import { AuthService } from '@services/_index';
+import { isInPDFView } from '@shares/common';
 
 declare const $: any;
 declare interface RouteInfo {

@@ -4,3 +4,5 @@ export * from './user';
 export * from './meal';
 export * from './book';
 export * from './guest-message';
+export * from './note';
+export * from './accesslog';

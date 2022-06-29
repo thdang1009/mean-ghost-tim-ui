@@ -2,9 +2,9 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { showNoti } from '@app/_shares/common';
-import { Note } from '@models/note';
-import { NoteService } from '@services/note.service';
+import { showNoti } from '@shares/common';
+import { Note } from '@models/_index';
+import { NoteService } from '@services/_index';
 import * as dateFns from 'date-fns';
 
 @Component({
@@ -54,7 +54,7 @@ export class NoteComponent implements OnInit {
   }
 
   searchNote(id = undefined) {
-    this.getMyNote(id);
+    this._getMyNote(id);
   }
 
   chooseThisItem(item) {
@@ -68,7 +68,7 @@ export class NoteComponent implements OnInit {
       });
   }
 
-  getMyNote(id = undefined) {
+  _getMyNote(id = undefined) {
     const value = this.searchDate && this.searchDate.value || new Date();
     const fromDate = dateFns.startOfDay(value);
     const toDate = dateFns.endOfDay(value);

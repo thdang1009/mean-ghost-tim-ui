@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ExampleText, ExampleText2 } from '@app/_helpers/fake.data';
-import { showNoti } from '@app/_shares/common';
-import { SAVED_TEXT, SAVED_TEXT_2 } from '@app/_shares/constant';
+import { ExampleText, ExampleText2 } from '@helpers/fake.data';
+import { showNoti } from '@shares/common';
+import { SAVED_TEXT, SAVED_TEXT_2 } from '@shares/constant';
 import { es } from 'date-fns/locale';
 import diff from 'diff-sequences';
 

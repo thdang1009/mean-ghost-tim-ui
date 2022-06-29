@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { isInPDFView } from '@app/_shares/common';
-import { AuthService } from '@services/auth.service';
+import { isInPDFView } from '@shares/common';
+import { AuthService } from '@services/_index';
 // import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { ROUTES } from '../guest-sidebar/guest-sidebar.component';
 @Component({

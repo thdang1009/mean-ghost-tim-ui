@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserService } from '@services/_index';
 
 import { AboutMeComponent } from './about-me.component';
 
@@ -8,7 +9,13 @@ describe('AboutMeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AboutMeComponent ]
+      declarations: [
+        AboutMeComponent,
+        { provide: UserService, useValue: {} }
+      ],
+      imports: [
+        UserService
+      ]
     })
     .compileComponents();
   });

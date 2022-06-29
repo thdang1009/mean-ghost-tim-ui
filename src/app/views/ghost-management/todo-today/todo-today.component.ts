@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { TodoTodayService } from '@services/todo-today.service';
-import { TodoToday } from '@models/todo-today';
+import { TodoToday } from '@models/_index';
 import * as dateFns from 'date-fns';
-import { JobService } from '@services/job.service';
+import { JobService, TodoTodayService } from '@services/_index';
 import { isImportant, nextStatus, previousStatus, showNoti } from '@shares/common';
 import { DEBOUCE_TIME } from '@shares/constant';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';

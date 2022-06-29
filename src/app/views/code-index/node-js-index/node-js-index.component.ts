@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PDF_ASSETS_PATH } from '@app/_shares/constant';
+import { PDF_ASSETS_PATH } from '@shares/constant';
 
 @Component({
   selector: 'node-js-index',

@@ -10,7 +10,6 @@ import { SharedModuleModule } from '@shares/shared-module.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ReuseComponentModule } from '@app/_reuse/reuse.module';
 
-
 @NgModule({
   declarations: [
     MoneyComponent,

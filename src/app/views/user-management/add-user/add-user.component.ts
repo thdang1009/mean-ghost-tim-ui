@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
-import { User } from '@models/user';
-import { AlertService } from '@services/alert.service';
-import { UserService } from '@services/user.service';
+import { User } from '@models/_index';
+import { UserService, AlertService } from '@services/_index';
 import { showNoti } from '@shares/common';
 
 /** Error when invalid control is dirty, touched, or submitted. */

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MealService } from '@services/_index';
 import { FoodComponent } from './food.component';
 
 describe('FoodComponent', () => {
@@ -8,9 +8,15 @@ describe('FoodComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FoodComponent ]
+      declarations: [
+        FoodComponent,
+        { provide: MealService, useValue: {} },
+      ],
+      imports: [
+
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

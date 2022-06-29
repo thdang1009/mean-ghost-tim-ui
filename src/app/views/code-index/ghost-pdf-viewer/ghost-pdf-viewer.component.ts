@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PDF_OBJ } from '@app/_shares/constant';
+import { PDF_OBJ } from '@shares/constant';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 
 /*

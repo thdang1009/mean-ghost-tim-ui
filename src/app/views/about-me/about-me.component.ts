@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { UserService } from '@app/_services/user.service';
-import { showNoti } from '@app/_shares/common';
+import { UserService } from '@services/_index';
+import { showNoti } from '@shares/common';
 
 @Component({
   selector: 'about-me',
