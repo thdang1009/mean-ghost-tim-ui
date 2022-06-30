@@ -31,7 +31,8 @@ export class GuestNavbarComponent implements OnInit {
     this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     this.router.events.subscribe((event) => {
       this.sidebarClose();
-      const $layer: any = document.getElementsByClassName('close-layer')[0];
+      /* tslint:disable-next-line */
+      var $layer: any = document.getElementsByClassName('close-layer')[0];
       if ($layer) {
         $layer.remove();
         this.mobile_menu_visible = 0;
@@ -77,7 +78,8 @@ export class GuestNavbarComponent implements OnInit {
   sidebarToggle() {
     // const toggleButton = this.toggleButton;
     // const body = document.getElementsByTagName('body')[0];
-    const $toggle = document.getElementsByClassName('navbar-toggler')[0];
+    /* tslint:disable-next-line */
+    var $toggle = document.getElementsByClassName('navbar-toggler')[0];
 
     if (this.sidebarVisible === false) {
       this.sidebarOpen();
@@ -89,7 +91,9 @@ export class GuestNavbarComponent implements OnInit {
     if (this.mobile_menu_visible === 1) {
       // $('html').removeClass('nav-open');
       body.classList.remove('nav-open');
+      /* tslint:disable-next-line */
       if ($layer) {
+        /* tslint:disable-next-line */
         $layer.remove();
       }
       setTimeout(function () {
@@ -102,7 +106,8 @@ export class GuestNavbarComponent implements OnInit {
         $toggle.classList.add('toggled');
       }, 430);
 
-      const $layer = document.createElement('div');
+      /* tslint:disable-next-line */
+      var $layer = document.createElement('div');
       $layer.setAttribute('class', 'close-layer');
 
 
