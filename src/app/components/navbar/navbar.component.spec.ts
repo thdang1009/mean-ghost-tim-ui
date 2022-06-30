@@ -4,7 +4,7 @@ import { NavbarComponent } from './navbar.component';
 import { Router, RouterEvent } from '@angular/router';
 import { ElementRef } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
-//ElementRef
+// ElementRef
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;

@@ -38,8 +38,8 @@ export class RunJsComponent implements OnInit, OnDestroy {
     const handleFunction = this.handleCmdSave.bind(this);
     // showNoti('Command + S to run code', 'info');
     (function () {
-      var timer;
-      var metaflag = false;
+      let timer;
+      let metaflag = false;
       document.addEventListener('keydown', function (event) {
         if (event.ctrlKey || event.metaKey || event.which === 19) {
           //      ctrl           cmd(mac)         break/pause key(?)
@@ -72,7 +72,7 @@ export class RunJsComponent implements OnInit, OnDestroy {
 
   handleCmdSave() {
     this.isLoadingResults = true;
-    let code = this.codeModel.value;
+    const code = this.codeModel.value;
     const myJoin = (arr) => {
       return arr.map(el => (typeof el === 'object' || el === undefined) ? JSON.stringify(el) : el).join(' ');
     }
@@ -91,8 +91,7 @@ export class RunJsComponent implements OnInit, OnDestroy {
       // store.forEach(value => window[funcName](value));
       console.log = window[funcName];
       this.saveOnLocal();
-    }
-    catch (e) {
+    } catch (e) {
       showNoti(e, 'danger');
     }
     this.isLoadingResults = false;

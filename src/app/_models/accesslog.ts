@@ -1,4 +1,4 @@
-//AccessLog
+// AccessLog
 export class AccessLog {
   id?: String;
   browser?: String;

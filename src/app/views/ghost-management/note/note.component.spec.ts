@@ -24,7 +24,7 @@ class _NoteService extends AbstractMockObservableService {
 describe('NoteComponent', () => {
   let component: NoteComponent;
   let fixture: ComponentFixture<NoteComponent>;
-  
+
   let routerEventReplaySubject: ReplaySubject<RouterEvent>;
   let routerMock;
 

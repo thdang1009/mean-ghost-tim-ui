@@ -20,7 +20,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   contactForm: FormGroup;
   heights = [];
   yearOlds: number;
-  currentActive: number = 0;
+  currentActive = 0;
   debounceID = undefined;
   // intervalID = undefined;
   arrString = ['A Fullstack Web Engineer', 'A Javascript Lover', 'A Minimalist', 'A Book Reviewer'];
@@ -104,9 +104,9 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   }
 
   openAD() {
-    window.open('https://ad.zalopay.vn', "_blank");
+    window.open('https://ad.zalopay.vn', '_blank');
   }
   openMC() {
-    window.open('https://mc.zalopay.vn', "_blank");
+    window.open('https://mc.zalopay.vn', '_blank');
   }
 }

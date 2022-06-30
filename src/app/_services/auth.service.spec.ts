@@ -8,7 +8,7 @@ describe('AuthService', () => {
   let injector: TestBed;
   let service: AuthService;
   let httpMock: HttpTestingController;
-  let mockRouter = {
+  const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
   beforeEach(() => TestBed.configureTestingModule({

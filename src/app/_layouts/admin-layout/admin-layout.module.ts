@@ -32,7 +32,6 @@ import { ReuseComponentModule } from '@app/_reuse/reuse.module';
     DashboardComponent,
   ],
   providers: [
-    
   ]
 })
 

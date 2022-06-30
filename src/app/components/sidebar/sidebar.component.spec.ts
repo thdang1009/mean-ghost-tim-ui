@@ -8,6 +8,7 @@ import { AbstractMockObservableService } from '@helpers/mockservice.service';
 import { EventEmitter } from '@angular/core';
 
 class _AuthService extends AbstractMockObservableService {
+  isLoggedIn = new EventEmitter<any>();
   isLogin() {
     return this;
   }
@@ -26,13 +27,12 @@ class _AuthService extends AbstractMockObservableService {
   logout() {
     return this;
   }
-  isLoggedIn = new EventEmitter<any>();
 }
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
   let fixture: ComponentFixture<SidebarComponent>;
-  
+
   let routerEventReplaySubject: ReplaySubject<RouterEvent>;
   let routerMock;
 

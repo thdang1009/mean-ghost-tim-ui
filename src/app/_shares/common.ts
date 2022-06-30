@@ -16,7 +16,7 @@ export function showNotification(from, align, content, type) {
   // const type = ['','info','success','warning','danger'];
 
   $.notify({
-    icon: "notifications",
+    icon: 'notifications',
     message: content
 
   }, {
@@ -40,11 +40,12 @@ export function showNotification(from, align, content, type) {
 }
 export function buildQueryString(object) {
   const str = [];
-  for (let p in object)
+  for (const p in object) {
     if (object.hasOwnProperty(p) && object[p]) {
-      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(object[p]));
+      str.push(encodeURIComponent(p) + '=' + encodeURIComponent(object[p]));
     }
-  return str.join("&");
+  }
+  return str.join('&');
 }
 export function isImportant(content) {
   return content.includes('**');

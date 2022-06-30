@@ -27,7 +27,7 @@ describe('AddUserComponent', () => {
         { provide: AlertService, useValue: alertServiceSpy },
         { provide: Router, useValue: routerMock },
         { provide: UserService, useValue: userServiceSpy}
-        
+
       ]
     })
       .compileComponents();

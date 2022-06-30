@@ -16,7 +16,7 @@ export class NoteComponent implements OnInit {
 
   data: Note[] = [];
   isLoadingResults = true;
-  
+
   today = dateFns.startOfToday();
   searchDate = new FormControl(this.today);
   // searchDateDisplay = 'ToDay';
@@ -60,7 +60,7 @@ export class NoteComponent implements OnInit {
   chooseThisItem(item) {
     this.itemSelected = item;
     this.router.navigate(
-      [], 
+      [],
       {
         relativeTo: this.activatedRoute,
         queryParams: { id: item.id },
@@ -137,7 +137,7 @@ export class NoteComponent implements OnInit {
   back() {
     this.itemSelected = undefined;
     this.router.navigate(
-      [], 
+      [],
       {
         relativeTo: this.activatedRoute,
         queryParams: { id: null },

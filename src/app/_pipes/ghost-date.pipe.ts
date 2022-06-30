@@ -1,4 +1,4 @@
-import { OnDestroy, Pipe, PipeTransform } from "@angular/core";
+import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import * as dateFns from 'date-fns';
 

@@ -12,7 +12,7 @@ const apiUrl = environment.apiUrl + '/api/public';
 export class HomeService {
 
   constructor(private http: HttpClient) { }
-  // 
+  //
   //   getCategories(): Observable<Category[]> {
   //     return this.http.get<Category[]>(apiUrl + '/category')
   //       .pipe(
@@ -20,7 +20,7 @@ export class HomeService {
   //         catchError(this.handleError('getCategories', []))
   //       );
   //   }
-  // 
+  //
   //   getPosts(): Observable<Post[]> {
   //     return this.http.get<Post[]>(apiUrl + '/post')
   //       .pipe(
@@ -28,7 +28,7 @@ export class HomeService {
   //         catchError(this.handleError('getPosts', []))
   //       );
   //   }
-  // 
+  //
   //   getPostsByCategory(id: any): Observable<Post[]> {
   //     return this.http.get<Post[]>(apiUrl + '/bycategory/' + id)
   //       .pipe(
@@ -36,7 +36,7 @@ export class HomeService {
   //         catchError(this.handleError('getPosts', []))
   //       );
   //   }
-  // 
+  //
   //   getPost(id: any): Observable<Post> {
   //     return this.http.get<Post>(apiUrl + '/post/' + id).pipe(
   //       tap(_ => console.log(`fetched post by id=${id}`)),

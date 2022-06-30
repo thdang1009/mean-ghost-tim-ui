@@ -11,7 +11,7 @@ describe('FooterComponent', () => {
     const alertServiceSpy = jasmine.createSpyObj('AlertService', ['error', 'info']);
     const authenServiceSpy = jasmine.createSpyObj('AuthService', ['isLogin']);
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         FooterComponent,
       ],
       providers: [

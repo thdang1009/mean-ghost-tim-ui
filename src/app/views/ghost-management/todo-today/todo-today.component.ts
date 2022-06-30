@@ -25,6 +25,8 @@ export class TodoTodayComponent implements OnInit {
   searchStatus = 'NONE';
   statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];
   count = 0;
+  nextStatus = nextStatus;
+  previousStatus = previousStatus;
 
   constructor(
     private todoTodayService: TodoTodayService,
@@ -75,8 +77,6 @@ export class TodoTodayComponent implements OnInit {
         this.isLoadingResults = false;
       });
   }
-  nextStatus = nextStatus;
-  previousStatus = previousStatus;
 
   updateStatus(item, index) {
     const req = {

@@ -11,7 +11,7 @@ export class TableLoadingComponent implements OnInit {
   loadingOpacity = 1;
   constructor() {
     // this.height = {
-    //   'xl': 1, 
+    //   'xl': 1,
     //   'md': 2,
     //   'sm': 3,
     // }[this.size];

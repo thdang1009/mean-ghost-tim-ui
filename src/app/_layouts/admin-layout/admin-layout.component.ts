@@ -4,7 +4,7 @@ import 'rxjs/add/operator/filter';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
-import * as $ from "jquery";
+import * as $ from 'jquery';
 
 @Component({
     selector: 'app-admin-layout',
@@ -36,14 +36,16 @@ export class AdminLayoutComponent implements OnInit {
         });
         this.router.events.subscribe((event: any) => {
             if (event instanceof NavigationStart) {
-                if (event.url != this.lastPoppedUrl)
+                if (event.url != this.lastPoppedUrl) {
                     this.yScrollStack.push(window.scrollY);
+                }
             } else if (event instanceof NavigationEnd) {
                 if (event.url == this.lastPoppedUrl) {
                     this.lastPoppedUrl = undefined;
                     window.scrollTo(0, this.yScrollStack.pop());
-                } else
+                } else {
                     window.scrollTo(0, 0);
+                }
             }
         });
         this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
@@ -56,9 +58,9 @@ export class AdminLayoutComponent implements OnInit {
         }
 
         const window_width = $(window).width();
-        let $sidebar = $('.sidebar');
-        let $sidebar_responsive = $('body > .navbar-collapse');
-        let $sidebar_img_container = $sidebar.find('.sidebar-background');
+        const $sidebar = $('.sidebar');
+        const $sidebar_responsive = $('body > .navbar-collapse');
+        const $sidebar_img_container = $sidebar.find('.sidebar-background');
 
 
         if (window_width > 767) {
@@ -73,21 +75,20 @@ export class AdminLayoutComponent implements OnInit {
             if ($(this).hasClass('switch-trigger')) {
                 if (event.stopPropagation) {
                     event.stopPropagation();
-                }
-                else if (window.event) {
+                } else if (window.event) {
                     window.event.cancelBubble = true;
                 }
             }
         });
 
         $('.fixed-plugin .badge').click(function () {
-            let $full_page_background = $('.full-page-background');
+            const $full_page_background = $('.full-page-background');
 
 
             $(this).siblings().removeClass('active');
             $(this).addClass('active');
 
-            var new_color = $(this).data('color');
+            const new_color = $(this).data('color');
 
             if ($sidebar.length !== 0) {
                 $sidebar.attr('data-color', new_color);
@@ -99,13 +100,13 @@ export class AdminLayoutComponent implements OnInit {
         });
 
         $('.fixed-plugin .img-holder').click(function () {
-            let $full_page_background = $('.full-page-background');
+            const $full_page_background = $('.full-page-background');
 
             $(this).parent('li').siblings().removeClass('active');
             $(this).parent('li').addClass('active');
 
 
-            var new_image = $(this).find("img").attr('src');
+            const new_image = $(this).find('img').attr('src');
 
             if ($sidebar_img_container.length != 0) {
                 $sidebar_img_container.fadeOut('fast', function () {
@@ -131,12 +132,11 @@ export class AdminLayoutComponent implements OnInit {
         this.runOnRouteChange();
     }
     isMaps(path) {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
+        let titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice(1);
         if (path == titlee) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }

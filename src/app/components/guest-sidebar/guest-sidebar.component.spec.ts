@@ -8,7 +8,7 @@ import { GuestSidebarComponent } from './guest-sidebar.component';
 describe('GuestSidebarComponent', () => {
   let component: GuestSidebarComponent;
   let fixture: ComponentFixture<GuestSidebarComponent>;
-  
+
   let routerEventReplaySubject: ReplaySubject<RouterEvent>;
   let routerMock;
 

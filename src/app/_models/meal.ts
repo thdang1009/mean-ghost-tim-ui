@@ -1,4 +1,4 @@
-//Meal
+// Meal
 export class Meal {
   id?: Number;
   createTime?: Date;

@@ -1,4 +1,4 @@
-//Book
+// Book
 export class Book {
     id?: Number;
     createTime?: Date;
@@ -9,4 +9,4 @@ export class Book {
     slot: Number; // 1, 2, 3
     updateTime?: Date;
   }
-  
+

@@ -54,7 +54,7 @@ export class MealService {
       catchError(this.handleError<any>('updateMeal'))
     );
   }
-  
+
   deleteMeal(id: any): Observable<Meal> {
     const url = `${apiUrl}/${id}`;
     return this.http.delete<Meal>(url).pipe(

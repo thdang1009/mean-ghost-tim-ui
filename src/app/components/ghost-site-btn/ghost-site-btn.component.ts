@@ -6,16 +6,16 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./ghost-site-btn.component.css']
 })
 export class GhostSiteBtnComponent implements OnInit {
-  @Input() link: string = '';
+  @Input() link = '';
   @Input() type: typeBtn = 'btn';
-  @Input() width: string = '';
-  @Input() height: string = '';
-  @Input() paddingLeft: string = '';
-  @Input() boldText: boolean = true;
-  @Input() active?: boolean = false;
+  @Input() width = '';
+  @Input() height = '';
+  @Input() paddingLeft = '';
+  @Input() boldText = true;
+  @Input() active = false;
   @Output() callback = new EventEmitter<boolean>();
 
-  commonClass: string = `
+  commonClass = `
   hover:no-underline
   focus:no-underline
   flex
@@ -26,17 +26,17 @@ export class GhostSiteBtnComponent implements OnInit {
   whitespace-nowrap
   `
 
-  linkClass: string = `
+  linkClass = `
   hover:text-blue
   rounded-none`;
 
-  btnClass: string = `
-  bg-blue 
+  btnClass = `
+  bg-blue
   text-white
   lift
   `;
 
-  outlineClass: string = `
+  outlineClass = `
   bg-white
   !text-blue
   hover:text-blue

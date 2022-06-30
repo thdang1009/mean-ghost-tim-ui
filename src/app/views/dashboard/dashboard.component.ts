@@ -191,7 +191,7 @@ export class DashboardComponent implements OnInit {
       }, (err) => {
         console.log(err);
         showNoti(`getStoragedSpace fail!`, 'danger');
-      });;
+      }); ;
   }
 
   getTotalAccess() {
@@ -201,7 +201,7 @@ export class DashboardComponent implements OnInit {
       }, (err) => {
         console.log(err);
         showNoti(`Get total access fail!`, 'danger');
-      });;
+      }); ;
   }
 
   getMyUser() {

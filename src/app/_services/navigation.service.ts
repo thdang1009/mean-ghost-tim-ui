@@ -8,7 +8,7 @@ export class NavigationService {
     constructor(
         private router: Router
     ) { }
-  
+
     gotoHome() {
         this.router.navigate(['home']);
     }

@@ -6,9 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class UnitConversionPipe implements PipeTransform {
   config = {
     'B': 1,
-    'kB': 1 * 2**10,
-    'MB': 1 * 2**10 * 2**10,
-    'GB': 1 * 2**10 * 2**10 * 2**10
+    'kB': 1 * 2 ** 10,
+    'MB': 1 * 2 ** 10 * 2 ** 10,
+    'GB': 1 * 2 ** 10 * 2 ** 10 * 2 ** 10
   }
 
   transform(value: any, ...args: any[]): number {

@@ -34,7 +34,7 @@ describe('GuestNavbarComponent', () => {
             params: of({ id: 123 })
           }
         },
-        
+
         { provide: ElementRef, useClass: MockElementRef }
       ]
     })

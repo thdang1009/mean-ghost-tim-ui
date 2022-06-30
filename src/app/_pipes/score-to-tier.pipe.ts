@@ -1,4 +1,4 @@
-import { OnDestroy, Pipe, PipeTransform } from "@angular/core";
+import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
     name: 'scoreToTier',

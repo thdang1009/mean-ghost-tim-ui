@@ -23,7 +23,7 @@ export class ConfirmEmailComponent implements OnInit {
         showNoti(`Confirm email successfully!`, 'success');
         this.navigationService.gotoHome();
       }, err => {
-        
+
         console.log(err);
         showNoti(`Confirm fail ${err}`, 'danger');
       });

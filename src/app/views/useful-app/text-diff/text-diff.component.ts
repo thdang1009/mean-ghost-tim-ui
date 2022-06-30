@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ExampleText, ExampleText2 } from '@helpers/fake.data';
 import { showNoti } from '@shares/common';
 import { SAVED_TEXT, SAVED_TEXT_2 } from '@shares/constant';
-import { es } from 'date-fns/locale';
 import diff from 'diff-sequences';
 
 @Component({
@@ -123,12 +122,12 @@ export class TextDiffComponent implements OnInit {
   }
   onScroll1(e) {
     // change it to angular and element is 1
-    var scrollTop = this.text1.nativeElement.scrollTop;
+    const scrollTop = this.text1.nativeElement.scrollTop;
     this.backdrop1.nativeElement.scrollTop = scrollTop ;
   }
   onScroll2(e) {
     // change it to angular and element is 2
-    var scrollTop = this.text2.nativeElement.scrollTop;
+    const scrollTop = this.text2.nativeElement.scrollTop;
     this.backdrop2.nativeElement.scrollTop = scrollTop;
   }
 }

@@ -25,6 +25,11 @@ export class JsonExcelComponent implements OnInit {
 
   isLoadingResults = false;
 
+  // drag and drop zone
+
+  public files: NgxFileDropEntry[] = [];
+  private file: Blob;
+
   StringToReadableObject(s: string) {
     return JSON.parse(s);
   }
@@ -62,7 +67,7 @@ export class JsonExcelComponent implements OnInit {
     try {
       localStorage.setItem(SAVED_JSON_EXCEL, JSON.stringify(this.visibleData));
       localStorage.setItem(SAVED_JSON_EXCEL_2, JSON.stringify(this.visibleData2));
-    } catch(e) {
+    } catch (e) {
       showNoti('Lỗi lưu local: ' + e, 'danger');
     }
   }
@@ -75,13 +80,13 @@ export class JsonExcelComponent implements OnInit {
     }
   }
   formatJSONArray(jsonObject) {
-    let result = jsonObject;
+    const result = jsonObject;
     if (!Array.isArray(result)) {
-      throw ('Để cái mảng vô pa ơi');
+      throw new Error(('Để cái mảng vô pa ơi'));
     }
 
     return result.map(item => {
-      for (let prop in item) {
+      for (const prop in item) {
         if (item.hasOwnProperty(prop)) {
           if (Array.isArray(item[prop] || typeof item[prop] === 'object')) {
             item[prop] = JSON.stringify(item[prop]);
@@ -105,7 +110,7 @@ export class JsonExcelComponent implements OnInit {
       /* generate workbook and add the worksheet */
       const wb: XLSX.WorkBook = XLSX.utils.book_new();
       /* json to sheet */
-      var ws = XLSX.utils.json_to_sheet(formatedJSON);
+      const ws = XLSX.utils.json_to_sheet(formatedJSON);
       /* book add sheet */
       XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
       /* save to file */
@@ -136,11 +141,6 @@ export class JsonExcelComponent implements OnInit {
     reader.readAsBinaryString(this.file);
   }
 
-  // drag and drop zone
-
-  public files: NgxFileDropEntry[] = [];
-  private file: Blob;
-
   public dropped(files: NgxFileDropEntry[]) {
     this.files = files;
     for (const droppedFile of files) {
@@ -159,12 +159,12 @@ export class JsonExcelComponent implements OnInit {
           // You could upload it like this:
           const formData = new FormData()
           formData.append('logo', file, relativePath)
- 
+
           // Headers
           const headers = new HttpHeaders({
             'security-token': 'mytoken'
           })
- 
+
           this.http.post('https://mybackend.com/api/upload/sanitize-and-save-logo', formData, { headers: headers, responseType: 'blob' })
           .subscribe(data => {
             // Sanitized logo returned from backend
