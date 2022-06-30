@@ -6,7 +6,7 @@ import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
 import diff from 'diff-sequences';
 
 @Component({
-  selector: 'json-beautifier',
+  selector: 'app-json-beautifier',
   templateUrl: './json-beautifier.component.html',
   styleUrls: ['./json-beautifier.component.scss']
 })

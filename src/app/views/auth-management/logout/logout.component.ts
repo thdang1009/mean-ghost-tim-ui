@@ -3,7 +3,7 @@ import { AuthService } from '@services/_index';
 import { showNoti } from '@shares/common';
 
 @Component({
-  selector: 'logout',
+  selector: 'app-logout',
   templateUrl: './logout.component.html',
   styleUrls: ['./logout.component.scss']
 })

@@ -3,7 +3,7 @@ import { AbstractMockObservableService } from '@helpers/mockservice.service';
 import { JobService, TodoTodayService } from '@services/_index';
 
 import { TodoTodayComponent } from './todo-today.component';
-class _TodoTodayService extends AbstractMockObservableService {
+class MockTodoTodayService extends AbstractMockObservableService {
   addTodoToday() {
     return this;
   }
@@ -17,7 +17,7 @@ class _TodoTodayService extends AbstractMockObservableService {
     return this;
   }
 }
-class _JobService extends AbstractMockObservableService {
+class MockJobService extends AbstractMockObservableService {
   runJobManually() {
     return this;
   }
@@ -34,10 +34,10 @@ describe('TodoTodayComponent', () => {
       ],
       providers: [
         {
-          provide: TodoTodayService, useValue: new _TodoTodayService()
+          provide: TodoTodayService, useValue: new MockTodoTodayService()
         },
         {
-          provide: JobService, useValue: new _JobService()
+          provide: JobService, useValue: new MockJobService()
         },
       ]
     })

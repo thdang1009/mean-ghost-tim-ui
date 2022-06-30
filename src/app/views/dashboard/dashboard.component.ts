@@ -267,7 +267,7 @@ export class DashboardComponent implements OnInit {
       this.todoTodayService.deleteTodoToday(id)
         .subscribe((_: any) => {
           this.loadingTDTD[index] = false;
-          this.tdtds = this.tdtds.filter(el => el.id != id);
+          this.tdtds = this.tdtds.filter(el => el.id !== id);
         }, err => {
           this.loadingTDTD[index] = false;
         });

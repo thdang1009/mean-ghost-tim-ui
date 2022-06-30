@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PDF_ASSETS_PATH } from '@shares/constant';
 
 @Component({
-  selector: 'mongodb-index',
+  selector: 'app-mongodb-index',
   templateUrl: './mongodb-index.component.html',
   // styleUrls: ['./mongodb-index.component.css']
 })

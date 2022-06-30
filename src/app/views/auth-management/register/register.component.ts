@@ -28,7 +28,12 @@ export class RegisterComponent implements OnInit {
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private alertService: AlertService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({

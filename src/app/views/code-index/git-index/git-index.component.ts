@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PDF_ASSETS_PATH } from '@shares/constant';
 
 @Component({
-  selector: 'git-index',
+  selector: 'app-git-index',
   templateUrl: './git-index.component.html',
   // styleUrls: ['./git-index.component.css']
 })

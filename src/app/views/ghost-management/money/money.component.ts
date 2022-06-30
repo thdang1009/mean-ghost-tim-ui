@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'money',
+  selector: 'app-money',
   templateUrl: './money.component.html',
   styleUrls: ['./money.component.scss']
 })

@@ -128,7 +128,7 @@ export class TodoTodayComponent implements OnInit {
       this.isLoadingResults = true;
       this.todoTodayService.deleteTodoToday(id)
         .subscribe((_: any) => {
-          this.data = this.data.filter(el => el.id != id);
+          this.data = this.data.filter(el => el.id !== id);
           this.isLoadingResults = false;
         }, err => {
           this.isLoadingResults = false;

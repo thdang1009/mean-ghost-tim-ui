@@ -5,17 +5,19 @@ import { PdfViewerComponent } from 'ng2-pdf-viewer';
 
 /*
   - Add loading process => done
-  - Add popup help: lên đầu trang, search, v.v... => done, nếu được thì improve cái search in pdf cho nhiều kết quả chứ đừn đứng yên 1 chỗ như thế
+  - Add popup help: lên đầu trang, search, v.v... => done, nếu được thì
+    improve cái search in pdf cho nhiều kết quả chứ đừn đứng yên 1 chỗ như thế
   - Tính năng mới nhất sẽ là cho phép user (đã đăng nhập) truy cập vào link three-book để upload 3 quyển sách
   - Kéo thả file (tất nhiên là pdf)
   - Upload file đó lên server
   - Mở lên đọc (tất nhiên là từ server), lưu lại last page visit
-  - Có chức năng bỏ sách (đọc dở quá ko thèm đọc nữa), và chức năng done => lưu lại danh sách sách đã đọc => đưa vào admin site
+  - Có chức năng bỏ sách (đọc dở quá ko thèm đọc nữa), và chức năng done
+    => lưu lại danh sách sách đã đọc => đưa vào admin site
 */
 
 
 @Component({
-  selector: 'ghost-pdf-viewer',
+  selector: 'app-ghost-pdf-viewer',
   templateUrl: './ghost-pdf-viewer.component.html',
   styleUrls: ['./ghost-pdf-viewer.component.scss']
 })

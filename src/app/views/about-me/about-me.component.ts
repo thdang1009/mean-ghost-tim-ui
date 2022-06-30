@@ -4,7 +4,7 @@ import { UserService } from '@services/_index';
 import { showNoti } from '@shares/common';
 
 @Component({
-  selector: 'about-me',
+  selector: 'app-about-me',
   templateUrl: './about-me.component.html',
   styleUrls: ['./about-me.component.css']
 })
@@ -41,9 +41,6 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
       message: [null, Validators.required],
 
     });
-  }
-  ngOnDestroy(): void {
-    // clearInterval(this.intervalID);
   }
   ngAfterViewInit(): void {
     this.heights = [

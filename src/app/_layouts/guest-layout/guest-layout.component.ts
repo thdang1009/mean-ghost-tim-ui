@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Location, PopStateEvent } from '@angular/common';
 import 'rxjs/add/operator/filter';
-import { GuestNavbarComponent } from '@app/components/guest-navbar/guest-navbar.component';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
@@ -12,7 +11,7 @@ import * as $ from 'jquery';
     templateUrl: './guest-layout.component.html',
     styleUrls: ['./guest-layout.component.scss']
 })
-export class GuestLayoutComponent implements OnInit {
+export class GuestLayoutComponent implements OnInit, AfterViewInit {
     private _router: Subscription;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
@@ -37,11 +36,11 @@ export class GuestLayoutComponent implements OnInit {
         });
         this.router.events.subscribe((event: any) => {
             if (event instanceof NavigationStart) {
-                if (event.url != this.lastPoppedUrl) {
+                if (event.url !== this.lastPoppedUrl) {
                     this.yScrollStack.push(window.scrollY);
                 }
             } else if (event instanceof NavigationEnd) {
-                if (event.url == this.lastPoppedUrl) {
+                if (event.url === this.lastPoppedUrl) {
                     this.lastPoppedUrl = undefined;
                     window.scrollTo(0, this.yScrollStack.pop());
                 } else {
@@ -72,7 +71,10 @@ export class GuestLayoutComponent implements OnInit {
         }
 
         $('.fixed-plugin a').click(function (event) {
-            // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+            /*
+                Alex if we click on switch, stop propagation of the event,
+                so the dropdown will not be hide, otherwise we set the  section active
+            */
             if ($(this).hasClass('switch-trigger')) {
                 if (event.stopPropagation) {
                     event.stopPropagation();
@@ -95,7 +97,7 @@ export class GuestLayoutComponent implements OnInit {
                 $sidebar.attr('data-color', new_color);
             }
 
-            if ($sidebar_responsive.length != 0) {
+            if ($sidebar_responsive.length !== 0) {
                 $sidebar_responsive.attr('data-color', new_color);
             }
         });
@@ -109,14 +111,14 @@ export class GuestLayoutComponent implements OnInit {
 
             const new_image = $(this).find('img').attr('src');
 
-            if ($sidebar_img_container.length != 0) {
+            if ($sidebar_img_container.length !== 0) {
                 $sidebar_img_container.fadeOut('fast', function () {
                     $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
                     $sidebar_img_container.fadeIn('fast');
                 });
             }
 
-            if ($full_page_background.length != 0) {
+            if ($full_page_background.length !== 0) {
 
                 $full_page_background.fadeOut('fast', function () {
                     $full_page_background.css('background-image', 'url("' + new_image + '")');
@@ -124,7 +126,7 @@ export class GuestLayoutComponent implements OnInit {
                 });
             }
 
-            if ($sidebar_responsive.length != 0) {
+            if ($sidebar_responsive.length !== 0) {
                 $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
             }
         });
@@ -135,7 +137,7 @@ export class GuestLayoutComponent implements OnInit {
     isMaps(path) {
         let titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice(1);
-        if (path == titlee) {
+        if (path === titlee) {
             return false;
         } else {
             return true;

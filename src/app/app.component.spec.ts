@@ -3,7 +3,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { AbstractMockObservableService } from './_helpers/mockservice.service';
 import { AnalyticService } from './_services/analytic.service';
-class _AnalyticService extends AbstractMockObservableService {
+class MockAnalyticService extends AbstractMockObservableService {
   logAccess() {
     return this;
   }
@@ -17,7 +17,7 @@ describe('AppComponent', () => {
       ],
       providers: [
         {
-          provide: AnalyticService, useValue: new _AnalyticService()
+          provide: AnalyticService, useValue: new MockAnalyticService()
         }
       ]
     }).compileComponents();

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
 import { AnalyticService } from './_services/analytic.service';
 
@@ -8,7 +8,7 @@ import { AnalyticService } from './_services/analytic.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public editorOptions: JsonEditorOptions;
   public initialData: any;
   public visibleData: any;
@@ -16,11 +16,6 @@ export class AppComponent {
   constructor(
     private analyticService: AnalyticService
   ) {
-    // this.editorOptions = new JsonEditorOptions()
-    // this.editorOptions.modes = ['code', 'text', 'tree', 'view'];
-
-    // this.initialData = { "products": [{ "name": "car", "product": [{ "name": "honda", "model": [{ "id": "civic", "name": "civic" }, { "id": "accord", "name": "accord" }, { "id": "crv", "name": "crv" }, { "id": "pilot", "name": "pilot" }, { "id": "odyssey", "name": "odyssey" }] }] }] }
-    // this.visibleData = this.initialData;
   }
 
   showJson(d: Event) {

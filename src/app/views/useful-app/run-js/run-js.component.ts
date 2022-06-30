@@ -4,7 +4,7 @@ import { showNoti } from '@shares/common';
 import { SAVED_CODE } from '@shares/constant';
 import { CodeModel } from '@ngstack/code-editor';
 @Component({
-  selector: 'run-js',
+  selector: 'app-run-js',
   templateUrl: './run-js.component.html',
   styleUrls: ['./run-js.component.scss']
 })
@@ -86,6 +86,7 @@ export class RunJsComponent implements OnInit, OnDestroy {
         store.push(joinedValue);
         return value;
       };
+      /* tslint:disable no-eval */
       eval(code);
       this.store = store;
       // store.forEach(value => window[funcName](value));

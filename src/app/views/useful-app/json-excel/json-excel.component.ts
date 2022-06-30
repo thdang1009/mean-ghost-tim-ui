@@ -8,11 +8,11 @@ import * as XLSX from 'xlsx';
 
 
 @Component({
-  selector: 'json-excel',
+  selector: 'app-json-excel',
   templateUrl: './json-excel.component.html',
   styleUrls: ['./json-excel.component.scss']
 })
-export class JsonExcelComponent implements OnInit {
+export class JsonExcelComponent implements OnInit, OnDestroy {
 
   public editorOptions: JsonEditorOptions;
   public editorOptions2: JsonEditorOptions;

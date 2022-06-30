@@ -1,13 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { IssueService } from './issue.service';
 
 describe('IssueService', () => {
 
   beforeEach(() => {
-    let injector: TestBed;
-    let service: IssueService;
-    let httpMock: HttpTestingController;
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule

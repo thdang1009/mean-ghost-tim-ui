@@ -4,7 +4,7 @@ import { NavigationService, AuthService } from '@services/_index';
 import { showNoti } from '@shares/common';
 
 @Component({
-  selector: 'confirm-email',
+  selector: 'app-confirm-email',
   templateUrl: './confirm-email.component.html',
   styleUrls: ['./confirm-email.component.scss']
 })

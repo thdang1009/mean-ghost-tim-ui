@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'three-book-main',
+  selector: 'app-three-book-main',
   templateUrl: './three-book-main.component.html',
   styleUrls: ['./three-book-main.component.scss']
 })

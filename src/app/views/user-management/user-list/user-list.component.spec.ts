@@ -3,7 +3,7 @@ import { AbstractMockObservableService } from '@helpers/mockservice.service';
 import { UserService } from '@services/_index';
 
 import { UserListComponent } from './user-list.component';
-class _UserService extends AbstractMockObservableService {
+class MockUserService extends AbstractMockObservableService {
   getUsers() {
     return this;
   }
@@ -16,7 +16,7 @@ describe('UserListComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ UserListComponent ],
       providers: [
-        { provide: UserService, useValue: new _UserService()}
+        { provide: UserService, useValue: new MockUserService()}
       ]
     })
     .compileComponents();

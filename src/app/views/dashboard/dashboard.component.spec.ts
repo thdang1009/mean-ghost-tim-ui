@@ -8,7 +8,7 @@ import { TodoTodayService } from '@services/todo-today.service';
 import { UserService } from '@services/user.service';
 
 import { DashboardComponent } from './dashboard.component';
-class _TodoTodayService extends AbstractMockObservableService {
+class MockTodoTodayService extends AbstractMockObservableService {
   getMyTodoToday() {
     return this;
   }
@@ -19,7 +19,7 @@ class _TodoTodayService extends AbstractMockObservableService {
     return this;
   }
 }
-class _AnalyticService extends AbstractMockObservableService {
+class MockAnalyticService extends AbstractMockObservableService {
   getStoragedSpace() {
     return this;
   }
@@ -27,12 +27,12 @@ class _AnalyticService extends AbstractMockObservableService {
     return this;
   }
 }
-class _UserService extends AbstractMockObservableService {
+class MockUserService extends AbstractMockObservableService {
   getUsers() {
     return this;
   }
 }
-class _IssueService extends AbstractMockObservableService {
+class MockIssueService extends AbstractMockObservableService {
   getIssues() {
     return this;
   }
@@ -50,11 +50,11 @@ describe('DashboardComponent', () => {
         UnitConversionPipe
       ],
       providers: [
-        { provide: UserService, useValue: new _UserService() },
-        { provide: TodoTodayService, useValue: new _TodoTodayService() },
-        { provide: AnalyticService, useValue: new _AnalyticService() },
+        { provide: UserService, useValue: new MockUserService() },
+        { provide: TodoTodayService, useValue: new MockTodoTodayService() },
+        { provide: AnalyticService, useValue: new MockAnalyticService() },
         { provide: Router, useValue: routerSpy },
-        { provide: IssueService, useValue: new _IssueService() },
+        { provide: IssueService, useValue: new MockIssueService() },
       ]
     })
       .compileComponents();

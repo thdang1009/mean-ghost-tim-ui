@@ -7,7 +7,7 @@ import { RouterEvent, Router } from '@angular/router';
 import { AbstractMockObservableService } from '@helpers/mockservice.service';
 import { EventEmitter } from '@angular/core';
 
-class _AuthService extends AbstractMockObservableService {
+class MockAuthService extends AbstractMockObservableService {
   isLoggedIn = new EventEmitter<any>();
   isLogin() {
     return this;
@@ -44,7 +44,7 @@ describe('SidebarComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ SidebarComponent ],
       providers: [
-        { provide: AuthService, useValue: new _AuthService()},
+        { provide: AuthService, useValue: new MockAuthService()},
         { provide: Router, useValue: routerMock },
       ]
     })

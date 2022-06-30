@@ -3,7 +3,7 @@ import { UserService } from '@services/_index';
 import { showNoti } from '@shares/common';
 
 @Component({
-  selector: 'user-list',
+  selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })

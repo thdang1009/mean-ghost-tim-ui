@@ -3,7 +3,7 @@ import { AbstractMockObservableService } from '@helpers/mockservice.service';
 import { AuthService } from '@services/_index';
 
 import { LogoutComponent } from './logout.component';
-class _AuthService extends AbstractMockObservableService {
+class MockAuthService extends AbstractMockObservableService {
   logout() {
     return this;
   }
@@ -19,7 +19,7 @@ describe('LogoutComponent', () => {
         LogoutComponent,
       ],
       providers: [
-        { provide: AuthService, useValue: new _AuthService() }
+        { provide: AuthService, useValue: new MockAuthService() }
       ]
     })
       .compileComponents();

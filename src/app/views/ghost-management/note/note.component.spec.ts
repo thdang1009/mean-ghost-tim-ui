@@ -6,7 +6,7 @@ import { NoteService } from '@services/_index';
 import { of, ReplaySubject } from 'rxjs';
 
 import { NoteComponent } from './note.component';
-class _NoteService extends AbstractMockObservableService {
+class MockNoteService extends AbstractMockObservableService {
   addNote() {
     return this;
   }
@@ -38,7 +38,7 @@ describe('NoteComponent', () => {
         NoteComponent,
       ],
       providers: [
-        { provide: NoteService, useValue: new _NoteService() },
+        { provide: NoteService, useValue: new MockNoteService() },
 
         { provide: Router, useValue: routerMock },
         {

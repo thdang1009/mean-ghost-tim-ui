@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'ghost-site-btn',
+  selector: 'app-ghost-site-btn',
   templateUrl: './ghost-site-btn.component.html',
   styleUrls: ['./ghost-site-btn.component.css']
 })

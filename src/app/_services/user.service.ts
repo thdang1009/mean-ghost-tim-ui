@@ -61,7 +61,7 @@ export class UserService {
 
   sendGuestMessage(message: any): Observable<GuestMessage> {
     return this.http.post<GuestMessage>(apiUrl + '/guest-message', message).pipe(
-      tap((message: GuestMessage) => console.log(`add guest message= ${message.id}`)),
+      tap((_message: GuestMessage) => console.log(`add guest message= ${_message.id}`)),
       catchError(this.handleError<GuestMessage>('add guest message'))
     );
   }

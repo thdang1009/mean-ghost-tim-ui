@@ -1,12 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NavigationService } from './navigation.service';
 import { Router } from '@angular/router';
 
 describe('NavigationService', () => {
-  let injector: TestBed;
-  let service: NavigationService;
-  let httpMock: HttpTestingController;
   const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };

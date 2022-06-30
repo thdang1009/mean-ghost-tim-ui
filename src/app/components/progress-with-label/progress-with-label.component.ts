@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'progress-with-label',
+  selector: 'app-progress-with-label',
   templateUrl: './progress-with-label.component.html',
   styleUrls: ['./progress-with-label.component.css']
 })

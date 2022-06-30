@@ -8,7 +8,7 @@ import { NoteService } from '@services/_index';
 import * as dateFns from 'date-fns';
 
 @Component({
-  selector: 'note',
+  selector: 'app-note',
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.scss']
 })
@@ -155,7 +155,7 @@ export class NoteComponent implements OnInit {
       this.isLoadingResults = true;
       this.noteService.deleteNote(id)
         .subscribe((_: any) => {
-          this.data = this.data.filter(el => el.id != id);
+          this.data = this.data.filter(el => el.id !== id);
           this.isLoadingResults = false;
         }, err => {
           this.isLoadingResults = false;

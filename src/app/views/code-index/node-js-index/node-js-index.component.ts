@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PDF_ASSETS_PATH } from '@shares/constant';
 
 @Component({
-  selector: 'node-js-index',
+  selector: 'app-node-js-index',
   templateUrl: './node-js-index.component.html',
   // styleUrls: ['./node-js-index.component.css']
 })

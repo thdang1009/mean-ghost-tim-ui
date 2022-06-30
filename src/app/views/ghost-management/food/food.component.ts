@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MealService } from '@services/_index';
 import { Meal } from '@models/_index';
-import *  as dateFns from 'date-fns'
+import * as dateFns from 'date-fns'
 
 
 /*
@@ -12,7 +12,7 @@ thêm list món ăn theo tier và để backend tự động update tier theo co
 
 */
 @Component({
-  selector: 'food',
+  selector: 'app-food',
   templateUrl: './food.component.html',
   styleUrls: ['./food.component.scss']
 })

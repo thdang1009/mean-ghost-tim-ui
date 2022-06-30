@@ -7,12 +7,12 @@ import { of, ReplaySubject } from 'rxjs';
 
 import { ConfirmEmailComponent } from './confirm-email.component';
 
-class _AuthService extends AbstractMockObservableService {
+class MockAuthService extends AbstractMockObservableService {
   confirmEmail() {
     return this;
   }
 }
-class _NavigationService extends AbstractMockObservableService {
+class MockNavigationService extends AbstractMockObservableService {
   gotoHome() {
     return this;
   }
@@ -34,8 +34,8 @@ describe('ConfirmEmailComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ConfirmEmailComponent],
       providers: [
-        { provide: AuthService, useValue: new _AuthService() },
-        { provide: NavigationService, useValue: new _NavigationService() },
+        { provide: AuthService, useValue: new MockAuthService() },
+        { provide: NavigationService, useValue: new MockNavigationService() },
         {
           provide: ActivatedRoute,
           useValue: {

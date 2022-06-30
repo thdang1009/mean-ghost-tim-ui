@@ -1,15 +1,15 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ExampleText, ExampleText2 } from '@helpers/fake.data';
 import { showNoti } from '@shares/common';
 import { SAVED_TEXT, SAVED_TEXT_2 } from '@shares/constant';
 import diff from 'diff-sequences';
 
 @Component({
-  selector: 'text-diff',
+  selector: 'app-text-diff',
   templateUrl: './text-diff.component.html',
   styleUrls: ['./text-diff.component.scss']
 })
-export class TextDiffComponent implements OnInit {
+export class TextDiffComponent implements OnInit, OnDestroy {
   @ViewChild('text1') text1: ElementRef;
   @ViewChild('text2') text2: ElementRef;
 
@@ -42,7 +42,7 @@ export class TextDiffComponent implements OnInit {
   }
   diffItem(a, b) {
 
-    const isCommon = (aIndex, bIndex) => a[aIndex] === b[bIndex];
+    const isCommon = (_aIndex, _bIndex) => a[_aIndex] === b[_bIndex];
 
     let aIndex = 0;
     let bIndex = 0;
