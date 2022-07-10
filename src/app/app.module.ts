@@ -9,22 +9,29 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
-import {
-  AgmCoreModule
-} from '@agm/core';
-
 import { AdminLayoutComponent } from '@layouts/admin-layout/admin-layout.component';
 import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.component';
 import { TokenInterceptor } from './_helpers/_index';
 import { AboutMeComponent } from './views/about-me/about-me.component';
-import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { CommonModule, DatePipe } from '@angular/common';
-import { AutosizeModule } from 'ngx-autosize';
 import { AuthService, TodoTodayService, NoteService, JobService, HomeService, IssueService } from './_services/_index';
-import { CodeEditorModule } from '@ngstack/code-editor';
 import { DonationComponent } from './views/donation/donation.component';
-import { NgxTypedJsModule } from 'ngx-typed-js';
 import { SharedModuleModule } from './_shares/shared-module.module';
+
+// third party
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import {
+  AgmCoreModule
+} from '@agm/core';
+import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
+import { AutosizeModule } from 'ngx-autosize';
+import { CodeEditorModule } from '@ngstack/code-editor';
+import { NgxTypedJsModule } from 'ngx-typed-js';
+import { environment } from '@environments/environment';
+
+
+
+// NgModule
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -43,7 +50,8 @@ import { SharedModuleModule } from './_shares/shared-module.module';
     NgJsonEditorModule,
     AutosizeModule,
     CodeEditorModule.forRoot(),
-    NgxTypedJsModule
+    NgxTypedJsModule,
+    NgxGoogleAnalyticsModule.forRoot(environment.gaCode),
   ],
   declarations: [
     AppComponent,
