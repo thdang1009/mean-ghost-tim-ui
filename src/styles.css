@@ -119,26 +119,26 @@ json-editor>div {
     height: 84vh !important;
 }
 
-json-beautifier {
+app-json-beautifier {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 }
 
 @media (min-width: 992px) {
-    json-beautifier {
+    app-json-beautifier {
         flex-direction: row;
     }
 }
 
-json-excel {
+app-json-excel {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 }
 
 @media (min-width: 992px) {
-    json-excel {
+    app-json-excel {
         flex-direction: row;
     }
 }
@@ -213,7 +213,7 @@ json-excel {
     align-items: center;
 }
 
-donation {
+app-donation {
     height: 84vh;
     display: flex;
     align-items: center;
