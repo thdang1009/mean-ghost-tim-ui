@@ -1,0 +1,20 @@
+<div class="chart-container">
+    <div id="controller-container" class="controller-container">
+        <!-- choose chart => select -->
+        <!-- new chart => maybe later -->
+        <!-- edit data -->
+        <!-- edit color -->
+        <!-- edit color -->
+    </div>
+    <div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+    <div id="legend-container" class="legend-container">
+        <div class="text-center">
+            <!-- <label><strong style="font-size: 14px;">Trình độ học vấn</strong></label> -->
+            <textarea type="text" (blur)="saveChartName();false" [(ngModel)]="chartName"
+                class="editable wd100 custom-editable">
+            </textarea>
+            <ul id="ul-legend-container">
+            </ul>
+        </div>
+    </div>
+</div>

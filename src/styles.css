@@ -143,6 +143,10 @@ app-json-excel {
     }
 }
 
+app-am-chart {
+    height: 84vh;
+}
+
 /* begin loading overlay */
 .overlay {
     left: 0;
