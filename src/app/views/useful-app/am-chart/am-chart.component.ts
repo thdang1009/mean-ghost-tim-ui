@@ -108,8 +108,9 @@ export class AmChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const isAuthen = prompt('Nhập mã giới thiệu', 'Mã giới thiệu là tên ny của bạn');
-    if (isAuthen !== 'Đăng') {
+    const isAuthen = prompt('Nhập mã giới thiệu', 'Mã giới thiệu là bộ phim đầu tiên bạn và ny xem');
+    const formatted = isAuthen.trim().toLocaleLowerCase();
+    if (formatted !== 'nghề siêu dễ') {
       this.router.navigate(['home']);
       return;
     }
