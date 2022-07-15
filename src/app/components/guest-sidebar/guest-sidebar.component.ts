@@ -21,7 +21,7 @@ export const ROUTES: RouteInfo[] = [
   // { path: 'index/mongodb-index', title: 'MongoDB', icon: 'person_add', class: ''},
   // { path: 'index/react-index', title: 'Add User', icon: 'person_add', class: ''},
   { path: 'useful-app/json-beautifier', title: 'JSON Beautifier', icon: 'code', class: '' },
-  { path: 'useful-app/am-chart', title: 'Chart Generator', icon: 'bar_chart', class: '' },
+  // { path: 'useful-app/am-chart', title: 'Chart Generator', icon: 'bar_chart', class: '' },
   { path: 'useful-app/json-excel', title: 'JSON Excel', icon: 'code', class: '' },
   { path: 'useful-app/text-diff', title: 'Text Diff', icon: 'description', class: '' },
   { path: 'useful-app/run-js', title: 'RunJS', icon: 'javascript', class: '' },
