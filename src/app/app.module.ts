@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from '@layouts/admin-layout/admin-layout.component';
 import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.component';
 import { TokenInterceptor } from './_helpers/_index';
-import { AboutMeComponent } from './views/about-me/about-me.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { AuthService, TodoTodayService, NoteService, JobService, HomeService, IssueService } from './_services/_index';
 import { DonationComponent } from './views/donation/donation.component';
@@ -26,7 +25,6 @@ import {
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { AutosizeModule } from 'ngx-autosize';
 import { CodeEditorModule } from '@ngstack/code-editor';
-import { NgxTypedJsModule } from 'ngx-typed-js';
 import { environment } from '@environments/environment';
 
 
@@ -50,14 +48,12 @@ import { environment } from '@environments/environment';
     NgJsonEditorModule,
     AutosizeModule,
     CodeEditorModule.forRoot(),
-    NgxTypedJsModule,
     NgxGoogleAnalyticsModule.forRoot(environment.gaCode),
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     GuestLayoutComponent,
-    AboutMeComponent,
     DonationComponent,
   ],
   providers: [

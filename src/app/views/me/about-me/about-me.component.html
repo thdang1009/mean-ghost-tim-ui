@@ -25,17 +25,17 @@
                             Services
                         </a>
                     </li>
-                    <!-- <li>
+                    <li>
                         <a class="abc" (click)="scrollTo('portfolio')" [ngClass]="{
                             'ghost-nav-hight-light': currentActive === 2
                         }">
                             <i class="fa fa-briefcase"> </i>
                             Portfolio
                         </a>
-                    </li> -->
+                    </li>
                     <li>
                         <a class="abc" (click)="scrollTo('contact')" [ngClass]="{
-                            'ghost-nav-hight-light': currentActive === 2
+                            'ghost-nav-hight-light': currentActive === 3
                         }">
                             <i class="fa fa-comments"> </i>
                             Contact
@@ -67,7 +67,8 @@
                     </h3>
                 </ngx-typed-js>
 
-                <app-list-badge [myStyles]="{'display': 'flex', 'margin': 'inherit', 'padding': '0 0 12px 0'}"></app-list-badge>
+                <app-list-badge [myStyles]="{'display': 'flex', 'margin': 'inherit', 'padding': '0 0 12px 0'}">
+                </app-list-badge>
                 <!-- <br /> -->
                 <p>
                     I'm looking for a challenging and rewarding position in an environment that offers an opportunity to
@@ -78,13 +79,15 @@
                 <strong>
                     Techstack: MEAN.
                 </strong>
-                <br/>
-                <strong> 
-                    Project 1: <a href="https://mc.zalopay.vn/" target="_blank" rel="noopener noreferrer">ZaloPay Merchant</a>
-                </strong>
-                <br/>
+                <br />
                 <strong>
-                    Project 2: <a href="https://ad.zalopay.vn/" target="_blank" rel="noopener noreferrer">ZaloPay Merchant Admin</a>
+                    Project 1: <a href="https://mc.zalopay.vn/" target="_blank" rel="noopener noreferrer">ZaloPay
+                        Merchant</a>
+                </strong>
+                <br />
+                <strong>
+                    Project 2: <a href="https://ad.zalopay.vn/" target="_blank" rel="noopener noreferrer">ZaloPay
+                        Merchant Admin</a>
                 </strong>
                 <br />
             </div>
@@ -120,7 +123,7 @@
                     <li>
                         <p>
                             <strong>
-                                City:
+                                Location:
                             </strong>
                             HO CHI MINH City
                         </p>
@@ -161,7 +164,10 @@
                             <strong>
                                 Freelance:
                             </strong>
-                            Available
+                            <a class="hover-pointer" href="https://ghost-site.web.app/me/hire-me"
+                                rel="noopener noreferrer">
+                                Available
+                            </a>
                         </p>
                     </li>
                 </ul>
@@ -169,13 +175,13 @@
                 <div class="skill-container"> -->
                 <ul class="list pdx-2">
                     <li>
-                        <app-progress-with-label [percent]="88" [label]="'Javascript'"></app-progress-with-label>
+                        <app-progress-with-label [percent]="90" [label]="'Javascript'"></app-progress-with-label>
                     </li>
                     <li>
-                        <app-progress-with-label [percent]="75" [label]="'HTML/CSS'"></app-progress-with-label>
+                        <app-progress-with-label [percent]="75" [label]="'HTML5, CSS3, SCSS'"></app-progress-with-label>
                     </li>
                     <li>
-                        <app-progress-with-label [percent]="80" [label]="'Angular'"></app-progress-with-label>
+                        <app-progress-with-label [percent]="75" [label]="'Angular, React'"></app-progress-with-label>
                     </li>
                     <li>
                         <app-progress-with-label [percent]="70" [label]="'NodeJS'"></app-progress-with-label>
@@ -183,15 +189,20 @@
                     <li>
                         <app-progress-with-label [percent]="70" [label]="'MongoDB'"></app-progress-with-label>
                     </li>
+                    <li>
+                        <app-progress-with-label [percent]="65" [label]="'React Native'"></app-progress-with-label>
+                    </li>
                 </ul>
                 <!-- </div> -->
 
-                <!-- <app-ghost-site-btn (click)="downloadCV()" type="link" class="btn-float-bottom">
+                <app-ghost-site-btn (click)="downloadCV()" type="btn" [link]="'../download-my-cv'"
+                    class="btn-float-bottom">
                     Download CV
-                </app-ghost-site-btn> -->
-                <!-- <app-ghost-site-btn (click)="hireMe()" type="link" class="btn-float-bottom" style="left: calc(120px + 5%)">
+                </app-ghost-site-btn>
+                <app-ghost-site-btn (click)="hireMe()" type="btn" [link]="'../hire-me'"
+                    class="btn-float-bottom" style="left: calc(120px + 5%)">
                     Hire Me
-                </app-ghost-site-btn> -->
+                </app-ghost-site-btn>
             </div>
             <div class="two-col row">
                 <div class="time-line-container col-sm-12 col-lg-6">
@@ -338,14 +349,14 @@
 
 
         <!-- **** **** **** **** PORTFOLIO **** **** **** ****-->
-        <!-- <section class="portfolio" id="portfolio" #portfolio>
+        <section class="portfolio" id="portfolio" #portfolio>
             <div class="section-header-container  box-border-tl-br" (click)="scrollTo('portfolio')">
                 <h2 class="section-header">
                     Portfolio
                 </h2>
             </div>
 
-        </section> -->
+        </section>
         <!-- **** **** **** **** PORTFOLIO END **** **** **** ****-->
 
         <!-- **** **** **** **** CONTACT **** **** **** ****-->

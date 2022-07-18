@@ -207,7 +207,7 @@ export class AmChartComponent implements OnInit {
 
   dataNum = '1';
 
-  constructor(private router: Router) {
+  constructor() {
 
   }
 

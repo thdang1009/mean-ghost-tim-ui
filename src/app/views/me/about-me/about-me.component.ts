@@ -11,7 +11,7 @@ import { showNoti } from '@shares/common';
 export class AboutMeComponent implements OnInit, AfterViewInit {
   @ViewChild('aboutMe') aboutMeElement: ElementRef;
   @ViewChild('services') servicesElement: ElementRef;
-  // @ViewChild('portfolio') portfolioElement: ElementRef;
+  @ViewChild('portfolio') portfolioElement: ElementRef;
   @ViewChild('contact') contactElement: ElementRef;
   @ViewChild('aboutMeContent') aboutMeContent: ElementRef;
 
@@ -47,7 +47,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
       0,
       this.aboutMeElement.nativeElement.offsetTop,
       this.servicesElement.nativeElement.offsetTop,
-      // this.portfolioElement.nativeElement.offsetTop,
+      this.portfolioElement.nativeElement.offsetTop,
       this.contactElement.nativeElement.offsetTop
     ];
     // console.log(this.heights);

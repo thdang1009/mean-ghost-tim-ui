@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ProgressWithLabelComponent } from './progress-with-label/progress-with-label.component';
 import { GhostSiteBtnComponent } from './ghost-site-btn/ghost-site-btn.component';
 import { ListBadgeComponent } from './list-badge/list-badge.component';
+import { GhostServiceComponent } from './ghost-service/ghost-service.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { ListBadgeComponent } from './list-badge/list-badge.component';
     ProgressWithLabelComponent,
     GhostSiteBtnComponent,
     ListBadgeComponent,
+    GhostServiceComponent,
   ],
   exports: [
     FooterComponent,

@@ -160,6 +160,11 @@
             "firebaseHostingSite": "ghost-site"
           }
         }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
       }
     },
     "mean-ghost-tim-ui-e2e": {

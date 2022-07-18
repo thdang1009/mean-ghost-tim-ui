@@ -4,7 +4,6 @@ import { RegisterComponent } from '@app/views/auth-management/register/register.
 import { HomeComponent } from '@app/views/home/home.component';
 import { NotLoginGuard } from '@app/views/auth-management/auth/not-login.guard';
 import { LogoutComponent } from '@app/views/auth-management/logout/logout.component';
-import { AboutMeComponent } from '@app/views/about-me/about-me.component';
 import { ConfirmEmailComponent } from '@app/views/user-management/confirm-email/confirm-email.component';
 import { DonationComponent } from '@app/views/donation/donation.component';
 import { PostDetailComponent } from '@app/views/blog-management/post-detail/post-detail.component';
@@ -20,8 +19,15 @@ export const GuestLayoutRoutes: Routes = [
     { path: 'login', component: LoginComponent, canActivate: [NotLoginGuard] },
     { path: 'logout', component: LogoutComponent },
     { path: 'register', component: RegisterComponent, canActivate: [NotLoginGuard] },
-    { path: 'about-me', component: AboutMeComponent },
     { path: 'donation', component: DonationComponent },
+    {
+        path: 'me',
+        children: [{
+            path: '',
+            loadChildren: () => import('../../views/me/me.module').then(m => m.MeModule ),
+            canActivate: []
+        }]
+    },
     {
         path: 'index',
         children: [{
