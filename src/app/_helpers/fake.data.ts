@@ -1,4 +1,5 @@
-export const ExampleCode = `function longestSlideDown(pyramid) {
+export const ExampleCode = `// Type your own code and press RUN or CMD + S to execute
+function longestSlideDown(pyramid) {
     let max = -Infinity;
     for (let i = pyramid.length - 2; i >= 0; --i) {
       for (let j = 0, length = pyramid[i].length; j < length; j++) {

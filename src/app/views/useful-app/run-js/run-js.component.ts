@@ -3,6 +3,7 @@ import { ExampleCode } from '@helpers/fake.data';
 import { showNoti } from '@shares/common';
 import { SAVED_CODE } from '@shares/constant';
 import { CodeModel } from '@ngstack/code-editor';
+declare const EVERYTHING = 'everything';
 @Component({
   selector: 'app-run-js',
   templateUrl: './run-js.component.html',
@@ -32,6 +33,50 @@ export class RunJsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.saveOnLocal();
+  }
+
+  removeConsoleEverything() {
+    console[EVERYTHING] = undefined;
+  }
+
+  initConsoleEverything() {
+    if (console[EVERYTHING] === undefined) {
+      console[EVERYTHING] = [];
+      const TS = () => {
+        return (new Date).toLocaleString("sv", { timeZone: 'UTC' }) + "Z"
+      }
+      window.onerror = function (error, url, line) {
+        console[EVERYTHING].push({
+          type: "exception",
+          timeStamp: TS(),
+          value: { error, url, line }
+        })
+        return false;
+      }
+      window.onunhandledrejection = function (e) {
+        console[EVERYTHING].push({
+          type: "promiseRejection",
+          timeStamp: TS(),
+          value: e.reason
+        })
+      }
+
+      const hookLogType = (logType) => {
+        const original = console[logType].bind(console)
+        return function () {
+          console[EVERYTHING].push({
+            type: logType,
+            timeStamp: TS(),
+            value: Array.from(arguments)
+          })
+          original.apply(console, arguments)
+        }
+      }
+
+      ['log', 'error', 'warn', 'debug'].forEach(logType => {
+        console[logType] = hookLogType(logType)
+      })
+    }
   }
 
   ngOnInit(): void {
@@ -73,28 +118,44 @@ export class RunJsComponent implements OnInit, OnDestroy {
   handleCmdSave() {
     this.isLoadingResults = true;
     const code = this.codeModel.value;
-    const myJoin = (arr) => {
-      return arr.map(el => (typeof el === 'object' || el === undefined) ? JSON.stringify(el) : el).join(' ');
-    }
     try {
-      const store = [];
-      const funcName = '___func';
-      window[funcName] = console.log;
-      console.log = function (...value) {
-        window[funcName](...value);
-        const joinedValue = myJoin(value);
-        store.push(joinedValue);
-        return value;
-      };
-      /* tslint:disable no-eval */
-      eval(code);
-      this.store = store;
-      // store.forEach(value => window[funcName](value));
-      console.log = window[funcName];
+      if (console.log['ghost_cheat'] === true) {
+        console.log = window['ghost_console'];
+        console.log['ghost_cheat'] = false;
+      }
+      this.handleV1(code);
+      // this.handleV2(code);
       this.saveOnLocal();
+      
     } catch (e) {
       showNoti(e, 'danger');
     }
     this.isLoadingResults = false;
+  }
+
+  handleV1(code) {
+    const myJoin = (arr) => {
+      return arr.map(el => (typeof el === 'object' || el === undefined) ? JSON.stringify(el) : el).join(' ');
+    }
+    const store = [];
+    window['ghost_console'] = console.log;
+    console.log = function (...value) {
+      window['ghost_console'](...value);
+      const joinedValue = myJoin(value);
+      store.push(joinedValue);
+      return value;
+    };
+    console.log['ghost_cheat'] = true;
+    /* tslint:disable no-eval */
+    eval(code);
+    this.store = store;
+    // store.forEach(value => window[funcName](value));
+    // console.log = window[funcName];
+  }
+
+  handleV2(code) {
+    this.initConsoleEverything();
+    eval(code);
+    this.removeConsoleEverything();
   }
 }
