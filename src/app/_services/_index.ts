@@ -9,3 +9,4 @@ export * from './issue.service';
 export * from './user.service';
 export * from './analytic.service';
 export * from './navigation.service';
+export * from './post.service';

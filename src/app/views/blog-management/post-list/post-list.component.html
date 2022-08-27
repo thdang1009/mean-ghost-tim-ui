@@ -1,1 +1,128 @@
-<p>post-list works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title ">Your Post</h4>
+                    </div>
+                    <form class="form-under-table-header row" (ngSubmit)="searchPost()">
+                        <!--  date -->
+
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>From</mat-label>
+                                <input matInput [matDatepicker]="pickerFrom" name="dateFrom" [formControl]="searchDateFrom">
+                                <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerFrom></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>To</mat-label>
+                                <input matInput [matDatepicker]="pickerTo" name="dateTo" [formControl]="searchDateTo">
+                                <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerTo></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <!-- type -->
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Trạng thái</mat-label>
+                                <mat-select [(ngModel)]="searchStatus" [ngModelOptions]="{standalone: true}">
+                                    <mat-option *ngFor="let item of statusList; let i = index"
+                                        [(value)]="statusList[i]">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <!-- empty block -->
+                        <!-- button search -->
+                        <div class="col-md-4">
+                            <button *ngIf="!itemSelected || !itemSelected.id" mat-raised-button type="submit"
+                                [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100">
+                                <i class="material-icons">search</i>
+                                Search
+                            </button>
+                            <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button"
+                                (click)="back()" [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100">
+                                <i class="material-icons">save</i>
+                                Back & Save
+                            </button>
+                        </div>
+                        <!-- button add -->
+                        <div class="col-md-4">
+                            <button *ngIf="!itemSelected || !itemSelected.id" mat-raised-button type="button"
+                                matTooltip="Add Empty Row" class="btn btn-success pull-right btn-w100"
+                                (click)="addPost()">
+                                <i class="material-icons">add</i>
+                                Add Empty Post
+                            </button>
+                        </div>
+                    </form>
+                    <div class="card-body">
+                        <div *ngIf="!itemSelected || !itemSelected.id; else postView" class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th style="max-width: 120px; min-width: 120px; width: 120px;">
+                                        Update At
+                                    </th>
+                                    <th>
+                                        Title
+                                    </th>
+                                </thead>
+                                <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+                                    <ng-container *ngIf="data && data.length; else noDataBlock">
+                                        <tr *ngFor="let post of data; let index = index" cdkDrag [ngClass]="{
+                                        'warning': post.status === 'NOT_YET',
+                                        'success': post.status === 'DONE',
+                                        'primary': post.status === 'NEW',
+                                        'future': post.status === 'TOMORROW'
+                                    }">
+                                            <td class="text-center">
+                                                <span class="hover-pointer" (click)="chooseThisItem(post)"
+                                                    matTooltip="Create At: {{ post.createdAt | date: 'dd-MM HH:mm' }}">
+                                                    {{ post.updatedAt | date: 'dd-MM HH:mm' }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span (click)="chooseThisItem(post.id)"
+                                                    class="editable-header hover-pointer">{{ post.title }}
+                                                </span>
+                                                <button mat-raised-button type="button" matTooltip="Delete Post"
+                                                    [disabled]="isLoadingResults"
+                                                    class="btn btn-float-in-row btn-round btn-danger pull-right"
+                                                    (click)="deletePost(post)">
+                                                    <i class="material-icons red">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                    <ng-template #noDataBlock>
+                                        <tr class="text-center">
+                                            <td colspan="100%" class="text-center">
+                                                <app-table-loading (size)="'sm'"></app-table-loading>
+                                                No data
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ng-template #postView>
+                            <textarea type="text" [(ngModel)]="itemSelected.title"
+                                class="editable editable-header wd100"
+                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
+                                [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults"></textarea>
+
+                            <textarea type="text" [(ngModel)]="itemSelected.content" class="editable wd100"
+                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
+                                [maxRows]="100" [useImportant]="true" [disabled]="isLoadingResults"></textarea>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
