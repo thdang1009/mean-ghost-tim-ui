@@ -1,11 +1,12 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { showNoti } from '@shares/common';
 import { Post } from '@models/_index';
 import { PostService } from '@services/_index';
 import * as dateFns from 'date-fns';
+import { DOCUMENT } from '@angular/common';
 
 
 @Component({
@@ -25,17 +26,20 @@ export class PostListComponent implements OnInit {
   searchStatus = 'NONE';
   statusList = ['NONE', 'PRIVATE', 'PUBLIC', 'PROTECTED'];
   itemSelected = undefined;
+  isSplitHorizontal = false;
+  elem;
 
-  constructor(
+  constructor(@Inject(DOCUMENT) private document,
     private postService: PostService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private ref: ChangeDetectorRef
     // private simpleTimePipe: SimpleTimePipe
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-    console.log('debug 1');
+    this.elem = document.getElementById('edit-post-container');
     this.activatedRoute.queryParams.subscribe(params => {
       const id = Number(params.id);
       if (id) {
@@ -149,7 +153,7 @@ export class PostListComponent implements OnInit {
       });
   }
   deletePost(post) {
-    const val = confirm(`Delete "${post.header}"?`);
+    const val = confirm(`Delete "${post.title}"?`);
     if (val) {
       this.callDeletePost(post.id);
     }
@@ -195,5 +199,50 @@ export class PostListComponent implements OnInit {
   }
   onReady() {
 
+  }
+  onLoad() {
+
+  }
+
+  // tools function 
+  openFullscreen() {
+    this.splitVertical();
+    if (!this.elem) {
+      this.elem = document.getElementById('edit-post-container');
+    }
+    if (this.elem.requestFullscreen) {
+      this.elem.requestFullscreen();
+    } else if (this.elem.mozRequestFullScreen) {
+      /* Firefox */
+      this.elem.mozRequestFullScreen();
+    } else if (this.elem.webkitRequestFullscreen) {
+      /* Chrome, Safari and Opera */
+      this.elem.webkitRequestFullscreen();
+    } else if (this.elem.msRequestFullscreen) {
+      /* IE/Edge */
+      this.elem.msRequestFullscreen();
+    }
+  }
+
+  /* Close fullscreen */
+  closeFullscreen() {
+    if (document.exitFullscreen) {
+      this.document.exitFullscreen();
+    } else if (this.document.mozCancelFullScreen) {
+      /* Firefox */
+      this.document.mozCancelFullScreen();
+    } else if (this.document.webkitExitFullscreen) {
+      /* Chrome, Safari and Opera */
+      this.document.webkitExitFullscreen();
+    } else if (this.document.msExitFullscreen) {
+      /* IE/Edge */
+      this.document.msExitFullscreen();
+    }
+  }
+  splitHorizontal() {
+    this.isSplitHorizontal = true;
+  }
+  splitVertical() {
+    this.isSplitHorizontal = false;
   }
 }

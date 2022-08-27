@@ -184,6 +184,32 @@ app-am-chart {
     border-style: solid;
 }
 
+.variable-binding {
+    border: double #00000030 1px;
+    border-radius: 8px;
+    padding: 10px;
+    width: 50%;
+}
+
+.variable-binding.split-horizontal {
+    width: 100%;
+}
+
+.variable-textarea {
+    border: double #00000030 1px;
+    border-radius: 8px;
+    padding: 10px;
+    width: 50%;
+}
+
+.variable-textarea.split-horizontal {
+    width: 100%;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
 @keyframes spin {
     100% {
         transform: rotate(360deg);
@@ -346,6 +372,7 @@ app-table-loading {
     height: fit-content;
     width: fit-content;
 }
+
 .box-border-tl-br:hover {
     background-size: 40% 5px, 5px 50%;
 }

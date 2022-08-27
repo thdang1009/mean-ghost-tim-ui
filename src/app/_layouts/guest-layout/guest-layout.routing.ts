@@ -14,7 +14,7 @@ import { PostDetailComponent } from '@app/views/blog-management/post-detail/post
 // import { JsonBeautifierComponent } from '@app/views/json-beautifier/json-beautifier.component';
 
 export const GuestLayoutRoutes: Routes = [
-    { path: 'post-read', component: PostDetailComponent },
+    { path: 'post-read/:id', component: PostDetailComponent },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent, canActivate: [NotLoginGuard] },
     { path: 'logout', component: LogoutComponent },

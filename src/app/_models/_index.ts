@@ -8,3 +8,4 @@ export * from './note';
 export * from './accesslog';
 export * from './post';
 export * from './category';
+export * from './tag';

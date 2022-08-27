@@ -53,13 +53,25 @@
                             </button>
                         </div>
                         <!-- button add -->
-                        <div class="col-md-4">
-                            <button *ngIf="!itemSelected || !itemSelected.id" mat-raised-button type="button"
-                                matTooltip="Add Empty Row" class="btn btn-success pull-right btn-w100"
-                                (click)="addPost()">
+                        <div class="col-md-4" *ngIf="!itemSelected || !itemSelected.id">
+                            <button mat-raised-button type="button" matTooltip="Add Empty Row"
+                                class="btn btn-success pull-right btn-w100" (click)="addPost()">
                                 <i class="material-icons">add</i>
                                 Add Empty Post
                             </button>
+                        </div>
+                        <!-- tools -->
+                        <div class="col-md-8 tool-container" *ngIf="itemSelected && itemSelected.id">
+                            <span class="material-icons md-36" matTooltip="Goto Full Screen" (click)="openFullscreen()">
+                                fullscreen
+                            </span>
+                            <span class="material-icons md-36" matTooltip="Split Horizontal"
+                                (click)="splitHorizontal()">
+                                horizontal_split
+                            </span>
+                            <span class="material-icons md-36" matTooltip="Split Vertical" (click)="splitVertical()">
+                                vertical_split
+                            </span>
                         </div>
                     </form>
                     <div class="card-body">
@@ -112,16 +124,34 @@
                             </table>
                         </div>
                         <ng-template #postView>
+                            <!-- Title -->
                             <textarea type="text" [(ngModel)]="itemSelected.title"
                                 class="editable editable-header wd100"
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
-                                [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults"></textarea>
+                                [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults">
+                            </textarea>
 
-                            <!-- <textarea type="text" [(ngModel)]="itemSelected.content" class="editable wd100"
+                            <textarea type="text" [(ngModel)]="itemSelected.description"
+                                class="editable editable-header wd100"
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
-                                [maxRows]="100" [useImportant]="true" [disabled]="isLoadingResults"></textarea> -->
-                            <markdown [data]="itemSelected.content" (ready)="onReady()">
-                            </markdown>
+                                [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults">
+                            </textarea>
+                            <div id="edit-post-container" class="edit-post-container" [ngStyle]="{
+                                'flex-direction': isSplitHorizontal ? 'column' : 'row'
+                            }">
+                                <!-- raw text -->
+                                <textarea type="text" [(ngModel)]="itemSelected.content"
+                                    class="editable wd100 variable-textarea" [ngClass]="{
+                                    'split-horizontal': this.isSplitHorizontal
+                                }" (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
+                                    [useImportant]="true" [disabled]="isLoadingResults">
+                            </textarea>
+                                <!-- text to markdown -->
+                                <markdown class="variable-binding" [ngClass]="{
+                                'split-horizontal': this.isSplitHorizontal
+                            }" [data]="itemSelected.content">
+                                </markdown>
+                            </div>
                         </ng-template>
                     </div>
                 </div>

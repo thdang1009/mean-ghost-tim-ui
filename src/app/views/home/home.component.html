@@ -23,8 +23,8 @@
   <div class="header-box">
     <div class="ghost-box">
       <div>
-        <a aria-current="page" class="" [routerLink]="['/']"><img class="top-avatar" alt="ghost" src="assets/img/ghost.png"
-            style="width:100px" alt="Ghost">
+        <a aria-current="page" class="" [routerLink]="['/']"><img class="top-avatar" alt="ghost"
+            src="assets/img/ghost.png" style="width:100px" alt="Ghost">
         </a>
       </div>
       <div>
@@ -39,7 +39,29 @@
     </div>
   </div>
   <div class="content-box">
-
+    <div class="list-post" *ngFor="let post of posts">
+      <article class="post">
+        <a class="post-thumbnail" (click)="openPost(post)" [href]="'post-read/' + post.id" [ngStyle]="{
+            'background-image': 'url(' + post.postBackgroundImg + ')'
+          }"></a>
+        <div class="post-content">
+          <h2 class="post-title">
+            <a [href]="'post-read/' + post.id">{{post.title}}</a>
+          </h2>
+          <p>{{post.description}}</p><span class="post-date">
+            {{post.author}}
+            write at
+            <!-- write a component here later -->
+            {{post.createdAt | date }}
+          </span>
+          <ng-container *ngIf="post && post.tags.length">
+            <div class="tagging" *ngFor="let tag of post.tags">
+              <a class="tagging__item" href="{{'/tags/' + tag}}">#${{tag}}</a>
+            </div>
+          </ng-container>
+        </div>
+      </article>
+    </div>
   </div>
 </div>
 <!-- 

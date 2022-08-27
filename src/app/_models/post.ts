@@ -9,6 +9,7 @@ export class Post {
   content?: String; // content
   postReference?: String;
   postImgUrls? : String[];
+  postBackgroundImg?: String;
   isPinned?: Boolean;
   tags?: String[];
   order?: Number;
