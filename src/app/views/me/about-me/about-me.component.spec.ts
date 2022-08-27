@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { UserService } from '@services/_index';
 
 import { AboutMeComponent } from './about-me.component';
@@ -16,7 +16,7 @@ describe('AboutMeComponent', () => {
       ],
       providers: [
         { provide: UserService, useValue: userServiceSpy },
-        FormBuilder
+        UntypedFormBuilder
       ]
     })
     .compileComponents();

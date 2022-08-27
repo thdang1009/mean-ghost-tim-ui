@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { showNoti } from '@shares/common';
 import { Note } from '@models/_index';
@@ -18,7 +18,7 @@ export class NoteComponent implements OnInit {
   isLoadingResults = true;
 
   today = dateFns.startOfToday();
-  searchDate = new FormControl(this.today);
+  searchDate = new UntypedFormControl(this.today);
   // searchDateDisplay = 'ToDay';
   searchStatus = 'NONE';
   statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];

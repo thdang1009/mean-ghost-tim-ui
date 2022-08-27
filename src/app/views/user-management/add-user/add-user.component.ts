@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { User } from '@models/_index';
@@ -8,7 +8,7 @@ import { showNoti } from '@shares/common';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
@@ -16,7 +16,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 
 export class MyErrorStateMatcherRepassword implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     const invalidCtrl = !!(control.invalid && (control.parent.dirty || control.touched));
     const invalidParent = !!(control.parent && control.parent.invalid && control.parent.dirty);
@@ -32,7 +32,7 @@ export class MyErrorStateMatcherRepassword implements ErrorStateMatcher {
 export class AddUserComponent implements OnInit {
 
 
-  registerForm: FormGroup;
+  registerForm: UntypedFormGroup;
   fullName = '';
   username = '';
   password = '';
@@ -47,7 +47,7 @@ export class AddUserComponent implements OnInit {
   permission = this.permissions[1]; // CONSTANT.PERMISSION.MEMBER;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private router: Router,
     private userService: UserService,
     private alertService: AlertService

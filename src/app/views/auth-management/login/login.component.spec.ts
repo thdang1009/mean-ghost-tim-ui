@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Router, RouterEvent } from '@angular/router';
 import { AuthService } from '@app/_services/auth.service';
 import { ReplaySubject } from 'rxjs';
@@ -24,7 +24,7 @@ describe('LoginComponent', () => {
         LoginComponent,
       ],
       providers: [
-        FormBuilder,
+        UntypedFormBuilder,
         { provide: AuthService, useValue: authenServiceSpy },
         { provide: Router, useValue: routerMock },
       ],

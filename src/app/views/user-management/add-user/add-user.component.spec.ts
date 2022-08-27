@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { RouterEvent, Router } from '@angular/router';
 import { UserService, AlertService } from '@services/_index';
 import { ReplaySubject } from 'rxjs';
@@ -23,7 +23,7 @@ describe('AddUserComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AddUserComponent],
       providers: [
-        FormBuilder,
+        UntypedFormBuilder,
         { provide: AlertService, useValue: alertServiceSpy },
         { provide: Router, useValue: routerMock },
         { provide: UserService, useValue: userServiceSpy}

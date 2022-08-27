@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { TodoToday } from '@models/_index';
 import * as dateFns from 'date-fns';
 import { JobService, TodoTodayService } from '@services/_index';
@@ -20,7 +20,7 @@ export class TodoTodayComponent implements OnInit {
   hoveredIndex = undefined;
 
   today = dateFns.startOfToday();
-  searchDate = new FormControl(this.today);
+  searchDate = new UntypedFormControl(this.today);
   searchDateDisplay = 'ToDay';
   searchStatus = 'NONE';
   statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MealService } from '@services/_index';
 import { Meal } from '@models/_index';
 import * as dateFns from 'date-fns'
@@ -22,7 +22,7 @@ export class FoodComponent implements OnInit {
   isLoadingResults = true;
 
   today = dateFns.startOfToday();
-  searchDate = new FormControl(this.today);
+  searchDate = new UntypedFormControl(this.today);
   searchDateDisplay = 'ToDay';
   tierList = [
     'NONE',

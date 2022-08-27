@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService, AuthService } from '@services/_index';
 
@@ -15,7 +15,7 @@ describe('RegisterComponent', () => {
     const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
     TestBed.configureTestingModule({
       providers: [
-        FormBuilder,
+        UntypedFormBuilder,
         { provide: AlertService, useValue: alertServiceSpy },
         { provide: AuthService, useValue: authenServiceSpy },
         { provide: Router, useValue: routerSpy },

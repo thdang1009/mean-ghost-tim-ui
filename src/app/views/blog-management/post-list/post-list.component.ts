@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { showNoti } from '@shares/common';
 import { Post } from '@models/_index';
@@ -20,8 +20,8 @@ export class PostListComponent implements OnInit {
 
   today = dateFns.startOfToday();
   lastYearDay = dateFns.subYears(this.today, 1);
-  searchDateFrom = new FormControl(this.today);
-  searchDateTo = new FormControl(this.lastYearDay);
+  searchDateFrom = new UntypedFormControl(this.today);
+  searchDateTo = new UntypedFormControl(this.lastYearDay);
   searchStatus = 'NONE';
   statusList = ['NONE', 'PRIVATE', 'PUBLIC', 'PROTECTED'];
   itemSelected = undefined;

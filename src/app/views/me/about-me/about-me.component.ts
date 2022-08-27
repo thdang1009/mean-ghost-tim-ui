@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { UserService } from '@services/_index';
 import { showNoti } from '@shares/common';
 
@@ -17,7 +17,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
 
 
   isRunning = false;
-  contactForm: FormGroup;
+  contactForm: UntypedFormGroup;
   heights = [];
   yearOlds: number;
   currentActive = 0;
@@ -26,7 +26,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   arrString = ['A Fullstack Web Engineer', 'A Javascript Lover', 'A Minimalist', 'A Book Reviewer'];
 
   indexInterval = 0;
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private formBuilder: UntypedFormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
     this.yearOlds = new Date().getFullYear() - 1996;
