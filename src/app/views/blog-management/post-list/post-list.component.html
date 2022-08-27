@@ -12,7 +12,8 @@
                         <div class="col-md-4">
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>From</mat-label>
-                                <input matInput [matDatepicker]="pickerFrom" name="dateFrom" [formControl]="searchDateFrom">
+                                <input matInput [matDatepicker]="pickerFrom" name="dateFrom"
+                                    [formControl]="searchDateFrom">
                                 <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
                                 <mat-datepicker #pickerFrom></mat-datepicker>
                             </mat-form-field>
@@ -116,9 +117,11 @@
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
                                 [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults"></textarea>
 
-                            <textarea type="text" [(ngModel)]="itemSelected.content" class="editable wd100"
+                            <!-- <textarea type="text" [(ngModel)]="itemSelected.content" class="editable wd100"
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
-                                [maxRows]="100" [useImportant]="true" [disabled]="isLoadingResults"></textarea>
+                                [maxRows]="100" [useImportant]="true" [disabled]="isLoadingResults"></textarea> -->
+                            <markdown [data]="itemSelected.content" (ready)="onReady()">
+                            </markdown>
                         </ng-template>
                     </div>
                 </div>

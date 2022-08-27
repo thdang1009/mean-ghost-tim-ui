@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, SecurityContext } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule,HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
@@ -22,16 +22,28 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 import {
   AgmCoreModule
 } from '@agm/core';
-import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { AutosizeModule } from 'ngx-autosize';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { environment } from '@environments/environment';
+import { ClipboardButtonComponent, ClipboardOptions, MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
+import { AnchorModule } from './_shares/anchor/anchor.module';
+import { AnchorService } from './_shares/anchor/anchor.service';
 
+export function markedOptionsFactory(anchorService: AnchorService): MarkedOptions {
+  const renderer = new MarkedRenderer();
 
+  // fix `href` for absolute link with fragments so that _copy-paste_ urls are correct
+  renderer.link = (href: string, title: string, text: string) => {
+    return MarkedRenderer.prototype.link.call(renderer, anchorService.normalizeExternalUrl(href), title, text) as string;
+  };
+
+  return { renderer };
+}
 
 // NgModule
 @NgModule({
   imports: [
+    AnchorModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -45,7 +57,21 @@ import { environment } from '@environments/environment';
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
-    NgJsonEditorModule,
+    MarkdownModule.forRoot({
+      loader: HttpClient,
+      markedOptions: {
+        provide: MarkedOptions,
+        useFactory: markedOptionsFactory,
+        deps: [AnchorService],
+      },
+      clipboardOptions: {
+        provide: ClipboardOptions,
+        useValue: {
+          buttonComponent: ClipboardButtonComponent,
+        },
+      },
+      sanitize: SecurityContext.NONE,
+    }),
     AutosizeModule,
     CodeEditorModule.forRoot(),
     NgxGoogleAnalyticsModule.forRoot(environment.gaCode),

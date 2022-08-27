@@ -193,5 +193,7 @@ export class PostListComponent implements OnInit {
         });
     });
   }
+  onReady() {
 
+  }
 }
