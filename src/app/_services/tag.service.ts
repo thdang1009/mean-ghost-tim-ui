@@ -33,7 +33,7 @@ export class TagService {
 
   addTag(tag: Tag): Observable<Tag> {
     return this.http.post<Tag>(apiUrl, tag).pipe(
-      tap((prod: Tag) => this.log(`added tag id=${tag.id}`)),
+      tap((prod: Tag) => this.log(`added tag id=${prod.id}`)),
       catchError(this.handleError<Tag>('addTag'))
     );
   }

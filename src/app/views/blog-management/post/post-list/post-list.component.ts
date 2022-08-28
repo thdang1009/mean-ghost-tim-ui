@@ -4,7 +4,7 @@ import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { showNoti } from '@shares/common';
 import { Post } from '@models/_index';
-import { PostService } from '@services/_index';
+import { CategoryService, PostService, TagService } from '@services/_index';
 import * as dateFns from 'date-fns';
 import { DOCUMENT } from '@angular/common';
 
@@ -21,16 +21,20 @@ export class PostListComponent implements OnInit {
 
   today = dateFns.startOfToday();
   lastYearDay = dateFns.subYears(this.today, 1);
-  searchDateFrom = new UntypedFormControl(this.today);
-  searchDateTo = new UntypedFormControl(this.lastYearDay);
+  searchDateFrom = new UntypedFormControl(this.lastYearDay);
+  searchDateTo = new UntypedFormControl(this.today);
   searchStatus = 'NONE';
   statusList = ['NONE', 'PRIVATE', 'PUBLIC', 'PROTECTED'];
   itemSelected = undefined;
   isSplitHorizontal = false;
   elem;
+  listCategory = [];
+  listTag = [];
 
   constructor(@Inject(DOCUMENT) private document,
     private postService: PostService,
+    private tagService: TagService,
+    private categoryService: CategoryService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private ref: ChangeDetectorRef
@@ -40,6 +44,14 @@ export class PostListComponent implements OnInit {
 
   ngOnInit() {
     this.elem = document.getElementById('edit-post-container');
+    this.tagService.getTags()
+      .subscribe(listTag => {
+        this.listTag = listTag;
+      });
+    this.categoryService.getCategorys()
+      .subscribe(listCat => {
+        this.listCategory = listCat;
+      })
     this.activatedRoute.queryParams.subscribe(params => {
       const id = Number(params.id);
       if (id) {
@@ -127,7 +139,9 @@ export class PostListComponent implements OnInit {
     item.content = item.content.trim();
     this.postService.updatePost(id, item)
       .subscribe((res: any) => {
-        this.data[index] = res;
+        if (index !== -1) {
+          this.data[index] = res;
+        }
         // this.isLoadingResults = false;
       }, err => {
         // this.isLoadingResults = false;

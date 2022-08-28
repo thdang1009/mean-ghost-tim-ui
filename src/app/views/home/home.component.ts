@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '@app/_services/category.service';
 import { TagService } from '@app/_services/tag.service';
 import { AuthService, HomeService, PostService } from '@services/_index';
@@ -13,12 +14,15 @@ export class HomeComponent implements OnInit {
   isLoadingResults = true;
   thisYear = (new Date).getFullYear();
   posts = [];
+  mapTag = new Map();
+  mapCat = new Map();
 
   constructor(
     private authService: AuthService,
     private postService: PostService,
     private tagService: TagService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private activeRoute: ActivatedRoute
   ) {
   }
 
@@ -26,17 +30,22 @@ export class HomeComponent implements OnInit {
     this.init();
   }
   async init() {
-
     this.isLogined = this.authService.isLogin();
-    const listTag = await this.tagService.getTags().toPromise();
-    const listCategory = await this.categoryService.getCategorys().toPromise();
-    this.postService.getPublicPosts()
-      .subscribe(posts => {
-        console.log(listTag);
-        console.log(listCategory);
-        this.posts = posts || [];
+    this.tagService.getTags()
+      .subscribe(listTag => {
+        this.mapTag = new Map(listTag.map(tag => [tag._id, tag.name]));
+      });
+    this.categoryService.getCategorys()
+      .subscribe(listCat => {
+        this.mapCat = new Map(listCat.map(cat => [cat._id, cat.name]));
+      });
+    this.activeRoute.queryParams
+      .subscribe(params => {
+        this.postService.getPublicPosts(params)
+          .subscribe(posts => {
+            this.posts = posts || [];
+          });
       })
-
   }
   openPost(post) {
 

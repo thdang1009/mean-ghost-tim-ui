@@ -9,7 +9,7 @@
                     <form class="form-under-table-header row" (ngSubmit)="searchPost()">
                         <!--  date -->
 
-                        <div class="col-md-4">
+                        <div class="col-md-4" *ngIf="!itemSelected || !itemSelected.id">
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>From</mat-label>
                                 <input matInput [matDatepicker]="pickerFrom" name="dateFrom"
@@ -18,7 +18,7 @@
                                 <mat-datepicker #pickerFrom></mat-datepicker>
                             </mat-form-field>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" *ngIf="!itemSelected || !itemSelected.id">
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>To</mat-label>
                                 <input matInput [matDatepicker]="pickerTo" name="dateTo" [formControl]="searchDateTo">
@@ -27,7 +27,7 @@
                             </mat-form-field>
                         </div>
                         <!-- type -->
-                        <div class="col-md-4">
+                        <div class="col-md-4" *ngIf="!itemSelected || !itemSelected.id">
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Trạng thái</mat-label>
                                 <mat-select [(ngModel)]="searchStatus" [ngModelOptions]="{standalone: true}">
@@ -38,7 +38,6 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                        <!-- empty block -->
                         <!-- button search -->
                         <div class="col-md-4">
                             <button *ngIf="!itemSelected || !itemSelected.id" mat-raised-button type="submit"
@@ -59,6 +58,32 @@
                                 <i class="material-icons">add</i>
                                 Add Empty Post
                             </button>
+                        </div>
+
+                        <!-- tag -->
+                        <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Tags</mat-label>
+                                <mat-select [(ngModel)]="itemSelected.tags" [ngModelOptions]="{standalone: true}"
+                                    multiple (ngModelChange)="saveItem(itemSelected.id, itemSelected, -1)">
+                                    <mat-option *ngFor="let item of listTag; let i = index" [(value)]="listTag[i]._id">
+                                        {{item.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <!-- cat -->
+                        <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Categories</mat-label>
+                                <mat-select [(ngModel)]="itemSelected.category" [ngModelOptions]="{standalone: true}"
+                                    multiple (ngModelChange)="saveItem(itemSelected.id, itemSelected, -1)">
+                                    <mat-option *ngFor="let item of listCategory; let i = index"
+                                        [(value)]="listCategory[i]._id">
+                                        {{item.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
                         </div>
                         <!-- tools -->
                         <div class="col-md-8 tool-container" *ngIf="itemSelected && itemSelected.id">

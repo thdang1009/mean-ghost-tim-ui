@@ -41,12 +41,12 @@
   <div class="content-box">
     <div class="list-post" *ngFor="let post of posts">
       <article class="post">
-        <a class="post-thumbnail" (click)="openPost(post)" [href]="'post-read/' + post.id" [ngStyle]="{
+        <a class="post-thumbnail" (click)="openPost(post)" [routerLink]="'/post-read/' + post.id" [ngStyle]="{
             'background-image': 'url(' + post.postBackgroundImg + ')'
           }"></a>
         <div class="post-content">
           <h2 class="post-title">
-            <a [href]="'post-read/' + post.id">{{post.title}}</a>
+            <a [routerLink]="'/post-read/' + post.id">{{post.title}}</a>
           </h2>
           <p>{{post.description}}</p><span class="post-date">
             {{post.author}}
@@ -56,7 +56,7 @@
           </span>
           <ng-container *ngIf="post && post.tags.length">
             <div class="tagging" *ngFor="let tag of post.tags">
-              <a class="tagging__item" href="{{'/tags/' + tag}}">#${{tag}}</a>
+              <a class="tagging__item" [routerLink]="'/home'" [queryParams]="{ tag: mapTag.get(tag) }">#{{mapTag.get(tag)}}</a>
             </div>
           </ng-container>
         </div>

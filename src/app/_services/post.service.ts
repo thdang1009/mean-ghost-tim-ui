@@ -15,8 +15,9 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  getPublicPosts(): Observable<Post[]> {
-    const url = `${apiUrl}/public`;
+  getPublicPosts(req?): Observable<Post[]> {
+    const queryString = '?' + buildQueryString(req);
+    const url = `${apiUrl}/public${req && queryString || ''}`;
     return this.http.get<any>(url).pipe(
       tap(_ => this.log(`fetched public post`)),
       catchError(this.handleError<Post>(`getPublicPost`))

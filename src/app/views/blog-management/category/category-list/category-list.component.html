@@ -1,0 +1,72 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title ">Category</h4>
+                        <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Content
+                                    </th>
+                                    <th>
+                                        imgUrl
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngIf="categorys && categorys.length; else noDataBlock">
+                                        <tr *ngFor="let category of categorys; let index = index">
+                                            <td>
+                                                {{ index + 1 }}
+                                            </td>
+                                            <td>
+                                                {{ category.name }}
+                                            </td>
+                                            <td>
+                                                {{ category.description }}
+                                            </td>
+                                            <td>
+                                                {{ category.content }}
+                                            </td>
+                                            <td>
+                                                {{ category.imgUrl}}
+                                            </td>
+
+                                            <button mat-raised-button type="button" matTooltip="Delete"
+                                                class="btn btn-float-in-row btn-round btn-danger pull-right"
+                                                (click)="delete(category)">
+                                                <i class="material-icons red">delete</i>
+                                            </button>
+                                        </tr>
+                                    </ng-container>
+                                    <ng-template #noDataBlock>
+                                        <tr class="text-center">
+                                            <td colspan="100%" class="text-center">
+                                                <app-table-loading (size)="'sm'"></app-table-loading>
+                                                No data
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
