@@ -31,7 +31,8 @@ export class PostListComponent implements OnInit {
   listCategory = [];
   listTag = [];
 
-  constructor(@Inject(DOCUMENT) private document,
+  constructor(
+    @Inject(DOCUMENT) private document,
     private postService: PostService,
     private tagService: TagService,
     private categoryService: CategoryService,
@@ -44,14 +45,14 @@ export class PostListComponent implements OnInit {
 
   ngOnInit() {
     this.elem = document.getElementById('edit-post-container');
-    this.tagService.getTags()
-      .subscribe(listTag => {
-        this.listTag = listTag;
-      });
     this.categoryService.getCategorys()
       .subscribe(listCat => {
         this.listCategory = listCat;
       })
+    this.tagService.getTags()
+      .subscribe(listTag => {
+        this.listTag = listTag;
+      });
     this.activatedRoute.queryParams.subscribe(params => {
       const id = Number(params.id);
       if (id) {
