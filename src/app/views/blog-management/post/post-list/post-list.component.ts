@@ -29,6 +29,7 @@ export class PostListComponent implements OnInit {
   isSplitHorizontal = false;
   elem;
   listCategory = [];
+  listPermisson = [];
   listTag = [];
 
   constructor(
@@ -45,6 +46,10 @@ export class PostListComponent implements OnInit {
 
   ngOnInit() {
     this.elem = document.getElementById('edit-post-container');
+    this.listPermisson = [
+      'PUBLIC',
+      'PRIVATE'
+    ];
     this.categoryService.getCategorys()
       .subscribe(listCat => {
         this.listCategory = listCat;

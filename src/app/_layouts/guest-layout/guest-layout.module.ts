@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ComponentsModule } from '@app/components/components.module';
+import { ReuseComponentModule } from '@app/_reuse/reuse.module';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { ComponentsModule } from '@app/components/components.module';
     MatNativeDateModule,
     MatTooltipModule,
     MatDialogModule,
-    ComponentsModule
+    ComponentsModule,
+    ReuseComponentModule
   ],
   declarations: [
     HomeComponent,

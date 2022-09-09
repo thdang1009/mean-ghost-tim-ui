@@ -1,4 +1,12 @@
+
 .post-container {
-    // padding: 20px;
     background-color: white;
+    padding: 20px 40px;
+}
+
+@media (max-width: 991px) {
+    .post-container {
+        // background-color: white;
+        padding: 10px 20px;
+    }
 }

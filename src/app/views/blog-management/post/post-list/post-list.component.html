@@ -85,6 +85,19 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
+                        <!-- permission -->
+                        <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Permission</mat-label>
+                                <mat-select [(ngModel)]="itemSelected.permission" [ngModelOptions]="{standalone: true}"
+                                    (ngModelChange)="saveItem(itemSelected.id, itemSelected, -1)">
+                                    <mat-option *ngFor="let item of listPermisson; let i = index"
+                                        [(value)]="listPermisson[i]">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
                         <!-- tools -->
                         <div class="col-md-8 tool-container" *ngIf="itemSelected && itemSelected.id">
                             <span class="material-icons md-36" matTooltip="Goto Full Screen" (click)="openFullscreen()">
