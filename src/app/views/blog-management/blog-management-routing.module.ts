@@ -10,7 +10,7 @@ import { TagListComponent } from './tag/tag-list/tag-list.component';
 
 const routes: Routes = [
   { path: 'post-list', component: PostListComponent, canActivate: [AdminGuard] },
-  { path: 'post-read/:id', component: PostDetailComponent, canActivate: [] },
+  { path: 'post-read/:ref', component: PostDetailComponent, canActivate: [] },
   { path: 'tag-list', component: TagListComponent, canActivate: [AdminGuard] },
   { path: 'tag-add', component: AddTagComponent, canActivate: [AdminGuard] },
   { path: 'category-list', component: CategoryListComponent, canActivate: [AdminGuard] },

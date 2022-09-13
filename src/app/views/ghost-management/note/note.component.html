@@ -15,7 +15,7 @@
                                 Search
                             </button>
                             <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button"
-                                (click)="back()" [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100">
+                                (click)="saveThenBack()" [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100">
                                 <i class="material-icons">save</i>
                                 Back & Save
                             </button>
@@ -96,9 +96,12 @@
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
                                 [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults"></textarea>
 
-                            <textarea type="text" [(ngModel)]="itemSelected.content" class="editable wd100"
+                            <!-- <textarea type="text" [(ngModel)]="itemSelected.content" class="editable wd100"
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
-                                [maxRows]="100" [useImportant]="true" [disabled]="isLoadingResults"></textarea>
+                                [maxRows]="100" [useImportant]="true" [disabled]="isLoadingResults"></textarea> -->
+                            <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="itemSelected.content"
+                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" [disabled]="isLoadingResults">
+                            </angular-editor>
                         </ng-template>
                     </div>
                 </div>

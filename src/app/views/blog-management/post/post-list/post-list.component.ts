@@ -70,7 +70,7 @@ export class PostListComponent implements OnInit {
 
   getPost(id, cb?) {
     this.isLoadingResults = true;
-    this.postService.getPost(id)
+    this.postService.getPostAsAdmin(id)
       .subscribe(
         res => {
           this.itemSelected = res;

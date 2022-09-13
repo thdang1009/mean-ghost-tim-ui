@@ -16,7 +16,8 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   getPublicPosts(req?): Observable<Post[]> {
-    const queryString = '?' + buildQueryString(req);
+    const hasKeys = !!Object.keys(req).length;
+    const queryString = hasKeys && ('?' + buildQueryString(req)) || '';
     const url = `${apiUrl}/public${req && queryString || ''}`;
     return this.http.get<any>(url).pipe(
       tap(_ => this.log(`fetched public post`)),
@@ -26,6 +27,14 @@ export class PostService {
 
   getPost(id: any): Observable<Post> {
     const url = `${apiUrl}/id/${id}`;
+    return this.http.get<Post>(url).pipe(
+      tap(_ => this.log(`fetched post by id=${id}`)),
+      catchError(this.handleError<Post>(`getPost id=${id}`))
+    );
+  }
+
+  getPostAsAdmin(id: any): Observable<Post> {
+    const url = `${apiUrl}/get-as-admin/${id}`;
     return this.http.get<Post>(url).pipe(
       tap(_ => this.log(`fetched post by id=${id}`)),
       catchError(this.handleError<Post>(`getPost id=${id}`))

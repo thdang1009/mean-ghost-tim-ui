@@ -114,15 +114,16 @@ export class NoteComponent implements OnInit {
         this.isLoadingResults = false;
       });
   }
-  saveItem(id, item, index) {
-    // this.isLoadingResults = true;
+  saveItem(id, item, index = -1) {
     item.content = item.content.trim();
     this.noteService.updateNote(id, item)
       .subscribe((res: any) => {
-        this.data[index] = res;
-        // this.isLoadingResults = false;
+        if (index === -1) {
+          this.searchNote();
+        } else {
+          this.data[index] = res;
+        }
       }, err => {
-        // this.isLoadingResults = false;
       });
   }
   deleteLast() {
@@ -133,6 +134,11 @@ export class NoteComponent implements OnInit {
     const lastIndex = this.data.length - 1;
     const id = this.data[lastIndex].id;
     this.callDeleteNote(id);
+  }
+  saveThenBack() {
+    this.saveItem(this.itemSelected.id, this.itemSelected);
+    // it could be trigger back first, but that ok
+    this.back();
   }
   back() {
     this.itemSelected = undefined;

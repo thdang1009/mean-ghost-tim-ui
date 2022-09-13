@@ -35,6 +35,7 @@
     "@angular/platform-browser-dynamic": "14.2.0",
     "@angular/platform-server": "14.2.0",
     "@angular/router": "14.2.0",
+    "@kolkov/angular-editor": "^3.0.0-beta.0",
     "@maaxgr/ang-jsoneditor": "^12.0.0",
     "@ngstack/code-editor": "4.0.0",
     "@sentry/angular": "^6.19.7",
