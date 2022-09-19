@@ -35,7 +35,7 @@ export class NoteService {
     const queryString = buildQueryString(req);
     const url = `${apiUrl}/my-note?${queryString}`;
     return this.http.get<Note>(url).pipe(
-      tap(_ => console.log(`fetched my note`)),
+      // tap(_ => console.log(`fetched my note`)),
       catchError(this.handleError<Note>(`getMyNote`))
     );
   }
