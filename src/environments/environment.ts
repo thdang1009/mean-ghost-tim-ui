@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: `https://dangtrinh.site/v1/`,
+  apiUrl: `https://dangtrinh.site/v1`,
   // apiUrl: `http://localhost:3000`,
   gaCode: 'G-FWH80SC06E',
 };
