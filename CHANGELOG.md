@@ -21,7 +21,7 @@ When you build and serve your app it is possible that some warnings to appear on
 - update to Angular 8
 - update all dependencies to match Angular 8 version
 ```
-@agm/core                           1.0.0-beta.5   →   1.0.0-beta.6
+<!-- @agm/core                           1.0.0-beta.5   →   1.0.0-beta.6 -->
 @angular/animations                        7.0.2   →          8.0.0
 @angular/cdk                               7.0.2   →          8.0.1
 @angular/common                            7.0.2   →          8.0.0

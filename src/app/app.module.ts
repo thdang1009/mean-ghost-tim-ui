@@ -19,9 +19,6 @@ import { SharedModuleModule } from './_shares/shared-module.module';
 
 // third party
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
-import {
-  AgmCoreModule
-} from '@agm/core';
 import { AutosizeModule } from 'ngx-autosize';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { environment } from '@environments/environment';
@@ -45,9 +42,6 @@ import { AnchorService } from './_shares/anchor/anchor.service';
     CommonModule,
     SharedModuleModule,
     // third party
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    }),
     AutosizeModule,
     CodeEditorModule.forRoot(),
     NgxGoogleAnalyticsModule.forRoot(environment.gaCode),

@@ -10,7 +10,6 @@ import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { JsonExcelComponent } from './json-excel/json-excel.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { TextDiffComponent } from './text-diff/text-diff.component';
-import { AmChartComponent } from './am-chart/am-chart.component';
 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { AmChartComponent } from './am-chart/am-chart.component';
     RunJsComponent,
     JsonExcelComponent,
     TextDiffComponent,
-    AmChartComponent
   ],
   imports: [
     CommonModule,
