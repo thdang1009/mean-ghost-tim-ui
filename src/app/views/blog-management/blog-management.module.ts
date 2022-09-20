@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BlogManagementRoutingModule } from './blog-management-routing.module';
 import { PostListComponent } from './post/post-list/post-list.component';
 import { PostDetailComponent } from './post/post-detail/post-detail.component';
-import { SharedModuleModule } from '@shares/shared-module.module';
+import { SharedModule } from '@shares/shared-module.module';
 import { ClipboardButtonComponent, ClipboardOptions, MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 import { HttpClient } from '@angular/common/http';
 import { AnchorService } from '@app/_shares/anchor/anchor.service';
@@ -36,7 +36,7 @@ export function markedOptionsFactory(anchorService: AnchorService): MarkedOption
   ],
   imports: [
     CommonModule,
-    SharedModuleModule,
+    SharedModule,
     ReuseComponentModule,
     BlogManagementRoutingModule,
     MarkdownModule.forRoot({

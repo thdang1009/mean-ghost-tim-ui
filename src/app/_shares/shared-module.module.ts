@@ -63,4 +63,4 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
   ]
 })
-export class SharedModuleModule { }
+export class SharedModule { }

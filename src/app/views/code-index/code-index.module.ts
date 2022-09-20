@@ -5,7 +5,7 @@ import { CodeIndexRoutingModule } from './code-index-routing.module';
 import { AngularIndexComponent } from './angular-index/angular-index.component';
 import { CssIndexComponent } from './css-index/css-index.component';
 import { HtmlIndexComponent } from './html-index/html-index.component';
-import { SharedModuleModule } from '@shares/shared-module.module';
+import { SharedModule } from '@shares/shared-module.module';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { GitIndexComponent } from './git-index/git-index.component';
@@ -36,7 +36,7 @@ import { ThreeBookMainComponent } from './three-book-main/three-book-main.compon
   imports: [
     CommonModule,
     CodeIndexRoutingModule,
-    SharedModuleModule,
+    SharedModule,
     PdfViewerModule,
     DragDropModule
   ]

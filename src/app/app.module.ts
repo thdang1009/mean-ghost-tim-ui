@@ -15,11 +15,9 @@ import { TokenInterceptor } from './_helpers/_index';
 import { CommonModule, DatePipe } from '@angular/common';
 import { AuthService, TodoTodayService, NoteService, JobService, HomeService, IssueService } from './_services/_index';
 import { DonationComponent } from './views/donation/donation.component';
-import { SharedModuleModule } from './_shares/shared-module.module';
 
 // third party
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
-import { AutosizeModule } from 'ngx-autosize';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { environment } from '@environments/environment';
 import { AnchorModule } from './_shares/anchor/anchor.module';
@@ -40,9 +38,7 @@ import { AnchorService } from './_shares/anchor/anchor.service';
     RouterModule,
     AppRoutingModule,
     CommonModule,
-    SharedModuleModule,
     // third party
-    AutosizeModule,
     CodeEditorModule.forRoot(),
     NgxGoogleAnalyticsModule.forRoot(environment.gaCode),
     MarkdownModule.forRoot({

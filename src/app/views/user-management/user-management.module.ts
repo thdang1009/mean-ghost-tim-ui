@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UserManagementRoutingModule } from './user-management-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
 import { AddUserComponent } from './add-user/add-user.component';
-import { SharedModuleModule } from '@shares/shared-module.module';
+import { SharedModule } from '@shares/shared-module.module';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { ReuseComponentModule } from '@app/_reuse/reuse.module';
 
@@ -18,7 +18,7 @@ import { ReuseComponentModule } from '@app/_reuse/reuse.module';
   imports: [
     CommonModule,
     UserManagementRoutingModule,
-    SharedModuleModule,
+    SharedModule,
     ReuseComponentModule
   ]
 })

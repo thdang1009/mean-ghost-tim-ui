@@ -5,7 +5,7 @@ import { AuthManagementRoutingModule } from './auth-management-routing.module';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
-import { SharedModuleModule } from '@shares/shared-module.module';
+import { SharedModule } from '@shares/shared-module.module';
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import { SharedModuleModule } from '@shares/shared-module.module';
   imports: [
     CommonModule,
     AuthManagementRoutingModule,
-    SharedModuleModule
+    SharedModule
   ]
 })
 export class AuthManagementModule { }
