@@ -57,6 +57,14 @@ export class PostService {
     );
   }
 
+  clapPost(post: Post, num: Number): Observable<Post> {
+    return this.http.put<Post>(`${apiUrl}/clap-post/${post.id}`, { numIncrease: num })
+      .pipe(
+        tap((prod: Post) => this.log(`clap post id=${post.id}`)),
+        catchError(this.handleError<Post>('clap post'))
+      );
+  }
+
   updatePost(id: any, post: Post): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, post).pipe(

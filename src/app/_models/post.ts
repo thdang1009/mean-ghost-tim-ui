@@ -15,4 +15,5 @@ export class Post {
   order?: Number;
   createAt?: Date;
   updateAt?: Date;
+  clapCount?: Number;
 }

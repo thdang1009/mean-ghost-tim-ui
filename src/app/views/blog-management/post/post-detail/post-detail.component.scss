@@ -2,6 +2,16 @@
     background-color: white;
     padding: 20px 40px;
 }
+.clap-container {
+    display: flex;
+    position: fixed;
+    height: 60%;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: center;
+}
+ang-clap {
+}
 
 @media (max-width: 991px) {
     .post-container {

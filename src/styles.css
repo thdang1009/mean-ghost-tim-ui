@@ -398,3 +398,12 @@ mark {
 .png-to-icon {
     width: 10px;
 }
+
+.claps-count > p {
+    margin: 0 !important;
+}
+.container .claps-count {
+    width: 35px !important;
+    height: 35px !important;
+    bottom: 20px !important;
+}

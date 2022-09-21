@@ -39,6 +39,7 @@
     "@ngstack/code-editor": "4.0.0",
     "@sentry/angular": "^6.19.7",
     "ajv": "8.6.1",
+    "ang-clap": "^0.0.3",
     "arrive": "2.4.1",
     "bootstrap": "4.5.2",
     "bootstrap-material-design": "4.1.3",

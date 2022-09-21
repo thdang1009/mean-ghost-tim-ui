@@ -13,6 +13,8 @@ import { AddTagComponent } from './tag/add-tag/add-tag.component';
 import { TagListComponent } from './tag/tag-list/tag-list.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
+import { ComponentsModule } from '@app/components/components.module';
+import { AngClapModule } from 'ang-clap';
 
 export function markedOptionsFactory(anchorService: AnchorService): MarkedOptions {
   const renderer = new MarkedRenderer();
@@ -39,6 +41,8 @@ export function markedOptionsFactory(anchorService: AnchorService): MarkedOption
     SharedModule,
     ReuseComponentModule,
     BlogManagementRoutingModule,
+    ComponentsModule,
+    AngClapModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
       markedOptions: {
