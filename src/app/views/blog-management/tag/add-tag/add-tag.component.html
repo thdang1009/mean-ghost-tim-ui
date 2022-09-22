@@ -5,8 +5,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header card-header-info">
-              <h4 class="card-title">New Tag</h4>
-              <!-- <p class="card-category">Complete your profile</p> -->
+              <h4 class="card-title">{{isUpdate ? 'Update' : 'New' }} Tag</h4>
             </div>
             <div class="card-body">
               <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit(registerForm.value)">
@@ -58,7 +57,7 @@
                 </div>
                 <div class="button-row">
                   <button mat-raised-button type="submit" [disabled]="!registerForm.valid"
-                    class="btn btn-info pull-right btn-w100">Create</button>
+                    class="btn btn-info pull-right btn-w100">{{isUpdate ? 'Update' : 'Create' }}</button>
                 </div>
               </form>
             </div>

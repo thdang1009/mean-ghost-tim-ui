@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoryService } from '@services/_index';
 import { showNoti } from '@shares/common';
 
@@ -11,7 +12,9 @@ export class CategoryListComponent implements OnInit {
 
 
   categorys = [];
-  constructor(private categoryService: CategoryService) { }
+  constructor(
+    private categoryService: CategoryService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getCategorys();
@@ -25,7 +28,6 @@ export class CategoryListComponent implements OnInit {
     });
   }
   delete(category) {
-
     if (!category) {
       return;
     }
@@ -38,5 +40,15 @@ export class CategoryListComponent implements OnInit {
         }, err => {
         });
     }
+  }
+  edit(category) {
+    if (!category) {
+      return;
+    }
+    this.router.navigate(
+      ['admin/blog/category'],
+      {
+        queryParams: { id: category._id }
+      });
   }
 }

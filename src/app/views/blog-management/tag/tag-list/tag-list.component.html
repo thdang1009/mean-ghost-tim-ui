@@ -5,7 +5,6 @@
                 <div class="card">
                     <div class="card-header card-header-info">
                         <h4 class="card-title ">Tag</h4>
-                        <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -29,27 +28,27 @@
                                 </thead>
                                 <tbody>
                                     <ng-container *ngIf="tags && tags.length; else noDataBlock">
-                                        <tr *ngFor="let tag of tags; let index = index">
-                                            <td>
+                                        <tr *ngFor="let tag of tags; let index = index" class="hover-pointer-td">
+                                            <td (click)="edit(tag)">
                                                 {{ index + 1 }}
                                             </td>
-                                            <td>
+                                            <td (click)="edit(tag)">
                                                 {{ tag.name }}
                                             </td>
-                                            <td>
+                                            <td (click)="edit(tag)">
                                                 {{ tag.description }}
                                             </td>
-                                            <td>
+                                            <td (click)="edit(tag)">
                                                 {{ tag.content }}
                                             </td>
-                                            <td>
+                                            <td (click)="edit(tag)">
                                                 {{ tag.imgUrl}}
                                             </td>
 
                                             <button mat-raised-button type="button" matTooltip="Delete"
                                                 class="btn btn-float-in-row btn-round btn-danger pull-right"
                                                 (click)="delete(tag)">
-                                                <i class="material-icons red">delete</i>
+                                                <em class="material-icons red">delete</em>
                                             </button>
                                         </tr>
                                     </ng-container>

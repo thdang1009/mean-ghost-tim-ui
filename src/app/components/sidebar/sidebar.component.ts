@@ -42,11 +42,11 @@ export const ROUTES: RouteInfo[] = [
     path: 'blog', title: 'Blog', icon: 'library_books', class: '', permission: 'isAdmin', hasChild: true,
     children: [
       { path: 'blog/post-list', title: 'All Post', icon: 'library_books', class: '', permission: 'isAdmin' },
-      { path: 'blog/post-add', title: 'Add A Post', icon: 'post_add', class: '', permission: 'isAdmin' },
+      // { path: 'blog/post-add', title: 'Add A Post', icon: 'post_add', class: '', permission: 'isAdmin' },
       { path: 'blog/tag-list', title: 'All Tag', icon: 'library_books', class: '', permission: 'isAdmin' },
-      { path: 'blog/tag-add', title: 'Add A Tag', icon: 'post_add', class: '', permission: 'isAdmin' },
+      { path: 'blog/tag', title: 'Add A Tag', icon: 'post_add', class: '', permission: 'isAdmin' },
       { path: 'blog/category-list', title: 'All Category', icon: 'library_books', class: '', permission: 'isAdmin' },
-      { path: 'blog/category-add', title: 'Add A Category', icon: 'post_add', class: '', permission: 'isAdmin' }
+      { path: 'blog/category', title: 'Add A Category', icon: 'post_add', class: '', permission: 'isAdmin' }
     ]
   }
 

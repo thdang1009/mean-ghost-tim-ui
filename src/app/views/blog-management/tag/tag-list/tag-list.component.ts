@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TagService } from '@services/_index';
 import { showNoti } from '@shares/common';
 
@@ -11,7 +12,8 @@ export class TagListComponent implements OnInit {
 
 
   tags = [];
-  constructor(private tagService: TagService) { }
+  constructor(private tagService: TagService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getTags();
@@ -38,5 +40,16 @@ export class TagListComponent implements OnInit {
         }, err => {
         });
     }
+  }
+
+  edit(tag) {
+    if (!tag) {
+      return;
+    }
+    this.router.navigate(
+      ['admin/blog/tag'],
+      {
+        queryParams: { id: tag._id }
+      });
   }
 }

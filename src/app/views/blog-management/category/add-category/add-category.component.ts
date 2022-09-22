@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '@models/_index';
 import { CategoryService, AlertService } from '@services/_index';
 import { showNoti } from '@shares/common';
@@ -21,10 +21,13 @@ export class AddCategoryComponent implements OnInit {
   imgUrl = '';
   content = '';
   isLoadingResults = false;
+  isUpdate = false;
+  id = undefined;
 
   constructor(
     private formBuilder: UntypedFormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private categoryService: CategoryService,
     private alertService: AlertService
   ) { }
@@ -36,20 +39,50 @@ export class AddCategoryComponent implements OnInit {
       imgUrl: [null, Validators.required],
       content: [null, Validators.required],
     });
+    this.route.queryParams.subscribe(params => {
+      const id = params.id;
+      if (id) {
+        this.categoryService.getCategory(id)
+          .subscribe(res => {
+            this.initFormWithData(res);
+            this.isUpdate = true;
+            this.id = id;
+          });
+      }
+    });
+  }
+
+  initFormWithData(data = {} as any) {
+    this.registerForm.patchValue(data);
   }
 
   onFormSubmit(data: any) {
-    console.log(data);
     const newCategory: Category = {
       name: data.name,
       description: data.description,
       imgUrl: data.imgUrl,
       content: data.content
     }
-    this.categoryService.addCategory(newCategory)
+    this.isUpdate ? this.callUpdate(this.id, newCategory) : this.callCreate(newCategory)
+  }
+  callUpdate(id, newCategory) {
+    this.categoryService.updateCategory(id, newCategory)
       .subscribe(category => {
         if (category) {
           showNoti(`Create success`, 'success');
+          this.router.navigate(['/admin/blog/category-list']);
+        }
+      }, (err) => {
+        console.log(err);
+        this.alertService.error(err.error);
+      });
+  }
+
+  callCreate(newCategory) {
+    this.categoryService.addCategory(newCategory)
+      .subscribe(category => {
+        if (category) {
+          showNoti(`Update success`, 'success');
           this.router.navigate(['/admin/blog/category-list']);
         }
       }, (err) => {

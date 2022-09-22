@@ -95,7 +95,6 @@ export class PostListComponent implements OnInit {
         this.data.unshift(res);
         this.isLoadingResults = false;
       }, err => {
-        // console.log(err);
         this.isLoadingResults = false;
       });
   }

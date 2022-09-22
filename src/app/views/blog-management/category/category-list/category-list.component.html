@@ -5,7 +5,6 @@
                 <div class="card">
                     <div class="card-header card-header-info">
                         <h4 class="card-title ">Category</h4>
-                        <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -29,27 +28,26 @@
                                 </thead>
                                 <tbody>
                                     <ng-container *ngIf="categorys && categorys.length; else noDataBlock">
-                                        <tr *ngFor="let category of categorys; let index = index">
-                                            <td>
+                                        <tr *ngFor="let category of categorys; let index = index"  class="hover-pointer-td">
+                                            <td (click)="edit(category)">
                                                 {{ index + 1 }}
                                             </td>
-                                            <td>
+                                            <td (click)="edit(category)">
                                                 {{ category.name }}
                                             </td>
-                                            <td>
+                                            <td (click)="edit(category)">
                                                 {{ category.description }}
                                             </td>
-                                            <td>
+                                            <td (click)="edit(category)">
                                                 {{ category.content }}
                                             </td>
-                                            <td>
+                                            <td (click)="edit(category)">
                                                 {{ category.imgUrl}}
                                             </td>
-
                                             <button mat-raised-button type="button" matTooltip="Delete"
                                                 class="btn btn-float-in-row btn-round btn-danger pull-right"
                                                 (click)="delete(category)">
-                                                <i class="material-icons red">delete</i>
+                                                <em class="material-icons red">delete</em>
                                             </button>
                                         </tr>
                                     </ng-container>

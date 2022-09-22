@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: 'post-list', component: PostListComponent, canActivate: [AdminGuard] },
   { path: 'post-read/:ref', component: PostDetailComponent, canActivate: [] },
   { path: 'tag-list', component: TagListComponent, canActivate: [AdminGuard] },
-  { path: 'tag-add', component: AddTagComponent, canActivate: [AdminGuard] },
+  { path: 'tag', component: AddTagComponent, canActivate: [AdminGuard] },
   { path: 'category-list', component: CategoryListComponent, canActivate: [AdminGuard] },
-  { path: 'category-add', component: AddCategoryComponent, canActivate: [AdminGuard] },
+  { path: 'category', component: AddCategoryComponent, canActivate: [AdminGuard] },
 ];
 
 @NgModule({

@@ -38,7 +38,9 @@ textarea.jsoneditor-text {
 .hover-pointer {
     cursor: pointer;
 }
-
+.hover-pointer-td td {
+    cursor: pointer;
+}
 pdf-viewer {
     height: 85vh !important;
     width: auto !important;
