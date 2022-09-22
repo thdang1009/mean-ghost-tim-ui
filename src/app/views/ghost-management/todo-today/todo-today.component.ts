@@ -4,7 +4,7 @@ import { TodoToday } from '@models/_index';
 import * as dateFns from 'date-fns';
 import { JobService, TodoTodayService } from '@services/_index';
 import { isImportant, nextStatus, previousStatus, showNoti } from '@shares/common';
-import { DEBOUCE_TIME } from '@shares/constant';
+import { DEBOUCE_TIME, TDTDStatus } from '@shares/constant';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -27,6 +27,7 @@ export class TodoTodayComponent implements OnInit {
   count = 0;
   nextStatus = nextStatus;
   previousStatus = previousStatus;
+  TDTDStatus = TDTDStatus;
 
   constructor(
     private todoTodayService: TodoTodayService,
@@ -47,7 +48,6 @@ export class TodoTodayComponent implements OnInit {
         this.data.push(res);
         this.isLoadingResults = false;
       }, err => {
-        // console.log(err);
         this.isLoadingResults = false;
       });
   }
@@ -93,14 +93,11 @@ export class TodoTodayComponent implements OnInit {
       });
   }
   saveItem(id, item, index) {
-    // this.isLoadingResults = true;
     item.content = item.content.trim();
     this.todoTodayService.updateTodoToday(id, item)
       .subscribe((res: any) => {
         this.data[index] = res;
-        // this.isLoadingResults = false;
       }, err => {
-        // this.isLoadingResults = false;
       });
   }
   deleteLast() {
@@ -145,8 +142,7 @@ export class TodoTodayComponent implements OnInit {
   triggerJobManually() {
     const req = {
       jobName: [
-        'newToNotYet',
-        'tomorrowToNew'
+        'allToNew'
       ]
     }
     this.jobService.runJobManually(req, new Date)

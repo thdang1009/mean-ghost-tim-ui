@@ -1,3 +1,5 @@
+import { TDTDStatus } from "./constant";
+
 
 declare var $: any;
 export interface GhostSiteResponse {
@@ -56,17 +58,17 @@ export function isInPDFView() {
 
 export function nextStatus(oldStatus) {
   return {
-    'NEW': 'DONE',
-    'DONE': 'TOMORROW',
-    'TOMORROW': 'NOT_YET',
-    'NOT_YET': 'NEW'
+    NEW: TDTDStatus.DONE,
+    DONE: TDTDStatus.TOMORROW,
+    TOMORROW: TDTDStatus.NOT_YET,
+    NOT_YET: TDTDStatus.NEW
   }[oldStatus];
 }
 export function previousStatus(oldStatus) {
   return {
-    'DONE': 'NEW',
-    'TOMORROW': 'DONE',
-    'NOT_YET': 'TOMORROW',
-    'NEW': 'NOT_YET'
+    DONE: TDTDStatus.NEW,
+    TOMORROW: TDTDStatus.DONE,
+    NOT_YET: TDTDStatus.TOMORROW,
+    NEW: TDTDStatus.NOT_YET
   }[oldStatus];
 }

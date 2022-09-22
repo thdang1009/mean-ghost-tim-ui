@@ -126,10 +126,10 @@
                                 <tbody cdkDropList (cdkDropListDropped)="drop($event)">
                                     <ng-container *ngIf="data && data.length; else noDataBlock">
                                         <tr *ngFor="let post of data; let index = index" cdkDrag [ngClass]="{
-                                        'warning': post.status === 'NOT_YET',
-                                        'success': post.status === 'DONE',
-                                        'primary': post.status === 'NEW',
-                                        'future': post.status === 'TOMORROW'
+                                        'warning': post.status === PostStatus.NONE,
+                                        'success': post.status === PostStatus.PRIVATE,
+                                        'primary': post.status === PostStatus.PUBLIC,
+                                        'future': post.status === PostStatus.PROTECTED
                                     }">
                                             <td class="text-center">
                                                 <span class="hover-pointer" (click)="chooseThisItem(post)"

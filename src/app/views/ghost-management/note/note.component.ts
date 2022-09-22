@@ -1,7 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { showNoti } from '@shares/common';
 import { Note } from '@models/_index';
 import { NoteService } from '@services/_index';
@@ -19,7 +19,6 @@ export class NoteComponent implements OnInit {
 
   today = dateFns.startOfToday();
   searchDate = new UntypedFormControl(this.today);
-  // searchDateDisplay = 'ToDay';
   searchStatus = 'NONE';
   statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];
   itemSelected = undefined;
@@ -29,7 +28,6 @@ export class NoteComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private ref: ChangeDetectorRef
-    // private simpleTimePipe: SimpleTimePipe
   ) { }
 
   ngOnInit() {
@@ -72,8 +70,6 @@ export class NoteComponent implements OnInit {
     const value = this.searchDate && this.searchDate.value || new Date();
     const fromDate = dateFns.startOfDay(value);
     const toDate = dateFns.endOfDay(value);
-    // const fromDate = dateFns.startOfDay(dateFns.subDays(new Date(), 7));
-    // const toDate = dateFns.endOfDay(dateFns.addDays(new Date(), 7));
     const req = {
       from: fromDate || undefined,
       to: toDate || undefined,
@@ -87,28 +83,6 @@ export class NoteComponent implements OnInit {
           this.itemSelected = res.filter(el => el.id === id)[0];
           this.ref.markForCheck();
         }
-        // this.searchDateDisplay = this.simpleTimePipe.transform(value);
-        this.isLoadingResults = false;
-      }, err => {
-        this.isLoadingResults = false;
-      });
-  }
-  updateStatus(item, index) {
-    // console.log(item);
-    const nextStatus = (oldStatus) => ({
-      'NEW': 'DONE',
-      'DONE': 'NOT_YET',
-      'NOT_YET': 'TOMORROW',
-      'TOMORROW': 'NEW'
-    }[oldStatus])
-    const req = {
-      ...item,
-      status: nextStatus(item.status)
-    };
-    this.isLoadingResults = true;
-    this.noteService.updateNote(item.id, req)
-      .subscribe((res: any) => {
-        this.data[index] = res;
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;

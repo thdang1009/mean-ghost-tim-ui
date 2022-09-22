@@ -7,6 +7,7 @@ import { Post } from '@models/_index';
 import { CategoryService, PostService, TagService } from '@services/_index';
 import * as dateFns from 'date-fns';
 import { DOCUMENT } from '@angular/common';
+import { PostStatus } from '@app/_shares/constant';
 
 
 @Component({
@@ -24,13 +25,14 @@ export class PostListComponent implements OnInit {
   searchDateFrom = new UntypedFormControl(this.lastYearDay);
   searchDateTo = new UntypedFormControl(this.today);
   searchStatus = 'NONE';
-  statusList = ['NONE', 'PRIVATE', 'PUBLIC', 'PROTECTED'];
+  statusList = [PostStatus.NONE, PostStatus.PRIVATE, PostStatus.PUBLIC, PostStatus.PROTECTED];
   itemSelected = undefined;
   isSplitHorizontal = false;
   elem;
   listCategory = [];
   listPermisson = [];
   listTag = [];
+  PostStatus = PostStatus;
 
   constructor(
     @Inject(DOCUMENT) private document,
@@ -47,8 +49,8 @@ export class PostListComponent implements OnInit {
   ngOnInit() {
     this.elem = document.getElementById('edit-post-container');
     this.listPermisson = [
-      'PUBLIC',
-      'PRIVATE'
+      PostStatus.PUBLIC,
+      PostStatus.PRIVATE
     ];
     this.categoryService.getCategorys()
       .subscribe(listCat => {

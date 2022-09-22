@@ -27,11 +27,6 @@
                         </div>
                         <!-- search status, default all -->
                         <div class="col-md-4">
-                            <!-- <button class="btn btn-move" (click)="decreaseStatus()">
-                                <span class="material-icons">
-                                    arrow_back_ios
-                                </span>
-                            </button> -->
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Trạng thái</mat-label>
                                 <mat-select [(ngModel)]="searchStatus" [ngModelOptions]="{standalone: true}">
@@ -41,67 +36,42 @@
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
-                            <!-- <button class="btn btn-move" (click)="increaseStatus()">
-                                <span class="material-icons">
-                                    arrow_forward_ios
-                                    </span>
-                            </button> -->
                         </div>
                         <!-- button search -->
                         <div class="col-md-4">
                             <button mat-raised-button type="submit" [disabled]="isLoadingResults"
                                 class="btn btn-info pull-right btn-w100">
-                                <i class="material-icons">search</i>
+                                <em class="material-icons">search</em>
                                 Search
                             </button>
                         </div>
-                        <!-- button add -->
-                        <!-- <div class="col-md-3">
-                            <button mat-raised-button type="button" [disabled]="isLoadingResults"
-                                class="btn btn-info pull-right" (click)="addToDoToDay()">
-                                <i class="material-icons">add</i>
-                                New
-                            </button>
-                        </div> -->
                     </form>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
-                                    <!-- <th>
-                                        ID
-                                    </th> -->
                                     <th style="max-width: 120px; min-width: 120px; width: 120px;">
                                         Status
                                     </th>
                                     <th>
                                         <span (click)="increaseCount()">Content</span>
                                     </th>
-                                    <!-- <th style="max-width: 95px; min-width: 95px; width: 95px;">
-                                        Status
-                                    </th> -->
-                                    <!-- <th>
-                                        Update Time
-                                    </th> -->
                                 </thead>
                                 <tbody (mouseleave)="hoveredIndex=undefined" cdkDropList
                                     (cdkDropListDropped)="drop($event)">
                                     <ng-container *ngIf="data && data.length; else noDataBlock">
                                         <tr *ngFor="let tdtd of data; let index = index" cdkDrag [ngClass]="{
-                                        'warning': tdtd.status === 'NOT_YET',
-                                        'success': tdtd.status === 'DONE',
-                                        'primary': tdtd.status === 'NEW',
-                                        'future': tdtd.status === 'TOMORROW'
+                                        'warning': tdtd.status === TDTDStatus.NOT_YET,
+                                        'success': tdtd.status === TDTDStatus.DONE,
+                                        'primary': tdtd.status === TDTDStatus.NEW,
+                                        'future': tdtd.status === TDTDStatus.TOMORROW
                                     }" (mouseenter)="hoveredIndex=index">
-                                            <!-- <td>
-                                            {{ tdtd.id }}
-                                        </td> -->
                                             <td class="text-center">
                                                 <span class="hover-pointer" (click)="updateStatus(tdtd, index)"
                                                     matTooltip="=> {{ tdtd.nextStatus || nextStatus(tdtd.status) }}">{{
                                                     tdtd.status }}</span>
                                                 <div class="drag-to-reorder" cdkDragHandle>
-                                                    <img class="png-to-icon" src="/assets/img/drag-up-and-down.svg">
+                                                    <img class="png-to-icon" src="/assets/img/drag-up-and-down.svg" alt="drag">
                                                 </div>
                                             </td>
                                             <td>
@@ -112,7 +82,7 @@
                                                     [disabled]="isLoadingResults"
                                                     class="btn btn-float-in-row btn-round btn-danger pull-right"
                                                     (click)="deleteTDTD(tdtd)">
-                                                    <i class="material-icons red">delete</i>
+                                                    <em class="material-icons red">delete</em>
                                                 </button>
                                             </td>
                                         </tr>
@@ -130,7 +100,7 @@
                                             <button mat-raised-button type="button" matTooltip="Add Empty Row"
                                                 [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100"
                                                 (click)="addToDoToDay()">
-                                                <i class="material-icons">add</i>
+                                                <em class="material-icons">add</em>
                                             </button>
                                         </td>
                                     </tr>
