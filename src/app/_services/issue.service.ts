@@ -23,7 +23,7 @@ export class IssueService {
           catchError(this.handleError('getIssues', []))
         );
     } else {
-      return this.http.get('https://api.github.com/repos/thdang1009/mean-ghost-tim-ui/issues?per_page=10', { observe: 'response' })
+      return this.http.get('https://api.github.com/repos/thdang1009/mean-ghost-tim-ui/issues?per_page=100', { observe: 'response' })
         .pipe(
           catchError(this.handleError('getIssues', []))
         );
