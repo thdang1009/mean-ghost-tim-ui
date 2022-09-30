@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UntypedFormBuilder } from '@angular/forms';
-import { RouterEvent, Router } from '@angular/router';
+import { RouterEvent, Router, ActivatedRoute } from '@angular/router';
 import { TagService, AlertService } from '@services/_index';
-import { ReplaySubject } from 'rxjs';
+import { of, ReplaySubject } from 'rxjs';
 
 import { AddTagComponent } from './add-tag.component';
 
@@ -23,6 +23,13 @@ describe('AddTagComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AddTagComponent],
       providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({ id: 123 }),
+            queryParams: of({ id: 123 })
+          },
+        },
         UntypedFormBuilder,
         { provide: AlertService, useValue: alertServiceSpy },
         { provide: Router, useValue: routerMock },
