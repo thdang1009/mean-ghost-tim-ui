@@ -16,6 +16,7 @@ import { ReactIndexComponent } from './react-index/react-index.component';
 import { GhostPdfViewerComponent } from './ghost-pdf-viewer/ghost-pdf-viewer.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ThreeBookMainComponent } from './three-book-main/three-book-main.component';
+import { MarkdownIndexComponent } from './markdown-index/markdown-index.component';
 
 
 // đọc file pdf rồi parse ra thành cái html
@@ -32,6 +33,7 @@ import { ThreeBookMainComponent } from './three-book-main/three-book-main.compon
     ReactIndexComponent,
     GhostPdfViewerComponent,
     ThreeBookMainComponent,
+    MarkdownIndexComponent,
   ],
   imports: [
     CommonModule,
