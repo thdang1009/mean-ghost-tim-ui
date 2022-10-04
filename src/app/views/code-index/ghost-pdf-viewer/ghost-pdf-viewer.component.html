@@ -1,6 +1,7 @@
 <div class="example-boundary">
     <pdf-viewer #pdf [src]="pdfSrc" [render-text]="true" [original-size]="false" [(page)]="currentPage"
-        style="width: 400px; height: 500px" (pagechanging)="pagechanging($event)" [show-all]="true" (after-load-complete)="loadComplete()">
+        style="width: 400px; height: 500px" (pagechanging)="pagechanging($event)" [show-all]="true"
+        (after-load-complete)="loadComplete()">
     </pdf-viewer>
 
     <div class="fixed-plugin" cdkDrag cdkDragBoundary=".example-boundary">
@@ -10,6 +11,14 @@
             </div>
         </div>
         <div class="dropdown show-dropdown open show">
+            <div class="example-handle" cdkDragHandle>
+                <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                    </path>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                </svg>
+            </div>
             <a (click)="buttonClick()" class="hover-pointer" data-toggle="dropdown" aria-expanded="true">
                 <i class="fa fa-arrow-up fa-2x"> </i>
             </a>
