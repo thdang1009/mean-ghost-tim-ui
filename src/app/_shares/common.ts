@@ -10,11 +10,11 @@ export interface LoginResponse extends GhostSiteResponse {
   token: string
 }
 
-export function showNoti(content, type) {
-  showNotification('top', 'right', content, type);
+export function showNoti(content, type, _timer = 2000) {
+  showNotification('top', 'right', content, type, _timer);
 }
 
-export function showNotification(from, align, content, type) {
+export function showNotification(from, align, content, type, _timer = 2000) {
   // const type = ['','info','success','warning','danger'];
 
   $.notify({
@@ -23,7 +23,7 @@ export function showNotification(from, align, content, type) {
 
   }, {
     type: type,
-    timer: 2500,
+    timer: _timer,
     placement: {
       from: from,
       align: align

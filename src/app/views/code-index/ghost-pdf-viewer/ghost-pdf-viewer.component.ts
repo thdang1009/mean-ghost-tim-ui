@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { showNoti } from '@app/_shares/common';
 import { PDF_OBJ } from '@shares/constant';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 
@@ -30,6 +31,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   key = '';
   savedPage;
   loadingOpacity = 1;
+  isLoading = true;
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -42,19 +44,16 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     let count = 0;
 
     const intervalId = setInterval(_ => {
-      this.loadingOpacity = 1 - count * 0.025;
+      const time = 80;
+      const delta = 1 / time;
+      this.loadingOpacity = 1 - count * delta;
       ++count;
       // loadingOverlay.setAttribute('style', {});
-      if (count > 40) { // mất khoảng 4s để load all 1 tài liệu 400 pages
+      if (count > time) {
         clearInterval(intervalId);
-        if (this.savedPage) {
-          this.pdf.pdfViewer.scrollPageIntoView({
-            pageNumber: this.savedPage
-          });
-        }
       }
     }, 100);
-
+    window.onbeforeunload = () => this.ngOnDestroy();
   }
 
   ngAfterViewInit(): void {
@@ -92,7 +91,15 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     }, 0);
   }
   loadComplete() {
-    console.log('load complete!');
+    showNoti('Document loaded successfully!', 'success', 300);
+    setTimeout(_ => {
+      if (this.savedPage) {
+        this.pdf.pdfViewer.scrollPageIntoView({
+          pageNumber: this.savedPage
+        });
+      }
+      this.isLoading = false;
+    }, 300);
   }
   search(stringToSearch: string) {
     if (stringToSearch) {

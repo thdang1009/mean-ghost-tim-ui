@@ -102,8 +102,8 @@ export class TextDiffComponent implements OnInit, OnDestroy {
     });
     this.highlights1 = this.applyHighlights(content1);
     this.highlights2 = this.applyHighlights(content2);
-    console.log(this.highlights1);
-    console.log(this.highlights2);
+    // console.log(this.highlights1);
+    // console.log(this.highlights2);
   }
   applyHighlights(text) {
     return text

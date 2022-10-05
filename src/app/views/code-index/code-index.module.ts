@@ -17,6 +17,11 @@ import { GhostPdfViewerComponent } from './ghost-pdf-viewer/ghost-pdf-viewer.com
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ThreeBookMainComponent } from './three-book-main/three-book-main.component';
 import { MarkdownIndexComponent } from './markdown-index/markdown-index.component';
+import { AndroidIndexComponent } from './android-index/android-index.component';
+import { AlgorithmsIndexComponent } from './algorithms-index/algorithms-index.component';
+import { ReactNativeIndexComponent } from './react-native-index/react-native-index.component';
+import { TsIndexComponent } from './ts-index/ts-index.component';
+import { MysqlIndexComponent } from './mysql-index/mysql-index.component';
 
 
 // đọc file pdf rồi parse ra thành cái html
@@ -34,6 +39,11 @@ import { MarkdownIndexComponent } from './markdown-index/markdown-index.componen
     GhostPdfViewerComponent,
     ThreeBookMainComponent,
     MarkdownIndexComponent,
+    AndroidIndexComponent,
+    AlgorithmsIndexComponent,
+    ReactNativeIndexComponent,
+    TsIndexComponent,
+    MysqlIndexComponent,
   ],
   imports: [
     CommonModule,
