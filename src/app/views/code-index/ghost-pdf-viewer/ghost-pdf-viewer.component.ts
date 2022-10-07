@@ -32,12 +32,15 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   savedPage;
   loadingOpacity = 1;
   isLoading = true;
+  bookmarks = new Map();
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.pdfSrc = this.src;
     this.key = PDF_OBJ + '_' + this.pdfFileName;
     this.savedPage = Number(localStorage.getItem(this.key));
+    const arr = (localStorage.getItem(this.key + '_bookmarks') || '').split(',').map(el => +el);
+    this.bookmarks = new Map(arr.map(el => [el, true]));
     // console.log(typeof this.savedPage, typeof this.key);
     // const element: HTMLElement = this.element.nativeElement;
     // const loadingOverlay = element.getElementsByClassName('overlay')[0];
@@ -65,7 +68,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   }
 
   pagechanging(e: CustomEvent) {
-    // this.currentPage = e['pageNumber']; // the page variable
+    this.currentPage = e['pageNumber']; // the page variable
     // console.log(this.currentPage);
   }
 
@@ -82,13 +85,67 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     // console.log(this.currentPage);
     const objSaved = this.createSavedObject();
     localStorage.setItem(this.key, '' + this.currentPage);
+    localStorage.setItem(this.key + '_bookmarks', Array.from(this.bookmarks.keys()).join());
   }
-  buttonClick() {
+  scrollToTop() {
     setTimeout(_ => {
       this.pdf.pdfViewer.scrollPageIntoView({
-        pageNumber: 1
+        pageNumber: 2
       });
     }, 0);
+  }
+  scrollToPreviousBookmark() {
+    const curPage = this.currentPage;
+    const findPreviousBookmark = (last, cur) => {
+      const getThisValue = cur < curPage && cur >= last
+      return getThisValue ? cur : last;
+    }
+    const arr = Array.from(this.bookmarks.keys());
+    const min = Math.min(...arr);
+    const pageTarget = arr.reduce(findPreviousBookmark, min);
+    // console.log('goto ' + pageTarget, arr);
+    setTimeout(_ => {
+      this.pdf.pdfViewer.scrollPageIntoView({
+        pageNumber: pageTarget
+      });
+    }, 0);
+  }
+  scrollToNextBookmark() {
+    const curPage = this.currentPage;
+    const findNextBookmark = (last, cur) => {
+      const getThisValue = cur > curPage && cur <= last
+      return getThisValue ? cur : last;
+    }
+    const arr = Array.from(this.bookmarks.keys());
+    const max = Math.max(...arr);
+    const pageTarget = arr.reduce(findNextBookmark, max);
+    // console.log('goto ' + pageTarget, arr);
+    setTimeout(_ => {
+      this.pdf.pdfViewer.scrollPageIntoView({
+        pageNumber: pageTarget
+      });
+    }, 0);
+  }
+  toggleBookmark() {
+    const curPage = this.currentPage;
+    if (this.bookmarks.has(curPage)) {
+      this.removeBookmark(curPage);
+    } else {
+      this.bookmarkThis(curPage);
+    }
+  }
+  bookmarkThis(page) {
+    this.bookmarks.set(page, true);
+    showNoti(`Bookmarked page ${this.currentPage}`, 'info');
+    // update style of button
+  }
+  removeBookmark(page) {
+    this.bookmarks.delete(page);
+    showNoti(`Remove bookmark at page ${this.currentPage}`, 'info');
+    // update style of button
+  }
+  keepExpand() {
+
   }
   loadComplete() {
     showNoti('Document loaded successfully!', 'success', 300);

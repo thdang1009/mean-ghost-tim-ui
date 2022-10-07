@@ -74,21 +74,91 @@ svg {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
 }
-
+.fixed-plugin:hover {
+    overflow: visible;
+}
 .fixed-plugin {
     border-radius: 8px;
+    position: fixed;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, 0);
+    background: transparent !important;
+    overflow: hidden;
+    z-index: 10;
 }
-
-.fixed-plugin .fa-arrow-up {
-
-    color: #FFFFFF;
+.fixed-plugin .fa-custom {
+    color: #ffffff;
     padding: 10px;
-    border-radius: 0 0 6px 6px;
     width: auto;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.c-red {
+    color: red !important;
+}
+.c-blue {
+    color: #55b559 !important;
 }
 .overlay {
     position: fixed;
 }
 .example-handle {
     position: absolute;
+    cursor: move;
+    z-index: 1000;
+}
+.btn-expand-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.btn-expand-top {
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, -100%);
+    border-radius: 8px 8px 0 0;
+}
+.btn-expand-left {
+    left: 0%;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    border-radius: 8px 0 0 8px;
+}
+.btn-expand-right {
+    left: 0%;
+    top: 50%;
+    transform: translate(100%, -50%);
+    border-radius: 0 8px 8px 0;
+}
+.btn-expand-bottom {
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, 100%);
+    border-radius: 0 0 8px 8px;
+}
+.btn-expand {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background: rgba(0, 0, 0, 0.3);
+}
+.dropdown.show-dropdown.open.show {
+    width: 64px;
+    height: 64px;
+}
+.fixed-plugin img {
+    border-radius: 0;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.c-purple {
+    color: #8A71B5 !important;
 }

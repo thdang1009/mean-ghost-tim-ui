@@ -1,8 +1,7 @@
 <div class="example-boundary">
     <pdf-viewer #pdf [src]="pdfSrc" [render-text]="true" [original-size]="false" [(page)]="currentPage"
         style="width: 400px; height: 500px" (pagechanging)="pagechanging($event)" [show-all]="true"
-        (after-load-complete)="loadComplete()"
-        >
+        (after-load-complete)="loadComplete()">
     </pdf-viewer>
 
     <div class="fixed-plugin" cdkDrag cdkDragBoundary=".example-boundary">
@@ -20,8 +19,27 @@
                     <path d="M0 0h24v24H0z" fill="none"></path>
                 </svg>
             </div>
-            <a (click)="buttonClick()" class="hover-pointer" data-toggle="dropdown" aria-expanded="true">
-                <i class="fa fa-arrow-up fa-2x"> </i>
+            <a (click)="keepExpand(); $event.stopPropagation()" class="hover-pointer btn-expand btn-expand-center"
+                data-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-gear fa-2x fa-custom"></i>
+            </a>
+            <a (click)="toggleBookmark(); $event.stopPropagation()" class="hover-pointer btn-expand btn-expand-bottom"
+                data-toggle="dropdown" aria-expanded="true">
+                <img *ngIf="!bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-add.svg" width="36px">
+                <img *ngIf="bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-remove.svg" width="36px">
+
+            </a>
+            <a (click)="scrollToTop(); $event.stopPropagation()" class="hover-pointer btn-expand btn-expand-top"
+                data-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-bars fa-2x fa-custom c-purple"></i>
+            </a>
+            <a (click)="scrollToPreviousBookmark(); $event.stopPropagation()"
+                class="hover-pointer btn-expand btn-expand-left" data-toggle="dropdown" aria-expanded="true">
+                <img src="assets/custom-icon/bookmark-up.svg" width="36px">
+            </a>
+            <a (click)="scrollToNextBookmark(); $event.stopPropagation()"
+                class="hover-pointer btn-expand btn-expand-right" data-toggle="dropdown" aria-expanded="true">
+                <img src="assets/custom-icon/bookmark-down.svg" width="36px">
             </a>
         </div>
     </div>
