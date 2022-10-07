@@ -68,7 +68,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   }
 
   pagechanging(e: CustomEvent) {
-    this.currentPage = e['pageNumber']; // the page variable
+    // this.currentPage = e['pageNumber']; // the page variable
     // console.log(this.currentPage);
   }
 

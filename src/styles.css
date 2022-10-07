@@ -42,7 +42,7 @@ textarea.jsoneditor-text {
     cursor: pointer;
 }
 pdf-viewer {
-    height: 85vh !important;
+    height: 100vh !important;
     width: auto !important;
 }
 

@@ -1,15 +1,15 @@
 <div class="example-boundary">
+    <div *ngIf="isLoading" class="overlay" [style.opacity]="loadingOpacity">
+        <div class="overlay__inner">
+            <div class="overlay__content"><span class="spinner"></span></div>
+        </div>
+    </div>
     <pdf-viewer #pdf [src]="pdfSrc" [render-text]="true" [original-size]="false" [(page)]="currentPage"
         style="width: 400px; height: 500px" (pagechanging)="pagechanging($event)" [show-all]="true"
         (after-load-complete)="loadComplete()">
     </pdf-viewer>
 
     <div class="fixed-plugin" cdkDrag cdkDragBoundary=".example-boundary">
-        <div *ngIf="isLoading" class="overlay" [style.opacity]="loadingOpacity">
-            <div class="overlay__inner">
-                <div class="overlay__content"><span class="spinner"></span></div>
-            </div>
-        </div>
         <div class="dropdown show-dropdown open show">
             <div class="example-handle" cdkDragHandle>
                 <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
