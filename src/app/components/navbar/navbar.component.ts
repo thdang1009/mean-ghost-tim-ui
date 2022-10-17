@@ -121,10 +121,13 @@ export class NavbarComponent implements OnInit {
 
     getTitle() {
         const titlee = this.location.prepareExternalUrl(this.location.path());
-        const subpath = titlee.split('/').slice(-1)[0];
+        const regexPath = /\/(admin|guest)\/.*/;
+        const subpath = (titlee.match(regexPath)[0] || '')
+            .replace(/\/(admin|guest)\//, '')
+            .replace(/\?.*/, '');
         // console.log(subpath);
         // console.log(this.listTitles);
-        const found = (this.listTitles.filter(item => item.path.includes(subpath)) || [])[0] || {};
+        const found = (this.listTitles.filter(item => item.path === subpath) || [])[0] || {};
         const title = found.title || 'Dashboard';
         // console.log(title);
         return title

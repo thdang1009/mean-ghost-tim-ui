@@ -17,6 +17,7 @@ export class NoteComponent implements OnInit {
   data: Note[] = [];
   isLoadingResults = true;
 
+  debounceID = undefined;
   today = dateFns.startOfToday();
   searchDate = new UntypedFormControl(this.today);
   searchStatus = 'NONE';
@@ -89,6 +90,7 @@ export class NoteComponent implements OnInit {
       });
   }
   saveItem(id, item, index = -1) {
+    console.log('debug');
     item.content = item.content.trim();
     this.noteService.updateNote(id, item)
       .subscribe((res: any) => {
