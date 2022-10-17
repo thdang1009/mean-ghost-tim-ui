@@ -122,7 +122,7 @@ export class NavbarComponent implements OnInit {
     getTitle() {
         const titlee = this.location.prepareExternalUrl(this.location.path());
         const regexPath = /\/(admin|guest)\/.*/;
-        const subpath = (titlee.match(regexPath)[0] || '')
+        const subpath = ((titlee.match(regexPath) || [])[0] || '')
             .replace(/\/(admin|guest)\//, '')
             .replace(/\?.*/, '');
         // console.log(subpath);
