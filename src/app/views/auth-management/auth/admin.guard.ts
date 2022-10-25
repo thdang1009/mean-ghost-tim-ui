@@ -12,9 +12,9 @@ export class AdminGuard implements CanActivate {
 
   canActivate(): boolean {
       const isAdmin = this.authService.isAdmin();
-      if (!isAdmin) {
-        showNoti('Admin only features, please contact admin to upgrade your account', 'danger');
-      }
+      // if (!isAdmin) {
+      //   showNoti('Admin only features, please contact admin to upgrade your account', 'danger');
+      // }
     return isAdmin;
   }
 
