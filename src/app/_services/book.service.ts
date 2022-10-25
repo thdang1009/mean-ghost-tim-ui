@@ -12,7 +12,6 @@ const apiUrl = environment.apiUrl + '/api/user';
 })
 export class BookService {
 
-  @Output() isLoggedIn: EventEmitter<any> = new EventEmitter();
   userInfo: any = {};
   loggedInStatus = false;
   redirectUrl: string;

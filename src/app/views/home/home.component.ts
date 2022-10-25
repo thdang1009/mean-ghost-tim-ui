@@ -11,6 +11,7 @@ import { AuthService, HomeService, PostService } from '@services/_index';
 export class HomeComponent implements OnInit {
 
   isLogined = false;
+  isAdmin = false;
   isLoadingResults = true;
   thisYear = (new Date).getFullYear();
   posts = [];
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit {
   }
   async init() {
     this.isLogined = this.authService.isLogin();
+    this.isAdmin = this.authService.isAdmin();
     this.tagService.getTags()
       .subscribe(listTag => {
         this.mapTag = new Map(listTag.map(tag => [tag._id, tag.name]));

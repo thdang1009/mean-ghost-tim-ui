@@ -148,7 +148,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
 
   }
   loadComplete() {
-    showNoti('Document loaded successfully!', 'success', 300);
+    showNoti('Document successfully loaded!', 'success', 300);
     setTimeout(_ => {
       if (this.savedPage) {
         this.pdf.pdfViewer.scrollPageIntoView({

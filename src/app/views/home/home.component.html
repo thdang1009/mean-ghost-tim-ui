@@ -10,8 +10,13 @@
         <ng-container *ngIf="!isLogined">
           <a [routerLink]="['/login']">LOGIN</a>
         </ng-container>
-        <ng-container *ngIf="isLogined">
+        <ng-container *ngIf="isLogined && isAdmin">
           <a [routerLink]="['/admin/dashboard']" class="bold">Go To Admin View</a>
+          <span *ngIf="!isAdmin">You are Guess, contact
+            <a href="mailto:mean.ghost.site@gmail.com">
+              mean.ghost.site@gmail.com
+            </a> to become admin and use more features
+          </span>
         </ng-container>
       </div>
       <app-list-badge></app-list-badge>

@@ -20,7 +20,7 @@ export class ConfirmEmailComponent implements OnInit {
     const code = this.route.snapshot.params.confirmationCode;
     this.authenService.confirmEmail(code)
       .subscribe(_ => {
-        showNoti(`Confirm email successfully!`, 'success');
+        showNoti(`Successfully confirm email!`, 'success');
         this.navigationService.gotoHome();
       }, err => {
 

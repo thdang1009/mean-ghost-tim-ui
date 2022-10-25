@@ -15,6 +15,7 @@ const apiUrl = environment.apiUrl + '/api/auth';
 export class AuthService {
 
   @Output() isLoggedIn: EventEmitter<any> = new EventEmitter();
+  @Output() isAdminE: EventEmitter<any> = new EventEmitter();
   userInfo: any = {};
   loggedInStatus = false;
   redirectUrl: string;
@@ -37,8 +38,9 @@ export class AuthService {
           this.loggedInStatus = true;
           this.userInfo = resp.data;
           this.isLoggedIn.emit(true);
-          this.saveUserLoginInfo(resp.data);
+          this.saveUserLoginInfo(resp.data); // <- before check isAdminE
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+          this.isAdminE.emit(this.isAdmin());
           this.router.navigateByUrl(returnUrl);
         }),
         catchError(this.handleError('login', []))
@@ -51,7 +53,8 @@ export class AuthService {
         tap(_ => {
           this.isLoggedIn.emit(false);
           this.loggedInStatus = false;
-          this.clearUserInfo();
+          this.clearUserInfo(); // <- before check isAdminE
+          this.isAdminE.emit(this.isAdmin());
           setTimeout(__ => {
             this.router.navigate(['/']);
           }, 1000);
