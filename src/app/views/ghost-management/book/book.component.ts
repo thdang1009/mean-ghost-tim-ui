@@ -3,7 +3,7 @@ import { UntypedFormControl } from '@angular/forms';
 import { BookService } from '@services/_index';
 import { Book } from '@models/_index';
 import { ActivatedRoute, Router } from '@angular/router';
-import { showNoti } from '@shares/common';
+import { isValidFile, showNoti } from '@shares/common';
 import * as dateFns from 'date-fns';
 
 @Component({
@@ -15,6 +15,7 @@ export class BookComponent implements OnInit {
 
   data: Book[] = [];
   isLoadingResults = true;
+  savedFile: File = null;
 
   debounceID = undefined;
   today = dateFns.startOfToday();
@@ -145,11 +146,31 @@ export class BookComponent implements OnInit {
   }
 
   // handle open file
-  openFile(){
-    console.log('hell')
+  openFile() {
     document.getElementById('choose-file').click();
   }
-  handle(e){
-    console.log('Change input file')
+  handle(event) {
+    const file = event.target.files[0];
+    if (!file) {
+      return;
+    }
+    if (!isValidFile(file)) {
+      showNoti('File has to be <10MB, epub, pdf', 'danger');
+      return;
+    }
+    this.savedFile = file;
+    this.openPopupUploadFile();
+  }
+  openPopupUploadFile() {
+    this.isLoadingResults = true;
+    // just call upload file right now to test function upload
+    this.bookService.uploadBook(this.savedFile)
+      .subscribe((res: any) => {
+        showNoti(res, 'sucess')
+        this.isLoadingResults = false;
+      }, err => {
+        showNoti(err, 'danger')
+        this.isLoadingResults = false;
+      });
   }
 }

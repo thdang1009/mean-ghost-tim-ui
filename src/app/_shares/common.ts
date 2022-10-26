@@ -72,3 +72,7 @@ export function previousStatus(oldStatus) {
     NEW: TDTDStatus.NOT_YET
   }[oldStatus];
 }
+export function isValidFile(file) {
+  const isValidSize = file.size <= 10 * 1024 * 1024;
+  return isValidSize;
+}
