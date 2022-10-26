@@ -1,7 +1,7 @@
 export class GuestMessage {
-    id: string;
-    message: string;
-    name: string;
-    subject: string;
+    id: String;
+    message: String;
+    name: String;
+    subject: String;
     email: String;
   }

@@ -3,58 +3,57 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
-import { UserReadingInfo, Book } from '@models/_index';
+import { BookReadingInfo, Book } from '@models/_index';
 
-const apiUrl = environment.apiUrl + '/api/user';
+const apiUrl = environment.apiUrl + '/api/book';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
-  userInfo: any = {};
+  bookInfo: any = {};
   loggedInStatus = false;
   redirectUrl: string;
 
 
   constructor(private http: HttpClient) { }
 
-  getMyBookReadingInfo(): Observable<UserReadingInfo> {
-    const url = `${apiUrl}`;
-    return this.http.get<UserReadingInfo>(url).pipe(
+  getMyBookReadingInfo(): Observable<BookReadingInfo> {
+    const url = `${apiUrl}/reading-info`;
+    return this.http.get<BookReadingInfo>(url).pipe(
       tap(_ => console.log(`fetched myBookReadingInfo`)),
-      catchError(this.handleError<UserReadingInfo>(`getMyBookReadingInfo with my ID`))
+      catchError(this.handleError<BookReadingInfo>(`getMyBookReadingInfo with my ID`))
     );
   }
 
-  updateUserReadingInfo(id: any, jsonString: UserReadingInfo): Observable<any> {
-    const url = `${apiUrl}/${id}`;
+  updatebookReadingInfo(id: any, jsonString: BookReadingInfo): Observable<any> {
+    const url = `${apiUrl}/reading-info/${id}`;
     return this.http.put(url, jsonString).pipe(
       tap(_ => console.log(`updated myBookReadingInfo`)),
       catchError(this.handleError<any>('updateBook'))
     );
   }
 
-
-  getMyBooks(id): Observable<Book> {
-    const url = `${apiUrl}/${id}`;
+  getMyBook(): Observable<Book> {
+    const url = `${apiUrl}/my-book`;
     return this.http.get<Book>(url).pipe(
-      tap(_ => console.log(`fetched user by id=${id}`)),
-      catchError(this.handleError<Book>(`getBook id=${id}`))
+      tap(_ => console.log(`fetched my book`)),
+      catchError(this.handleError<Book>(`getMyBook`))
     );
   }
 
-  addBook(tdtd: Book): Observable<Book> {
-    return this.http.post<Book>(apiUrl, tdtd).pipe(
-      tap((prod: Book) => console.log(`added user id=${tdtd.id}`)),
+  addBook(item: Book): Observable<Book> {
+    return this.http.post<Book>(apiUrl, item).pipe(
+      tap((prod: Book) => console.log(`added book`)),
       catchError(this.handleError<Book>('addBook'))
     );
   }
 
-  updateBook(id: any, tdtd: Book): Observable<any> {
+  updateBook(id: any, item: Book): Observable<any> {
     const url = `${apiUrl}/${id}`;
-    return this.http.put(url, tdtd).pipe(
-      tap(_ => console.log(`updated tdtd id=${id}`)),
+    return this.http.put(url, item).pipe(
+      tap(_ => console.log(`updated item id=${id}`)),
       catchError(this.handleError<any>('updateBook'))
     );
   }
@@ -62,7 +61,7 @@ export class BookService {
   deleteBook(id: any): Observable<Book> {
     const url = `${apiUrl}/${id}`;
     return this.http.delete<Book>(url).pipe(
-      tap(_ => console.log(`deleted tdtd id=${id}`)),
+      tap(_ => console.log(`deleted item id=${id}`)),
       catchError(this.handleError<Book>('deleteBook'))
     );
   }

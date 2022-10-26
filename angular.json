@@ -191,6 +191,7 @@
       }
     }
   },
+  "defaultProject": "mean-ghost-tim-ui",
   "schematics": {},
   "cli": {
     "analytics": false

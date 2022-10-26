@@ -13,7 +13,7 @@ export class Post {
   isPinned?: Boolean;
   tags?: String[];
   order?: Number;
-  createAt?: Date;
-  updateAt?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
   clapCount?: Number;
 }

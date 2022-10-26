@@ -13,12 +13,14 @@ import { ReuseComponentModule } from '@app/_reuse/reuse.module';
 // angular rich text editor
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { BookComponent } from './book/book.component';
 @NgModule({
   declarations: [
     MoneyComponent,
     NoteComponent,
     TodoTodayComponent,
-    FoodComponent
+    FoodComponent,
+    BookComponent
   ],
   imports: [
     CommonModule,

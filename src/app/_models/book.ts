@@ -1,12 +1,22 @@
-// Book
+import { BookPermission } from '../_shares/enum';
 export class Book {
     id?: Number;
-    createTime?: Date;
+    title?: String;
     user?: Number;
     content: String; // content
     score?: Number;
-    isDone?: boolean;
+    isDone?: Boolean;
     slot: Number; // 1, 2, 3
-    updateTime?: Date;
+    url?: String;
+    permission?: BookPermission;
+    createdAt?: Date;
+    updatedAt?: Date;
   }
 
+
+export class BookReadingInfo {
+  user?: Number;
+  info?: String;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
