@@ -31,23 +31,69 @@
                     </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink2">
-                    <a class="dropdown-item" [routerLink]="['/index/angular-index']">Angular</a>
-                    <a class="dropdown-item" [routerLink]="['/index/html-index']">HTML</a>
-                    <a class="dropdown-item" [routerLink]="['/index/css-index']">CSS</a>
-                    <a class="dropdown-item" [routerLink]="['/index/js-index']">Javascript</a>
-                    <a class="dropdown-item" [routerLink]="['/index/git-index']">GIT</a>
-                    <a class="dropdown-item" [routerLink]="['/index/nodejs-index']">NodeJS</a>
-                    <a class="dropdown-item" [routerLink]="['/index/mongodb-index']">MongoDB</a>
-                    <a class="dropdown-item" [routerLink]="['/index/react-index']">React</a>
-                    <a class="dropdown-item" [routerLink]="['/index/markdown-index']">Markdown</a>
-                    <a class="dropdown-item" [routerLink]="['/index/three-book']">3 Books</a>
+                    <a class="dropdown-item" [routerLink]="['index/js-index']">
+                        <i class="fab fa-js"></i>
+                        JS Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/node-js-index']">
+                        <i class="fab fa-node"></i>
+                        NodeJS Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/angular-index']">
+                        <i class="fab fa-angular"></i>
+                        Angular Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/react-index']">
+                        <i class="fab fa-react"></i>
+                        React Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/html-index']">
+                        <i class="fab fa-html5"></i>
+                        Html Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/css-index']">
+                        <i class="fab fa-css3"></i>
+                        Css Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/git-index']">
+                        <i class="fab fa-git"></i>
+                        GIT Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/mongodb-index']">
+                        <i class="fas fa-code"></i>
+                        MongoDB Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/ts-index']">
+                        <i class="fas fa-code"></i>
+                        TypeScript Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/algorithms-index']">
+                        <i class="fas fa-code"></i>
+                        Algorithms Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/android-index']">
+                        <i class="fab fa-android"></i>
+                        Android Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/mysql-index']">
+                        <i class="fas fa-code"></i>
+                        MySQL Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/react-native-index']">
+                        <i class="fas fa-code"></i>
+                        React Native Index
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['index/markdown-index']">
+                        <i class="fab fa-markdown"></i>
+                        Markdown Index
+                    </a>
                 </div>
             </li>
         </ul>
     </div>
     <ul class="nav">
         <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
-            <a class="nav-link" [routerLink]="[menuItem.path]">
+            <a class="dropdown-item" [routerLink]="[menuItem.path]">
                 <i class="material-icons">{{menuItem.icon}}</i>
                 <p>{{menuItem.title}}</p>
             </a>
