@@ -1,11 +1,14 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
-import { BookService } from '@services/_index';
+import { FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { BookService, UserService } from '@services/_index';
 import { Book } from '@models/_index';
 import { ActivatedRoute, Router } from '@angular/router';
 import { isValidFile, showNoti } from '@shares/common';
 import * as dateFns from 'date-fns';
-
+import { FileUploader } from 'ng2-file-upload';
+import { environment } from '@environments/environment';
+import { CONSTANT } from '@app/_shares/constant';
+import { BookPermission } from '@app/_shares/enum';
 @Component({
   selector: 'book',
   templateUrl: './book.component.html',
@@ -13,9 +16,11 @@ import * as dateFns from 'date-fns';
 })
 export class BookComponent implements OnInit {
 
+  detailForm: UntypedFormGroup;
   data: Book[] = [];
   isLoadingResults = true;
   savedFile: File = null;
+  scoreValue = 0;
 
   debounceID = undefined;
   today = dateFns.startOfToday();
@@ -23,24 +28,81 @@ export class BookComponent implements OnInit {
   searchStatus = 'NONE';
   statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];
   itemSelected = undefined;
+  permissions = [
+    BookPermission.PUBLIC,
+    BookPermission.PROTECED,
+    BookPermission.PRIVATE,
+    BookPermission.READONLY
+  ];
+  compareWithFunc(a, b) {
+    return a == b;
+  }
+
+  isUpdate = false;
+  id = undefined;
+
+  // file uploader
+  apiUrl = environment.apiUrl + '/api/book/upload';
+  public uploader: FileUploader = new FileUploader({
+    url: this.apiUrl,
+    itemAlias: 'file',
+    authToken: `${localStorage.getItem(CONSTANT.TOKEN)}`
+  });
+  sliderControl = new FormControl(10);
 
   constructor(
     private bookService: BookService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private formBuilder: UntypedFormBuilder
   ) { }
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      const id = Number(params.id);
-      this.searchBook(id);
+    this.detailForm = this.formBuilder.group({
+      title: [null, Validators.required],
+      isDone: [null, Validators.required],
+      slot: [null, Validators.required],
+      url: [null, Validators.required],
+      permission: [null, Validators.required],
     });
+    this.activatedRoute.queryParams.subscribe(params => {
+      const id = params.id;
+      if (id) {
+        this.bookService.getBook(id)
+          .subscribe(res => {
+            this.initFormWithData(res);
+            this.itemSelected = res;
+            this.isUpdate = true;
+            this.id = id;
+          });
+      } else {
+        this.searchBook();
+        this.isUpdate = false;
+        this.id = undefined;
+        this.itemSelected = undefined;
+      }
+    });
+    this.uploader.onAfterAddingFile = (file) => {
+      file.withCredentials = false;
+    };
+    this.uploader.onCompleteItem = (item: any, status: any) => {
+      showNoti('File successfully uploaded!', 'success');
+    };
+    this.sliderControl.valueChanges.subscribe(value => {
+      console.log(value);
+  });
+  }
+
+  initFormWithData(data = {} as any) {
+    this.detailForm.patchValue(data);
+    this.isLoadingResults = false;
+    this.scoreValue = data.score;
   }
 
   addBook() {
+    this.isLoadingResults = true;
     const sample: Book = {
-      content: '',
       slot: 1
     }
     this.bookService.addBook(sample)
@@ -78,8 +140,11 @@ export class BookComponent implements OnInit {
     }
     this.isLoadingResults = true;
     this.bookService.getMyBook()
-      .subscribe((res: any) => {
-        this.data = res;
+      .subscribe((res: Book[]) => {
+        this.data = res.map(el => ({
+          ...el,
+          userDisplay: '' //this.userService.mapUserName(el.user)
+        }));
         if (id) {
           this.itemSelected = res.filter(el => el.id === id)[0];
           this.ref.markForCheck();
@@ -102,15 +167,6 @@ export class BookComponent implements OnInit {
       }, err => {
       });
   }
-  deleteLast() {
-    this.isLoadingResults = true;
-    if (!this.data || !this.data.length) {
-      return;
-    }
-    const lastIndex = this.data.length - 1;
-    const id = this.data[lastIndex].id;
-    this.callDeleteBook(id);
-  }
   saveThenBack() {
     this.saveItem(this.itemSelected.id, this.itemSelected);
     // it could be trigger back first, but that ok
@@ -127,7 +183,7 @@ export class BookComponent implements OnInit {
       });
   }
   deleteBook(book) {
-    const val = confirm(`Delete "${book.header}"?`);
+    const val = confirm(`Delete "${book.title}"?`);
     if (val) {
       this.callDeleteBook(book.id);
     }
@@ -143,34 +199,5 @@ export class BookComponent implements OnInit {
           this.isLoadingResults = false;
         });
     }
-  }
-
-  // handle open file
-  openFile() {
-    document.getElementById('choose-file').click();
-  }
-  handle(event) {
-    const file = event.target.files[0];
-    if (!file) {
-      return;
-    }
-    if (!isValidFile(file)) {
-      showNoti('File has to be <10MB, epub, pdf', 'danger');
-      return;
-    }
-    this.savedFile = file;
-    this.openPopupUploadFile();
-  }
-  openPopupUploadFile() {
-    this.isLoadingResults = true;
-    // just call upload file right now to test function upload
-    this.bookService.uploadBook(this.savedFile)
-      .subscribe((res: any) => {
-        showNoti(res, 'sucess')
-        this.isLoadingResults = false;
-      }, err => {
-        showNoti(err, 'danger')
-        this.isLoadingResults = false;
-      });
   }
 }

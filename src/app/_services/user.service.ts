@@ -12,7 +12,7 @@ const apiUrl = environment.apiUrl + '/api/user';
 })
 export class UserService {
 
-  userInfo: any = {};
+  cacheUser: any = [];
   loggedInStatus = false;
   redirectUrl: string;
 
@@ -22,7 +22,9 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(apiUrl)
       .pipe(
-        tap(_ => this.log('fetched Users')),
+        tap(_ => {
+          this.log('fetched Users');
+        }),
         catchError(this.handleError('getUser', []))
       );
   }
@@ -73,6 +75,20 @@ export class UserService {
 
       return of(result as T);
     };
+  }
+
+  private initCacheUser() {
+    this.getUsers().subscribe(users => {
+      this.cacheUser = users;
+    });
+  }
+
+  mapUserName(id) {
+    if (!this.cacheUser || this.cacheUser.length === 0) {
+      this.initCacheUser();
+    }
+    const get = (this.cacheUser.filter(user => user.id === id)[0] || {});
+    return get.fullName || '';
   }
 
   private log(message: string) {

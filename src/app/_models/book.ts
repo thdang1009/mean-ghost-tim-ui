@@ -3,7 +3,7 @@ export class Book {
     id?: Number;
     title?: String;
     user?: Number;
-    content: String; // content
+    content?: String; // content
     score?: Number;
     isDone?: Boolean;
     slot: Number; // 1, 2, 3

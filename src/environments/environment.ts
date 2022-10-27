@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: `https://dangtrinh.site/v1`,
+  // apiUrl: `https://dangtrinh.site/v1`,
   // apiUrl: `https://18.140.98.243/v1`,
-  // apiUrl: `http://localhost:3000`,
+  apiUrl: `http://localhost:3000`,
   gaCode: 'G-FWH80SC06E',
 };
 

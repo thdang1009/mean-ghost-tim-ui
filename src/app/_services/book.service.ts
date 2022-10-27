@@ -16,7 +16,6 @@ export class BookService {
   loggedInStatus = false;
   redirectUrl: string;
 
-
   constructor(private http: HttpClient) { }
 
   getMyBookReadingInfo(): Observable<BookReadingInfo> {
@@ -34,12 +33,19 @@ export class BookService {
       catchError(this.handleError<any>('updateBook'))
     );
   }
-
-  getMyBook(): Observable<Book> {
-    const url = `${apiUrl}/my-book`;
-    return this.http.get<Book>(url).pipe(
+  getBook(id): Observable<Book[]> {
+    const url = `${apiUrl}/id/${id}`;
+    return this.http.get<Book[]>(url).pipe(
       tap(_ => console.log(`fetched my book`)),
-      catchError(this.handleError<Book>(`getMyBook`))
+      catchError(this.handleError<Book[]>(`getMyBook`))
+    );
+  }
+
+  getMyBook(): Observable<Book[]> {
+    const url = `${apiUrl}/my-book`;
+    return this.http.get<Book[]>(url).pipe(
+      tap(_ => console.log(`fetched my book`)),
+      catchError(this.handleError<Book[]>(`getMyBook`))
     );
   }
 
@@ -48,18 +54,6 @@ export class BookService {
       tap((prod: Book) => console.log(`added book`)),
       catchError(this.handleError<Book>('addBook'))
     );
-  }
-
-  uploadBook(file: File): Observable<any> {
-    const url = `${apiUrl}/upload`;
-    const formData: FormData = new FormData();
-    formData.append('file', file);
-
-    const req = new HttpRequest('POST', `${url}`, formData,
-    { headers: new HttpHeaders().set('Content-Type', 'application/pdf') }
-    );
-
-    return this.http.request(req);
   }
 
   updateBook(id: any, item: Book): Observable<any> {

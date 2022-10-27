@@ -124,10 +124,12 @@ export class TextDiffComponent implements OnInit, OnDestroy {
     // change it to angular and element is 1
     const scrollTop = this.text1.nativeElement.scrollTop;
     this.backdrop1.nativeElement.scrollTop = scrollTop ;
+    this.text2.nativeElement.scrollTop = scrollTop ;
   }
   onScroll2(e) {
     // change it to angular and element is 2
     const scrollTop = this.text2.nativeElement.scrollTop;
     this.backdrop2.nativeElement.scrollTop = scrollTop;
+    this.text1.nativeElement.scrollTop = scrollTop;
   }
 }

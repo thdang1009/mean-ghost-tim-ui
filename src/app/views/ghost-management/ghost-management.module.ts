@@ -9,6 +9,7 @@ import { FoodComponent } from './food/food.component';
 import { SharedModule } from '@shares/shared-module.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ReuseComponentModule } from '@app/_reuse/reuse.module';
+import { FileUploadModule } from 'ng2-file-upload';
 
 // angular rich text editor
 import { HttpClientModule } from '@angular/common/http';
@@ -29,7 +30,8 @@ import { BookComponent } from './book/book.component';
     DragDropModule,
     HttpClientModule,
     AngularEditorModule,
-    ReuseComponentModule
+    ReuseComponentModule,
+    FileUploadModule
   ],
   providers: [
     DatePipe,

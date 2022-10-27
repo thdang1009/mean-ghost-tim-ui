@@ -15,20 +15,17 @@
                                 Search
                             </button>
                             <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button"
-                                (click)="saveThenBack()" [disabled]="isLoadingResults"
-                                class="btn btn-info pull-right btn-w100">
+                                (click)="back()" [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100">
                                 <em class="material-icons">save</em>
-                                Back & Save
+                                Back
                             </button>
                         </div>
                         <!-- button add -->
                         <div class="col-md-4">
                             <button *ngIf="!itemSelected || !itemSelected.id" mat-raised-button type="button"
-                                matTooltip="Add" class="btn btn-success pull-right btn-w100" (click)="openFile()">
+                                matTooltip="Add" class="btn btn-success pull-right btn-w100" (click)="addBook()">
                                 <em class="material-icons">add</em>
                                 Add Book
-                                <input type="file" id="choose-file" style="display:none" (change)="handle($event)"
-                                    accept=".pdf, .epub">
                             </button>
                         </div>
                     </form>
@@ -40,7 +37,16 @@
                                         Update At
                                     </th>
                                     <th>
-                                        Tittle
+                                        UUID
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Owner
+                                    </th>
+                                    <th>
+                                        Permission
                                     </th>
                                 </thead>
                                 <tbody>
@@ -48,13 +54,28 @@
                                         <tr *ngFor="let book of data; let index = index">
                                             <td class="text-center">
                                                 <span class="hover-pointer" (click)="chooseThisItem(book)"
-                                                    matTooltip="Create At: {{ book.createTime | date: 'dd-MM HH:mm' }}">
-                                                    {{ book.updateTime | date: 'dd-MM HH:mm' }}
+                                                    matTooltip="Create At: {{ book.createdAt | date: 'dd-MM HH:mm' }}">
+                                                    {{ book.updatedAt | date: 'dd-MM HH:mm' }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span (click)="chooseThisItem(book)" matTooltip="{{book.id}}"
+                                                    class="editable-header hover-pointer"> ID
                                                 </span>
                                             </td>
                                             <td>
                                                 <span (click)="chooseThisItem(book)"
-                                                    class="editable-header hover-pointer">{{ book.header }}
+                                                    class="editable-header hover-pointer">{{ book.title }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span (click)="chooseThisItem(book)"
+                                                    class="editable-header hover-pointer">{{ book?.user?.fullName }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span (click)="chooseThisItem(book)"
+                                                    class="editable-header hover-pointer">{{ book.permisson }}
                                                 </span>
                                                 <button mat-raised-button type="button" matTooltip="Delete Book"
                                                     [disabled]="isLoadingResults"
@@ -77,14 +98,89 @@
                             </table>
                         </div>
                         <ng-template #bookView>
-                            <textarea type="text" [(ngModel)]="itemSelected.header"
-                                class="editable editable-header wd100"
-                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
-                                [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults"></textarea>
-                            <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="itemSelected.content"
-                                (blur)="saveItem(itemSelected.id, itemSelected, index);false"
-                                [disabled]="isLoadingResults">
-                            </angular-editor>
+                            <div class="card-body">
+                                <form [formGroup]="detailForm" (ngSubmit)="onFormSubmit(detailForm.value)">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput type="text" placeholder="Title" formControlName="title">
+                                                <mat-error>
+                                                    <span
+                                                        *ngIf="!detailForm.get('title').valid && detailForm.get('title').touched">
+                                                        Please enter name.
+                                                    </span>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <!-- <mat-form-field class="example-full-width"> -->
+                                                <!-- <input matInput type="text" placeholder="score" formControlName="score"> -->
+
+                                                <mat-label>Score: {{scoreValue}}</mat-label>
+                                                <mat-slider (input)="scoreValue = $event.value" [value]="scoreValue">
+                                                </mat-slider>
+                                            <!-- </mat-form-field> -->
+                                        </div>
+                                        <div class="col-md-12">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput type="text" placeholder="isDone"
+                                                    formControlName="isDone">
+                                                <mat-error>
+                                                    <span
+                                                        *ngIf="!detailForm.get('isDone').valid && detailForm.get('isDone').touched">
+                                                        Please enter isDone.
+                                                    </span>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput type="text" placeholder="slot" formControlName="slot">
+                                                <mat-error>
+                                                    <span
+                                                        *ngIf="!detailForm.get('slot').valid && detailForm.get('slot').touched">
+                                                        Please enter slot.
+                                                    </span>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput type="text" placeholder="url" formControlName="url">
+                                                <mat-error>
+                                                    <span
+                                                        *ngIf="!detailForm.get('url').valid && detailForm.get('url').touched">
+                                                        Please enter url.
+                                                    </span>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Permission</mat-label>
+                                                <mat-select formControlName="permission"
+                                                    [compareWith]="compareWithFunc">
+                                                    <mat-option *ngFor="let item of permissions; let i = index"
+                                                        [(value)]="permissions[i]">
+                                                        {{item}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <mat-error>
+                                                    <span
+                                                        *ngIf="!detailForm.get('permission').valid && detailForm.get('permission').touched">
+                                                        Please enter permission.
+                                                    </span>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="button-row">
+                                        <button mat-raised-button type="submit" [disabled]="!detailForm.valid"
+                                            class="btn btn-info pull-right btn-w100">{{isUpdate ? 'Update' : 'Create'
+                                            }}</button>
+                                    </div>
+                                </form>
+                            </div>
                         </ng-template>
                     </div>
                 </div>
