@@ -64,6 +64,7 @@ export class BookComponent implements OnInit {
       isDone: [null, Validators.required],
       slot: [null, Validators.required],
       url: [null, Validators.required],
+      score: [null, Validators.required],
       permission: [null, Validators.required],
     });
     this.activatedRoute.queryParams.subscribe(params => {
@@ -91,7 +92,7 @@ export class BookComponent implements OnInit {
     };
     this.sliderControl.valueChanges.subscribe(value => {
       console.log(value);
-  });
+    });
   }
 
   initFormWithData(data = {} as any) {
@@ -199,5 +200,10 @@ export class BookComponent implements OnInit {
           this.isLoadingResults = false;
         });
     }
+  }
+  silderInput(value) {
+    this.detailForm.patchValue({
+      score: value
+    })
   }
 }

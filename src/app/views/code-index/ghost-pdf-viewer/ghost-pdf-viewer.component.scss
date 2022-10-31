@@ -85,7 +85,10 @@ svg {
     transform: translate(-50%, 0);
     background: transparent !important;
     overflow: hidden;
-    z-index: 10;
+    z-index: 1000;
+}
+pdf-viewer {
+    z-index: 999;
 }
 .fixed-plugin .fa-custom {
     color: #ffffff;

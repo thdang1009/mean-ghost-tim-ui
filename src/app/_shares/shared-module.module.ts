@@ -12,6 +12,7 @@ import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { AutosizeModule } from 'ngx-autosize';
 import { ScoreToTierPipe, SimpleTimePipe, TimeAgoPipe } from '@pipes/_index';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSliderModule } from '@angular/material/slider';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatNativeDateModule,
     MatTooltipModule,
     MatDialogModule,
+    MatSliderModule,
   ],
   exports: [
     CommonModule,
@@ -61,6 +63,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatNativeDateModule,
     MatTooltipModule,
     MatDialogModule,
+    MatSliderModule,
   ]
 })
 export class SharedModule { }

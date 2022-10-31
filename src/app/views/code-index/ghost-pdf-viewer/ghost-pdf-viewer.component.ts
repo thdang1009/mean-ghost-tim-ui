@@ -33,6 +33,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   loadingOpacity = 1;
   isLoading = true;
   bookmarks = new Map();
+  elem;
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -143,6 +144,35 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     this.bookmarks.delete(page);
     showNoti(`Remove bookmark at page ${this.currentPage}`, 'info');
     // update style of button
+  }
+  openFullscreen() {
+    if (!this.elem) {
+      this.elem = document.getElementById('view-port-to-zoom');
+    }
+    const isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null);
+    this.elem = document.documentElement;
+
+    if (!isInFullScreen) {
+      if (this.elem.requestFullscreen) {
+        this.elem.requestFullscreen();
+      } else if (this.elem.mozRequestFullScreen) {
+        this.elem.mozRequestFullScreen();
+      } else if (this.elem.webkitRequestFullScreen) {
+        this.elem.webkitRequestFullScreen();
+      } else if (this.elem.msRequestFullscreen) {
+        this.elem.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document['webkitExitFullscreen']) {
+        document['webkitExitFullscreen']();
+      } else if (document['mozCancelFullScreen']) {
+        document['mozCancelFullScreen']();
+      } else if (document['msExitFullscreen']) {
+        document['msExitFullscreen']();
+      }
+    }
   }
   keepExpand() {
 
