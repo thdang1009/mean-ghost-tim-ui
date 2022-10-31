@@ -260,6 +260,10 @@ app-table-loading {
 .bmc-logo {
     width: 1em !important;
     height: 1em !important;
+    z-index: -1;
+}
+ang-clap div>.wrapper.show-border {
+    background-color: transparent;
 }
 
 
