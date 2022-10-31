@@ -45,10 +45,13 @@ export class PostDetailComponent implements OnInit {
   }
   
   updateClap() {
-    console.log("update");
+    console.log('update');
   }
 
   removeClap() {
-    console.log("remove");
+    console.log('remove');
+  }
+  imgClick() {
+    
   }
 }

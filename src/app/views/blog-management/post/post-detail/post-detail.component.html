@@ -4,6 +4,9 @@
     </ang-clap>
 </div>
 <div class="container post-container">
+    <a *ngIf="item" class="post-thumbnail" (click)="imgClick()" [ngStyle]="{
+        'background-image': 'url(' + item.postBackgroundImg + ')'
+      }"></a>
     <markdown *ngIf="ready" style="width: 100%" [data]="item.content">
 
     </markdown>

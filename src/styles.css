@@ -262,9 +262,14 @@ app-table-loading {
     height: 1em !important;
     z-index: -1;
 }
-ang-clap div>.wrapper.show-border {
-    background-color: transparent;
+ang-clap .wrapper.show-border>button {
+    background-color: transparent !important;
 }
+
+
+/* ang-clap .close.clear {
+    display: none !important;
+} */
 
 
 /* Steps */
