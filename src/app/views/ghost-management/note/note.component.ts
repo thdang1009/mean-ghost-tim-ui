@@ -34,6 +34,10 @@ export class NoteComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       const id = Number(params.id);
+      if (id) {
+      } else {
+        this.itemSelected = undefined;
+      }
       this.searchNote(id);
     });
   }

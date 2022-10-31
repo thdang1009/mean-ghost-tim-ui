@@ -66,6 +66,7 @@ export class PostListComponent implements OnInit {
         this.chooseThisItem(id);
       } else {
         this.searchPost(id);
+        this.itemSelected = undefined;
       }
     });
   }
