@@ -239,7 +239,10 @@ app-am-chart {
     cursor: move;
     color: #262b2f !important;
 }
-
+.post:hover {
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+}
 .align-children-middle {
     display: flex !important;
     align-items: center;
