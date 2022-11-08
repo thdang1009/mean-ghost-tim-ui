@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '@app/_services/category.service';
 import { TagService } from '@app/_services/tag.service';
 import { AuthService, HomeService, PostService } from '@services/_index';
@@ -17,13 +17,15 @@ export class HomeComponent implements OnInit {
   posts = [];
   mapTag = new Map();
   mapCat = new Map();
+  isFilteredByTag = false;
 
   constructor(
     private authService: AuthService,
     private postService: PostService,
     private tagService: TagService,
     private categoryService: CategoryService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private router: Router
   ) {
   }
 
@@ -43,6 +45,10 @@ export class HomeComponent implements OnInit {
       });
     this.activeRoute.queryParams
       .subscribe(params => {
+        const path = window.location.href
+        if (path && path.includes('tag')) {
+          this.isFilteredByTag = true;
+        }
         this.postService.getPublicPosts(params)
           .subscribe(posts => {
             this.posts = posts || [];
@@ -51,5 +57,9 @@ export class HomeComponent implements OnInit {
   }
   openPost(post) {
 
+  }
+  backToHome() {
+    this.isFilteredByTag = false;
+    this.router.navigate(['home']);
   }
 }

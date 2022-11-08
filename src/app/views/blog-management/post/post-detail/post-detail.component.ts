@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '@app/_services/_index';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-detail',
@@ -16,7 +17,8 @@ export class PostDetailComponent implements OnInit {
   count: Number = 0;
   constructor(
     private postService: PostService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('ref');
@@ -43,7 +45,7 @@ export class PostDetailComponent implements OnInit {
         });
     }, 500);
   }
-  
+
   updateClap() {
     console.log('update');
   }
@@ -52,6 +54,9 @@ export class PostDetailComponent implements OnInit {
     console.log('remove');
   }
   imgClick() {
-    
+
+  }
+  backToHome() {
+    this.router.navigate(['home']);
   }
 }

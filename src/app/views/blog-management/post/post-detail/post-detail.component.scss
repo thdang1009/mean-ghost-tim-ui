@@ -19,7 +19,24 @@ ang-clap {
     height: 512px;
     width: 512px;
 }
+.page-cover-image .page-image {
+    height: 100%;
+    width: 100%;
+}
 
+.header-page .page-title {
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0 0 10px;
+    font-size: 2em;
+}
+.header-page .page-date {
+    font-size: 16px;
+    font-weight: 300;
+}
+.wrap-content {
+    padding: 20px;
+}
 @media (max-width: 991px) {
     .post-container {
         // background-color: white;

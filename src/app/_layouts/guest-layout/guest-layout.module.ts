@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ComponentsModule } from '@app/components/components.module';
 import { ReuseComponentModule } from '@app/_reuse/reuse.module';
+import { SharedModule } from '@app/_shares/shared-module.module';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { ReuseComponentModule } from '@app/_reuse/reuse.module';
     MatTooltipModule,
     MatDialogModule,
     ComponentsModule,
-    ReuseComponentModule
+    ReuseComponentModule,
+    SharedModule
   ],
   declarations: [
     HomeComponent,

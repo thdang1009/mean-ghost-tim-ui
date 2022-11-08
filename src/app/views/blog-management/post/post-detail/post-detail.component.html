@@ -4,10 +4,33 @@
     </ang-clap>
 </div>
 <div class="container post-container">
-    <a *ngIf="item" class="post-thumbnail" (click)="imgClick()" [ngStyle]="{
-        'background-image': 'url(' + item.postBackgroundImg + ')'
-      }"></a>
-    <markdown *ngIf="ready" style="width: 100%" [data]="item.content">
 
-    </markdown>
+    <article class="article-page">
+        <div class="back-to-hom-button"><a (click)="backToHome()">← Back to the Blog Home</a></div>
+        <figure *ngIf="ready" class="d-flex-col-mid-center">
+            <img class="page-image" src="{{item.postBackgroundImg}}" alt="post's image">
+        </figure>
+
+        <div class="wrap-content" *ngIf="ready">
+            <header class="header-page d-flex-col-mid-center">
+                <h1 class="page-title">{{item?.title}}</h1>
+                <div class="page-date">
+                    {{item?.author}}
+                    wrote
+                    {{item?.createdAt | timeAgo }}
+                    ({{item?.createdAt | date }})
+                </div>
+                <!-- <div style="margin-top: 1rem;">
+                    <div><a class="tagging__item" href="/tags/java" style="color: white;">#java</a><a
+                            class="tagging__item" href="/tags/async" style="color: white;">#async</a><a
+                            class="tagging__item" href="/tags/jiny" style="color: white;">#jiny</a></div>
+                </div> -->
+            </header>
+        </div>
+        <div class="post-body">
+            <markdown *ngIf="ready" style="width: 100%" [data]="item.content">
+
+            </markdown>
+        </div>
+    </article>
 </div>
