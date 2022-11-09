@@ -19,7 +19,7 @@ ang-clap {
     height: 512px;
     width: 512px;
 }
-.page-cover-image .page-image {
+.page-image {
     height: 100%;
     width: 100%;
 }
@@ -41,5 +41,9 @@ ang-clap {
     .post-container {
         // background-color: white;
         padding: 10px 20px;
+    }
+    .page-image {
+        height: auto;
+        width: 311px;
     }
 }
