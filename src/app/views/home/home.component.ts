@@ -17,15 +17,11 @@ export class HomeComponent implements OnInit {
   isLoadingResults = true;
   thisYear = (new Date).getFullYear();
   posts = [];
-  mapTag = new Map();
-  mapCat = new Map();
   isFilteredByTag = false;
 
   constructor(
     private authService: AuthService,
     private postService: PostService,
-    private tagService: TagService,
-    private categoryService: CategoryService,
     private activeRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -37,14 +33,6 @@ export class HomeComponent implements OnInit {
   async init() {
     this.isLogined = this.authService.isLogin();
     this.isAdmin = this.authService.isAdmin();
-    this.tagService.getTags()
-      .subscribe(listTag => {
-        this.mapTag = new Map(listTag.map(tag => [tag._id, tag.name]));
-      });
-    this.categoryService.getCategorys()
-      .subscribe(listCat => {
-        this.mapCat = new Map(listCat.map(cat => [cat._id, cat.name]));
-      });
     this.activeRoute.queryParams
       .subscribe(params => {
         const path = window.location.href

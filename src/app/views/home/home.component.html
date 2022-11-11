@@ -44,7 +44,7 @@
           <ng-container *ngIf="post && post.tags.length">
             <div class="tagging" *ngFor="let tag of post.tags">
               <a class="tagging__item" [routerLink]="'/home'"
-                [queryParams]="{ tag: mapTag.get(tag) }">#{{mapTag.get(tag)}}</a>
+                [queryParams]="{ tag: tag.name }">#{{tag.name}}</a>
             </div>
           </ng-container>
         </div>
