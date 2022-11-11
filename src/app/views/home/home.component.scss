@@ -30,7 +30,6 @@
     background-size: cover;
     max-width: 100%;
     min-height: 11rem;
-    width: 30%;
 }
 //
 .article-page,
@@ -62,7 +61,7 @@ section {
 .post {
     align-items: stretch;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 .content-box {
     display: flex;
@@ -80,7 +79,6 @@ section {
 }
 .post .post-content {
     padding: 1rem;
-    width: 70%;
 }
 .post .post-content .post-title {
     font-weight: 400;
@@ -109,4 +107,34 @@ section {
     height: 100%;
     // position: absolute;
     min-height: 201px;
+}
+.private-post {
+    opacity: 0.5;
+}
+.private-post:after {
+    content: "Private";
+    /* background-color: black; */
+    right: 0;
+    font-weight: bold;
+    position: absolute;
+    display: inline-block;
+    transform: rotate(30deg);
+    padding: 5px 10px;
+    width: 67px;
+    color: black;
+    opacity: 1;
+}
+
+@media screen and (min-width: 991px) {
+    .post {
+        align-items: stretch;
+        display: flex;
+        flex-direction: row;
+    }
+    .post .post-thumbnail {
+        width: 30%;
+    }
+    .post .post-content {
+        width: 70%;
+    }
 }
