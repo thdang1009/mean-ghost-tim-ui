@@ -34,10 +34,14 @@ export class AddFileComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      name: [null, Validators.required],
-      description: [null, Validators.required],
-      imgUrl: [null, Validators.required],
-      content: [null, Validators.required],
+      // url: [null, Validators.required],
+      // user: [null, Validators.required],
+      originName: [null, Validators.required],
+      nameOnDisk: [null, Validators.required],
+      urlGet: [null, Validators.required],
+      pathOnDisk: [null, Validators.required],
+      ext: [null, Validators.required],
+      type: [null, Validators.required],
     });
     this.route.queryParams.subscribe(params => {
       const id = params.id;
@@ -54,6 +58,7 @@ export class AddFileComponent implements OnInit {
 
   initFormWithData(data = {} as any) {
     this.registerForm.patchValue(data);
+    // console.log(this.registerForm.get('user'));
   }
 
   onFormSubmit(data: any) {
@@ -71,8 +76,8 @@ export class AddFileComponent implements OnInit {
     this.fileService.updateFile(id, newFile)
       .subscribe(file => {
         if (file) {
-          showNoti(`Create success`, 'success');
-          this.router.navigate(['/admin/tool/file']);
+          showNoti(`Update success`, 'success');
+          this.router.navigate(['/admin/tool/file-list']);
         }
       }, (err) => {
         console.log(err);
@@ -84,8 +89,8 @@ export class AddFileComponent implements OnInit {
     this.fileService.addFile(newFile)
       .subscribe(file => {
         if (file) {
-          showNoti(`Update success`, 'success');
-          this.router.navigate(['/admin/tool/file']);
+          showNoti(`Create success`, 'success');
+          this.router.navigate(['/admin/tool/file-list']);
         }
       }, (err) => {
         console.log(err);

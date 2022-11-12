@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'note', component: NoteComponent, canActivate: [LoginGuard] },
   { path: 'money', component: MoneyComponent, canActivate: [GrandAdminGuard] },
   { path: 'book', component: BookComponent, canActivate: [GrandAdminGuard] },
-  { path: 'file', component: FileListComponent, canActivate: [GrandAdminGuard] },
-  { path: 'add-file', component: AddFileComponent, canActivate: [GrandAdminGuard] },
+  { path: 'file', component: AddFileComponent, canActivate: [GrandAdminGuard] },
+  { path: 'file-list', component: FileListComponent, canActivate: [GrandAdminGuard] },
 ];
 
 @NgModule({

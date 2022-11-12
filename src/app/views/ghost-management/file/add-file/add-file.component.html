@@ -9,9 +9,10 @@
           <div class="card-body">
             <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit(registerForm.value)">
               <div class="row">
+
                 <div class="col-md-12">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="Origin Name" formControlName="originName" disabled>
+                    <input matInput type="text" placeholder="Origin Name" formControlName="originName" >
                     <mat-error>
                       <span *ngIf="!registerForm.get('originName').valid && registerForm.get('originName').touched">
                         Please enter originName.
@@ -19,10 +20,10 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
-                <div class="col-md-12">
 
+                <div class="col-md-12">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="nameOnDisk" formControlName="nameOnDisk" disabled>
+                    <input matInput type="text" placeholder="nameOnDisk" formControlName="nameOnDisk" >
                     <mat-error>
                       <span *ngIf="!registerForm.get('nameOnDisk').valid && registerForm.get('nameOnDisk').touched">
                         Please enter your name on disk.
@@ -30,21 +31,10 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
-                <div class="col-md-12">
 
-                  <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="url" formControlName="url">
-                    <mat-error>
-                      <span *ngIf="!registerForm.get('url').valid && registerForm.get('url').touched">
-                        Please enter your url.
-                      </span>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
                 <div class="col-md-12">
-
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="urlGet" formControlName="urlGet" disabled>
+                    <input matInput type="text" placeholder="urlGet" formControlName="urlGet" >
                     <mat-error>
                       <span *ngIf="!registerForm.get('urlGet').valid && registerForm.get('urlGet').touched">
                         Please enter your urlGet.
@@ -52,10 +42,10 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
-                <div class="col-md-12">
 
+                <div class="col-md-12">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="text" placeholder="pathOnDisk" formControlName="pathOnDisk" disabled>
+                    <input matInput type="text" placeholder="pathOnDisk" formControlName="pathOnDisk" >
                     <mat-error>
                       <span *ngIf="!registerForm.get('pathOnDisk').valid && registerForm.get('pathOnDisk').touched">
                         Please enter your pathOnDisk.
@@ -63,6 +53,29 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
+
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="ext" formControlName="ext" >
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('ext').valid && registerForm.get('ext').touched">
+                        Please enter your ext.
+                      </span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="type" formControlName="type" >
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('type').valid && registerForm.get('type').touched">
+                        Please enter your type.
+                      </span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
               </div>
               <div class="button-row">
                 <button mat-raised-button type="submit" [disabled]="!registerForm.valid"

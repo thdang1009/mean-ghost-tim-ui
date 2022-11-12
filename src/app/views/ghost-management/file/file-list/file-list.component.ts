@@ -27,18 +27,23 @@ export class FileListComponent implements OnInit {
       showNoti(`Get file fail!`, 'danger');
     });
   }
-  delete(file) {
-    if (!file) {
+  delete(id) {
+    if (!id) {
       return;
     }
-    const id = file._id;
-    if (file) {
+    if (id) {
       this.fileService.deleteFile(id)
         .subscribe((_: any) => {
           showNoti('File deleted!', 'success');
           this.getFiles();
         }, err => {
         });
+    }
+  }
+  deleteItem(item) {
+    const val = confirm(`Delete "${item.originName}"?`);
+    if (val) {
+      this.delete(item.id);
     }
   }
   edit(file) {

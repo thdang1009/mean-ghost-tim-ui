@@ -84,7 +84,7 @@ export class AddTagComponent implements OnInit {
     this.tagService.addTag(newValue)
       .subscribe(tag => {
         if (tag) {
-          showNoti(`Create success`, 'success');
+          showNoti(`Success`, 'success');
           this.router.navigate(['/admin/blog/tag-list']);
         }
       }, (err) => {

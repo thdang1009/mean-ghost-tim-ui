@@ -69,7 +69,7 @@ export class AddCategoryComponent implements OnInit {
     this.categoryService.updateCategory(id, newCategory)
       .subscribe(category => {
         if (category) {
-          showNoti(`Create success`, 'success');
+          showNoti(`Update success`, 'success');
           this.router.navigate(['/admin/blog/category-list']);
         }
       }, (err) => {
@@ -82,7 +82,7 @@ export class AddCategoryComponent implements OnInit {
     this.categoryService.addCategory(newCategory)
       .subscribe(category => {
         if (category) {
-          showNoti(`Update success`, 'success');
+          showNoti(`Create success`, 'success');
           this.router.navigate(['/admin/blog/category-list']);
         }
       }, (err) => {

@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
             return [...pre, ...arr];
         }, []);
         // this.title = this.getTitle();
-        console.log('listTitles= ', this.listTitles);
+        // console.log('listTitles= ', this.listTitles);
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
         this.router.events.subscribe((event) => {
