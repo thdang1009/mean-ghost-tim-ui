@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, finalize, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { MyFile } from '@models/_index';
 import { buildQueryString } from '@app/_shares/common';
+import { CONSTANT } from '@app/_shares/constant';
 
 const apiUrl = environment.apiUrl + '/v1/file';
 
@@ -61,6 +62,23 @@ export class FileService {
       tap(_ => console.log(`deleted item id=${id}`)),
       catchError(this.handleError<MyFile>('deleteFile'))
     );
+  }
+
+  uploadFile(formData): Observable<MyFile> {
+    return this.http.post<MyFile>(apiUrl + '/upload', formData).pipe(
+      tap((prod: MyFile) => console.log(`upload file`)),
+      catchError(this.handleError<MyFile>('upload file'))
+    );
+  }
+
+  createObservableUploadFile(formData, callbackReset = () => { }): Observable<HttpEvent<Object>> {
+    const upload$ = this.http.post(apiUrl + '/upload', formData, {
+      reportProgress: true,
+      observe: 'events'
+    }).pipe(
+      finalize(callbackReset)
+    );
+    return upload$;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

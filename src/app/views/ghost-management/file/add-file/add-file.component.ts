@@ -38,6 +38,21 @@ export class AddFileComponent implements OnInit {
     return a == b;
   }
 
+  handleAfterUpload(e) {
+    console.log(e);
+    this.reloadWithID(e);
+  }
+
+  reloadWithID(item) {
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.route,
+        queryParams: { id: item.id },
+        queryParamsHandling: 'merge'
+      });
+  }
+
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       // url: [null, Validators.required],

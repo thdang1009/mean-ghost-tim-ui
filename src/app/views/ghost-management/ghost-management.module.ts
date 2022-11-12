@@ -17,6 +17,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { BookComponent } from './book/book.component';
 import { AddFileComponent } from './file/add-file/add-file.component';
 import { FileListComponent } from './file/file-list/file-list.component';
+import { ChooseFileComponent } from './file/choose-file/choose-file.component';
 @NgModule({
   declarations: [
     MoneyComponent,
@@ -25,7 +26,8 @@ import { FileListComponent } from './file/file-list/file-list.component';
     FoodComponent,
     BookComponent,
     AddFileComponent,
-    FileListComponent
+    FileListComponent,
+    ChooseFileComponent
   ],
   imports: [
     CommonModule,

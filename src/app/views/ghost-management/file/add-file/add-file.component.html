@@ -7,7 +7,7 @@
             <h4 class="card-title">{{isUpdate ? 'Update' : 'New'}} File</h4>
           </div>
           <div class="card-body">
-            <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit(registerForm.value)">
+            <form *ngIf="isUpdate; else uploadFilePart" [formGroup]="registerForm" (ngSubmit)="onFormSubmit(registerForm.value)">
               <div class="row">
 
                 <div class="col-md-12">
@@ -101,6 +101,9 @@
                   class="btn btn-info pull-right btn-w100">{{ isUpdate ? 'Update' : 'Create'}} </button>
               </div>
             </form>
+            <ng-template #uploadFilePart>
+              <choose-file (uploadDone)="handleAfterUpload($event)"></choose-file>
+            </ng-template>
           </div>
         </div>
       </div>
