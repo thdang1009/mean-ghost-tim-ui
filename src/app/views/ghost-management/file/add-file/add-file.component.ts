@@ -70,12 +70,14 @@ export class AddFileComponent implements OnInit {
 
   onFormSubmit(data: any) {
     const newFile: MyFile = {
-      url: data.url,
       user: data.user,
       originName: data.originName,
       nameOnDisk: data.nameOnDisk,
       urlGet: data.urlGet,
-      pathOnDisk: data.pathOnDisk
+      pathOnDisk: data.pathOnDisk,
+      permission: data.permission,
+      ext: data.ext,
+      type: data.type
     }
     this.isUpdate ? this.callUpdate(this.id, newFile) : this.callCreate(newFile)
   }

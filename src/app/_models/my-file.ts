@@ -8,4 +8,5 @@ export class MyFile {
   pathOnDisk?: String;
   ext?: String;
   type?: String;
+  permission?: String;
 }

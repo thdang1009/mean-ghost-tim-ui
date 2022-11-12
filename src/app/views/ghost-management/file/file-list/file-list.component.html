@@ -16,13 +16,13 @@
                                     <th>
                                         Origin Name
                                     </th>
-                                    <th>
+                                    <th class="hidden-xs">
                                         Owner
                                     </th>
-                                    <th>
+                                    <th class="hidden-xs">
                                         Ext - Type
                                     </th>
-                                    <th>
+                                    <th class="hidden-xs">
                                         Url
                                     </th>
                                 </thead>
@@ -35,14 +35,14 @@
                                             <td (click)="edit(file)">
                                                 {{ file.originName }}
                                             </td>
-                                            <td (click)="edit(file)">
+                                            <td class="hidden-xs" (click)="edit(file)">
                                                 {{ file.user?.fullName }}
                                             </td>
-                                            <td (click)="edit(file)">
+                                            <td class="hidden-xs" (click)="edit(file)">
                                                 {{ file.ext }} -
                                                 {{ file.type }}
                                             </td>
-                                            <td (click)="edit(file)">
+                                            <td class="hidden-xs" (click)="edit(file)">
                                                 {{ file.urlGet}}
                                             </td>
                                             <button mat-raised-button type="button" matTooltip="Delete"
