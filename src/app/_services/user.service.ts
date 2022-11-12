@@ -5,7 +5,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { GuestMessage, User } from '@models/_index';
 
-const apiUrl = environment.apiUrl + '/api/user';
+const apiUrl = environment.apiUrl + '/v1/user';
 
 @Injectable({
   providedIn: 'root'

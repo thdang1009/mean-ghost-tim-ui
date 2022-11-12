@@ -1,11 +1,11 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { BookReadingInfo, Book } from '@models/_index';
 
-const apiUrl = environment.apiUrl + '/api/book';
+const apiUrl = environment.apiUrl + '/v1/book';
 
 @Injectable({
   providedIn: 'root'

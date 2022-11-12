@@ -4,9 +4,8 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Category } from '@models/_index';
 import { environment } from '@environments/environment';
-import { buildQueryString } from '@shares/common';
 
-const apiUrl = environment.apiUrl + '/api/category';
+const apiUrl = environment.apiUrl + '/v1/category';
 
 @Injectable({
   providedIn: 'root'

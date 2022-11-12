@@ -6,7 +6,7 @@ import { Meal } from '@models/_index';
 import { environment } from '@environments/environment';
 import { buildQueryString } from '@shares/common';
 
-const apiUrl = environment.apiUrl + '/api/meal';
+const apiUrl = environment.apiUrl + '/v1/meal';
 
 @Injectable({
   providedIn: 'root'

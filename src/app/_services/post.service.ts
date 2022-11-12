@@ -6,7 +6,7 @@ import { Post } from '@models/_index';
 import { environment } from '@environments/environment';
 import { buildQueryString } from '@shares/common';
 
-const apiUrl = environment.apiUrl + '/api/post';
+const apiUrl = environment.apiUrl + '/v1/post';
 
 @Injectable({
   providedIn: 'root'

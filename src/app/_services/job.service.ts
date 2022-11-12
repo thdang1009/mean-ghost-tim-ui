@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
-import { buildQueryString } from '@shares/common';
 
-const apiUrl = environment.apiUrl + '/api/job';
+const apiUrl = environment.apiUrl + '/v1/job';
 
 @Injectable({
   providedIn: 'root'

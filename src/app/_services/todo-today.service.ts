@@ -6,7 +6,7 @@ import { TodoToday } from '@models/_index';
 import { environment } from '@environments/environment';
 import { buildQueryString } from '@shares/common';
 
-const apiUrl = environment.apiUrl + '/api/todotoday';
+const apiUrl = environment.apiUrl + '/v1/todotoday';
 
 @Injectable({
   providedIn: 'root'

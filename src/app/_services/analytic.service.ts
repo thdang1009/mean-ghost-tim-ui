@@ -6,7 +6,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { AccessLog } from '@models/_index';
 
-const apiUrl = environment.apiUrl + '/api/analytic';
+const apiUrl = environment.apiUrl + '/v1/analytic';
 
 @Injectable({
   providedIn: 'root'

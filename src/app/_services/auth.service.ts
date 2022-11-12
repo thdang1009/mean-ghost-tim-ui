@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CONSTANT } from '@shares/constant';
 import { LoginResponse } from '@shares/common';
 
-const apiUrl = environment.apiUrl + '/api/auth';
+const apiUrl = environment.apiUrl + '/v1/auth';
 
 @Injectable({
   providedIn: 'root'
