@@ -1,0 +1,77 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">{{isUpdate ? 'Update' : 'New'}} File</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit(registerForm.value)">
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Origin Name" formControlName="originName" disabled>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('originName').valid && registerForm.get('originName').touched">
+                        Please enter originName.
+                      </span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12">
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="nameOnDisk" formControlName="nameOnDisk" disabled>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('nameOnDisk').valid && registerForm.get('nameOnDisk').touched">
+                        Please enter your name on disk.
+                      </span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12">
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="url" formControlName="url">
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('url').valid && registerForm.get('url').touched">
+                        Please enter your url.
+                      </span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12">
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="urlGet" formControlName="urlGet" disabled>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('urlGet').valid && registerForm.get('urlGet').touched">
+                        Please enter your urlGet.
+                      </span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12">
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="pathOnDisk" formControlName="pathOnDisk" disabled>
+                    <mat-error>
+                      <span *ngIf="!registerForm.get('pathOnDisk').valid && registerForm.get('pathOnDisk').touched">
+                        Please enter your pathOnDisk.
+                      </span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="button-row">
+                <button mat-raised-button type="submit" [disabled]="!registerForm.valid"
+                  class="btn btn-info pull-right btn-w100">{{ isUpdate ? 'Update' : 'Create'}} </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

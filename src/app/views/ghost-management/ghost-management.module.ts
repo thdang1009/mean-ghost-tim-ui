@@ -15,16 +15,21 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { BookComponent } from './book/book.component';
+import { AddFileComponent } from './file/add-file/add-file.component';
+import { FileListComponent } from './file/file-list/file-list.component';
 @NgModule({
   declarations: [
     MoneyComponent,
     NoteComponent,
     TodoTodayComponent,
     FoodComponent,
-    BookComponent
+    BookComponent,
+    AddFileComponent,
+    FileListComponent
   ],
   imports: [
     CommonModule,
+    ReuseComponentModule,
     GhostManagementRoutingModule,
     SharedModule,
     DragDropModule,

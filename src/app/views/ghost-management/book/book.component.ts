@@ -9,6 +9,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { environment } from '@environments/environment';
 import { CONSTANT } from '@app/_shares/constant';
 import { BookPermission } from '@app/_shares/enum';
+import { FileService } from '@app/_services/file.service';
 @Component({
   selector: 'book',
   templateUrl: './book.component.html',
@@ -21,6 +22,7 @@ export class BookComponent implements OnInit {
   isLoadingResults = true;
   savedFile: File = null;
   scoreValue = 0;
+  listFileOnServer = [];
 
   debounceID = undefined;
   today = dateFns.startOfToday();
@@ -52,6 +54,7 @@ export class BookComponent implements OnInit {
 
   constructor(
     private bookService: BookService,
+    private fileService: FileService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private ref: ChangeDetectorRef,
@@ -60,6 +63,7 @@ export class BookComponent implements OnInit {
 
   ngOnInit() {
     this.detailForm = this.formBuilder.group({
+      id: [null],
       title: [null, Validators.required],
       isDone: [null, Validators.required],
       slot: [null, Validators.required],
@@ -156,20 +160,18 @@ export class BookComponent implements OnInit {
       });
   }
   saveItem(id, item, index = -1) {
-    console.log('debug');
-    item.content = item.content.trim();
     this.bookService.updateBook(id, item)
       .subscribe((res: any) => {
-        if (index === -1) {
-          this.searchBook();
-        } else {
-          this.data[index] = res;
-        }
+        // if (index === -1) {
+        //   this.searchBook();
+        // } else {
+        //   this.data[index] = res;
+        // }
       }, err => {
       });
   }
-  saveThenBack() {
-    this.saveItem(this.itemSelected.id, this.itemSelected);
+  saveThenBack(newBook) {
+    this.saveItem(this.id, newBook);
     // it could be trigger back first, but that ok
     this.back();
   }
@@ -205,5 +207,11 @@ export class BookComponent implements OnInit {
     this.detailForm.patchValue({
       score: value
     })
+  }
+  onFormSubmit(newBook) {
+    this.saveThenBack(newBook);
+  }
+  getListFileOnServer() {
+    this.bookService.getMyBook
   }
 }

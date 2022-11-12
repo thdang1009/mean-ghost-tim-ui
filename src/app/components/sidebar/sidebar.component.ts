@@ -36,6 +36,8 @@ export const ROUTES: RouteInfo[] = [
       { path: 'tool/note', title: 'Note', icon: 'library_books', class: '', permission: 'isMember' },
       { path: 'tool/money', title: 'Money', icon: 'attach_money', class: '', permission: 'isAdmin' },
       { path: 'tool/book', title: 'Book', icon: 'library_books', class: '', permission: 'isAdmin' },
+      { path: 'tool/add-file', title: 'Add File', icon: 'post_add', class: '', permission: 'isAdmin' },
+      { path: 'tool/file', title: 'All Files', icon: 'file', class: '', permission: 'isAdmin' }
       // { path: 'tool/food', title: 'Food', icon: 'lunch_dining', class: '', permission: 'isMember' },
     ]
   },
@@ -50,8 +52,6 @@ export const ROUTES: RouteInfo[] = [
       { path: 'blog/category', title: 'Add A Category', icon: 'post_add', class: '', permission: 'isAdmin' }
     ]
   }
-
-
   // { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
   // { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
   // { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
