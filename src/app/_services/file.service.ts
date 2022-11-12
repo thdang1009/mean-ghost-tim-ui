@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { MyFile } from '@models/_index';
+import { buildQueryString } from '@app/_shares/common';
 
 const apiUrl = environment.apiUrl + '/api/file';
 
@@ -30,8 +31,9 @@ export class FileService {
     );
   }
 
-  getMyFile(): Observable<MyFile[]> {
-    const url = `${apiUrl}/my-file`;
+  getMyFile(req = {}): Observable<MyFile[]> {
+    const queryString = buildQueryString(req);
+    const url = `${apiUrl}/my-file?${queryString}`;
     return this.http.get<MyFile[]>(url).pipe(
       tap(_ => console.log(`fetched my file`)),
       catchError(this.handleError<MyFile[]>(`getMyFile`))

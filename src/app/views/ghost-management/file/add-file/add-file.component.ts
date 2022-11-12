@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FilePermission } from '@app/_shares/constant';
 import { MyFile } from '@models/_index';
 import { FileService, AlertService } from '@services/_index';
 import { showNoti } from '@shares/common';
@@ -23,6 +24,7 @@ export class AddFileComponent implements OnInit {
   isLoadingResults = false;
   isUpdate = false;
   id = undefined;
+  filePermissionList = [FilePermission.PRIVATE, FilePermission.PUBLIC, FilePermission.PROTECTED];
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -32,10 +34,15 @@ export class AddFileComponent implements OnInit {
     private alertService: AlertService
   ) { }
 
+  compareWithFunc(a, b) {
+    return a == b;
+  }
+
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       // url: [null, Validators.required],
       // user: [null, Validators.required],
+      permission: [null, Validators.required],
       originName: [null, Validators.required],
       nameOnDisk: [null, Validators.required],
       urlGet: [null, Validators.required],

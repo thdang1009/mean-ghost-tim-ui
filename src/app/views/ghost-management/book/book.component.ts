@@ -97,6 +97,14 @@ export class BookComponent implements OnInit {
     this.sliderControl.valueChanges.subscribe(value => {
       console.log(value);
     });
+    this.fileService.getMyFile({
+      ext: '.pdf'
+    }).subscribe((res: any) => {
+      this.listFileOnServer = res;
+    }, err => {
+      showNoti('Get list file error. ' + err, 'danger');
+    });
+
   }
 
   initFormWithData(data = {} as any) {

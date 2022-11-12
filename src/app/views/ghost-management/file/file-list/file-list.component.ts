@@ -33,9 +33,11 @@ export class FileListComponent implements OnInit {
     }
     if (id) {
       this.fileService.deleteFile(id)
-        .subscribe((_: any) => {
-          showNoti('File deleted!', 'success');
-          this.getFiles();
+        .subscribe((res: any) => {
+          if (res.success) {
+            showNoti('File deleted!', 'success');
+            this.getFiles();
+          }
         }, err => {
         });
     }

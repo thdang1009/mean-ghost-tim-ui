@@ -41,3 +41,8 @@ export const PostStatus = {
   PUBLIC: 'PUBLIC',
   PROTECTED: 'PROTECTED',
 }
+export const FilePermission = {
+  PRIVATE: 'PRIVATE',
+  PUBLIC: 'PUBLIC',
+  PROTECTED: 'PROTECTED',
+}

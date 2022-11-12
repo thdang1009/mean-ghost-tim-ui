@@ -150,8 +150,8 @@
                                                 <mat-select formControlName="url"
                                                     [compareWith]="compareWithFunc">
                                                     <mat-option *ngFor="let item of listFileOnServer; let i = index"
-                                                        [(value)]="listFileOnServer[i]">
-                                                        {{item}}
+                                                        [(value)]="listFileOnServer[i].id">
+                                                        {{item.originName}}
                                                     </mat-option>
                                                 </mat-select>
                                                 <mat-error>
