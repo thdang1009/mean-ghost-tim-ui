@@ -98,6 +98,20 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
+                        <!-- background cover -->
+
+                        <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Background cover</mat-label>
+                                <mat-select [(ngModel)]="itemSelected.postBackgroundImg" [compareWith]="compareWithFunc"
+                                    (ngModelChange)="saveItem(itemSelected.id, itemSelected, -1)">
+                                    <mat-option *ngFor="let item of listFileOnServer; let i = index"
+                                        [(value)]="listFileOnServer[i].urlGet">
+                                        {{item.originName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
                         <!-- tools -->
                         <div class="col-md-8 tool-container" *ngIf="itemSelected && itemSelected.id">
                             <span class="material-icons md-36" matTooltip="Goto Full Screen" (click)="openFullscreen()">
@@ -125,12 +139,12 @@
                                 </thead>
                                 <tbody cdkDropList (cdkDropListDropped)="drop($event)">
                                     <ng-container *ngIf="data && data.length; else noDataBlock">
-                                        <tr *ngFor="let post of data; let index = index" cdkDrag [ngClass]="{
-                                        'warning': post.status === PostStatus.NONE,
-                                        'success': post.status === PostStatus.PRIVATE,
-                                        'primary': post.status === PostStatus.PUBLIC,
-                                        'future': post.status === PostStatus.PROTECTED
-                                    }">
+                                        <tr class="hover-pointer-td" *ngFor="let post of data; let index = index"
+                                            cdkDrag [ngClass]="{
+                                            'ghost-public-item': post.permission == 'PUBLIC',
+                                            'ghost-private-item': post.permission == 'PRIVATE',
+                                            'ghost-protected-item': post.permission == 'PROTECTED'
+                                        }">
                                             <td class="text-center">
                                                 <span class="hover-pointer" (click)="chooseThisItem(post)"
                                                     matTooltip="Create At: {{ post.createdAt | date: 'dd-MM HH:mm' }}">
@@ -138,8 +152,8 @@
                                                 </span>
                                             </td>
                                             <td>
-                                                <span (click)="chooseThisItem(post.id)"
-                                                    class="editable-header hover-pointer">{{ post.title }}
+                                                <span (click)="chooseThisItem(post.id)" class="hover-pointer">{{
+                                                    post.title }}
                                                 </span>
                                                 <button mat-raised-button type="button" matTooltip="Delete Post"
                                                     [disabled]="isLoadingResults"
@@ -163,14 +177,12 @@
                         </div>
                         <ng-template #postView>
                             <!-- Title -->
-                            <textarea type="text" [(ngModel)]="itemSelected.title"
-                                class="editable editable-header wd100"
+                            <textarea type="text" [(ngModel)]="itemSelected.title" class="editable wd100"
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
                                 [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults">
                             </textarea>
 
-                            <textarea type="text" [(ngModel)]="itemSelected.description"
-                                class="editable editable-header wd100"
+                            <textarea type="text" [(ngModel)]="itemSelected.description" class="editable wd100"
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
                                 [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults">
                             </textarea>

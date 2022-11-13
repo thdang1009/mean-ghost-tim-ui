@@ -3,7 +3,7 @@ import { FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, 
 import { BookService, UserService } from '@services/_index';
 import { Book } from '@models/_index';
 import { ActivatedRoute, Router } from '@angular/router';
-import { isValidFile, showNoti } from '@shares/common';
+import { compareWithFunc, isValidFile, showNoti } from '@shares/common';
 import * as dateFns from 'date-fns';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '@environments/environment';
@@ -32,14 +32,11 @@ export class BookComponent implements OnInit {
   itemSelected = undefined;
   permissions = [
     BookPermission.PUBLIC,
-    BookPermission.PROTECED,
+    BookPermission.PROTECTED,
     BookPermission.PRIVATE,
     BookPermission.READONLY
   ];
-  compareWithFunc(a, b) {
-    return a == b;
-  }
-
+  compareWithFunc = compareWithFunc;
   isUpdate = false;
   id = undefined;
 

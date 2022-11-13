@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FilePermission } from '@app/_shares/constant';
 import { MyFile } from '@models/_index';
 import { FileService, AlertService } from '@services/_index';
-import { showNoti } from '@shares/common';
+import { compareWithFunc, showNoti } from '@shares/common';
 
 
 @Component({
@@ -34,9 +34,7 @@ export class AddFileComponent implements OnInit {
     private alertService: AlertService
   ) { }
 
-  compareWithFunc(a, b) {
-    return a == b;
-  }
+  compareWithFunc = compareWithFunc;
 
   handleAfterUpload(e) {
     console.log(e);

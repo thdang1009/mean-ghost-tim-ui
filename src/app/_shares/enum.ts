@@ -8,8 +8,8 @@ export enum FoodTier {
 }
 
 export enum BookPermission {
-  PUBLIC = 'Public',
-  PROTECED = 'Proteced',
-  PRIVATE = 'Private',
-  READONLY = 'Readonly'
+  PUBLIC = 'PUBLIC',
+  PROTECTED = 'PROTECTED',
+  PRIVATE = 'PRIVATE',
+  READONLY = 'READONLY'
 }

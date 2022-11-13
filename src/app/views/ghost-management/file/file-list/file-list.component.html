@@ -28,7 +28,11 @@
                                 </thead>
                                 <tbody>
                                     <ng-container *ngIf="files && files.length; else noDataBlock">
-                                        <tr *ngFor="let file of files; let index = index" class="hover-pointer-td">
+                                        <tr *ngFor="let file of files; let index = index" class="hover-pointer-td" [ngClass]="{
+                                            'ghost-public-item': file.permission == 'PUBLIC',
+                                            'ghost-private-item': file.permission == 'PRIVATE',
+                                            'ghost-protected-item': file.permission == 'PROTECTED'
+                                        }">
                                             <td (click)="edit(file)">
                                                 {{ index + 1 }}
                                             </td>

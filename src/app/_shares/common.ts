@@ -76,3 +76,6 @@ export function isValidFile(file) {
   const isValidSize = file.size <= 10 * 1024 * 1024;
   return isValidSize;
 }
+export function compareWithFunc(a, b) {
+  return a == b;
+}

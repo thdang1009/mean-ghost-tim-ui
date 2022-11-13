@@ -2,9 +2,9 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { showNoti } from '@shares/common';
+import { showNoti, compareWithFunc } from '@shares/common';
 import { Post } from '@models/_index';
-import { CategoryService, PostService, TagService } from '@services/_index';
+import { CategoryService, FileService, PostService, TagService } from '@services/_index';
 import * as dateFns from 'date-fns';
 import { DOCUMENT } from '@angular/common';
 import { PostStatus } from '@app/_shares/constant';
@@ -21,7 +21,7 @@ export class PostListComponent implements OnInit {
   isLoadingResults = true;
 
   today = dateFns.startOfToday();
-  lastYearDay = dateFns.subYears(this.today, 1);
+  lastYearDay = dateFns.subYears(this.today, 5);
   searchDateFrom = new UntypedFormControl(this.lastYearDay);
   searchDateTo = new UntypedFormControl(this.today);
   searchStatus = 'NONE';
@@ -33,6 +33,8 @@ export class PostListComponent implements OnInit {
   listPermisson = [];
   listTag = [];
   PostStatus = PostStatus;
+  listFileOnServer = [];
+  compareWithFunc = compareWithFunc;
 
   constructor(
     @Inject(DOCUMENT) private document,
@@ -41,7 +43,8 @@ export class PostListComponent implements OnInit {
     private categoryService: CategoryService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private fileService: FileService
     // private simpleTimePipe: SimpleTimePipe
   ) {
   }
@@ -68,6 +71,14 @@ export class PostListComponent implements OnInit {
         this.searchPost(id);
         this.itemSelected = undefined;
       }
+    });
+
+    this.fileService.getMyFile({
+      type: 'Image'
+    }).subscribe((res: any) => {
+      this.listFileOnServer = res;
+    }, err => {
+      showNoti('Get list file error. ' + err, 'danger');
     });
   }
 

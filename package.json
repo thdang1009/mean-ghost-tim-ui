@@ -7,12 +7,12 @@
     "build": "ng build --aot --configuration production",
     "local": "ng serve --open --host localhost --disable-host-check --port 4500",
     "debug": "ng serve --open --host localhost --disable-host-check --port 4500 -c development",
-    "deploy": "ng build --aot && firebase deploy",
+    "deploy": "ng build --aot --configuration production && firebase deploy",
     "test": "ng test",
     "test:coverage": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o"
   },
   "engines": {
     "node": "16.14.2",

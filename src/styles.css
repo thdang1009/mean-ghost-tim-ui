@@ -38,9 +38,14 @@ textarea.jsoneditor-text {
 .hover-pointer {
     cursor: pointer;
 }
+
 .hover-pointer-td td {
     cursor: pointer;
 }
+.hover-pointer-td:hover {
+    opacity: 0.5;
+}
+
 pdf-viewer {
     height: 100vh !important;
     width: auto !important;
@@ -155,6 +160,38 @@ app-am-chart {
     height: 84vh;
 }
 
+.ghost-public-item {}
+
+.ghost-private-item {
+    background-color: #35363a14;
+}
+
+.ghost-private-item:after {
+    content: "Private";
+    left: 0;
+    top: 0%;
+    font-weight: bold;
+    position: absolute;
+    display: inline-block;
+    /* transform: translate(0, -50%) rotate(-90deg); */
+    color: #35363a;
+}
+
+.ghost-protected-item {
+    background-color: #cef2ac3b;
+}
+
+.ghost-protected-item:after {
+    content: "Protected";
+    left: 0;
+    top: 0%;
+    font-weight: bold;
+    position: absolute;
+    display: inline-block;
+    color: #70c51ffa;
+    /* transform: translate(0, -50%) rotate(-90deg); */
+}
+
 /* begin loading overlay */
 .overlay {
     left: 0;
@@ -245,14 +282,17 @@ app-am-chart {
     cursor: move;
     color: #262b2f !important;
 }
+
 .post:hover {
     -webkit-transform: translateY(-4px);
     transform: translateY(-4px);
 }
+
 .align-children-middle {
     display: flex !important;
     align-items: center;
 }
+
 .d-flex-col-mid-center {
     display: flex !important;
     align-items: center;
@@ -286,6 +326,7 @@ app-table-loading {
     height: 1em !important;
     z-index: -1;
 }
+
 ang-clap .wrapper.show-border>button {
     background-color: transparent !important;
 }
@@ -430,13 +471,15 @@ mark {
     /* padding-right: 0.01px;
     margin-right: -0.01px; */
 }
+
 .png-to-icon {
     width: 10px;
 }
 
-.claps-count > p {
+.claps-count>p {
     margin: 0 !important;
 }
+
 .container .claps-count {
     width: 35px !important;
     height: 35px !important;

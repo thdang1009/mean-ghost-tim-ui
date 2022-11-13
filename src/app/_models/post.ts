@@ -1,3 +1,6 @@
+import { Tag } from "./_index";
+
+
 export class Post {
   category?: String[];
   id?: Number;
@@ -11,7 +14,7 @@ export class Post {
   postImgUrls? : String[];
   postBackgroundImg?: String;
   isPinned?: Boolean;
-  tags?: String[];
+  tags?: Tag[];
   order?: Number;
   createdAt?: Date;
   updatedAt?: Date;
