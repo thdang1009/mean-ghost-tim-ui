@@ -29,15 +29,22 @@ export class PostDetailComponent implements OnInit {
       this.item = post;
       this.count = post.clapCount;
       this.ready = true;
+      const subject = post.title as string;
+      const desc = post.description as string;
+      const creator = post.author as string;
+      const img = post.postBackgroundImg as string;
       this.titleService.setTitle(post.title as string);
-      this.meta.addTags([
-        { name: 'description', content: post.description as string },
-        { name: 'keywords', content: post.tags.map(el => el.name).join(', ') },
-        { name: 'og:title', content: post.title as string },
-        { name: 'og:image', content: post.postBackgroundImg as string },
-        { name: 'og:description', content: post.description as string },
-        { name: 'og:type', content: 'website' },
-      ]);
+      this.meta.updateTag({ itemprop: 'name', content: subject });
+      this.meta.updateTag({ itemprop: 'description', content: desc });
+      this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+      this.meta.updateTag({ name: 'twitter:title', content: subject });
+      this.meta.updateTag({ name: 'twitter:description', content: desc });
+      this.meta.updateTag({ name: 'twitter:creator', content: creator });
+      this.meta.updateTag({ name: 'twitter:image', content: img });
+      this.meta.updateTag({ property: 'og:title', content: subject });
+      this.meta.updateTag({ property: 'og:description', content: desc });
+      this.meta.updateTag({ property: 'og:creator', content: creator });
+      this.meta.updateTag({ property: 'og:image', content: img });
     });
   }
 
