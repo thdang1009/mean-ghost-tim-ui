@@ -7,7 +7,7 @@ import { Post } from '@models/_index';
 import { CategoryService, FileService, PostService, TagService } from '@services/_index';
 import * as dateFns from 'date-fns';
 import { DOCUMENT } from '@angular/common';
-import { PostStatus } from '@app/_shares/constant';
+import { PostStatus, POST_TYPE } from '@app/_shares/constant';
 
 
 @Component({
@@ -19,6 +19,11 @@ export class PostListComponent implements OnInit {
 
   data: Post[] = [];
   isLoadingResults = true;
+  POST_TYPE = POST_TYPE;
+  listPostType = [
+    POST_TYPE.GHOST_EDITOR,
+    POST_TYPE.MARKDOWN
+  ]
 
   today = dateFns.startOfToday();
   lastYearDay = dateFns.subYears(this.today, 5);

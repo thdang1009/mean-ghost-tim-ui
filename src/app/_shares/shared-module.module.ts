@@ -13,7 +13,7 @@ import { AutosizeModule } from 'ngx-autosize';
 import { ScoreToTierPipe, SimpleTimePipe, TimeAgoPipe } from '@pipes/_index';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSliderModule } from '@angular/material/slider';
-
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatTooltipModule,
     MatDialogModule,
     MatSliderModule,
+    MatTabsModule
   ],
   exports: [
     CommonModule,
@@ -64,6 +65,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatTooltipModule,
     MatDialogModule,
     MatSliderModule,
+    MatTabsModule
   ]
 })
 export class SharedModule { }

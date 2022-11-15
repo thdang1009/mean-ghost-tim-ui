@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PostService } from '@app/_services/_index';
 import { Router } from '@angular/router';
 import { Title, Meta } from "@angular/platform-browser";
+import { POST_TYPE } from '@app/_shares/constant';
 
 @Component({
   selector: 'app-post-detail',
@@ -14,6 +15,7 @@ export class PostDetailComponent implements OnInit {
   ready = false;
   item;
   idDebounce = undefined;
+  POST_TYPE = POST_TYPE;
   num = 0;
   count: Number = 0;
   constructor(

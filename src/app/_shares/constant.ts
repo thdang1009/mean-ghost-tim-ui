@@ -46,3 +46,7 @@ export const FilePermission = {
   PUBLIC: 'PUBLIC',
   PROTECTED: 'PROTECTED',
 }
+export const POST_TYPE = {
+  GHOST_EDITOR: 'GHOST_EDITOR',
+  MARKDOWN: 'MARKDOWN'
+}

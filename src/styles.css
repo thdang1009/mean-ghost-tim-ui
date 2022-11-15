@@ -42,6 +42,7 @@ textarea.jsoneditor-text {
 .hover-pointer-td td {
     cursor: pointer;
 }
+
 .hover-pointer-td:hover {
     opacity: 0.5;
 }
@@ -233,22 +234,22 @@ app-am-chart {
     border: double #00000030 1px;
     border-radius: 8px;
     padding: 10px;
-    width: 50%;
+    width: 100%;
 }
 
 .variable-binding.split-horizontal {
-    width: 100%;
+    /* width: 100%; */
 }
 
 .variable-textarea {
     border: double #00000030 1px;
     border-radius: 8px;
     padding: 10px;
-    width: 50%;
+    width: 100%;
 }
 
 .variable-textarea.split-horizontal {
-    width: 100%;
+    /* width: 100%; */
 }
 
 .material-icons.md-36 {
@@ -484,4 +485,11 @@ mark {
     width: 35px !important;
     height: 35px !important;
     bottom: 20px !important;
+}
+
+/* 
+    to remove css
+*/
+.cdk-overlay-connected-position-bounding-box {
+    /* display: none !important; */
 }

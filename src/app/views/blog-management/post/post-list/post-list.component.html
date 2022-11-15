@@ -99,7 +99,6 @@
                             </mat-form-field>
                         </div>
                         <!-- background cover -->
-
                         <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Background cover</mat-label>
@@ -112,18 +111,31 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
+                        <!-- type -->
+                        <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Type</mat-label>
+                                <mat-select [(ngModel)]="itemSelected.type" [compareWith]="compareWithFunc"
+                                    (ngModelChange)="saveItem(itemSelected.id, itemSelected, -1)">
+                                    <mat-option *ngFor="let item of listPostType; let i = index"
+                                        [(value)]="listPostType[i]">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
                         <!-- tools -->
                         <div class="col-md-8 tool-container" *ngIf="itemSelected && itemSelected.id">
                             <span class="material-icons md-36" matTooltip="Goto Full Screen" (click)="openFullscreen()">
                                 fullscreen
                             </span>
-                            <span class="material-icons md-36" matTooltip="Split Horizontal"
+                            <!-- <span class="material-icons md-36" matTooltip="Split Horizontal"
                                 (click)="splitHorizontal()">
                                 horizontal_split
                             </span>
                             <span class="material-icons md-36" matTooltip="Split Vertical" (click)="splitVertical()">
                                 vertical_split
-                            </span>
+                            </span> -->
                         </div>
                     </form>
                     <div class="card-body">
@@ -186,31 +198,45 @@
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
                                 [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults">
                             </textarea>
-                            <div id="edit-post-container" class="edit-post-container" [ngStyle]="{
-                                'flex-direction': isSplitHorizontal ? 'column' : 'row'
-                            }">
+                            <div id="edit-post-container" class="edit-post-container"
+                                [ngStyle]="{'flex-direction': isSplitHorizontal ? 'column' : 'row'}">
                                 <!-- raw text -->
-                                <docu-editor class="editable wd100 variable-textarea"
-                                    (save)="itemSelected.content = $event" [ngClass]="{
-                                    'split-horizontal': this.isSplitHorizontal
-                                }" (blur)="saveItem(itemSelected.id, itemSelected, index);false">
-
-                                </docu-editor>
-                                <!-- <textarea type="text" [(ngModel)]="itemSelected.content"
-                                    class="editable wd100 variable-textarea" [ngClass]="{
-                                    'split-horizontal': this.isSplitHorizontal
-                                }" (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
-                                    [useImportant]="true" [disabled]="isLoadingResults">
-                                </textarea> -->
-                                <!-- text to markdown -->
-                                <!-- <markdown class="variable-binding" [ngClass]="{
-                                'split-horizontal': this.isSplitHorizontal
-                            }" [data]="itemSelected.content">
-                                </markdown> -->
-                                <docu-article class="variable-binding" [ngClass]="{
-                                    'split-horizontal': this.isSplitHorizontal
-                                }" [documentation]="itemSelected.content">
-                                </docu-article>
+                                <ng-container *ngIf="itemSelected.type === POST_TYPE.GHOST_EDITOR; else markdownPart">
+                                    <mat-tab-group>
+                                        <mat-tab label="Editor">
+                                            <docu-editor class="editable wd100"
+                                                (save)="itemSelected.contentGhostEditor = $event"
+                                                [documentation]="itemSelected.contentGhostEditor"
+                                                [ngClass]="{'split-horizontal': this.isSplitHorizontal}"
+                                                (blur)="saveItem(itemSelected.id, itemSelected, index);false">
+                                            </docu-editor>
+                                        </mat-tab>
+                                        <mat-tab label="Preview">
+                                            <docu-article class=""
+                                                [ngClass]="{'split-horizontal': this.isSplitHorizontal}"
+                                                [documentation]="itemSelected.contentGhostEditor">
+                                            </docu-article>
+                                        </mat-tab>
+                                    </mat-tab-group>
+                                </ng-container>
+                                <ng-template #markdownPart>
+                                    <mat-tab-group>
+                                        <mat-tab label="Markdown">
+                                            <textarea type="text" [(ngModel)]="itemSelected.content"
+                                                class="editable wd100"
+                                                [ngClass]="{ 'split-horizontal': this.isSplitHorizontal }"
+                                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize
+                                                [minRows]="1" [useImportant]="true" [disabled]="isLoadingResults">
+                                    </textarea>
+                                        </mat-tab>
+                                        <mat-tab label="Preview">
+                                            <!-- text to markdown -->
+                                            <markdown class="" [ngClass]="{'split-horizontal': this.isSplitHorizontal}"
+                                                [data]="itemSelected.content">
+                                            </markdown>
+                                        </mat-tab>
+                                    </mat-tab-group>
+                                </ng-template>
                             </div>
                         </ng-template>
                         <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button" (click)="back()"

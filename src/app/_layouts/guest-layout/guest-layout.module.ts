@@ -14,6 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ComponentsModule } from '@app/components/components.module';
 import { ReuseComponentModule } from '@app/_reuse/reuse.module';
 import { SharedModule } from '@app/_shares/shared-module.module';
+import { DocuEditorModule, DocuModule } from 'ng-write';
 
 @NgModule({
   imports: [
@@ -30,7 +31,9 @@ import { SharedModule } from '@app/_shares/shared-module.module';
     MatDialogModule,
     ComponentsModule,
     ReuseComponentModule,
-    SharedModule
+    SharedModule,
+    DocuModule,
+    DocuEditorModule,
   ],
   declarations: [
     HomeComponent,

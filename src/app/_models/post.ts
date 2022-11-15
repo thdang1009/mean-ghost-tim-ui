@@ -19,4 +19,6 @@ export class Post {
   createdAt?: Date;
   updatedAt?: Date;
   clapCount?: Number;
+  type?: String;
+  contentGhostEditor?: Object;
 }
