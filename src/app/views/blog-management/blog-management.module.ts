@@ -15,6 +15,7 @@ import { AddCategoryComponent } from './category/add-category/add-category.compo
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { ComponentsModule } from '@app/components/components.module';
 import { AngClapModule } from 'ang-clap';
+import { DocuModule, DocuEditorModule } from 'ng-write';
 
 export function markedOptionsFactory(anchorService: AnchorService): MarkedOptions {
   const renderer = new MarkedRenderer();
@@ -42,7 +43,10 @@ export function markedOptionsFactory(anchorService: AnchorService): MarkedOption
     ReuseComponentModule,
     BlogManagementRoutingModule,
     ComponentsModule,
+    // third party
     AngClapModule,
+    DocuModule,
+    DocuEditorModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
       markedOptions: {

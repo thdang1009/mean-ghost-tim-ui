@@ -153,13 +153,16 @@ export class PostListComponent implements OnInit {
         this.isLoadingResults = false;
       });
   }
-  saveItem(id, item, index) {
+  saveItem(id, item, index = -1, cb) {
     // this.isLoadingResults = true;
-    item.content = item.content.trim();
+    // item.content = item.content.trim();
     this.postService.updatePost(id, item)
       .subscribe((res: any) => {
         if (index !== -1) {
           this.data[index] = res;
+        }
+        if (cb) {
+          cb();
         }
         // this.isLoadingResults = false;
       }, err => {
@@ -176,14 +179,17 @@ export class PostListComponent implements OnInit {
     this.callDeletePost(id);
   }
   back() {
-    this.itemSelected = undefined;
-    this.router.navigate(
-      [],
-      {
-        relativeTo: this.activatedRoute,
-        queryParams: { id: null },
-        queryParamsHandling: 'merge'
-      });
+    const callback = () => {
+      this.itemSelected = undefined;
+      this.router.navigate(
+        [],
+        {
+          relativeTo: this.activatedRoute,
+          queryParams: { id: null },
+          queryParamsHandling: 'merge'
+        });
+    }
+    this.saveItem(this.itemSelected.id, this.itemSelected, -1, callback);
   }
   deletePost(post) {
     const val = confirm(`Delete "${post.title}"?`);

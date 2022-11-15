@@ -28,9 +28,10 @@
             </header>
         </div>
         <div class="post-body">
-            <markdown *ngIf="ready" style="width: 100%" [data]="item.content">
+            <docu-article *ngIf="ready" [documentation]="item.content"></docu-article>
+            <!-- <markdown *ngIf="ready" style="width: 100%" [data]="item.content">
 
-            </markdown>
+            </markdown> -->
         </div>
     </article>
 </div>

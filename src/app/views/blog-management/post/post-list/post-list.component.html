@@ -190,17 +190,27 @@
                                 'flex-direction': isSplitHorizontal ? 'column' : 'row'
                             }">
                                 <!-- raw text -->
-                                <textarea type="text" [(ngModel)]="itemSelected.content"
+                                <docu-editor class="editable wd100 variable-textarea"
+                                    (save)="itemSelected.content = $event" [ngClass]="{
+                                    'split-horizontal': this.isSplitHorizontal
+                                }" (blur)="saveItem(itemSelected.id, itemSelected, index);false">
+
+                                </docu-editor>
+                                <!-- <textarea type="text" [(ngModel)]="itemSelected.content"
                                     class="editable wd100 variable-textarea" [ngClass]="{
                                     'split-horizontal': this.isSplitHorizontal
                                 }" (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
                                     [useImportant]="true" [disabled]="isLoadingResults">
-                            </textarea>
+                                </textarea> -->
                                 <!-- text to markdown -->
-                                <markdown class="variable-binding" [ngClass]="{
+                                <!-- <markdown class="variable-binding" [ngClass]="{
                                 'split-horizontal': this.isSplitHorizontal
                             }" [data]="itemSelected.content">
-                                </markdown>
+                                </markdown> -->
+                                <docu-article class="variable-binding" [ngClass]="{
+                                    'split-horizontal': this.isSplitHorizontal
+                                }" [documentation]="itemSelected.content">
+                                </docu-article>
                             </div>
                         </ng-template>
                         <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button" (click)="back()"
