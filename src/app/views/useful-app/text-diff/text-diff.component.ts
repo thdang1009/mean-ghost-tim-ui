@@ -74,6 +74,8 @@ export class TextDiffComponent implements OnInit, OnDestroy {
   }
 
   findDiff() {
+    this.visibleData1 = this.visibleData1.trim();
+    this.visibleData2 = this.visibleData2.trim();
     const a = this.visibleData1;
     const b = this.visibleData2;
 
