@@ -18,7 +18,7 @@
                                 (click)="saveThenBack()" [disabled]="isLoadingResults"
                                 class="btn btn-info pull-right btn-w100">
                                 <em class="material-icons">save</em>
-                                Back & Save
+                                Save & Back
                             </button>
                         </div>
                         <!-- button add -->
@@ -44,7 +44,8 @@
                                 </thead>
                                 <tbody cdkDropList (cdkDropListDropped)="drop($event)">
                                     <ng-container *ngIf="data && data.length; else noDataBlock">
-                                        <tr *ngFor="let note of data; let index = index" cdkDrag class="hover-pointer-td">
+                                        <tr *ngFor="let note of data; let index = index" cdkDrag
+                                            class="hover-pointer-td">
                                             <td class="text-center">
                                                 <span class="hover-pointer" (click)="chooseThisItem(note)"
                                                     matTooltip="Create At: {{ note.createTime | date: 'dd-MM HH:mm' }}">
@@ -52,8 +53,8 @@
                                                 </span>
                                             </td>
                                             <td>
-                                                <span (click)="chooseThisItem(note)"
-                                                    class="hover-pointer">{{ note.header }}
+                                                <span (click)="chooseThisItem(note)" class="hover-pointer">{{
+                                                    note.header }}
                                                 </span>
                                                 <button mat-raised-button type="button" matTooltip="Delete Note"
                                                     [disabled]="isLoadingResults"
@@ -76,8 +77,7 @@
                             </table>
                         </div>
                         <ng-template #noteView>
-                            <textarea type="text" [(ngModel)]="itemSelected.header"
-                                class="editable wd100"
+                            <textarea type="text" [(ngModel)]="itemSelected.header" class="editable wd100"
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
                                 [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults"></textarea>
                             <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="itemSelected.content"
@@ -85,6 +85,12 @@
                                 [disabled]="isLoadingResults">
                             </angular-editor>
                         </ng-template>
+                        <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button"
+                            (click)="saveThenBack()" [disabled]="isLoadingResults"
+                            class="btn btn-info pull-right btn-w100">
+                            <em class="material-icons">save</em>
+                            Save & Back
+                        </button>
                     </div>
                 </div>
             </div>

@@ -25,8 +25,8 @@
             </a>
             <a (click)="toggleBookmark(); $event.stopPropagation()" class="hover-pointer btn-expand btn-expand-bottom"
                 data-toggle="dropdown" aria-expanded="true">
-                <img *ngIf="!bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-add.svg" width="36px">
-                <img *ngIf="bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-remove.svg" width="36px">
+                <img loading="lazy" *ngIf="!bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-add.svg" width="36px">
+                <img loading="lazy" *ngIf="bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-remove.svg" width="36px">
 
             </a>
 
@@ -39,11 +39,11 @@
             </a>
             <a (click)="scrollToPreviousBookmark(); $event.stopPropagation()"
                 class="hover-pointer btn-expand btn-expand-left" data-toggle="dropdown" aria-expanded="true">
-                <img src="assets/custom-icon/bookmark-up.svg" width="36px">
+                <img loading="lazy" src="assets/custom-icon/bookmark-up.svg" width="36px">
             </a>
             <a (click)="scrollToNextBookmark(); $event.stopPropagation()"
                 class="hover-pointer btn-expand btn-expand-right" data-toggle="dropdown" aria-expanded="true">
-                <img src="assets/custom-icon/bookmark-down.svg" width="36px">
+                <img loading="lazy" src="assets/custom-icon/bookmark-down.svg" width="36px">
             </a>
         </div>
     </div>

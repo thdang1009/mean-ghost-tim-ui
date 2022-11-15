@@ -1,3 +1,4 @@
+import { FePDFInfo } from "@app/views/code-index/dymanic-index/dymanic-index.component";
 import { TDTDStatus } from "./constant";
 
 
@@ -78,4 +79,64 @@ export function isValidFile(file) {
 }
 export function compareWithFunc(a, b) {
   return a == b;
+}
+export function mapResourceName(input): FePDFInfo {
+  return ({
+    'algorithms-index': {
+      src: '/algorithms.pdf',
+      fileName: 'algorithms'
+    },
+    'android-index': {
+      src: '/android.pdf',
+      fileName: 'android'
+    },
+    'angular-index': {
+      src: '/angular.pdf',
+      fileName: 'angular'
+    },
+    'css-index': {
+      src: '/css.pdf',
+      fileName: 'css'
+    },
+    'git-index': {
+      src: '/html.pdf',
+      fileName: 'git'
+    },
+    'html-index': {
+      src: '/html.pdf',
+      fileName: 'html'
+    },
+    'js-index': {
+      src: '/js.pdf',
+      fileName: 'js'
+    },
+    'markdown-index': {
+      src: '/markdown.pdf',
+      fileName: 'markdown'
+    },
+    'mongodb-index': {
+      src: '/mongo.pdf',
+      fileName: 'mongo'
+    },
+    'mysql-index': {
+      src: '/mysql.pdf',
+      fileName: 'mysql'
+    },
+    'node-js-index': {
+      src: '/nodejs.pdf',
+      fileName: 'nodejs'
+    },
+    'react-index': {
+      src: '/react.pdf',
+      fileName: 'react'
+    },
+    'react-native-index': {
+      src: '/react.pdf',
+      fileName: 'react-native'
+    },
+    'ts-index': {
+      src: '/ts.pdf',
+      fileName: 'ts'
+    },
+  })[input]
 }

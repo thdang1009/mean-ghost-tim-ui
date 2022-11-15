@@ -8,7 +8,7 @@
     <article class="article-page">
         <div class="back-to-hom-button"><a (click)="backToHome()">← Back to the Blog Home</a></div>
         <figure *ngIf="ready" class="d-flex-col-mid-center">
-            <img class="page-image" src="{{item.postBackgroundImg}}" alt="post's image">
+            <img loading="lazy" class="page-image" src="{{item.postBackgroundImg}}" alt="post's image">
         </figure>
 
         <div class="wrap-content" *ngIf="ready">

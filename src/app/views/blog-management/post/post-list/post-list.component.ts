@@ -66,7 +66,9 @@ export class PostListComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       const id = Number(params.id);
       if (id) {
-        this.chooseThisItem(id);
+        this.getPost(id, _ => {
+          this.chooseThisItem(id);
+        });
       } else {
         this.searchPost(id);
         this.itemSelected = undefined;
@@ -116,15 +118,13 @@ export class PostListComponent implements OnInit {
   }
 
   chooseThisItem(id) {
-    this.getPost(id, _ => {
-      this.router.navigate(
-        [],
-        {
-          relativeTo: this.activatedRoute,
-          queryParams: { id: id },
-          queryParamsHandling: 'merge'
-        });
-    });
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: { id: id },
+        queryParamsHandling: 'merge'
+      });
   }
 
   _getMyPost(id = undefined) {

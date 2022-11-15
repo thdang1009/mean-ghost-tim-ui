@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MysqlIndexComponent } from './mysql-index.component';
+import { DymanicIndexComponent } from './dymanic-index.component';
 
-describe('MysqlIndexComponent', () => {
-  let component: MysqlIndexComponent;
-  let fixture: ComponentFixture<MysqlIndexComponent>;
+describe('DymanicIndexComponent', () => {
+  let component: DymanicIndexComponent;
+  let fixture: ComponentFixture<DymanicIndexComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MysqlIndexComponent ]
+      declarations: [ DymanicIndexComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MysqlIndexComponent);
+    fixture = TestBed.createComponent(DymanicIndexComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
