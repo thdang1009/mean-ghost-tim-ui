@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryService } from '@app/_services/category.service';
-import { TagService } from '@app/_services/tag.service';
 import { BookPermission } from '@app/_shares/enum';
-import { AuthService, HomeService, PostService } from '@services/_index';
+import { AuthService, PostService } from '@services/_index';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

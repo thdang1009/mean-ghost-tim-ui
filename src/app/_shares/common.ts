@@ -1,5 +1,5 @@
 import { FePDFInfo } from "@app/views/code-index/dymanic-index/dymanic-index.component";
-import { TDTDStatus } from "./constant";
+import { TDTD_STATUS } from "./enum";
 
 
 declare var $: any;
@@ -59,18 +59,18 @@ export function isInPDFView() {
 
 export function nextStatus(oldStatus) {
   return {
-    NEW: TDTDStatus.DONE,
-    DONE: TDTDStatus.TOMORROW,
-    TOMORROW: TDTDStatus.NOT_YET,
-    NOT_YET: TDTDStatus.NEW
+    NEW: TDTD_STATUS.DONE,
+    DONE: TDTD_STATUS.TOMORROW,
+    TOMORROW: TDTD_STATUS.NOT_YET,
+    NOT_YET: TDTD_STATUS.NEW
   }[oldStatus];
 }
 export function previousStatus(oldStatus) {
   return {
-    DONE: TDTDStatus.NEW,
-    TOMORROW: TDTDStatus.DONE,
-    NOT_YET: TDTDStatus.TOMORROW,
-    NEW: TDTDStatus.NOT_YET
+    DONE: TDTD_STATUS.NEW,
+    TOMORROW: TDTD_STATUS.DONE,
+    NOT_YET: TDTD_STATUS.TOMORROW,
+    NEW: TDTD_STATUS.NOT_YET
   }[oldStatus];
 }
 export function isValidFile(file) {

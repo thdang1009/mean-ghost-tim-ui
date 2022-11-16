@@ -2,9 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidebarComponent } from './sidebar.component';
 import { AuthService } from '@services/_index';
-import { of, ReplaySubject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { RouterEvent, Router } from '@angular/router';
-import { AbstractMockObservableService } from '@helpers/mockservice.service';
+import { AbstractMockObservableService } from '@helpers/mock.service';
 import { EventEmitter } from '@angular/core';
 
 class MockAuthService extends AbstractMockObservableService {

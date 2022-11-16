@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TDTDStatus } from '@app/_shares/constant';
+import { TDTD_STATUS } from '@app/_shares/enum';
 import { IssueService, AnalyticService, UserService, TodoTodayService } from '@services/_index';
 import { nextStatus, showNoti } from '@shares/common';
 import * as Chartist from 'chartist';
@@ -229,7 +229,7 @@ export class DashboardComponent implements OnInit {
       .subscribe((res: any) => {
         this.tdtds = res.map(el => ({
           ...el,
-          checked: el.status === TDTDStatus.DONE,
+          checked: el.status === TDTD_STATUS.DONE,
           nextStatus: nextStatus(el.status)
         }));
         console.log(this.tdtds);
@@ -240,7 +240,7 @@ export class DashboardComponent implements OnInit {
   checkboxChange(item, index) {
     this.update({
       ...item,
-      status: item.status === TDTDStatus.DONE ? TDTDStatus.NEW : TDTDStatus.DONE
+      status: item.status === TDTD_STATUS.DONE ? TDTD_STATUS.NEW : TDTD_STATUS.DONE
     }, index);
   }
   update(item, index) {
@@ -249,7 +249,7 @@ export class DashboardComponent implements OnInit {
       .subscribe((res: any) => {
         this.tdtds[index] = {
           ...res,
-          checked: res.status === TDTDStatus.DONE,
+          checked: res.status === TDTD_STATUS.DONE,
         };
         this.loadingTDTD[index] = false;
       }, err => {

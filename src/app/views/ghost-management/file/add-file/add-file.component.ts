@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FilePermission } from '@app/_shares/constant';
+import { FILE_PERMISSION } from '@app/_shares/enum';
 import { MyFile } from '@models/_index';
 import { FileService, AlertService } from '@services/_index';
 import { compareWithFunc, showNoti } from '@shares/common';
@@ -24,7 +23,7 @@ export class AddFileComponent implements OnInit {
   isLoadingResults = false;
   isUpdate = false;
   id = undefined;
-  filePermissionList = [FilePermission.PRIVATE, FilePermission.PUBLIC, FilePermission.PROTECTED];
+  filePermissionList = [FILE_PERMISSION.PRIVATE, FILE_PERMISSION.PUBLIC, FILE_PERMISSION.PROTECTED];
 
   constructor(
     private formBuilder: UntypedFormBuilder,

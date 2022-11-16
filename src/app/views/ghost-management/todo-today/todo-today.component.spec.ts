@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AbstractMockObservableService } from '@helpers/mockservice.service';
+import { AbstractMockObservableService } from '@helpers/mock.service';
 import { JobService, TodoTodayService } from '@services/_index';
 
 import { TodoTodayComponent } from './todo-today.component';

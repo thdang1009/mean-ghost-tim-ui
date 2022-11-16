@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, HomeService } from '@services/_index';
+import { AuthService } from '@services/_index';
 
 declare const $: any;
 

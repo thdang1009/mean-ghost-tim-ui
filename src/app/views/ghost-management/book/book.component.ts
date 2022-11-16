@@ -1,9 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { BookService, UserService } from '@services/_index';
+import { BookService } from '@services/_index';
 import { Book } from '@models/_index';
 import { ActivatedRoute, Router } from '@angular/router';
-import { compareWithFunc, isValidFile, showNoti } from '@shares/common';
+import { compareWithFunc, showNoti } from '@shares/common';
 import * as dateFns from 'date-fns';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '@environments/environment';

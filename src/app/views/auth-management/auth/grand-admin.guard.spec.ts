@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { AuthService } from '@services/_index';
 

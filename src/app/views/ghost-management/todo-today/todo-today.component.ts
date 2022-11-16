@@ -4,7 +4,8 @@ import { TodoToday } from '@models/_index';
 import * as dateFns from 'date-fns';
 import { JobService, TodoTodayService } from '@services/_index';
 import { isImportant, nextStatus, previousStatus, showNoti } from '@shares/common';
-import { DEBOUCE_TIME, TDTDStatus } from '@shares/constant';
+import { TDTD_STATUS } from '@shares/enum';
+import { DEBOUCE_TIME, } from '@shares/constant';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -27,7 +28,7 @@ export class TodoTodayComponent implements OnInit {
   count = 0;
   nextStatus = nextStatus;
   previousStatus = previousStatus;
-  TDTDStatus = TDTDStatus;
+  TDTD_STATUS = TDTD_STATUS;
 
   constructor(
     private todoTodayService: TodoTodayService,

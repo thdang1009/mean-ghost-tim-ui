@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, finalize, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { MyFile } from '@models/_index';
 import { buildQueryString } from '@app/_shares/common';
-import { CONSTANT } from '@app/_shares/constant';
-
 const apiUrl = environment.apiUrl + '/v1/file';
 
 @Injectable({

@@ -25,28 +25,3 @@ export const SAVED_TEXT = 'SAVED_TEXT';
 export const SAVED_TEXT_2 = 'SAVED_TEXT_2';
 
 export const PDF_OBJ = 'PDF_OBJ';
-
-
-
-export const TDTDStatus = {
-  NONE: 'NONE',
-  NEW: 'NEW',
-  NOT_YET: 'NOT_YET',
-  TOMORROW: 'TOMORROW',
-  DONE: 'DONE',
-}
-export const PostStatus = {
-  NONE: 'NONE',
-  PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
-  PROTECTED: 'PROTECTED',
-}
-export const FilePermission = {
-  PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
-  PROTECTED: 'PROTECTED',
-}
-export const POST_TYPE = {
-  GHOST_EDITOR: 'GHOST_EDITOR',
-  MARKDOWN: 'MARKDOWN'
-}

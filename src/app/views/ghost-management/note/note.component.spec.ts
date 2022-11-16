@@ -1,7 +1,7 @@
 import { ChangeDetectorRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
-import { AbstractMockObservableService } from '@helpers/mockservice.service';
+import { AbstractMockObservableService } from '@helpers/mock.service';
 import { NoteService } from '@services/_index';
 import { of, ReplaySubject } from 'rxjs';
 

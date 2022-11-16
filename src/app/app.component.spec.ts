@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { AbstractMockObservableService } from './_helpers/mockservice.service';
+import { AbstractMockObservableService } from './_helpers/mock.service';
 import { AnalyticService } from './_services/analytic.service';
 class MockAnalyticService extends AbstractMockObservableService {
   logAccess() {

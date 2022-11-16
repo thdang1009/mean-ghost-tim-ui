@@ -1,13 +1,13 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { showNoti, compareWithFunc } from '@shares/common';
 import { Post } from '@models/_index';
 import { CategoryService, FileService, PostService, TagService } from '@services/_index';
 import * as dateFns from 'date-fns';
 import { DOCUMENT } from '@angular/common';
-import { PostStatus, POST_TYPE } from '@app/_shares/constant';
+import { POST_STATUS, POST_TYPE } from '@app/_shares/enum';
 
 
 @Component({
@@ -30,14 +30,14 @@ export class PostListComponent implements OnInit {
   searchDateFrom = new UntypedFormControl(this.lastYearDay);
   searchDateTo = new UntypedFormControl(this.today);
   searchStatus = 'NONE';
-  statusList = [PostStatus.NONE, PostStatus.PRIVATE, PostStatus.PUBLIC, PostStatus.PROTECTED];
+  statusList = [POST_STATUS.NONE, POST_STATUS.PRIVATE, POST_STATUS.PUBLIC, POST_STATUS.PROTECTED];
   itemSelected = undefined;
   isSplitHorizontal = false;
   elem;
   listCategory = [];
   listPermisson = [];
   listTag = [];
-  PostStatus = PostStatus;
+  POST_STATUS = POST_STATUS;
   listFileOnServer = [];
   compareWithFunc = compareWithFunc;
 
@@ -57,8 +57,8 @@ export class PostListComponent implements OnInit {
   ngOnInit() {
     this.elem = document.getElementById('edit-post-container');
     this.listPermisson = [
-      PostStatus.PUBLIC,
-      PostStatus.PRIVATE
+      POST_STATUS.PUBLIC,
+      POST_STATUS.PRIVATE
     ];
     this.categoryService.getCategorys()
       .subscribe(listCat => {

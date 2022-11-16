@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { AbstractMockObservableService } from '@helpers/mockservice.service';
+import { AbstractMockObservableService } from '@helpers/mock.service';
 import { UnitConversionPipe } from '@pipes/_index';
 import { AnalyticService } from '@services/analytic.service';
 import { IssueService } from '@services/issue.service';

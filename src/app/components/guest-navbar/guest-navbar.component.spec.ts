@@ -1,7 +1,7 @@
 import { ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router, ActivatedRoute, RouterEvent } from '@angular/router';
-import { MockElementRef } from '@helpers/mockservice.service';
+import { MockElementRef } from '@helpers/mock.service';
 import { AuthService } from '@services/_index';
 import { of, ReplaySubject } from 'rxjs';
 

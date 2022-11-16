@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AbstractMockObservableService } from '@helpers/mockservice.service';
+import { AbstractMockObservableService } from '@helpers/mock.service';
 import { UserService } from '@services/_index';
 
 import { UserListComponent } from './user-list.component';
