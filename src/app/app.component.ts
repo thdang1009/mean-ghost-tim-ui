@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
 import { AnalyticService } from './_services/analytic.service';
+import { SocketioService } from './_services/socketio.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
   public visibleData: any;
 
   constructor(
-    private analyticService: AnalyticService
+    private analyticService: AnalyticService,
+    private socketService: SocketioService
   ) {
   }
 
@@ -25,5 +27,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.analyticService.logAccess()
     .subscribe(_ => {}, _ => {});
+    this.socketService.setupSocketConnection();
+  }
+  ngOnDestroy() {
+    this.socketService.disconnect();
   }
 }

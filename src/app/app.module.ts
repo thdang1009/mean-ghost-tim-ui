@@ -23,6 +23,7 @@ import { AnchorModule } from './_shares/anchor/anchor.module';
 import { MarkdownModule, MarkedOptions, ClipboardOptions, ClipboardButtonComponent } from 'ngx-markdown';
 import { markedOptionsFactory } from './views/blog-management/blog-management.module';
 import { AnchorService } from './_shares/anchor/anchor.service';
+import { SocketioService } from './_services/socketio.service';
 
 
 // NgModule
@@ -70,7 +71,9 @@ import { AnchorService } from './_shares/anchor/anchor.service';
     JobService,
     AuthService,
     HomeService,
-    IssueService
+    IssueService,
+    // third party service
+    SocketioService
   ],
   bootstrap: [AppComponent]
 })

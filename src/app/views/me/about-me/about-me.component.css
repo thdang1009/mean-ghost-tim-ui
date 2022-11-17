@@ -245,7 +245,9 @@ ul {
 .contact-us-container>form {
     width: 100%;
 }
-
+.xs-mh-70 {
+    min-height: 70px;
+}
 
 @media (min-width: 1200px) {
     .left-navigation {
