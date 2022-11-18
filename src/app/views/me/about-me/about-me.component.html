@@ -194,7 +194,7 @@
                     </li> -->
                 </ul>
                 <!-- </div> -->
-<!-- 
+                <!-- 
                 <app-ghost-site-btn (click)="downloadCV()" type="btn" [link]="'../download-my-cv'"
                     class="btn-float-bottom">
                     Download CV
@@ -402,7 +402,10 @@
                         </div>
                         <div class="col-md-12">
                             <mat-form-field class="example-full-width">
-                                <input matInput type="text" placeholder="Message" formControlName="message">
+                                <textarea matInput placeholder="Comment" formControlName="message"
+                                    (change)="onMessageChange()">
+                                </textarea>
+                                <!-- <input matInput type="text" placeholder="Message" formControlName="message"> -->
                                 <mat-error>
                                     <span
                                         *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched">

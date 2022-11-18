@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
+import { SocketioService } from '@app/_services/socketio.service';
 import { UserService } from '@services/_index';
 import { showNoti } from '@shares/common';
-
 @Component({
   selector: 'app-about-me',
   templateUrl: './about-me.component.html',
@@ -26,7 +26,10 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   arrString = ['A Fullstack Web Engineer', 'A Javascript Lover', 'A Minimalist', 'A Book Reviewer'];
 
   indexInterval = 0;
-  constructor(private formBuilder: UntypedFormBuilder, private userService: UserService) { }
+  constructor(
+    private formBuilder: UntypedFormBuilder,
+    private userService: UserService,
+    private socketService: SocketioService) { }
 
   ngOnInit(): void {
     this.yearOlds = new Date().getFullYear() - 1996;
@@ -41,6 +44,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
       message: [null, Validators.required],
 
     });
+    // console.log(this.socketService.socket);
   }
   ngAfterViewInit(): void {
     this.heights = [
@@ -54,6 +58,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   }
   sendMessageToMe(form: NgForm) {
     this.isRunning = true;
+    this.socketService.socket.emit('guess message', form);
     this.userService.sendGuestMessage(form)
     .subscribe(res => {
       this.isRunning = false;
@@ -75,6 +80,9 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
 
   }
   hireMe() {
+
+  }
+  onMessageChange() {
 
   }
 

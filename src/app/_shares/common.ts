@@ -11,16 +11,21 @@ export interface LoginResponse extends GhostSiteResponse {
   token: string
 }
 
-export function showNoti(content, type, _timer = 2000) {
-  showNotification('top', 'right', content, type, _timer);
+export function showNoti(content, type, _timer = 2000, title = 'Notifications') {
+  showNotification('top', 'right', title, content, type, _timer);
 }
 
-export function showNotification(from, align, content, type, _timer = 2000) {
+export function showNotiSocket(content, type, _timer = 2000, title = 'Notifications') {
+  showNotification('top', 'left', title, content, type, _timer);
+}
+
+export function showNotification(from, align, title, content, type, _timer = 2000) {
   // const type = ['','info','success','warning','danger'];
 
   $.notify({
     icon: 'notifications',
-    message: content
+    message: content,
+    title: title
 
   }, {
     type: type,

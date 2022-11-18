@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SocketioService } from '@app/_services/socketio.service';
+import { showNotiSocket } from '@app/_shares/common';
+import { GUESS_MESSAGE_RESPONSE } from '@app/_shares/constant';
 import { AuthService } from '@services/_index';
 
 declare const $: any;
@@ -77,12 +80,21 @@ export class SidebarComponent implements OnInit {
   fullName = 'Guest';
   permission = 'GUEST';
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private socketService: SocketioService
+  ) {
     this.isLogined = authService.isLogin();
     if (this.isLogined) {
-      this.setUserInfo();
-      this.checkPermission();
+      this.checkAfterLogin();
     }
+  }
+
+  checkAfterLogin() {
+    this.setUserInfo();
+    this.checkPermission();
+    this.checkSocket();
   }
 
   ngOnInit() {
@@ -90,14 +102,27 @@ export class SidebarComponent implements OnInit {
       // console.log('debug', status);
       if (status === true) {
         this.isLogined = true;
-        this.checkPermission();
-        this.setUserInfo();
+        this.checkAfterLogin();
       } else {
         this.resetToGuest();
       }
     });
 
     this.menuItems = ROUTES.filter(menuItem => this[menuItem.permission]);
+  }
+  checkSocket() {
+    const isAdmin = this.authService.isAdmin();
+    if (isAdmin) {
+      this.socketService.socket.on(GUESS_MESSAGE_RESPONSE, (arg) => {
+        try {
+          const object = JSON.parse(arg);
+          const content = `${object.name} send: "${object.message}"`;
+          showNotiSocket(content, 'info', undefined, object.title);
+        } catch (e) {
+
+        }
+      });
+    }
   }
   checkPermission() {
     this.isAdmin = this.authService.isAdmin();

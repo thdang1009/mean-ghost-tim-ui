@@ -25,3 +25,5 @@ export const SAVED_TEXT = 'SAVED_TEXT';
 export const SAVED_TEXT_2 = 'SAVED_TEXT_2';
 
 export const PDF_OBJ = 'PDF_OBJ';
+export const GUESS_MESSAGE = 'guess message';
+export const GUESS_MESSAGE_RESPONSE = 'guess message response';
