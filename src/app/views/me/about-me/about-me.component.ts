@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { SocketioService } from '@app/_services/socketio.service';
-import { GUESS_MESSAGE } from '@app/_shares/constant';
+import { GUEST_MESSAGE } from '@app/_shares/constant';
 import { UserService } from '@services/_index';
 import { showNoti } from '@shares/common';
 @Component({
