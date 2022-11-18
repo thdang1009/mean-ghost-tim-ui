@@ -145,3 +145,13 @@ export function mapResourceName(input): FePDFInfo {
     },
   })[input]
 }
+
+export function handleSocket(arg) {
+  try {
+    const object = typeof arg === 'string' ? JSON.parse(arg) : arg;
+    const content = `${object.name} send: "${object.message}"`;
+    showNotiSocket(content, 'info', undefined, object.title);
+  } catch (e) {
+
+  }
+}

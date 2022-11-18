@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { SocketioService } from '@app/_services/socketio.service';
+import { GUESS_MESSAGE } from '@app/_shares/constant';
 import { UserService } from '@services/_index';
 import { showNoti } from '@shares/common';
 @Component({
@@ -58,17 +59,16 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   }
   sendMessageToMe(form: NgForm) {
     this.isRunning = true;
-    this.socketService.socket.emit('guess message', form);
     this.userService.sendGuestMessage(form)
-    .subscribe(res => {
-      this.isRunning = false;
-      if (res && res.id) {
-        showNoti('Send success!', 'success');
-      }
-    }, (err) => {
-      this.isRunning = false;
-      showNoti('Send Fail! ' + err.error, 'danger');
-    });
+      .subscribe(res => {
+        this.isRunning = false;
+        if (res && res.id) {
+          showNoti('Send success!', 'success');
+        }
+      }, (err) => {
+        this.isRunning = false;
+        showNoti('Send Fail! ' + err.error, 'danger');
+      });
     // call api save guest message
   }
   scrollTo(s) {

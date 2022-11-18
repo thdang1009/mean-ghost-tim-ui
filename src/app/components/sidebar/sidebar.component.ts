@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocketioService } from '@app/_services/socketio.service';
-import { showNotiSocket } from '@app/_shares/common';
+import { handleSocket, showNotiSocket } from '@app/_shares/common';
 import { GUESS_MESSAGE_RESPONSE } from '@app/_shares/constant';
 import { AuthService } from '@services/_index';
 
@@ -113,15 +113,7 @@ export class SidebarComponent implements OnInit {
   checkSocket() {
     const isAdmin = this.authService.isAdmin();
     if (isAdmin) {
-      this.socketService.socket.on(GUESS_MESSAGE_RESPONSE, (arg) => {
-        try {
-          const object = JSON.parse(arg);
-          const content = `${object.name} send: "${object.message}"`;
-          showNotiSocket(content, 'info', undefined, object.title);
-        } catch (e) {
-
-        }
-      });
+      this.socketService.socket.on(GUESS_MESSAGE_RESPONSE, handleSocket);
     }
   }
   checkPermission() {
