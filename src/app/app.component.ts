@@ -4,7 +4,7 @@ import { AnalyticService } from './_services/analytic.service';
 import { AuthService } from './_services/auth.service';
 import { SocketioService } from './_services/socketio.service';
 import { showNotiSocket } from './_shares/common';
-import { GUESS_MESSAGE_RESPONSE } from './_shares/constant';
+import { GUESS_MESSAGE_RESPONSE, HOUR } from './_shares/constant';
 
 
 @Component({
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
         try {
           const object = JSON.parse(arg);
           const content = `${object.name} send: "${object.message}"`;
-          showNotiSocket(content, 'info', undefined, object.title);
+          showNotiSocket(content, 'info', 5 * HOUR, object.title);
         } catch (e) {
 
         }
