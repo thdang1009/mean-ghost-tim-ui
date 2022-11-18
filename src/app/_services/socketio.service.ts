@@ -12,7 +12,10 @@ export class SocketioService {
   constructor() { }
 
   setupSocketConnection() {
-    this.socket = io(environment.SOCKET_ENDPOINT);
+    this.socket = io(environment.SOCKET_ENDPOINT, {
+      autoConnect: true,
+      transports: ['websocket'],
+    });
   }
   disconnect() {
     if (this.socket) {``
