@@ -30,6 +30,17 @@ export class CategoryService {
     );
   }
 
+  createCategoryWithName(name) {
+    const newItem: Category = {
+      name: name,
+      description: null,
+      imgUrl: null,
+      content: null
+    }
+    return this.addCategory(newItem);
+  }
+
+
   addCategory(category: Category): Observable<Category> {
     return this.http.post<Category>(apiUrl, category).pipe(
       tap((prod: Category) => this.log(`added category id=${category.id}`)),

@@ -30,6 +30,16 @@ export class TagService {
     );
   }
 
+  createTagWithName(name) {
+    const newItem: Tag = {
+      name: name,
+      description: null,
+      imgUrl: null,
+      content: null
+    }
+    return this.addTag(newItem);
+  }
+
   addTag(tag: Tag): Observable<Tag> {
     return this.http.post<Tag>(apiUrl, tag).pipe(
       tap((prod: Tag) => this.log(`added tag id=${prod.id}`)),

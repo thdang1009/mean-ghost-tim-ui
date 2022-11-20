@@ -64,25 +64,40 @@
                         <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Tags</mat-label>
-                                <mat-select [(ngModel)]="itemSelected.tags" [ngModelOptions]="{standalone: true}"
-                                    multiple (ngModelChange)="saveItem(itemSelected.id, itemSelected, -1)">
+                                <!-- <mat-select [(ngModel)]="itemSelected.tags" [ngModelOptions]="{standalone: true}"
+                                    multiple (ngModelChange)="onChooseTag($event)">
                                     <mat-option *ngFor="let item of listTag; let i = index" [(value)]="listTag[i]._id">
                                         {{item.name}}
                                     </mat-option>
-                                </mat-select>
+                                    <mat-option [(value)]="newTag._id">
+                                        <span *ngIf="!moreTagMode">
+                                            {{newTag.name}}
+                                        </span>
+                                        <input id="more-tag-field" *ngIf="moreTagMode" matInput #moreTagPart placeholder="Input new tag, enter"
+                                            [(ngModel)]="newTagName" (change)="newTagChange()">
+                                    </mat-option>
+                                </mat-select> -->
                             </mat-form-field>
                         </div>
                         <!-- cat -->
                         <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Categories</mat-label>
-                                <mat-select [(ngModel)]="itemSelected.category" [ngModelOptions]="{standalone: true}"
-                                    multiple (ngModelChange)="saveItem(itemSelected.id, itemSelected, -1)">
+                                <!-- <mat-select [(ngModel)]="itemSelected.category" [ngModelOptions]="{standalone: true}"
+                                    multiple (ngModelChange)="onChooseCategory($event)">
                                     <mat-option *ngFor="let item of listCategory; let i = index"
                                         [(value)]="listCategory[i]._id">
                                         {{item.name}}
                                     </mat-option>
-                                </mat-select>
+                                    <mat-option [(value)]="newCategory._id">
+                                        <span *ngIf="!moreCategoryMode">
+                                            {{newCategory.name}}
+                                        </span>
+                                        <input id="more-category-field" *ngIf="moreCategoryMode" matInput #moreCategoryPart
+                                            placeholder="Input new category, enter" [(ngModel)]="newCategoryName"
+                                            (change)="newCategoryChange()">
+                                    </mat-option>
+                                </mat-select> -->
                             </mat-form-field>
                         </div>
                         <!-- permission -->
