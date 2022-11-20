@@ -43,15 +43,12 @@
 
     <!-- tag -->
     <div class="col-md-4">
-        <tag-input name="tags" [(ngModel)]="itemSelected.tags" [displayBy]="'name'" [identifyBy]="'_id'"
-            (ngModelChange)="log()" [onAdding]="handleAddNewTag">
-            <ng-template let-item="item">
-                {{ item.name }}
-            </ng-template>
+        <tag-input name="tag" [(ngModel)]="itemSelected.tags" [displayBy]="'name'" [identifyBy]="'_id'"
+            [onTextChangeDebounce]="500" [onAdding]="handleAddNewTag">
             <tag-input-dropdown [autocompleteItems]="listTag" [dynamicUpdate]="false" [zIndex]="10000"
-                [displayBy]="'item.name'" [identifyBy]="'_id'">
+                [displayBy]="'name'" [identifyBy]="'_id'" [showDropdownIfEmpty]="true">
                 <ng-template let-item="item" let-index="index">
-                    {{ item.value }}
+                    {{ item.name }}
                 </ng-template>
             </tag-input-dropdown>
         </tag-input>
@@ -66,15 +63,12 @@
     </div>
     <!-- cat -->
     <div class="col-md-4">
-        <tag-input name="cateogry" [(ngModel)]="itemSelected.category" [placeholder]="'+ Category'"
-            [displayBy]="'name'" [identifyBy]="'_id'" [onAdding]="handleAddNewCategory">
-            <ng-template let-item="item">
-                {{ item.name }}
-            </ng-template>
+        <tag-input name="cateogry" [(ngModel)]="itemSelected.category" [placeholder]="'+ Category'" [displayBy]="'name'"
+            [identifyBy]="'_id'" [onTextChangeDebounce]="500" [onAdding]="handleAddNewCategory">
             <tag-input-dropdown [autocompleteItems]="listCategory" [dynamicUpdate]="false" [zIndex]="10000"
-                [displayBy]="'item.name'" [identifyBy]="'_id'">
+                [displayBy]="'name'" [identifyBy]="'_id'" [showDropdownIfEmpty]="true">
                 <ng-template let-item="item" let-index="index">
-                    {{ item.value }}
+                    {{ item.name }}
                 </ng-template>
             </tag-input-dropdown>
         </tag-input>

@@ -10,6 +10,7 @@ import { PostService } from '@app/_services/post.service';
 import { TagService } from '@app/_services/tag.service';
 import { compareWithFunc, showNoti } from '@app/_shares/common';
 import { TagModel } from 'ngx-chips/core/accessor';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'post-edit',
@@ -43,13 +44,13 @@ export class PostEditComponent implements OnInit, OnDestroy {
   unSave = true;
   oldObject;
 
+  tagSelected = [];
+  categorySelected = [];
+
   constructor(
     @Inject(DOCUMENT) private document,
-    private postService: PostService,
     private tagService: TagService,
     private categoryService: CategoryService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
     private fileService: FileService) { }
 
   ngOnInit(): void {
@@ -104,11 +105,47 @@ export class PostEditComponent implements OnInit, OnDestroy {
   onSelectTag(e) {
     console.log(e);
   }
-  handleAddNewTag(tag: TagModel) {
-
+  handleAddNewTag = (newTag) => {
+    // chọn cái cũ thì có _id, tạo mới thì chỉ có mỗi name mà còn ko phải là object nữa
+    const isOldTag = !!newTag._id;
+    if (isOldTag) {
+      this.itemSelected.tags.push(newTag);
+      return;
+    }
+    this.tagService.createTagWithName(newTag)
+      .subscribe(newTagFromServer => {
+        this.itemSelected.tags.push(newTagFromServer);
+        this.getTags();
+      }, error => {
+        showNoti('Create tag fail ' + error, 'danger');
+      });
   }
-  handleAddNewCategory(tag: TagModel) {
+  handleAddNewCategory = (newCategory) => {
+    // chọn cái cũ thì có _id, tạo mới thì chỉ có mỗi name mà còn ko phải là object nữa
+    const isOld = !!newCategory._id;
+    if (isOld) {
+      this.itemSelected.tags.push(newCategory);
+      return;
+    }
+    this.categoryService.createCategoryWithName(newCategory)
+      .subscribe(newCategoryFromServer => {
+        this.itemSelected.category.push(newCategoryFromServer);
+        this.getCategories();
+      }, error => {
+        showNoti('Create category fail ' + error, 'danger');
+      });
+  }
 
+  public requestAutocompleteTags = (text: string): Observable<any> => {
+    return this.tagService.getTags(text);
+  }
+
+  public asyncOnAdding = (name): Observable<any> => {
+    const confirm = window.confirm(`Do you really want to add tag: "${name}"?`);
+    if (!confirm) {
+      return;
+    }
+    return this.tagService.createTagWithName(name);
   }
 
   // tools function 

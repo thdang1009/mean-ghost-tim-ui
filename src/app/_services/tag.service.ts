@@ -14,8 +14,8 @@ export class TagService {
 
   constructor(private http: HttpClient) { }
 
-  getTags(): Observable<Tag[]> {
-    const url = `${apiUrl}`;
+  getTags(name?): Observable<Tag[]> {
+    const url = `${apiUrl}` + (name ? `?name=${name}` : '');
     return this.http.get<any>(url).pipe(
       tap(_ => this.log(`fetched tag`)),
       catchError(this.handleError<Tag>(`getTag`))
@@ -30,17 +30,18 @@ export class TagService {
     );
   }
 
-  createTagWithName(name) {
+  createTagWithName(name): Observable<any> {
     const newItem: Tag = {
       name: name,
       description: null,
       imgUrl: null,
       content: null
     }
-    return this.addTag(newItem);
+    return this.addTag.call(this, newItem);
   }
 
   addTag(tag: Tag): Observable<Tag> {
+    console.log(tag);
     return this.http.post<Tag>(apiUrl, tag).pipe(
       tap((prod: Tag) => this.log(`added tag id=${prod.id}`)),
       catchError(this.handleError<Tag>('addTag'))
