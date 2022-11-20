@@ -90,7 +90,7 @@ export class AuthService {
 
   isAdmin() {
     const arr = [CONSTANT.PERMISSION.GRAND_ADMIN, CONSTANT.PERMISSION.ADMIN];
-    console.log('permission=', this.userInfo.permission);
+    // console.log('permission=', this.userInfo.permission);
     return this.userInfo && arr.includes(this.userInfo.permission);
   }
 

@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { DashboardComponent } from '@views/dashboard/dashboard.component';
 import { AdminGuard } from '@app/views/auth-management/auth/admin.guard';
 import { GrandAdminGuard } from '@app/views/auth-management/auth/grand-admin.guard';
+import { LoginGuard } from '@app/views/auth-management/auth/login.guard';
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
     {
@@ -18,7 +19,7 @@ export const AdminLayoutRoutes: Routes = [
         children: [{
             path: '',
             loadChildren: () => import('../../views/blog-management/blog-management.module').then(m => m.BlogManagementModule ),
-            canActivate: [GrandAdminGuard]
+            canActivate: [LoginGuard]
         }]
     },
     {
@@ -26,7 +27,7 @@ export const AdminLayoutRoutes: Routes = [
         children: [{
             path: '',
             loadChildren: () => import('../../views/ghost-management/ghost-management.module').then(m => m.GhostManagementModule ),
-            canActivate: [GrandAdminGuard]
+            canActivate: [LoginGuard]
         }]
     }
 
