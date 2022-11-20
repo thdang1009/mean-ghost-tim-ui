@@ -25,7 +25,6 @@ import { markedOptionsFactory } from './views/blog-management/blog-management.mo
 import { AnchorService } from './_shares/anchor/anchor.service';
 import { SocketioService } from './_services/socketio.service';
 
-
 // NgModule
 @NgModule({
   imports: [

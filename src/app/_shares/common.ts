@@ -83,6 +83,7 @@ export function isValidFile(file) {
   return isValidSize;
 }
 export function compareWithFunc(a, b) {
+  console.log(a, b);
   return a == b;
 }
 export function mapResourceName(input): FePDFInfo {

@@ -2,11 +2,10 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { showNoti, compareWithFunc, debounce } from '@shares/common';
+import { showNoti, compareWithFunc } from '@shares/common';
 import { Post } from '@models/_index';
-import { CategoryService, FileService, PostService, TagService } from '@services/_index';
+import { PostService } from '@services/_index';
 import * as dateFns from 'date-fns';
-import { DOCUMENT } from '@angular/common';
 import { POST_STATUS, POST_TYPE } from '@app/_shares/enum';
 
 
@@ -23,7 +22,7 @@ export class PostListComponent implements OnInit {
   listPostType = [
     POST_TYPE.GHOST_EDITOR,
     POST_TYPE.MARKDOWN
-  ]
+  ];
 
   today = dateFns.startOfToday();
   lastYearDay = dateFns.subYears(this.today, 5);
@@ -31,15 +30,8 @@ export class PostListComponent implements OnInit {
   searchDateTo = new UntypedFormControl(this.today);
   searchStatus = 'NONE';
   statusList = [POST_STATUS.NONE, POST_STATUS.PRIVATE, POST_STATUS.PUBLIC, POST_STATUS.PROTECTED];
-  itemSelected = undefined;
-  isSplitHorizontal = false;
-  elem;
-  listCategory = [];
-  listPermisson = [];
-  listTag = [];
-  POST_STATUS = POST_STATUS;
-  listFileOnServer = [];
-  compareWithFunc = compareWithFunc;
+  itemSelected: any = {} as any;
+  editMode = false;
   // newTag = { _id: 'Add more', name: '+ Add more tag' };
   // newCategory = { _id: 'Add more', name: '+ Add more category' };
   // moreTagMode = false;
@@ -48,24 +40,14 @@ export class PostListComponent implements OnInit {
   // newCategoryName = '';
 
   constructor(
-    @Inject(DOCUMENT) private document,
     private postService: PostService,
-    private tagService: TagService,
-    private categoryService: CategoryService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private ref: ChangeDetectorRef,
-    private fileService: FileService
-    // private simpleTimePipe: SimpleTimePipe
   ) {
   }
 
   ngOnInit() {
-    this.elem = document.getElementById('edit-post-container');
-    this.listPermisson = [
-      POST_STATUS.PUBLIC,
-      POST_STATUS.PRIVATE
-    ];
     this.activatedRoute.queryParams.subscribe(params => {
       const id = Number(params.id);
       if (id) {
@@ -74,17 +56,9 @@ export class PostListComponent implements OnInit {
         });
       } else {
         this.searchPost(id);
-        this.itemSelected = undefined;
+        this.itemSelected = {};
+        this.editMode = false;
       }
-    });
-    this.getCategories();
-    this.getTags();
-    this.fileService.getMyFile({
-      type: 'Image'
-    }).subscribe((res: any) => {
-      this.listFileOnServer = res;
-    }, err => {
-      showNoti('Get list file error. ' + err, 'danger');
     });
   }
 
@@ -123,20 +97,6 @@ export class PostListComponent implements OnInit {
   //       });
   //   }
   // }
-
-  getCategories() {
-    this.categoryService.getCategorys()
-      .subscribe(listCat => {
-        this.listCategory = listCat;
-      })
-  }
-
-  getTags() {
-    this.tagService.getTags()
-      .subscribe(listTag => {
-        this.listTag = listTag;
-      });
-  }
 
   // onChooseCategory(e) {
   //   this.moreCategoryMode = this.moreCategoryMode || (e && e.includes('Add more'));
@@ -197,6 +157,7 @@ export class PostListComponent implements OnInit {
         queryParams: { id: id },
         queryParamsHandling: 'merge'
       });
+    this.editMode = true;
   }
 
   _getMyPost(id = undefined) {
@@ -225,22 +186,6 @@ export class PostListComponent implements OnInit {
         this.isLoadingResults = false;
       });
   }
-  saveItem(id, item, index = -1, cb) {
-    // this.isLoadingResults = true;
-    // item.content = item.content.trim();
-    this.postService.updatePost(id, item)
-      .subscribe((res: any) => {
-        if (index !== -1) {
-          this.data[index] = res;
-        }
-        if (cb) {
-          cb();
-        }
-        // this.isLoadingResults = false;
-      }, err => {
-        // this.isLoadingResults = false;
-      });
-  }
   deleteLast() {
     this.isLoadingResults = true;
     if (!this.data || !this.data.length) {
@@ -249,19 +194,6 @@ export class PostListComponent implements OnInit {
     const lastIndex = this.data.length - 1;
     const id = this.data[lastIndex].id;
     this.callDeletePost(id);
-  }
-  back() {
-    const callback = () => {
-      this.itemSelected = undefined;
-      this.router.navigate(
-        [],
-        {
-          relativeTo: this.activatedRoute,
-          queryParams: { id: null },
-          queryParamsHandling: 'merge'
-        });
-    }
-    this.saveItem(this.itemSelected.id, this.itemSelected, -1, callback);
   }
   deletePost(post) {
     const val = confirm(`Delete "${post.title}"?`);
@@ -308,52 +240,24 @@ export class PostListComponent implements OnInit {
         });
     });
   }
-  onReady() {
-
-  }
-  onLoad() {
-
-  }
-
-  // tools function 
-  openFullscreen() {
-    this.splitVertical();
-    if (!this.elem) {
-      this.elem = document.getElementById('edit-post-container');
+  saveItem(e) {
+    const callback = () => {
+      this.itemSelected = {};
+      this.router.navigate(
+        [],
+        {
+          relativeTo: this.activatedRoute,
+          queryParams: { id: null },
+          queryParamsHandling: 'merge'
+        });
     }
-    if (this.elem.requestFullscreen) {
-      this.elem.requestFullscreen();
-    } else if (this.elem.mozRequestFullScreen) {
-      /* Firefox */
-      this.elem.mozRequestFullScreen();
-    } else if (this.elem.webkitRequestFullscreen) {
-      /* Chrome, Safari and Opera */
-      this.elem.webkitRequestFullscreen();
-    } else if (this.elem.msRequestFullscreen) {
-      /* IE/Edge */
-      this.elem.msRequestFullscreen();
-    }
-  }
 
-  /* Close fullscreen */
-  closeFullscreen() {
-    if (document.exitFullscreen) {
-      this.document.exitFullscreen();
-    } else if (this.document.mozCancelFullScreen) {
-      /* Firefox */
-      this.document.mozCancelFullScreen();
-    } else if (this.document.webkitExitFullscreen) {
-      /* Chrome, Safari and Opera */
-      this.document.webkitExitFullscreen();
-    } else if (this.document.msExitFullscreen) {
-      /* IE/Edge */
-      this.document.msExitFullscreen();
-    }
-  }
-  splitHorizontal() {
-    this.isSplitHorizontal = true;
-  }
-  splitVertical() {
-    this.isSplitHorizontal = false;
+    this.postService.updatePost(e.id, e)
+      .subscribe((res: any) => {
+        if (callback) {
+          callback();
+        }
+      }, err => {
+      });
   }
 }

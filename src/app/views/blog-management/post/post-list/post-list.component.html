@@ -38,19 +38,6 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                        <!-- button search -->
-                        <div class="col-md-4">
-                            <button *ngIf="!itemSelected || !itemSelected.id" mat-raised-button type="submit"
-                                [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100">
-                                <i class="material-icons">search</i>
-                                Search
-                            </button>
-                            <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button"
-                                (click)="back()" [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100">
-                                <i class="material-icons">save</i>
-                                Save & Back
-                            </button>
-                        </div>
                         <!-- button add -->
                         <div class="col-md-4" *ngIf="!itemSelected || !itemSelected.id">
                             <button mat-raised-button type="button" matTooltip="Add Empty Row"
@@ -59,102 +46,18 @@
                                 Add Empty Post
                             </button>
                         </div>
+                        <!-- button search, save -->
+                        <div class="col-md-4">
+                            <button *ngIf="!itemSelected || !itemSelected.id" mat-raised-button type="submit"
+                                [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100">
+                                <i class="material-icons">search</i>
+                                Search
+                            </button>
+                        </div>
 
-                        <!-- tag -->
-                        <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>Tags</mat-label>
-                                <!-- <mat-select [(ngModel)]="itemSelected.tags" [ngModelOptions]="{standalone: true}"
-                                    multiple (ngModelChange)="onChooseTag($event)">
-                                    <mat-option *ngFor="let item of listTag; let i = index" [(value)]="listTag[i]._id">
-                                        {{item.name}}
-                                    </mat-option>
-                                    <mat-option [(value)]="newTag._id">
-                                        <span *ngIf="!moreTagMode">
-                                            {{newTag.name}}
-                                        </span>
-                                        <input id="more-tag-field" *ngIf="moreTagMode" matInput #moreTagPart placeholder="Input new tag, enter"
-                                            [(ngModel)]="newTagName" (change)="newTagChange()">
-                                    </mat-option>
-                                </mat-select> -->
-                            </mat-form-field>
-                        </div>
-                        <!-- cat -->
-                        <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>Categories</mat-label>
-                                <!-- <mat-select [(ngModel)]="itemSelected.category" [ngModelOptions]="{standalone: true}"
-                                    multiple (ngModelChange)="onChooseCategory($event)">
-                                    <mat-option *ngFor="let item of listCategory; let i = index"
-                                        [(value)]="listCategory[i]._id">
-                                        {{item.name}}
-                                    </mat-option>
-                                    <mat-option [(value)]="newCategory._id">
-                                        <span *ngIf="!moreCategoryMode">
-                                            {{newCategory.name}}
-                                        </span>
-                                        <input id="more-category-field" *ngIf="moreCategoryMode" matInput #moreCategoryPart
-                                            placeholder="Input new category, enter" [(ngModel)]="newCategoryName"
-                                            (change)="newCategoryChange()">
-                                    </mat-option>
-                                </mat-select> -->
-                            </mat-form-field>
-                        </div>
-                        <!-- permission -->
-                        <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>Permission</mat-label>
-                                <mat-select [(ngModel)]="itemSelected.permission" [ngModelOptions]="{standalone: true}"
-                                    (ngModelChange)="saveItem(itemSelected.id, itemSelected, -1)">
-                                    <mat-option *ngFor="let item of listPermisson; let i = index"
-                                        [(value)]="listPermisson[i]">
-                                        {{item}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <!-- background cover -->
-                        <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>Background cover</mat-label>
-                                <mat-select [(ngModel)]="itemSelected.postBackgroundImg" [compareWith]="compareWithFunc"
-                                    (ngModelChange)="saveItem(itemSelected.id, itemSelected, -1)">
-                                    <mat-option *ngFor="let item of listFileOnServer; let i = index"
-                                        [(value)]="listFileOnServer[i].urlGet">
-                                        {{item.originName}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <!-- type -->
-                        <div class="col-md-4" *ngIf="itemSelected && itemSelected.id">
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>Type</mat-label>
-                                <mat-select [(ngModel)]="itemSelected.type" [compareWith]="compareWithFunc"
-                                    (ngModelChange)="saveItem(itemSelected.id, itemSelected, -1)">
-                                    <mat-option *ngFor="let item of listPostType; let i = index"
-                                        [(value)]="listPostType[i]">
-                                        {{item}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <!-- tools -->
-                        <div class="col-md-8 tool-container" *ngIf="itemSelected && itemSelected.id">
-                            <span class="material-icons md-36" matTooltip="Goto Full Screen" (click)="openFullscreen()">
-                                fullscreen
-                            </span>
-                            <!-- <span class="material-icons md-36" matTooltip="Split Horizontal"
-                                (click)="splitHorizontal()">
-                                horizontal_split
-                            </span>
-                            <span class="material-icons md-36" matTooltip="Split Vertical" (click)="splitVertical()">
-                                vertical_split
-                            </span> -->
-                        </div>
                     </form>
                     <div class="card-body">
-                        <div *ngIf="!itemSelected || !itemSelected.id; else postView" class="table-responsive">
+                        <div *ngIf="!itemSelected || !itemSelected.id" class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th style="max-width: 120px; min-width: 120px; width: 120px;">
@@ -166,30 +69,31 @@
                                 </thead>
                                 <tbody cdkDropList (cdkDropListDropped)="drop($event)">
                                     <ng-container *ngIf="data && data.length; else noDataBlock">
-                                        <tr class="hover-pointer-td" *ngFor="let post of data; let index = index"
-                                            cdkDrag [ngClass]="{
-                                            'ghost-public-item': post.permission == 'PUBLIC',
-                                            'ghost-private-item': post.permission == 'PRIVATE',
-                                            'ghost-protected-item': post.permission == 'PROTECTED'
-                                        }">
-                                            <td class="text-center">
-                                                <span class="hover-pointer" (click)="chooseThisItem(post)"
-                                                    matTooltip="Create At: {{ post.createdAt | date: 'dd-MM HH:mm' }}">
-                                                    {{ post.updatedAt | date: 'dd-MM HH:mm' }}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span (click)="chooseThisItem(post.id)" class="hover-pointer">{{
-                                                    post.title }}
-                                                </span>
-                                                <button mat-raised-button type="button" matTooltip="Delete Post"
-                                                    [disabled]="isLoadingResults"
-                                                    class="btn btn-float-in-row btn-round btn-danger pull-right"
-                                                    (click)="deletePost(post)">
-                                                    <i class="material-icons red">delete</i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        <ng-container *ngFor="let post of data; let index = index">
+                                            <tr class="hover-pointer-td" cdkDrag [ngClass]="{
+                                                'ghost-public-item': post.permission == 'PUBLIC',
+                                                'ghost-private-item': post.permission == 'PRIVATE',
+                                                'ghost-protected-item': post.permission == 'PROTECTED'
+                                            }" (click)="chooseThisItem(post.id); false">
+                                                <td class="text-center">
+                                                    <span class="hover-pointer"
+                                                        matTooltip="Create At: {{ post.createdAt | date: 'dd-MM HH:mm' }}">
+                                                        {{ post.updatedAt | date: 'dd-MM HH:mm' }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="hover-pointer">{{
+                                                        post.title }}
+                                                    </span>
+                                                    <button mat-raised-button type="button" matTooltip="Delete Post"
+                                                        [disabled]="isLoadingResults"
+                                                        class="btn btn-float-in-row btn-round btn-danger pull-right"
+                                                        (click)="deletePost(post)">
+                                                        <i class="material-icons red">delete</i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </ng-container>
                                     </ng-container>
                                     <ng-template #noDataBlock>
                                         <tr class="text-center">
@@ -202,63 +106,9 @@
                                 </tbody>
                             </table>
                         </div>
-                        <ng-template #postView>
-                            <!-- Title -->
-                            <textarea type="text" [(ngModel)]="itemSelected.title" class="editable wd100"
-                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
-                                [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults">
-                            </textarea>
-
-                            <textarea type="text" [(ngModel)]="itemSelected.description" class="editable wd100"
-                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
-                                [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults">
-                            </textarea>
-                            <div id="edit-post-container" class="edit-post-container"
-                                [ngStyle]="{'flex-direction': isSplitHorizontal ? 'column' : 'row'}">
-                                <!-- raw text -->
-                                <ng-container *ngIf="itemSelected.type === POST_TYPE.GHOST_EDITOR; else markdownPart">
-                                    <mat-tab-group>
-                                        <mat-tab label="Editor">
-                                            <docu-editor class="editable wd100"
-                                                (save)="itemSelected.contentGhostEditor = $event"
-                                                [documentation]="itemSelected.contentGhostEditor"
-                                                [ngClass]="{'split-horizontal': this.isSplitHorizontal}"
-                                                (blur)="saveItem(itemSelected.id, itemSelected, index);false">
-                                            </docu-editor>
-                                        </mat-tab>
-                                        <mat-tab label="Preview">
-                                            <docu-article class=""
-                                                [ngClass]="{'split-horizontal': this.isSplitHorizontal}"
-                                                [documentation]="itemSelected.contentGhostEditor">
-                                            </docu-article>
-                                        </mat-tab>
-                                    </mat-tab-group>
-                                </ng-container>
-                                <ng-template #markdownPart>
-                                    <mat-tab-group>
-                                        <mat-tab label="Markdown">
-                                            <textarea type="text" [(ngModel)]="itemSelected.content"
-                                                class="editable wd100"
-                                                [ngClass]="{ 'split-horizontal': this.isSplitHorizontal }"
-                                                (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize
-                                                [minRows]="1" [useImportant]="true" [disabled]="isLoadingResults">
-                                    </textarea>
-                                        </mat-tab>
-                                        <mat-tab label="Preview">
-                                            <!-- text to markdown -->
-                                            <markdown class="" [ngClass]="{'split-horizontal': this.isSplitHorizontal}"
-                                                [data]="itemSelected.content">
-                                            </markdown>
-                                        </mat-tab>
-                                    </mat-tab-group>
-                                </ng-template>
-                            </div>
-                        </ng-template>
-                        <button *ngIf="itemSelected && itemSelected.id" mat-raised-button type="button" (click)="back()"
-                            [disabled]="isLoadingResults" class="btn btn-info pull-right btn-w100">
-                            <i class="material-icons">save</i>
-                            Save & Back
-                        </button>
+                        <post-edit *ngIf="itemSelected && itemSelected.id" [itemSelected]="itemSelected"
+                            (save)="saveItem($event)">
+                        </post-edit>
                     </div>
                 </div>
             </div>

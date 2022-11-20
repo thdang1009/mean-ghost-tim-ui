@@ -16,6 +16,15 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { ComponentsModule } from '@app/components/components.module';
 import { AngClapModule } from 'ang-clap';
 import { DocuModule, DocuEditorModule } from 'ng-write';
+import { TagInputModule } from 'ngx-chips';
+import { PostEditComponent } from './post/post-edit/post-edit.component';
+
+TagInputModule.withDefaults({
+  tagInput: {
+      placeholder: '+ Tag'
+  }
+})
+
 
 export function markedOptionsFactory(anchorService: AnchorService): MarkedOptions {
   const renderer = new MarkedRenderer();
@@ -35,7 +44,8 @@ export function markedOptionsFactory(anchorService: AnchorService): MarkedOption
     AddTagComponent,
     TagListComponent,
     AddCategoryComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    PostEditComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +55,7 @@ export function markedOptionsFactory(anchorService: AnchorService): MarkedOption
     ComponentsModule,
     // third party
     AngClapModule,
+    TagInputModule,
     DocuModule,
     DocuEditorModule,
     MarkdownModule.forRoot({
