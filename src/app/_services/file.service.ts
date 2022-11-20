@@ -30,6 +30,15 @@ export class FileService {
     );
   }
 
+  getAllFile(req = {}): Observable<MyFile[]> {
+    const queryString = buildQueryString(req);
+    const url = `${apiUrl}?${queryString}`;
+    return this.http.get<MyFile[]>(url).pipe(
+      tap(_ => console.log(`fetched my file`)),
+      catchError(this.handleError<MyFile[]>(`getMyFile`))
+    );
+  }
+
   getMyFile(req = {}): Observable<MyFile[]> {
     const queryString = buildQueryString(req);
     const url = `${apiUrl}/my-file?${queryString}`;

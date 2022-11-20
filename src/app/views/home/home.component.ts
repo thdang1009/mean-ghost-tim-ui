@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   BookPermission = BookPermission;
   isLogined = false;
-  isAdmin = false;
+  hasBackofficePermission = false;
   isLoadingResults = true;
   thisYear = (new Date).getFullYear();
   posts = [];
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
   async init() {
     this.isLogined = this.authService.isLogin();
-    this.isAdmin = this.authService.isAdmin();
+    this.hasBackofficePermission = this.authService.isLogin();
     this.activeRoute.queryParams
       .subscribe(params => {
         const path = window.location.href

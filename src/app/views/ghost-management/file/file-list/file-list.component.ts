@@ -20,7 +20,7 @@ export class FileListComponent implements OnInit {
     this.getFiles();
   }
   getFiles() {
-    this.fileService.getMyFile().subscribe(files => {
+    this.fileService.getAllFile().subscribe(files => {
       this.files = files;
     }, (err) => {
       console.log(err);

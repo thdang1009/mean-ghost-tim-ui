@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from '../auth-management/auth/admin.guard';
 import { GrandAdminGuard } from '../auth-management/auth/grand-admin.guard';
 import { LoginGuard } from '../auth-management/auth/login.guard';
 import { BookComponent } from './book/book.component';
@@ -13,9 +14,9 @@ const routes: Routes = [
   { path: 'todo-today', component: TodoTodayComponent, canActivate: [LoginGuard] },
   { path: 'note', component: NoteComponent, canActivate: [LoginGuard] },
   { path: 'money', component: MoneyComponent, canActivate: [GrandAdminGuard] },
-  { path: 'book', component: BookComponent, canActivate: [GrandAdminGuard] },
-  { path: 'file', component: AddFileComponent, canActivate: [GrandAdminGuard] },
-  { path: 'file-list', component: FileListComponent, canActivate: [GrandAdminGuard] },
+  { path: 'book', component: BookComponent, canActivate: [AdminGuard] },
+  { path: 'file', component: AddFileComponent, canActivate: [AdminGuard] },
+  { path: 'file-list', component: FileListComponent, canActivate: [AdminGuard] },
 ];
 
 @NgModule({

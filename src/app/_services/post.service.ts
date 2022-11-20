@@ -15,6 +15,7 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
+  // lấy hết list post cho khách, nếu là admin thì thấy bài viết ẩn của bản thân
   getPublicPosts(req?): Observable<Post[]> {
     const hasKeys = !!Object.keys(req).length;
     const queryString = hasKeys && ('?' + buildQueryString(req)) || '';
@@ -25,6 +26,7 @@ export class PostService {
     );
   }
 
+  // khách xem post
   getPost(id: any): Observable<Post> {
     const url = `${apiUrl}/id/${id}`;
     return this.http.get<Post>(url).pipe(
@@ -33,22 +35,34 @@ export class PostService {
     );
   }
 
+  // admin xem và edit post
   getPostAsAdmin(id: any): Observable<Post> {
-    const url = `${apiUrl}/get-as-admin/${id}`;
+    const url = `${apiUrl}/get-as-member/${id}`;
     return this.http.get<Post>(url).pipe(
       tap(_ => this.log(`fetched post by id=${id}`)),
       catchError(this.handleError<Post>(`getPost id=${id}`))
     );
   }
 
-  getMyPost(req): Observable<Post> {
+  // lấy danh sách tất cả post
+  getAllPost(req): Observable<Post> {
     const queryString = buildQueryString(req);
-    const url = `${apiUrl}/my-post?${queryString}`;
+    const url = `${apiUrl}?${queryString}`;
     return this.http.get<Post>(url).pipe(
       tap(_ => this.log(`fetched my post`)),
-      catchError(this.handleError<Post>(`getMyPost`))
+      catchError(this.handleError<Post>(`getAllPost`))
     );
   }
+
+  // lấy danh sách post tôi có thể xem được
+  // getMyPost(req): Observable<Post> {
+  //   const queryString = buildQueryString(req);
+  //   const url = `${apiUrl}/my-post?${queryString}`;
+  //   return this.http.get<Post>(url).pipe(
+  //     tap(_ => this.log(`fetched my post`)),
+  //     catchError(this.handleError<Post>(`getMyPost`))
+  //   );
+  // }
 
   addPost(post: Post): Observable<Post> {
     return this.http.post<Post>(apiUrl, post).pipe(

@@ -146,7 +146,7 @@ export class PostListComponent implements OnInit {
   }
 
   searchPost(id = undefined) {
-    this._getMyPost(id);
+    this.funcGetAllPost(id);
   }
 
   chooseThisItem(id) {
@@ -160,7 +160,7 @@ export class PostListComponent implements OnInit {
     this.editMode = true;
   }
 
-  _getMyPost(id = undefined) {
+  funcGetAllPost(id = undefined) {
     const from = this.searchDateFrom && this.searchDateFrom.value || new Date();
     const to = this.searchDateTo && this.searchDateTo.value || new Date();
     const fromDate = dateFns.startOfDay(from);
@@ -173,7 +173,7 @@ export class PostListComponent implements OnInit {
       status: this.searchStatus === 'NONE' && undefined || this.searchStatus
     }
     this.isLoadingResults = true;
-    this.postService.getMyPost(req)
+    this.postService.getAllPost(req)
       .subscribe((res: any) => {
         this.data = res;
         if (id) {

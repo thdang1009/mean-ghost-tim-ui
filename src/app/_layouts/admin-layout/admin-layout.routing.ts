@@ -5,7 +5,7 @@ import { AdminGuard } from '@app/views/auth-management/auth/admin.guard';
 import { GrandAdminGuard } from '@app/views/auth-management/auth/grand-admin.guard';
 import { LoginGuard } from '@app/views/auth-management/auth/login.guard';
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard] },
     {
         path: 'user-management',
         children: [{

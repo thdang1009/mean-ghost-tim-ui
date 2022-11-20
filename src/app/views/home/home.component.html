@@ -10,9 +10,9 @@
         <ng-container *ngIf="!isLogined">
           <a [routerLink]="['/login']">LOGIN</a>
         </ng-container>
-        <ng-container *ngIf="isLogined && isAdmin">
+        <ng-container *ngIf="isLogined && hasBackofficePermission">
           <a [routerLink]="['/admin/dashboard']" class="bold">Go To Admin View</a>
-          <span *ngIf="!isAdmin">You are Guess, contact
+          <span *ngIf="!hasBackofficePermission">You are Guess, contact
             <a href="mailto:mean.ghost.site@gmail.com">
               mean.ghost.site@gmail.com
             </a> to become admin and use more features

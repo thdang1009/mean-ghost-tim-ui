@@ -24,7 +24,7 @@ declare interface RouteInfo {
   children?: Array<Child>;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: 'dashboard', title: 'Dashboard', icon: 'dashboard', class: '', permission: 'isAdmin', hasChild: false },
+  { path: 'dashboard', title: 'Dashboard', icon: 'dashboard', class: '', permission: 'isMember', hasChild: false },
   {
     path: 'user-management', title: 'User', icon: 'people', class: '', permission: 'isGrandAdmin', hasChild: true,
     children: [
@@ -37,7 +37,7 @@ export const ROUTES: RouteInfo[] = [
     children: [
       { path: 'tool/todo-today', title: 'Todo Today', icon: 'checklist_rtl', class: '', permission: 'isMember' },
       { path: 'tool/note', title: 'Note', icon: 'library_books', class: '', permission: 'isMember' },
-      { path: 'tool/money', title: 'Money', icon: 'attach_money', class: '', permission: 'isAdmin' },
+      { path: 'tool/money', title: 'Money', icon: 'attach_money', class: '', permission: 'isGrandAdmin' },
       { path: 'tool/book', title: 'Book', icon: 'library_books', class: '', permission: 'isAdmin' },
       { path: 'tool/file', title: 'Add File', icon: 'post_add', class: '', permission: 'isAdmin' },
       { path: 'tool/file-list', title: 'All Files', icon: 'picture_as_pdf', class: '', permission: 'isAdmin' }
@@ -45,9 +45,9 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
   {
-    path: 'blog', title: 'Blog', icon: 'library_books', class: '', permission: 'isAdmin', hasChild: true,
+    path: 'blog', title: 'Blog', icon: 'library_books', class: '', permission: 'isMember', hasChild: true,
     children: [
-      { path: 'blog/post-list', title: 'All Post', icon: 'library_books', class: '', permission: 'isAdmin' },
+      { path: 'blog/post-list', title: 'All Post', icon: 'library_books', class: '', permission: 'isMember' },
       // { path: 'blog/post-add', title: 'Add A Post', icon: 'post_add', class: '', permission: 'isAdmin' },
       { path: 'blog/tag-list', title: 'All Tag', icon: 'library_books', class: '', permission: 'isAdmin' },
       { path: 'blog/tag', title: 'Add A Tag', icon: 'post_add', class: '', permission: 'isAdmin' },
@@ -107,8 +107,12 @@ export class SidebarComponent implements OnInit {
         this.resetToGuest();
       }
     });
+    const checkSubMenu = ROUTES.map(sub => ({
+      ...sub,
+      children: (sub.children || []).filter(child => this[child.permission])
+    }))
 
-    this.menuItems = ROUTES.filter(menuItem => this[menuItem.permission]);
+    this.menuItems = checkSubMenu.filter(menuItem => this[menuItem.permission]);
   }
   checkSocket() {
     const isAdmin = this.authService.isAdmin();
