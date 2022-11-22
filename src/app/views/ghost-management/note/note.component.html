@@ -80,7 +80,7 @@
                             <textarea type="text" [(ngModel)]="itemSelected.header" class="editable wd100"
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false" autosize [minRows]="1"
                                 [maxRows]="3" [useImportant]="true" [disabled]="isLoadingResults"></textarea>
-                            <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="itemSelected.content"
+                            <angular-editor [config]="editorConfig" [placeholder]="'Enter text here...'" [(ngModel)]="itemSelected.content"
                                 (blur)="saveItem(itemSelected.id, itemSelected, index);false"
                                 [disabled]="isLoadingResults">
                             </angular-editor>

@@ -6,7 +6,9 @@ import { showNoti } from '@shares/common';
 import { Note } from '@models/_index';
 import { NoteService } from '@services/_index';
 import * as dateFns from 'date-fns';
-
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { environment } from '@environments/environment';
+const apiUrl = environment.apiUrl + '/v1/file';
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -16,6 +18,53 @@ export class NoteComponent implements OnInit {
 
   data: Note[] = [];
   isLoadingResults = true;
+
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: false,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Enter text here...',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'times-new-roman', name: 'Times New Roman' },
+      { class: 'calibri', name: 'Calibri' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' }
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+    uploadUrl: apiUrl + '/upload',
+
+    uploadWithCredentials: false,
+    sanitize: true,
+    toolbarPosition: 'top',
+    toolbarHiddenButtons: [
+      ['bold', 'italic'],
+      ['fontSize']
+    ]
+  };
 
   debounceID = undefined;
   today = dateFns.startOfToday();
