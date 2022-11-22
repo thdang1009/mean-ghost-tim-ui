@@ -9,7 +9,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { environment } from '@environments/environment';
 import { CONSTANT } from '@app/_shares/constant';
 import { BookPermission } from '@app/_shares/enum';
-import { FileService } from '@app/_services/file.service';
+import { FileService } from '@app/_services/_index';
 @Component({
   selector: 'book',
   templateUrl: './book.component.html',

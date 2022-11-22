@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { AbstractMockObservableService } from '@helpers/mock.service';
 import { UnitConversionPipe } from '@pipes/_index';
-import { AnalyticService } from '@services/analytic.service';
+import { AnalyticService } from '@services/_index';
 import { IssueService } from '@services/issue.service';
 import { TodoTodayService } from '@services/todo-today.service';
 import { UserService } from '@services/user.service';

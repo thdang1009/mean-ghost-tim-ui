@@ -5,6 +5,8 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 // my codes
 import { AppComponent } from './app.component';
@@ -23,7 +25,7 @@ import { AnchorModule } from './_shares/anchor/anchor.module';
 import { MarkdownModule, MarkedOptions, ClipboardOptions, ClipboardButtonComponent } from 'ngx-markdown';
 import { markedOptionsFactory } from './views/blog-management/blog-management.module';
 import { AnchorService } from './_shares/anchor/anchor.service';
-import { SocketioService } from './_services/socketio.service';
+import { SocketioService } from './_services/_index';
 
 // NgModule
 @NgModule({
@@ -55,6 +57,7 @@ import { SocketioService } from './_services/socketio.service';
       },
       sanitize: SecurityContext.NONE,
     }),
+    BrowserModule.withServerTransition({ appId: 'serverApp' })
   ],
   declarations: [
     AppComponent,

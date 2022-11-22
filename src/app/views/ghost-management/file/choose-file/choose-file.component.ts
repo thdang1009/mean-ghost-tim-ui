@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { MyFile } from '@app/_models/my-file';
 import { Subscription } from 'rxjs';
 import { EventEmitter } from '@angular/core';
-import { FileService } from '@app/_services/file.service';
+import { FileService } from '@app/_services/_index';
 import { showNoti } from '@app/_shares/common';
 
 @Component({

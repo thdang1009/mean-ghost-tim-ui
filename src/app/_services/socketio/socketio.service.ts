@@ -13,12 +13,21 @@ export class SocketioService {
 
   setupSocketConnection() {
     this.socket = io(environment.SOCKET_ENDPOINT, {
+      path: '/socket',
       autoConnect: true,
-      transports: ['websocket'],
+      transports: ['polling', 'websocket'],
+    });
+    this.socket.on('connect', (data) => {
+      console.log('socket connected');
+    });
+
+    this.socket.on('disconnect', () => {
+      console.log('socket disconnected');
     });
   }
   disconnect() {
-    if (this.socket) {``
+    if (this.socket) {
+      ``
       this.socket.disconnect();
     }
   }

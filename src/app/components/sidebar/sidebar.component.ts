@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SocketioService } from '@app/_services/socketio.service';
-import { handleSocket, showNotiSocket } from '@app/_shares/common';
+import { SocketioService } from '@app/_services/_index';
+import { handleSocket } from '@app/_shares/common';
 import { GUEST_MESSAGE_RESPONSE } from '@app/_shares/constant';
 import { AuthService } from '@services/_index';
 

@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
-import { SocketioService } from '@app/_services/socketio.service';
-import { GUEST_MESSAGE } from '@app/_shares/constant';
 import { UserService } from '@services/_index';
 import { showNoti } from '@shares/common';
 @Component({
@@ -29,8 +27,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   indexInterval = 0;
   constructor(
     private formBuilder: UntypedFormBuilder,
-    private userService: UserService,
-    private socketService: SocketioService) { }
+    private userService: UserService,) { }
 
   ngOnInit(): void {
     this.yearOlds = new Date().getFullYear() - 1996;

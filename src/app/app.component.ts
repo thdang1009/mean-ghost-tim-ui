@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
-import { AnalyticService } from './_services/analytic.service';
-import { AuthService } from './_services/auth.service';
-import { SocketioService } from './_services/socketio.service';
-import { handleSocket, showNotiSocket } from './_shares/common';
-import { GUEST_MESSAGE_RESPONSE, HOUR } from './_shares/constant';
+import { AnalyticService, AuthService, SocketioService } from './_services/_index';
+import { handleSocket } from './_shares/common';
+import { GUEST_MESSAGE_RESPONSE } from './_shares/constant';
 
 
 @Component({

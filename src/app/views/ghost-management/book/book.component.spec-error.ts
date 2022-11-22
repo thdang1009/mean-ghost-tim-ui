@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AbstractMockObservableService } from '@app/_helpers/mock.service';
-import { BookService } from '@app/_services/book.service';
+import { BookService } from '@app/_services/_index';
 
 import { BookComponent } from './book.component';
 

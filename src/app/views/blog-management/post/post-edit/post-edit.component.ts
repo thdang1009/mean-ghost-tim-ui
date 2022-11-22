@@ -3,13 +3,8 @@ import { Post } from '@app/_models/post';
 import { EventEmitter } from '@angular/core';
 import { POST_STATUS, POST_TYPE } from '@app/_shares/enum';
 import { DOCUMENT } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryService } from '@app/_services/category.service';
-import { FileService } from '@app/_services/file.service';
-import { PostService } from '@app/_services/post.service';
-import { TagService } from '@app/_services/tag.service';
+import { TagService, CategoryService, FileService } from '@app/_services/_index';
 import { compareWithFunc, showNoti } from '@app/_shares/common';
-import { TagModel } from 'ngx-chips/core/accessor';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
