@@ -24,10 +24,12 @@ import { MarkdownModule, MarkedOptions, ClipboardOptions, ClipboardButtonCompone
 import { markedOptionsFactory } from './views/blog-management/blog-management.module';
 import { AnchorService } from './_shares/anchor/anchor.service';
 import { SocketioService } from './_services/socketio.service';
+import { BrowserModule } from '@angular/platform-browser';
 
 // NgModule
 @NgModule({
   imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AnchorModule,
     BrowserAnimationsModule,
     FormsModule,
