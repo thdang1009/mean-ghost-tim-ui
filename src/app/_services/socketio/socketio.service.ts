@@ -13,7 +13,7 @@ export class SocketioService {
 
   setupSocketConnection() {
     this.socket = io(environment.SOCKET_ENDPOINT, {
-      path: '/socket',
+      path: '/socket.io',
       autoConnect: true,
       transports: ['polling', 'websocket'],
     });
