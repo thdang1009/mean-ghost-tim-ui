@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '@app/_services/_index';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { POST_TYPE } from '@app/_shares/enum';
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.scss']
 })
-export class PostDetailComponent implements OnInit {
+export class PostDetailComponent implements OnInit, OnDestroy {
 
   ready = false;
   item;
@@ -48,6 +48,20 @@ export class PostDetailComponent implements OnInit {
       this.meta.updateTag({ property: 'og:creator', content: creator });
       this.meta.updateTag({ property: 'og:image', content: img });
     });
+  }
+
+  ngOnDestroy(): void {
+    this.meta.removeTag('itemprop="name"');
+    this.meta.removeTag('itemprop="description"');
+    this.meta.removeTag('name="twitter:card"');
+    this.meta.removeTag('name="twitter:title"');
+    this.meta.removeTag('name="twitter:description"');
+    this.meta.removeTag('name="twitter:creator"');
+    this.meta.removeTag('name="twitter:image"');
+    this.meta.removeTag('property="og:title"');
+    this.meta.removeTag('property="og:description"');
+    this.meta.removeTag('property="og:creator"');
+    this.meta.removeTag('property="og:image"');
   }
 
   clapThisPost(e) {
