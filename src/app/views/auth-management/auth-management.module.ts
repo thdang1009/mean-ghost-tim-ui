@@ -18,9 +18,6 @@ import { SharedModule } from '@shares/shared-module.module';
     CommonModule,
     AuthManagementRoutingModule,
     SharedModule
-  ],
-  exports: [
-    SharedModule
   ]
 })
 export class AuthManagementModule { }

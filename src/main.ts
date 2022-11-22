@@ -29,14 +29,4 @@ if (environment.production) {
 
 
 
-function bootstrap() {
-     platformBrowserDynamic().bootstrapModule(AppModule);
-   };
-
-
- if (document.readyState === 'complete') {
-   bootstrap();
- } else {
-   document.addEventListener('DOMContentLoaded', bootstrap);
- }
- 
+platformBrowserDynamic().bootstrapModule(AppModule);

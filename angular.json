@@ -11,7 +11,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/mean-ghost-tim-ui/browser",
+            "outputPath": "dist/mean-ghost-tim-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
@@ -168,67 +168,6 @@
             "firebaseProject": "ghost-site-fe-ae2f4",
             "firebaseHostingSite": "ghost-site"
           }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/mean-ghost-tim-ui/server",
-            "main": "server.ts",
-            "tsConfig": "src/tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "outputHashing": "media",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "sourceMap": false,
-              "extractLicenses": true
-            },
-            "development": {
-              "outputHashing": "media",
-              "optimization": true,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
-          "configurations": {
-            "development": {
-              "browserTarget": "mean-ghost-tim-ui:build:development",
-              "serverTarget": "mean-ghost-tim-ui:server:development"
-            },
-            "production": {
-              "browserTarget": "mean-ghost-tim-ui:build:production",
-              "serverTarget": "mean-ghost-tim-ui:server:production"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "prerender": {
-          "builder": "@nguniversal/builders:prerender",
-          "options": {
-            "routes": [
-              "/"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "mean-ghost-tim-ui:build:production",
-              "serverTarget": "mean-ghost-tim-ui:server:production"
-            },
-            "development": {
-              "browserTarget": "mean-ghost-tim-ui:build:development",
-              "serverTarget": "mean-ghost-tim-ui:server:development"
-            }
-          },
-          "defaultConfiguration": "production"
         }
       },
       "schematics": {

@@ -41,7 +41,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTooltipModule,
     MatDialogModule,
     MatSliderModule,
-    MatTabsModule,
+    MatTabsModule
   ],
   exports: [
     CommonModule,
