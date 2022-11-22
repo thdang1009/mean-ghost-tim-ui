@@ -5,8 +5,6 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { BrowserModule } from '@angular/platform-browser';
-
 
 // my codes
 import { AppComponent } from './app.component';
@@ -57,7 +55,6 @@ import { SocketioService } from './_services/_index';
       },
       sanitize: SecurityContext.NONE,
     }),
-    BrowserModule.withServerTransition({ appId: 'serverApp' })
   ],
   declarations: [
     AppComponent,
