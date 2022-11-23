@@ -148,6 +148,7 @@ export function mapResourceName(input): FePDFInfo {
 }
 
 export function handleSocket(arg) {
+  console.log('Get data from socket= ', arg);
   try {
     const object = typeof arg === 'string' ? JSON.parse(arg) : arg;
     const content = `${object.name} send: "${object.message}"`;
