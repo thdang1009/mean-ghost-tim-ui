@@ -11,6 +11,8 @@
   <link rel="dns-prefetch" href="https://unpkg.com" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Ghost's simple tool for developer to write better code.">
+  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+
   <title>Ghost Site</title>
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -19,13 +21,20 @@
 
   <!--     Fonts and icons     -->
   <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-  <link href='assets/css/material-icon.css' rel='stylesheet'
-    type='text/css'>
+  <link href='assets/css/material-icon.css' rel='stylesheet' type='text/css'>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="assets/js/fontawasome.min.js?v=1" crossorigin="anonymous" asynce></script>
   <script src="assets/js/bundle.js?v=1" crossorigin="anonymous" asynce></script>
 </head>
 
 <body>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-login_uri="https://ghost-site.web.app/dashboard"
+    data-auto_prompt="false">
+  </div>
+  <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with"
+    data-shape="rectangular" data-logo_alignment="left">
+  </div>
   <app-root>
     <div class="loader">
       <svg class="circular" viewBox="25 25 50 50">

@@ -119,7 +119,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
     // chọn cái cũ thì có _id, tạo mới thì chỉ có mỗi name mà còn ko phải là object nữa
     const isOld = !!newCategory._id;
     if (isOld) {
-      this.itemSelected.tags.push(newCategory);
+      this.itemSelected.category.push(newCategory);
       return;
     }
     this.categoryService.createCategoryWithName(newCategory)
