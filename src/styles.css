@@ -487,6 +487,22 @@ mark {
     bottom: 20px !important;
 }
 
+.tagging {
+    float: right;
+    margin-left: 5px;
+}
+
+.tagging__item {
+    background: #291312;
+    color: #fff !important;
+    font-size: 0.75rem;
+    font-weight: 900;
+    margin-right: 5px;
+    padding: 0.2rem 0.4rem;
+    text-decoration: none;
+    text-transform: lowercase;
+}
+
 /* 
     to remove css
 */

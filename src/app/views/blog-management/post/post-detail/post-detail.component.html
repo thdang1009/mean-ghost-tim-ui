@@ -20,12 +20,15 @@
                     {{item?.createdAt | timeAgo }}
                     ({{item?.createdAt | date }})
                 </div>
-                <!-- <div style="margin-top: 1rem;">
-                    <div><a class="tagging__item" href="/tags/java" style="color: white;">#java</a><a
-                            class="tagging__item" href="/tags/async" style="color: white;">#async</a><a
-                            class="tagging__item" href="/tags/jiny" style="color: white;">#jiny</a></div>
-                </div> -->
+                <div style="margin-top: 1rem;">
+                    <div class="tagging" *ngFor="let tag of item.tags">
+                        <a class="tagging__item" href="{{'/home?tag=' + tag.name}}">#{{tag.name}}</a>
+                    </div>
+                </div>
             </header>
+        </div>
+        <div class="post-description">
+            <p>{{item?.description}}</p>
         </div>
         <div class="post-body">
             <ng-container *ngIf="ready">
