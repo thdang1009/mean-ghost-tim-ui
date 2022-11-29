@@ -39,6 +39,9 @@ ang-clap {
 .wrap-content {
     padding: 20px;
 }
+.post-body {
+    max-width: 90vw;
+}
 @media (max-width: 991px) {
     .post-container {
         // background-color: white;

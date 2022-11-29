@@ -61,8 +61,6 @@ export class NoteComponent implements OnInit {
     sanitize: true,
     toolbarPosition: 'top',
     toolbarHiddenButtons: [
-      ['bold', 'italic'],
-      ['fontSize']
     ]
   };
 
