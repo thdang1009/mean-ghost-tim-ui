@@ -501,6 +501,8 @@ mark {
     padding: 0.2rem 0.4rem;
     text-decoration: none;
     text-transform: lowercase;
+    height: 20px;
+    width: fit-content;
 }
 
 /* 

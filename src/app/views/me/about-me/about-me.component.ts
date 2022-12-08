@@ -2,14 +2,20 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { UserService } from '@services/_index';
 import { showNoti } from '@shares/common';
+
+export interface PortfolioData {
+  src: string,
+  title: string,
+  allowFullscreen: boolean
+}
 @Component({
   selector: 'app-about-me',
   templateUrl: './about-me.component.html',
-  styleUrls: ['./about-me.component.css']
+  styleUrls: ['./about-me.component.scss']
 })
 export class AboutMeComponent implements OnInit, AfterViewInit {
   @ViewChild('aboutMe') aboutMeElement: ElementRef;
-  @ViewChild('services') servicesElement: ElementRef;
+  // @ViewChild('services') servicesElement: ElementRef;
   @ViewChild('portfolio') portfolioElement: ElementRef;
   @ViewChild('contact') contactElement: ElementRef;
   @ViewChild('aboutMeContent') aboutMeContent: ElementRef;
@@ -21,6 +27,15 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   yearOlds: number;
   currentActive = 0;
   debounceID = undefined;
+  listPortfolio: Array<PortfolioData> = [{
+    src: 'https://product-preview-card-component-ebon.vercel.app',
+    title: 'Product preview component',
+    allowFullscreen: true
+  }, {
+    src: 'https://qr-code-component-main-rho-gules.vercel.app',
+    title: 'Product preview component',
+    allowFullscreen: true
+  }];
   // intervalID = undefined;
   arrString = ['A Fullstack Web Engineer', 'A Javascript Lover', 'A Minimalist', 'A Book Reviewer'];
 
@@ -48,7 +63,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
     this.heights = [
       0,
       this.aboutMeElement.nativeElement.offsetTop,
-      this.servicesElement.nativeElement.offsetTop,
+      // this.servicesElement.nativeElement.offsetTop,
       this.portfolioElement.nativeElement.offsetTop,
       this.contactElement.nativeElement.offsetTop
     ];
@@ -94,10 +109,8 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
       this.currentActive = 0;
     } else if (val >= this.heights[1] && val < this.heights[2]) {
       this.currentActive = 1;
-    } else if (val >= this.heights[2] && val < this.heights[3]) {
+    } else if (val >= this.heights[2]) {
       this.currentActive = 2;
-    } else if (val >= this.heights[3]) {
-      this.currentActive = 3;
     } else {
       this.currentActive = 0;
     }

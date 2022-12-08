@@ -8,13 +8,15 @@ import { DownloadMyCvComponent } from './download-my-cv/download-my-cv.component
 import { HireMeComponent } from './hire-me/hire-me.component';
 import { NgxTypedJsModule } from 'ngx-typed-js';
 import { ComponentsModule } from '@app/components/components.module';
+import { SafePipe } from '@app/_pipes/safe-resource.pipe';
 
 
 @NgModule({
   declarations: [
     AboutMeComponent,
     DownloadMyCvComponent,
-    HireMeComponent
+    HireMeComponent,
+    SafePipe
   ],
   imports: [
     CommonModule,

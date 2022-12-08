@@ -12,12 +12,13 @@ import { ProgressWithLabelComponent } from './progress-with-label/progress-with-
 import { GhostSiteBtnComponent } from './ghost-site-btn/ghost-site-btn.component';
 import { ListBadgeComponent } from './list-badge/list-badge.component';
 import { GhostServiceComponent } from './ghost-service/ghost-service.component';
+import { GhostIframeComponent } from './ghost-iframe/ghost-iframe.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
     FooterComponent,
@@ -29,6 +30,7 @@ import { GhostServiceComponent } from './ghost-service/ghost-service.component';
     GhostSiteBtnComponent,
     ListBadgeComponent,
     GhostServiceComponent,
+    GhostIframeComponent,
   ],
   exports: [
     FooterComponent,
@@ -39,6 +41,7 @@ import { GhostServiceComponent } from './ghost-service/ghost-service.component';
     ProgressWithLabelComponent,
     GhostSiteBtnComponent,
     ListBadgeComponent,
+    GhostIframeComponent,
   ],
   providers: [
   ]

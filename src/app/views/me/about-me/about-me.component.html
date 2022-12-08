@@ -17,17 +17,17 @@
                             About Me
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="abc" (click)="scrollTo('services')" [ngClass]="{
                             'ghost-nav-hight-light': currentActive === 1
                         }">
                             <i class="fa fa-list"> </i>
                             Services
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a class="abc" (click)="scrollTo('portfolio')" [ngClass]="{
-                            'ghost-nav-hight-light': currentActive === 2
+                            'ghost-nav-hight-light': currentActive === 1
                         }">
                             <i class="fa fa-briefcase"> </i>
                             Portfolio
@@ -35,7 +35,7 @@
                     </li>
                     <li>
                         <a class="abc" (click)="scrollTo('contact')" [ngClass]="{
-                            'ghost-nav-hight-light': currentActive === 3
+                            'ghost-nav-hight-light': currentActive === 2
                         }">
                             <i class="fa fa-comments"> </i>
                             Contact
@@ -326,7 +326,7 @@
 
 
         <!-- **** **** **** **** SERVICES  **** **** **** ****-->
-        <section class="services" id="services" #services>
+        <!-- <section class="services" id="services" #services>
             <div class="section-header-container  box-border-tl-br" (click)="scrollTo('services')">
                 <h2 class="section-header">
                     Services
@@ -344,7 +344,7 @@
                     </object>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- **** **** **** **** SERVICES END **** **** **** ****-->
 
 
@@ -354,6 +354,15 @@
                 <h2 class="section-header">
                     Portfolio
                 </h2>
+            </div>
+            <div class="portfolio-container row">
+                <ng-container *ngFor="let item of listPortfolio; let i = index">
+                    <div class="col-sm-12 col-lg-6">
+                        <ghost-iframe [src]="item.src | safe" [title]="item.title" [allowFullscreen]="item.allowFullscreen">
+    
+                        </ghost-iframe>
+                    </div>
+                </ng-container>
             </div>
         </section>
         <!-- **** **** **** **** PORTFOLIO END **** **** **** ****-->
