@@ -36,7 +36,6 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
     title: 'Product preview component',
     allowFullscreen: true
   }];
-  // intervalID = undefined;
   arrString = ['A Fullstack Web Engineer', 'A Javascript Lover', 'A Minimalist', 'A Book Reviewer'];
 
   indexInterval = 0;
@@ -46,10 +45,6 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.yearOlds = new Date().getFullYear() - 1996;
-    // this.intervalID = setInterval(_ => {
-    //   this.indexInterval = (this.indexInterval + 1) % 4
-    // }, 1500);
-    // window.onbeforeunload = () => this.ngOnDestroy();
     this.contactForm = this.formBuilder.group({
       name: [null, Validators.required],
       email: [null, Validators.required],
@@ -57,7 +52,6 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
       message: [null, Validators.required],
 
     });
-    // console.log(this.socketService.socket);
   }
   ngAfterViewInit(): void {
     this.heights = [
@@ -67,7 +61,6 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
       this.portfolioElement.nativeElement.offsetTop,
       this.contactElement.nativeElement.offsetTop
     ];
-    // console.log(this.heights);
   }
   sendMessageToMe(form: NgForm) {
     this.isRunning = true;
@@ -97,14 +90,8 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
 
   }
 
-  // @HostListener('window:scroll', ['$event'])
   checkOffsetTop(event) {
-    // if (this.debounceID) {
-    //   clearTimeout(this.debounceID);
-    // }
-    // this.debounceID = setTimeout(_ => {
     const val = this.aboutMeContent.nativeElement.scrollTop;
-    // console.log(this.heights, val);
     if (val >= this.heights[0] && val < this.heights[1]) {
       this.currentActive = 0;
     } else if (val >= this.heights[1] && val < this.heights[2]) {
@@ -114,7 +101,6 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
     } else {
       this.currentActive = 0;
     }
-    // }, 50);
   }
 
   openAD() {
