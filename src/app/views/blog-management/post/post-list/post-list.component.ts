@@ -7,6 +7,7 @@ import { Post } from '@models/_index';
 import { PostService } from '@services/_index';
 import * as dateFns from 'date-fns';
 import { POST_STATUS, POST_TYPE } from '@app/_shares/enum';
+import { PostSaveWrapper } from '../post-edit/post-edit.component';
 
 
 @Component({
@@ -240,7 +241,7 @@ export class PostListComponent implements OnInit {
         });
     });
   }
-  saveItem(e) {
+  saveItem({ item, isBack }: PostSaveWrapper) {
     const callback = () => {
       this.itemSelected = {};
       this.router.navigate(
@@ -252,9 +253,9 @@ export class PostListComponent implements OnInit {
         });
     }
 
-    this.postService.updatePost(e.id, e)
+    this.postService.updatePost(item.id, item)
       .subscribe((res: any) => {
-        if (callback) {
+        if (isBack && callback) {
           callback();
         }
       }, err => {

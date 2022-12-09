@@ -82,7 +82,7 @@
         </mat-form-field> -->
     </div>
     <div class="col-md-4">
-        <button mat-raised-button type="button" (click)="saveItem()" class="btn btn-info pull-right btn-w100">
+        <button mat-raised-button type="button" (click)="saveAndBack()" class="btn btn-info pull-right btn-w100">
             <i class="material-icons">save</i>
             Save & Back
         </button>
@@ -103,7 +103,7 @@
             <mat-tab label="Editor">
                 <docu-editor class="editable wd100" (save)="itemSelected.contentGhostEditor = $event"
                     [documentation]="itemSelected.contentGhostEditor"
-                    [ngClass]="{'split-horizontal': this.isSplitHorizontal}" (blur)="saveItem()">
+                    [ngClass]="{'split-horizontal': this.isSplitHorizontal}" (blur)="saveOnly()">
                 </docu-editor>
             </mat-tab>
             <mat-tab label="Preview">
@@ -117,7 +117,7 @@
         <mat-tab-group>
             <mat-tab label="Markdown">
                 <textarea type="text" [(ngModel)]="itemSelected.content" class="editable wd100"
-                    [ngClass]="{ 'split-horizontal': this.isSplitHorizontal }" (blur)="saveItem()" autosize
+                    [ngClass]="{ 'split-horizontal': this.isSplitHorizontal }" (blur)="saveOnly()" autosize
                     [minRows]="1" [useImportant]="true">
                                     </textarea>
             </mat-tab>
@@ -131,7 +131,7 @@
     </ng-template>
 </div>
 
-<button mat-raised-button type="button" (click)="saveItem()" class="btn btn-info pull-right btn-w100">
+<button mat-raised-button type="button" (click)="saveAndBack()" class="btn btn-info pull-right btn-w100">
     <i class="material-icons">save</i>
     Save & Back
 </button>

@@ -92,6 +92,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
 
   checkOffsetTop(event) {
     const val = this.aboutMeContent.nativeElement.scrollTop;
+    // console.log(val);
     if (val >= this.heights[0] && val < this.heights[1]) {
       this.currentActive = 0;
     } else if (val >= this.heights[1] && val < this.heights[2]) {
@@ -101,6 +102,8 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
     } else {
       this.currentActive = 0;
     }
+
+    // console.log(this.currentActive);
   }
 
   openAD() {

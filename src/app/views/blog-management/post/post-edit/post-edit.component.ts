@@ -6,6 +6,10 @@ import { DOCUMENT } from '@angular/common';
 import { TagService, CategoryService, FileService } from '@app/_services/_index';
 import { compareWithFunc, showNoti } from '@app/_shares/common';
 import { Observable } from 'rxjs/Observable';
+export interface PostSaveWrapper  {
+  item: Post;
+  isBack: boolean;
+}
 
 @Component({
   selector: 'post-edit',
@@ -15,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
 export class PostEditComponent implements OnInit, OnDestroy {
 
   @Input() itemSelected = {} as any;
-  @Output() save: EventEmitter<Post> = new EventEmitter<Post>();
+  @Output() save: EventEmitter<PostSaveWrapper> = new EventEmitter<PostSaveWrapper>();
 
   // old
   s;
@@ -89,9 +93,14 @@ export class PostEditComponent implements OnInit, OnDestroy {
       });
   }
 
-  saveItem() {
+  saveOnly() {
     this.unSave = false;
-    this.save.emit(this.itemSelected);
+    this.save.emit({ item: this.itemSelected, isBack: false });
+  }
+
+  saveAndBack() {
+    this.unSave = false;
+    this.save.emit({ item: this.itemSelected, isBack: true });
   }
   log() {
     console.log('this.itemSelected', this.itemSelected);
