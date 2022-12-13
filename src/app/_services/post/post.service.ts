@@ -27,11 +27,11 @@ export class PostService {
   }
 
   // khách xem post
-  getPost(id: any): Observable<Post> {
-    const url = `${apiUrl}/id/${id}`;
+  getPost(ref: String): Observable<Post> {
+    const url = `${apiUrl}/ref/${ref}`;
     return this.http.get<Post>(url).pipe(
-      tap(_ => this.log(`fetched post by id=${id}`)),
-      catchError(this.handleError<Post>(`getPost id=${id}`))
+      tap(_ => this.log(`fetched post by ref=${ref}`)),
+      catchError(this.handleError<Post>(`getPost ref=${ref}`))
     );
   }
 
