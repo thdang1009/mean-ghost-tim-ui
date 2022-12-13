@@ -48,6 +48,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
       this.meta.updateTag({ property: 'og:creator', content: creator });
       this.meta.updateTag({ property: 'og:image', content: img });
     });
+    window.onbeforeunload = () => this.ngOnDestroy();
   }
 
   ngOnDestroy(): void {
@@ -62,6 +63,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
     this.meta.removeTag('property="og:description"');
     this.meta.removeTag('property="og:creator"');
     this.meta.removeTag('property="og:image"');
+    this.titleService.setTitle('Ghost Site');
   }
 
   clapThisPost(e) {
