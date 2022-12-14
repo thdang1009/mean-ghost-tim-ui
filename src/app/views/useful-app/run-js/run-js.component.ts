@@ -126,11 +126,25 @@ export class RunJsComponent implements OnInit, OnDestroy {
       this.handleV1(code);
       // this.handleV2(code);
       this.saveOnLocal();
-      
+
     } catch (e) {
       showNoti(e, 'danger');
+    } finally {
+      this.isLoadingResults = false;
     }
-    this.isLoadingResults = false;
+  }
+
+  handleCmdCopy() {
+    this.isLoadingResults = true;
+    const code = this.codeModel.value;
+    try {
+      navigator.clipboard.writeText(code);
+      showNoti('Copied!', 'success');
+    } catch (e) {
+      showNoti(e, 'danger');
+    } finally {
+      this.isLoadingResults = false;
+    }
   }
 
   handleV1(code) {

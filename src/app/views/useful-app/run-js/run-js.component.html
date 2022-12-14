@@ -7,6 +7,11 @@
             <i class="material-icons">arrow_forward_ios</i>
             Run
         </button>
+        <button id="copy" mat-raised-button type="button" [disabled]="isLoadingResults"
+            class="btn btn-info pull-right btn-w100 btn-run" (click)="handleCmdCopy()">
+            <i class="material-icons">content_copy</i>
+            Copy
+        </button>
     </div>
     <div id="console" class="output scrollable">
         <ng-container *ngFor="let consoleValue of store;">
