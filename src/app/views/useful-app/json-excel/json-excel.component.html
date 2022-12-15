@@ -1,18 +1,18 @@
 <div *ngIf="mod === 'excelToJSON'" class="center drop-zone-container">
     <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)"
-        (onFileLeave)="fileLeave($event)" accept=".xlsx,.xls,.csv"
-        contentClassName="ghost-ngx-file-drop-content-style" multiple="false">
+        (onFileLeave)="fileLeave($event)" accept=".xlsx,.xls,.csv" contentClassName="ghost-ngx-file-drop-content-style"
+        multiple="false">
         <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-            Press the button or drag file here
+            <span class="span__drag-description">Press the button or drag file here</span>
             <button class="btn btn-info" type="button" (click)="openFileSelector()">Browse Files</button>
         </ng-template>
     </ngx-file-drop>
     <div class="upload-table">
         <table class="table">
             <thead>
-                <tr>
-                    <th>Name</th>
-                </tr>
+                <!-- <tr>
+                    <th>FileName</th>
+                </tr> -->
             </thead>
             <tbody class="upload-name-style">
                 <tr *ngFor="let item of files; let i=index">

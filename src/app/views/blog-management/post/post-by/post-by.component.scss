@@ -1,12 +1,11 @@
 
 .post-container {
     background-color: white;
-    padding: 20px 40px;
+    padding: 10px 20px;
 }
 
-@media (max-width: 991px) {
+@media (min-width: 992px) {
     .post-container {
-        // background-color: white;
-        padding: 10px 20px;
+        padding: 20px 40px;
     }
 }

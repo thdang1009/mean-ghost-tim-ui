@@ -237,19 +237,11 @@ app-am-chart {
     width: 100%;
 }
 
-.variable-binding.split-horizontal {
-    /* width: 100%; */
-}
-
 .variable-textarea {
     border: double #00000030 1px;
     border-radius: 8px;
     padding: 10px;
     width: 100%;
-}
-
-.variable-textarea.split-horizontal {
-    /* width: 100%; */
 }
 
 .material-icons.md-36 {
@@ -301,13 +293,15 @@ app-am-chart {
     flex-direction: column;
 }
 
-.back-to-hom-button {
+.div__back-to-home {
     color: #291312;
-    cursor: pointer;
     font-size: 1rem;
     margin-bottom: 0.5rem;
     padding: 0.5rem;
     transition: all 0.35s cubic-bezier(0.13, 0.43, 0.54, 1.82);
+}
+.div__back-to-home>a {
+    cursor: pointer;
 }
 
 app-donation {

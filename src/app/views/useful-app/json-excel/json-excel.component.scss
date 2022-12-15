@@ -49,8 +49,12 @@ ngx-file-drop {
     justify-content: center;
     align-items: center;
 }
-.upload-table {
-    
+.upload-table {}
+
+.span {
+    &__drag-description {
+        display: none;
+    }
 }
 
 
@@ -71,5 +75,9 @@ ngx-file-drop {
     .btn-responsive {
         width: auto;
     }
-
+    .span {
+        &__drag-description {
+            display: inline;
+        }
+    }
 }
