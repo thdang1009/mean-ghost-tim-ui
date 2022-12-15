@@ -22,7 +22,8 @@
                 </div>
                 <div style="margin-top: 1rem;">
                     <div class="tagging" *ngFor="let tag of item.tags">
-                        <a class="tagging__item" href="{{'/home?tag=' + tag.name}}">#{{tag.name}}</a>
+                        <a class="tagging__item" [routerLink]="'/home'"
+                            [queryParams]="{ tag: tag.name }">#{{tag.name}}</a>
                     </div>
                 </div>
             </header>
