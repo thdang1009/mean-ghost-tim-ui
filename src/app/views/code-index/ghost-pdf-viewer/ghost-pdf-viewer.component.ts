@@ -106,7 +106,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     const pageTarget = arr.reduce(findPreviousBookmark, min);
 
     if (!pageTarget || pageTarget === curPage) {
-      showNoti('No bookmark found!', 'warning');
+      showNoti('Not found! Can\'t go to previous bookmark', 'warning');
       return;
     }
 
@@ -129,7 +129,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     const pageTarget = arr.reduce(findNextBookmark, max);
 
     if (!pageTarget || pageTarget === curPage) {
-      showNoti('No bookmark found!', 'warning');
+      showNoti('Not found! Can\'t go to next bookmark', 'warning');
       return;
     }
 
