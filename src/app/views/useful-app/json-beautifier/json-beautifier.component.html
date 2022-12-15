@@ -1,5 +1,5 @@
 <json-editor id="json-editor-left" name="json-editor-left" class="json-editor-left" [options]="editorOptions"
-    [data]="initialData" (change)="showJson($event);">
+    [data]="initialData" (change)="showJson($event);" (scroll)="onScroll1($event)" #text1>
 </json-editor>
 <div class="json-controler">
     <button id="find-diff" mat-raised-button type="button" [disabled]="isLoadingResults"
@@ -9,6 +9,6 @@
     </button>
 </div>
 <json-editor id="json-editor-right" name="json-editor-right" class="json-editor-right" [options]="editorOptions2"
-    [data]="initialData2" (change)="showJson2($event);">
+    [data]="initialData2" (change)="showJson2($event);" (scroll)="onScroll2($event)" #text2>
 </json-editor>
 <!-- '<div>{{ visibleData | json }}</div> -->

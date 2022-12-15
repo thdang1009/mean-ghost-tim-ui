@@ -5,7 +5,7 @@
             <!-- <pre class="highlights" innerHTML="{{ highlights1 }}">
             </pre> -->
         </div>
-        <textarea #text1 class="ghost-text-area text-area-left" [(ngModel)]="visibleData1" (ngModelChange)="findDiff()"
+        <textarea #text1 name="text-area-left" class="ghost-text-area text-area-left" [(ngModel)]="visibleData1" (ngModelChange)="findDiff()"
             (scroll)="onScroll1($event)">
         </textarea>
     </div>
@@ -23,7 +23,7 @@
             <!-- <pre class="highlights" innerHTML="{{ highlights2 }}">
             </pre> -->
         </div>
-        <textarea #text2 class="ghost-text-area text-area-right" [(ngModel)]="visibleData2" (ngModelChange)="findDiff()"
+        <textarea #text2 name="text-area-right" class="ghost-text-area text-area-right" [(ngModel)]="visibleData2" (ngModelChange)="findDiff()"
             (scroll)="onScroll2($event)">
         </textarea>
     </div>

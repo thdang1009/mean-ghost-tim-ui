@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ExampleJSON } from '@helpers/fake.data';
 import { showNoti } from '@shares/common';
 import { SAVED_JSON, SAVED_JSON_2 } from '@shares/constant';
@@ -11,6 +11,8 @@ import diff from 'diff-sequences';
   styleUrls: ['./json-beautifier.component.scss']
 })
 export class JsonBeautifierComponent implements OnInit, OnDestroy {
+  @ViewChild('text1') text1: ElementRef;
+  @ViewChild('text2') text2: ElementRef;
 
   public editorOptions: JsonEditorOptions;
   public editorOptions2: JsonEditorOptions;
@@ -56,6 +58,55 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
     }
     this.visibleData2 = d;
   }
+  findDiff() {
+    this.isLoadingResults = true;
+    const result = this.callFindDiff() || [];
+    console.log(1, result);
+    const left = document.querySelectorAll('#json-editor-left .ace_line') || [];
+    const right = document.querySelectorAll('#json-editor-right .ace_line') || [];
+    // console.log(left, right);
+    let currentLineLeft = 0;
+    let currentLineRight = 0;
+    const coloredRight = [];
+    const coloredLeft = [];
+    for (let [flag, value] of result) {
+      const num = (value.match(/[\n]/gm) || []).length;
+      switch (flag) {
+        case 0:
+          for (let i = 0; i <= num; ++i) {
+            const thisRow = currentLineLeft + i;
+            if (!coloredLeft.includes(thisRow))
+              left[thisRow] && (left[thisRow].style.backgroundColor = 'white');
+          }
+          currentLineLeft += num;
+
+          for (let i = 0; i <= num; ++i) {
+            const thisRow = currentLineRight + i;
+            if (!coloredRight.includes(thisRow))
+              right[thisRow] && (right[thisRow].style.backgroundColor = 'white');
+          }
+          currentLineRight += num;
+          break;
+        case 1: // left less than right
+          for (let i = 0; i <= num; ++i) {
+            const thisRow = currentLineRight + i;
+            right[thisRow] && (right[thisRow].style.backgroundColor = '#BDDDFF');
+            coloredRight.push(thisRow);
+          }
+          currentLineRight += num;
+          break;
+        case -1: // left more than right
+          for (let i = 0; i <= num; ++i) {
+            const thisRow = currentLineLeft + i;
+            left[thisRow] && (left[thisRow].style.backgroundColor = '#BDDDFF');
+            coloredLeft.push(thisRow);
+          }
+          currentLineLeft += num;
+          break;
+      }
+      this.isLoadingResults = false;
+    }
+  }
 
   ngOnDestroy(): void {
     try {
@@ -66,11 +117,14 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
     }
   }
 
-  findDiff() {
+  callFindDiff() {
     const a = JSON.stringify(this.visibleData, null, 2);
     const b = JSON.stringify(this.visibleData2, null, 2);
-    // const a = ['a', 'b', 'c', 'd'];
-    // const b = ['a', 'b', 'd'];
+
+    let aIndex = 0;
+    let bIndex = 0;
+    const array = [];
+
     let count = 0;
     function isCommon(aIndex, bIndex) {
       return a[aIndex] === b[bIndex];
@@ -78,12 +132,40 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
     function foundSubsequence(nCommon, aCommon, bCommon) {
       // see examples
       ++count;
-      // console.log(nCommon, aCommon, bCommon);
-      // console.log(nCommon, aCommon, bCommon);
-      // console.log(nCommon, a[aCommon], b[bCommon]);
-      // console.log(nCommon, a.slice(aCommon, aCommon + nCommon));
-      console.log(nCommon, a.slice(bCommon, bCommon + nCommon));
+      if (aIndex !== aCommon) {
+        array.push([-1, a.slice(aIndex, aCommon)]); // delete is -1
+      }
+      if (bIndex !== bCommon) {
+        array.push([1, b.slice(bIndex, bCommon)]); // insert is 1
+      }
+
+      aIndex = aCommon + nCommon; // number of characters compared in a
+      bIndex = bCommon + nCommon; // number of characters compared in b
+      array.push([0, a.slice(aCommon, aIndex)]); // common is 0
     }
     diff(a.length, b.length, isCommon, foundSubsequence);
+
+    // After the last common subsequence, push remaining change items.
+    if (aIndex !== a.length) {
+      array.push([-1, a.slice(aIndex)]);
+    }
+    if (bIndex !== b.length) {
+      array.push([1, b.slice(bIndex)]);
+    }
+
+    return array;
+  }
+
+  onScroll1(e) {
+    console.log('scroll', e);
+    // change it to angular and element is 1
+    const scrollTop = this.text1.nativeElement.scrollTop;
+    this.text2.nativeElement.scrollTop = scrollTop;
+  }
+  onScroll2(e) {
+    console.log('scroll', e);
+    // change it to angular and element is 2
+    const scrollTop = this.text2.nativeElement.scrollTop;
+    this.text1.nativeElement.scrollTop = scrollTop;
   }
 }
