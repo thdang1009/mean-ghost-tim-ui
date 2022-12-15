@@ -247,6 +247,9 @@ app-am-chart {
 .material-icons.md-36 {
     font-size: 36px;
 }
+.visible-hidden {
+    visibility: hidden;
+}
 
 @keyframes spin {
     100% {
