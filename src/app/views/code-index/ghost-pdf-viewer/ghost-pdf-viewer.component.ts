@@ -104,6 +104,12 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     const arr = Array.from(this.bookmarks.keys());
     const min = Math.min(...arr);
     const pageTarget = arr.reduce(findPreviousBookmark, min);
+
+    if (!pageTarget || pageTarget === curPage) {
+      showNoti('No bookmark found!', 'warning');
+      return;
+    }
+
     // console.log('goto ' + pageTarget, arr);
     setTimeout(_ => {
       this.pdf.pdfViewer.scrollPageIntoView({
@@ -117,9 +123,16 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       const getThisValue = cur > curPage && cur <= last
       return getThisValue ? cur : last;
     }
+
     const arr = Array.from(this.bookmarks.keys());
     const max = Math.max(...arr);
     const pageTarget = arr.reduce(findNextBookmark, max);
+
+    if (!pageTarget || pageTarget === curPage) {
+      showNoti('No bookmark found!', 'warning');
+      return;
+    }
+
     // console.log('goto ' + pageTarget, arr);
     setTimeout(_ => {
       this.pdf.pdfViewer.scrollPageIntoView({
@@ -178,7 +191,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
 
   }
   loadComplete() {
-    showNoti('Document successfully loaded!', 'success', 300);
+    // showNoti('Document successfully loaded!', 'success', 300);
     setTimeout(_ => {
       if (this.savedPage) {
         this.pdf.pdfViewer.scrollPageIntoView({
