@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ExampleText, ExampleText2 } from '@helpers/fake.data';
 import { showNoti } from '@shares/common';
 import { SAVED_TEXT, SAVED_TEXT_2 } from '@shares/constant';
@@ -22,7 +22,7 @@ export class TextDiffComponent implements OnInit, OnDestroy {
   public visibleData2: any;
   public highlights2: any;
   isLoadingResults = false;
-  constructor() { }
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
 

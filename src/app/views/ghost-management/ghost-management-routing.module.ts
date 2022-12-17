@@ -9,6 +9,7 @@ import { FileListComponent } from './file/file-list/file-list.component';
 import { MoneyComponent } from './money/money.component';
 import { NoteComponent } from './note/note.component';
 import { TodoTodayComponent } from './todo-today/todo-today.component';
+import { GuestMessageComponent } from './guest-message/guest-message.component';
 
 const routes: Routes = [
   { path: 'todo-today', component: TodoTodayComponent, canActivate: [LoginGuard] },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'book', component: BookComponent, canActivate: [AdminGuard] },
   { path: 'file', component: AddFileComponent, canActivate: [AdminGuard] },
   { path: 'file-list', component: FileListComponent, canActivate: [AdminGuard] },
+  { path: 'guest-message', component: GuestMessageComponent, canActivate: [GrandAdminGuard] },
 ];
 
 @NgModule({

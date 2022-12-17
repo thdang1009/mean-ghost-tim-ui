@@ -15,3 +15,4 @@ export * from './category/category.service';
 export * from './book/book.service';
 export * from './file/file.service';
 export * from './socketio/socketio.service';
+export * from './guest-message/guest-message.service';

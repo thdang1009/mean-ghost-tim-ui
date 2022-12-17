@@ -18,6 +18,7 @@ import { BookComponent } from './book/book.component';
 import { AddFileComponent } from './file/add-file/add-file.component';
 import { FileListComponent } from './file/file-list/file-list.component';
 import { ChooseFileComponent } from './file/choose-file/choose-file.component';
+import { GuestMessageComponent } from './guest-message/guest-message.component';
 @NgModule({
   declarations: [
     MoneyComponent,
@@ -27,7 +28,8 @@ import { ChooseFileComponent } from './file/choose-file/choose-file.component';
     BookComponent,
     AddFileComponent,
     FileListComponent,
-    ChooseFileComponent
+    ChooseFileComponent,
+    GuestMessageComponent
   ],
   imports: [
     CommonModule,

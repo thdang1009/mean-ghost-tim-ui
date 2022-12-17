@@ -40,7 +40,8 @@ export const ROUTES: RouteInfo[] = [
       { path: 'tool/money', title: 'Money', icon: 'attach_money', class: '', permission: 'isGrandAdmin' },
       { path: 'tool/book', title: 'Book', icon: 'library_books', class: '', permission: 'isAdmin' },
       { path: 'tool/file', title: 'Add File', icon: 'post_add', class: '', permission: 'isAdmin' },
-      { path: 'tool/file-list', title: 'All Files', icon: 'picture_as_pdf', class: '', permission: 'isAdmin' }
+      { path: 'tool/file-list', title: 'All Files', icon: 'picture_as_pdf', class: '', permission: 'isAdmin' },
+      { path: 'tool/guest-message', title: 'All Guest Message', icon: 'picture_as_pdf', class: '', permission: 'isGrandAdmin' }
       // { path: 'tool/food', title: 'Food', icon: 'lunch_dining', class: '', permission: 'isMember' },
     ]
   },
