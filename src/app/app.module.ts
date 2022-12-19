@@ -5,6 +5,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 // my codes
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { SocketioService } from './_services/_index';
   imports: [
     AnchorModule,
     BrowserAnimationsModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -74,6 +76,23 @@ import { SocketioService } from './_services/_index';
     // third party service
     SocketioService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+
+    AnchorModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ComponentsModule,
+    RouterModule,
+    AppRoutingModule,
+    CommonModule,
+    // third party
+    CodeEditorModule,
+    NgxGoogleAnalyticsModule,
+    MarkdownModule,
+  ]
 })
 export class AppModule { }
