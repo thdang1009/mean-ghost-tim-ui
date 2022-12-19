@@ -502,6 +502,15 @@ mark {
     width: fit-content;
 }
 
+.div__radio-label {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+.div__radio-label>label {
+    margin: 0;
+}
+
 /* 
     to remove css
 */

@@ -7,16 +7,19 @@ import { UserListComponent } from './user-list/user-list.component';
 const routes: Routes = [
   {
     path: '',
+    title: 'Dashboard',
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
     path: 'add-user',
+    title: 'Add User',
     component: AddUserComponent,
     canActivate: [GrandAdminGuard]
   },
   {
     path: 'user-list',
+    title: 'List User',
     component: UserListComponent,
     canActivate: [GrandAdminGuard]
   },

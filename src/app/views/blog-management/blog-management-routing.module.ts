@@ -10,12 +10,12 @@ import { AddTagComponent } from './tag/add-tag/add-tag.component';
 import { TagListComponent } from './tag/tag-list/tag-list.component';
 
 const routes: Routes = [
-  { path: 'post-list', component: PostListComponent, canActivate: [LoginGuard] },
-  { path: 'blogs/:ref', component: PostDetailComponent, canActivate: [] },
-  { path: 'tag-list', component: TagListComponent, canActivate: [AdminGuard] },
-  { path: 'tag', component: AddTagComponent, canActivate: [AdminGuard] },
-  { path: 'category-list', component: CategoryListComponent, canActivate: [AdminGuard] },
-  { path: 'category', component: AddCategoryComponent, canActivate: [AdminGuard] },
+  { path: 'post-list', title: 'List Post', component: PostListComponent, canActivate: [LoginGuard] },
+  { path: 'blogs/:ref', title: 'Ghost\'s Post', component: PostDetailComponent, canActivate: [] },
+  { path: 'tag-list', title: 'List Tag', component: TagListComponent, canActivate: [AdminGuard] },
+  { path: 'tag', title: 'Add/Update Tag', component: AddTagComponent, canActivate: [AdminGuard] },
+  { path: 'category-list', title: 'List Category', component: CategoryListComponent, canActivate: [AdminGuard] },
+  { path: 'category', title: 'Add/Update Category', component: AddCategoryComponent, canActivate: [AdminGuard] },
 ];
 
 @NgModule({

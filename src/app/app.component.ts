@@ -3,6 +3,9 @@ import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
 import { AnalyticService, AuthService, SocketioService } from './_services/_index';
 import { handleSocket } from './_shares/common';
 import { GUEST_MESSAGE_RESPONSE } from './_shares/constant';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -19,6 +22,8 @@ export class AppComponent implements OnInit {
     private analyticService: AnalyticService,
     private socketService: SocketioService,
     private authService: AuthService,
+    private router: Router,
+    private titleService: Title
   ) {
   }
 
@@ -31,7 +36,35 @@ export class AppComponent implements OnInit {
       .subscribe(_ => { }, _ => { });
     this.socketService.setupSocketConnection();
     this.checkSocket();
+    this.initAutoTitle();
   }
+
+  initAutoTitle() {
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(() => {
+          let route: ActivatedRoute = this.router.routerState.root;
+          let routeTitle = '';
+          while (route!.firstChild) {
+            route = route.firstChild;
+          }
+          if (route.snapshot.data['title']) {
+            routeTitle = route!.snapshot.data['title'];
+          }
+          console.log('debug, routeTitle=', routeTitle);
+          return routeTitle;
+        })
+      )
+      .subscribe((title: string) => {
+        console.log('debug, title=', title);
+        if (title) {
+          this.titleService.setTitle(`${title}`);
+        }
+      });
+  }
+
+
   ngOnDestroy() {
     this.socketService.disconnect();
   }

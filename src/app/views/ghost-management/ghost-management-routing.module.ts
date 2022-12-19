@@ -12,13 +12,13 @@ import { TodoTodayComponent } from './todo-today/todo-today.component';
 import { GuestMessageComponent } from './guest-message/guest-message.component';
 
 const routes: Routes = [
-  { path: 'todo-today', component: TodoTodayComponent, canActivate: [LoginGuard] },
-  { path: 'note', component: NoteComponent, canActivate: [LoginGuard] },
-  { path: 'money', component: MoneyComponent, canActivate: [GrandAdminGuard] },
-  { path: 'book', component: BookComponent, canActivate: [AdminGuard] },
-  { path: 'file', component: AddFileComponent, canActivate: [AdminGuard] },
-  { path: 'file-list', component: FileListComponent, canActivate: [AdminGuard] },
-  { path: 'guest-message', component: GuestMessageComponent, canActivate: [GrandAdminGuard] },
+  { path: 'todo-today', title: `Todo Today`, component: TodoTodayComponent, canActivate: [LoginGuard] },
+  { path: 'note', title: `Note`, component: NoteComponent, canActivate: [LoginGuard] },
+  { path: 'money', title: `Money`, component: MoneyComponent, canActivate: [GrandAdminGuard] },
+  { path: 'book', title: `Book`, component: BookComponent, canActivate: [AdminGuard] },
+  { path: 'file', title: `Add/Update File`, component: AddFileComponent, canActivate: [AdminGuard] },
+  { path: 'file-list', title: `List File`, component: FileListComponent, canActivate: [AdminGuard] },
+  { path: 'guest-message', title: `List Guest Message`, component: GuestMessageComponent, canActivate: [GrandAdminGuard] },
 ];
 
 @NgModule({

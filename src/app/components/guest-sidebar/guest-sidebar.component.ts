@@ -12,20 +12,36 @@ declare interface RouteInfo {
   // permission: string;
 }
 export const ROUTES: RouteInfo[] = [
-  // { path: 'index/angular-index', title: 'Angular', icon: 'person_add', class: ''},
-  // { path: 'index/html-index', title: 'HTML', icon: 'person_add', class: ''},
-  // { path: 'index/css-index', title: 'Css', icon: 'person_add', class: ''},
-  // { path: 'index/javascript-index', title: 'Javascript', icon: 'person_add', class: ''},
-  // { path: 'index/git-index', title: 'GIT', icon: 'person_add', class: ''},
-  // { path: 'index/nodejs-index', title: 'NodeJS', icon: 'person_add', class: ''},
-  // { path: 'index/mongodb-index', title: 'MongoDB', icon: 'person_add', class: ''},
-  // { path: 'index/react-index', title: 'Add User', icon: 'person_add', class: ''},
-  { path: 'useful-app/json-beautifier', title: 'JSON Beautifier', icon: 'code', class: '' },
-  // { path: 'useful-app/am-chart', title: 'Chart Generator', icon: 'bar_chart', class: '' },
-  { path: 'useful-app/json-excel', title: 'JSON Excel', icon: 'code', class: '' },
-  { path: 'useful-app/text-diff', title: 'Text Diff', icon: 'description', class: '' },
-  { path: 'useful-app/run-js', title: 'RunJS', icon: 'javascript', class: '' },
-  { path: 'admin/dashboard', title: 'Amin', icon: 'dashboard', class: '' }
+  {
+    path: 'useful-app/json-beautifier',
+    title: 'JSON Beautifier',
+    icon: 'code',
+    class: ''
+  },
+  {
+    path: 'useful-app/json-excel',
+    title: 'JSON Excel',
+    icon: 'code',
+    class: ''
+  },
+  {
+    path: 'useful-app/text-diff',
+    title: 'Text Diff',
+    icon: 'description',
+    class: ''
+  },
+  {
+    path: 'useful-app/run-js',
+    title: 'Javascript\'s playground',
+    icon: 'javascript',
+    class: ''
+  },
+  {
+    path: 'admin/dashboard',
+    title: 'Amin',
+    icon: 'dashboard',
+    class: ''
+  }
 ];
 
 @Component({

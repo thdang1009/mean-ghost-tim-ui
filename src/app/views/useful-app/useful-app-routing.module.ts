@@ -6,10 +6,26 @@ import { RunJsComponent } from './run-js/run-js.component';
 import { TextDiffComponent } from './text-diff/text-diff.component';
 
 const routes: Routes = [
-  { path: 'run-js', component: RunJsComponent },
-  { path: 'json-beautifier', component: JsonBeautifierComponent },
-  { path: 'json-excel', component: JsonExcelComponent },
-  { path: 'text-diff', component: TextDiffComponent },
+  {
+    path: 'run-js',
+    title: 'Javascript\'s playground',
+    component: RunJsComponent
+  },
+  {
+    path: 'json-beautifier',
+    title: 'JSON Beautifier',
+    component: JsonBeautifierComponent
+  },
+  {
+    path: 'json-excel',
+    title: 'JSON ⇋ Excel',
+    component: JsonExcelComponent
+  },
+  {
+    path: 'text-diff',
+    title: 'Text diff',
+    component: TextDiffComponent
+  },
 ];
 
 @NgModule({

@@ -15,13 +15,37 @@ import { PostDetailComponent } from '@app/views/blog-management/post/post-detail
 // import { JsonBeautifierComponent } from '@app/views/json-beautifier/json-beautifier.component';
 
 export const GuestLayoutRoutes: Routes = [
-    { path: 'blogs/:ref', component: PostDetailComponent },
+    {
+        path: 'blogs/:ref',
+        title: 'Ghost\'s Posts',
+        component: PostDetailComponent,
+    },
     // { path: 'post-by', component: PostByComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'login', component: LoginComponent, canActivate: [NotLoginGuard] },
-    { path: 'logout', component: LogoutComponent },
-    { path: 'register', component: RegisterComponent, canActivate: [NotLoginGuard] },
-    { path: 'donation', component: DonationComponent },
+    {
+        path: 'home',
+        title: 'Ghost\'s Blogs',
+        component: HomeComponent
+    },
+    {
+        path: 'login',
+        title: 'Login',
+        component: LoginComponent, canActivate: [NotLoginGuard]
+    },
+    {
+        path: 'logout',
+        title: 'Logout',
+        component: LogoutComponent
+    },
+    {
+        path: 'register',
+        title: 'Register',
+        component: RegisterComponent, canActivate: [NotLoginGuard]
+    },
+    {
+        path: 'donation',
+        title: 'Donate',
+        component: DonationComponent
+    },
     {
         path: 'me',
         children: [{

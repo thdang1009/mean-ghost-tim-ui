@@ -5,9 +5,9 @@ import { DownloadMyCvComponent } from './download-my-cv/download-my-cv.component
 import { HireMeComponent } from './hire-me/hire-me.component';
 
 const routes: Routes = [
-  { path: 'about-me', component: AboutMeComponent, canActivate: [] },
-  { path: 'hire-me', component: HireMeComponent, canActivate: [] },
-  { path: 'download-my-cv', component: DownloadMyCvComponent, canActivate: [] },
+  { path: 'about-me', title: 'About Ghost', component: AboutMeComponent, canActivate: [] },
+  { path: 'hire-me', title: 'Hire Ghost', component: HireMeComponent, canActivate: [] },
+  { path: 'download-my-cv', title: 'Download my CV', component: DownloadMyCvComponent, canActivate: [] },
 ];
 
 @NgModule({

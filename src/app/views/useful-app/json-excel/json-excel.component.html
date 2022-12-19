@@ -26,15 +26,15 @@
     [options]="editorOptions" [data]="initialData" (change)="showJson($event);">
 </json-editor>
 <div class="json-controler">
-    <div>
+    <div class="div__radio-label">
         <input id="json-to-excel" type="radio" class="radio" [value]="'jsonToExcel'" name="radio-name"
             [(ngModel)]="mod">
-        <label for="json-to-excel">JSON Array to Excel</label>
+        <label for="json-to-excel">&nbsp;JSON Array to Excel</label>
     </div>
-    <div>
+    <div class="div__radio-label">
         <input id="excel-to-json" type="radio" class="radio" [value]="'excelToJSON'" name="radio-name"
             [(ngModel)]="mod">
-        <label for="excel-to-json">Excel to JSON</label>
+        <label for="excel-to-json">&nbsp;Excel to JSON</label>
     </div>
 
     <button id="execute" mat-raised-button type="button" [disabled]="isLoadingResults"
