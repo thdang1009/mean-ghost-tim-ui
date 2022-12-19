@@ -38,15 +38,21 @@ export class GuestSidebarComponent implements OnInit {
   menuItems: any[];
   isLogined = false;
   stringToSearch = '';
+  isAdminOrGrandAdmin = false;
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) {
-    this.isLogined = authService.isLogin();
+    this.isLogined = this.authService.isLogin();
+    this.isAdminOrGrandAdmin = this.authService.isAdmin() || this.authService.isGrandAdmin();
     if (this.isLogined) {
     }
   }
 
   ngOnInit(): void {
 
-    this.menuItems = ROUTES;
+    let tempMenu = ROUTES;
+    if (this.isAdminOrGrandAdmin) {
+      tempMenu = ROUTES.filter(el => el && el.path !== 'admin/dashboard');
+    }
+    this.menuItems = tempMenu;
   }
   _isInPDFView() {
     return isInPDFView();
