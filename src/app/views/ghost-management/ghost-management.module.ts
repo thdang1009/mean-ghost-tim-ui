@@ -5,7 +5,6 @@ import { GhostManagementRoutingModule } from './ghost-management-routing.module'
 import { MoneyComponent } from './money/money.component';
 import { NoteComponent } from './note/note.component';
 import { TodoTodayComponent } from './todo-today/todo-today.component';
-import { FoodComponent } from './food/food.component';
 import { SharedModule } from '@shares/shared-module.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ReuseComponentModule } from '@app/_reuse/reuse.module';
@@ -24,7 +23,6 @@ import { GuestMessageComponent } from './guest-message/guest-message.component';
     MoneyComponent,
     NoteComponent,
     TodoTodayComponent,
-    FoodComponent,
     BookComponent,
     AddFileComponent,
     FileListComponent,

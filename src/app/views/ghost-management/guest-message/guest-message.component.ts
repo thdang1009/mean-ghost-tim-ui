@@ -1,8 +1,6 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { showNoti } from '@shares/common';
 import { GuestMessage } from '@models/_index';
 import { GuestMessageService } from '@services/_index';
 import * as dateFns from 'date-fns';
@@ -76,13 +74,10 @@ export class GuestMessageComponent implements OnInit {
     private guestMessageService: GuestMessageService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private ref: ChangeDetectorRef,
     private formBuilder: UntypedFormBuilder
   ) { }
 
   ngOnInit() {
-    this.searchGuestMessage();
-
     this.detailForm = this.formBuilder.group({
       id: [null],
       message: [null, Validators.required],
@@ -90,30 +85,53 @@ export class GuestMessageComponent implements OnInit {
       subject: [null, Validators.required],
       email: [null, Validators.required]
     });
+    this.activatedRoute.queryParams.subscribe(params => {
+      const id = Number(params.id);
+      if (id) {
+        this.guestMessageService.getGuestMessage(id)
+          .subscribe(guestMessage => {
+            this.initFormWithData(guestMessage);
+            this.itemSelected = guestMessage;
+          });
+      } else {
+        this.itemSelected = undefined;
+        this.searchGuestMessage();
+      }
+    });
+
   }
 
-  searchGuestMessage() {
-    this.getGuestMessage();
+  searchGuestMessage(id = undefined) {
+    this.getGuestMessage(id);
   }
 
   chooseThisItem(item) {
-    this.initFormWithData(item);
     this.itemSelected = item;
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: { id: item.id },
+        queryParamsHandling: 'merge'
+      });
   }
 
   initFormWithData(data = {} as any) {
-    this.isLoadingResults = true;
     this.detailForm.patchValue(data);
-    this.isLoadingResults = false;
   }
 
-  getGuestMessage() {
+  getGuestMessage(id = undefined) {
     const req = {
     }
     this.isLoadingResults = true;
     this.guestMessageService.getGuestMessages(req)
       .subscribe((res: any) => {
         this.data = res;
+        if (id) {
+          const item = res.filter(el => el.id === id);
+          this.itemSelected = item;
+          this.initFormWithData(item);
+        }
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;

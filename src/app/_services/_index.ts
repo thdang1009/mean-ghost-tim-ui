@@ -4,7 +4,6 @@ export * from './home/home.service';
 export * from './job/job.service';
 export * from './note/note.service';
 export * from './todo-today/todo-today.service';
-export * from './meal/meal.service';
 export * from './issue/issue.service';
 export * from './user/user.service';
 export * from './analytic/analytic.service';

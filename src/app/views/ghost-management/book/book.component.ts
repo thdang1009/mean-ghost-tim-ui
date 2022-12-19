@@ -149,7 +149,7 @@ export class BookComponent implements OnInit {
       to: toDate || undefined,
     }
     this.isLoadingResults = true;
-    this.bookService.getMyBook()
+    this.bookService.getBooks()
       .subscribe((res: Book[]) => {
         this.data = res.map(el => ({
           ...el,
@@ -217,6 +217,6 @@ export class BookComponent implements OnInit {
     this.saveThenBack(newBook);
   }
   getListFileOnServer() {
-    this.bookService.getMyBook
+    this.bookService.getBooks
   }
 }

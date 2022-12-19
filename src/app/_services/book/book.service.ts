@@ -34,15 +34,15 @@ export class BookService {
     );
   }
   getBook(id): Observable<Book[]> {
-    const url = `${apiUrl}/id/${id}`;
+    const url = `${apiUrl}/${id}`;
     return this.http.get<Book[]>(url).pipe(
       tap(_ => console.log(`fetched my book`)),
       catchError(this.handleError<Book[]>(`getMyBook`))
     );
   }
 
-  getMyBook(): Observable<Book[]> {
-    const url = `${apiUrl}/my-book`;
+  getBooks(): Observable<Book[]> {
+    const url = `${apiUrl}`;
     return this.http.get<Book[]>(url).pipe(
       tap(_ => console.log(`fetched my book`)),
       catchError(this.handleError<Book[]>(`getMyBook`))

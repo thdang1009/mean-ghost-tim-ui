@@ -36,33 +36,25 @@ export const ROUTES: RouteInfo[] = [
     path: 'tool', title: 'Tool', icon: 'handyman', class: '', permission: 'isMember', hasChild: true,
     children: [
       { path: 'tool/todo-today', title: 'Todo Today', icon: 'checklist_rtl', class: '', permission: 'isMember' },
-      { path: 'tool/note', title: 'Note', icon: 'library_books', class: '', permission: 'isMember' },
+      { path: 'tool/note', title: 'Note', icon: 'notes', class: '', permission: 'isMember' },
       { path: 'tool/money', title: 'Money', icon: 'attach_money', class: '', permission: 'isGrandAdmin' },
       { path: 'tool/book', title: 'Book', icon: 'library_books', class: '', permission: 'isAdmin' },
       { path: 'tool/file', title: 'Add File', icon: 'post_add', class: '', permission: 'isAdmin' },
-      { path: 'tool/file-list', title: 'All Files', icon: 'picture_as_pdf', class: '', permission: 'isAdmin' },
-      { path: 'tool/guest-message', title: 'All Guest Message', icon: 'checklist_rtl', class: '', permission: 'isGrandAdmin' }
+      { path: 'tool/file-list', title: 'List Files', icon: 'picture_as_pdf', class: '', permission: 'isAdmin' },
+      { path: 'tool/guest-message', title: 'List Guest Message', icon: 'list', class: '', permission: 'isGrandAdmin' }
       // { path: 'tool/food', title: 'Food', icon: 'lunch_dining', class: '', permission: 'isMember' },
     ]
   },
   {
     path: 'blog', title: 'Blog', icon: 'library_books', class: '', permission: 'isMember', hasChild: true,
     children: [
-      { path: 'blog/post-list', title: 'All Post', icon: 'library_books', class: '', permission: 'isMember' },
-      // { path: 'blog/post-add', title: 'Add A Post', icon: 'post_add', class: '', permission: 'isAdmin' },
-      { path: 'blog/tag-list', title: 'All Tag', icon: 'library_books', class: '', permission: 'isAdmin' },
-      { path: 'blog/tag', title: 'Add A Tag', icon: 'post_add', class: '', permission: 'isAdmin' },
-      { path: 'blog/category-list', title: 'All Category', icon: 'library_books', class: '', permission: 'isAdmin' },
-      { path: 'blog/category', title: 'Add A Category', icon: 'post_add', class: '', permission: 'isAdmin' }
+      { path: 'blog/post-list', title: 'List Post', icon: 'list', class: '', permission: 'isMember' },
+      { path: 'blog/tag-list', title: 'List Tag', icon: 'list', class: '', permission: 'isAdmin' },
+      { path: 'blog/tag', title: 'Add A Tag', icon: 'local_offer', class: '', permission: 'isAdmin' },
+      { path: 'blog/category-list', title: 'List Category', icon: 'list', class: '', permission: 'isAdmin' },
+      { path: 'blog/category', title: 'Add A Category', icon: 'category', class: '', permission: 'isAdmin' }
     ]
   }
-  // { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
-  // { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
-  // { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-  // { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
-  // { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-  // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-  // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 ];
 
 @Component({

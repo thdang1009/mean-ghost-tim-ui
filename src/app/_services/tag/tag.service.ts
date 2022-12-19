@@ -23,7 +23,7 @@ export class TagService {
   }
 
   getTag(id: any): Observable<Tag> {
-    const url = `${apiUrl}/id/${id}`;
+    const url = `${apiUrl}/${id}`;
     return this.http.get<Tag>(url).pipe(
       tap(_ => this.log(`fetched tag by id=${id}`)),
       catchError(this.handleError<Tag>(`getTag id=${id}`))

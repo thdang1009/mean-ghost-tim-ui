@@ -5,12 +5,12 @@ import { AdminGuard } from '@app/views/auth-management/auth/admin.guard';
 import { GrandAdminGuard } from '@app/views/auth-management/auth/grand-admin.guard';
 import { LoginGuard } from '@app/views/auth-management/auth/login.guard';
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard] },
+    { path: 'dashboard', title: 'Dashboard', component: DashboardComponent, canActivate: [LoginGuard] },
     {
         path: 'user-management',
         children: [{
             path: '',
-            loadChildren: () => import('../../views/user-management/user-management.module').then(m =>  m.UserManagementModule ),
+            loadChildren: () => import('../../views/user-management/user-management.module').then(m => m.UserManagementModule),
             canActivate: [GrandAdminGuard]
         }]
     },
@@ -18,7 +18,7 @@ export const AdminLayoutRoutes: Routes = [
         path: 'blog',
         children: [{
             path: '',
-            loadChildren: () => import('../../views/blog-management/blog-management.module').then(m => m.BlogManagementModule ),
+            loadChildren: () => import('../../views/blog-management/blog-management.module').then(m => m.BlogManagementModule),
             canActivate: [LoginGuard]
         }]
     },
@@ -26,7 +26,7 @@ export const AdminLayoutRoutes: Routes = [
         path: 'tool',
         children: [{
             path: '',
-            loadChildren: () => import('../../views/ghost-management/ghost-management.module').then(m => m.GhostManagementModule ),
+            loadChildren: () => import('../../views/ghost-management/ghost-management.module').then(m => m.GhostManagementModule),
             canActivate: [LoginGuard]
         }]
     }
