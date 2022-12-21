@@ -7,12 +7,6 @@ import { LogoutComponent } from '@app/views/auth-management/logout/logout.compon
 import { ConfirmEmailComponent } from '@app/views/user-management/confirm-email/confirm-email.component';
 import { DonationComponent } from '@app/views/donation/donation.component';
 import { PostDetailComponent } from '@app/views/blog-management/post/post-detail/post-detail.component';
-// import { PostByComponent } from '@app/views/blog-management/post/post-by/post-by.component';
-// import { AngularIndexComponent } from '@app/views/angular-index/angular-index.component';
-// import { CssIndexComponent } from '@app/views/css-index/css-index.component';
-// import { HtmlIndexComponent } from '@app/views/html-index/html-index.component';
-// import { RunJsComponent } from '@app/views/run-js/run-js.component';
-// import { JsonBeautifierComponent } from '@app/views/json-beautifier/json-beautifier.component';
 
 export const GuestLayoutRoutes: Routes = [
     {
@@ -20,7 +14,6 @@ export const GuestLayoutRoutes: Routes = [
         title: 'Ghost\'s Posts',
         component: PostDetailComponent,
     },
-    // { path: 'post-by', component: PostByComponent },
     {
         path: 'home',
         title: 'Ghost\'s Blogs',

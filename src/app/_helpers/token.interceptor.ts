@@ -28,13 +28,6 @@ export class TokenInterceptor implements HttpInterceptor {
         }
       });
     }
-    // if (!request.headers.has('Content-Type')) {
-    //   request = request.clone({
-    //     setHeaders: {
-    //       'content-type': 'application/json'
-    //     }
-    //   });
-    // }
     request = request.clone({
       headers: request.headers.set('Accept', 'application/json')
     });
@@ -51,7 +44,7 @@ export class TokenInterceptor implements HttpInterceptor {
           this.router.navigate(['login']);
         }
         if (error.status === 400) {
-          // alert(error.error.msg);
+          // TODO document why this block is empty
         }
         showNoti(`Error: ${error.error.msg || error.message}`, 'danger');
         return throwError(error);

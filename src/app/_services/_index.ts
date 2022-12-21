@@ -1,6 +1,5 @@
 export * from './alert/alert.service';
 export * from './auth/auth.service';
-export * from './home/home.service';
 export * from './job/job.service';
 export * from './note/note.service';
 export * from './todo-today/todo-today.service';

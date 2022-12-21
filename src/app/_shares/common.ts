@@ -1,5 +1,6 @@
 import { FePDFInfo } from "@app/views/code-index/dymanic-index/dymanic-index.component";
 import { TDTD_STATUS } from "./enum";
+import { Observable, of } from "rxjs";
 
 
 declare var $: any;
@@ -164,4 +165,22 @@ export function debounce(func, timeout = 300) {
     clearTimeout(timer);
     timer = setTimeout(() => { func.apply(this, args); }, timeout);
   };
+}
+
+export function handleError<T>(operation = 'operation', result?: T) {
+  return (error: any): Observable<T> => {
+
+    console.error(error); // log to console instead
+    log(`${operation} failed: ${error.message}`);
+
+    return of(result);
+  };
+}
+
+export function ghostLog(...params) {
+  console.log(...params);
+}
+
+function log(message: string) {
+  console.log(message);
 }

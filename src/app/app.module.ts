@@ -13,7 +13,14 @@ import { AdminLayoutComponent } from '@layouts/admin-layout/admin-layout.compone
 import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.component';
 import { TokenInterceptor } from './_helpers/_index';
 import { CommonModule, DatePipe } from '@angular/common';
-import { AuthService, TodoTodayService, NoteService, JobService, HomeService, IssueService } from './_services/_index';
+import {
+  AuthService,
+  TodoTodayService,
+  NoteService,
+  JobService,
+  IssueService,
+  SocketioService
+} from './_services/_index';
 import { DonationComponent } from './views/donation/donation.component';
 
 // third party
@@ -24,8 +31,6 @@ import { AnchorModule } from './_shares/anchor/anchor.module';
 import { MarkdownModule, MarkedOptions, ClipboardOptions, ClipboardButtonComponent } from 'ngx-markdown';
 import { markedOptionsFactory } from './views/blog-management/blog-management.module';
 import { AnchorService } from './_shares/anchor/anchor.service';
-import { SocketioService } from './_services/_index';
-
 // NgModule
 @NgModule({
   imports: [
@@ -71,7 +76,6 @@ import { SocketioService } from './_services/_index';
     TodoTodayService,
     JobService,
     AuthService,
-    HomeService,
     IssueService,
     // third party service
     SocketioService

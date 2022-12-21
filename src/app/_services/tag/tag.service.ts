@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Tag } from '@models/_index';
 import { environment } from '@environments/environment';
+import { ghostLog, handleError } from '@app/_shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/tag';
 
@@ -17,16 +18,16 @@ export class TagService {
   getTags(name?): Observable<Tag[]> {
     const url = `${apiUrl}` + (name ? `?name=${name}` : '');
     return this.http.get<any>(url).pipe(
-      tap(_ => this.log(`fetched tag`)),
-      catchError(this.handleError<Tag>(`getTag`))
+      tap(_ => ghostLog(`fetched tag`)),
+      catchError(handleError<Tag>(`getTag`))
     );
   }
 
   getTag(id: any): Observable<Tag> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<Tag>(url).pipe(
-      tap(_ => this.log(`fetched tag by id=${id}`)),
-      catchError(this.handleError<Tag>(`getTag id=${id}`))
+      tap(_ => ghostLog(`fetched tag by id=${id}`)),
+      catchError(handleError<Tag>(`getTag id=${id}`))
     );
   }
 
@@ -41,40 +42,27 @@ export class TagService {
   }
 
   addTag(tag: Tag): Observable<Tag> {
-    console.log(tag);
+    ghostLog(tag);
     return this.http.post<Tag>(apiUrl, tag).pipe(
-      tap((prod: Tag) => this.log(`added tag id=${prod.id}`)),
-      catchError(this.handleError<Tag>('addTag'))
+      tap((prod: Tag) => ghostLog(`added tag id=${prod.id}`)),
+      catchError(handleError<Tag>('addTag'))
     );
   }
 
   updateTag(id: any, tag: Tag): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, tag).pipe(
-      tap(_ => this.log(`updated tag id=${id}`)),
-      catchError(this.handleError<any>('updateTag'))
+      tap(_ => ghostLog(`updated tag id=${id}`)),
+      catchError(handleError<any>('updateTag'))
     );
   }
 
   deleteTag(id: any): Observable<Tag> {
     const url = `${apiUrl}/${id}`;
     return this.http.delete<Tag>(url).pipe(
-      tap(_ => this.log(`deleted tag id=${id}`)),
-      catchError(this.handleError<Tag>('deleteTag'))
+      tap(_ => ghostLog(`deleted tag id=${id}`)),
+      catchError(handleError<Tag>('deleteTag'))
     );
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
-  }
-
-  private log(message: string) {
-    console.log(message);
-  }
 }

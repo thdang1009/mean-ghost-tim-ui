@@ -7,15 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TableLoadingComponent implements OnInit {
   @Input() size = 'sm';
-  // height;
   loadingOpacity = 1;
-  constructor() {
-    // this.height = {
-    //   'xl': 1,
-    //   'md': 2,
-    //   'sm': 3,
-    // }[this.size];
-  }
 
   ngOnInit(): void {
     let count = 0;

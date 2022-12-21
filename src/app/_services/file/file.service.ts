@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, finalize, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { MyFile } from '@models/_index';
-import { buildQueryString } from '@app/_shares/common';
+import { buildQueryString, ghostLog, handleError } from '@app/_shares/common';
 const apiUrl = environment.apiUrl + '/v1/file';
 
 @Injectable({
@@ -17,16 +17,16 @@ export class FileService {
   getRawFile(urlGet): Observable<File> {
     const url = `${apiUrl}/id/${urlGet}`;
     return this.http.get<File>(url).pipe(
-      tap(_ => console.log(`fetched raw file by link`)),
-      catchError(this.handleError<File>(`getRawFile`))
+      tap(_ => ghostLog(`fetched raw file by link`)),
+      catchError(handleError<File>(`getRawFile`))
     );
   }
 
   getFile(id): Observable<MyFile[]> {
     const url = `${apiUrl}/id/${id}`;
     return this.http.get<MyFile[]>(url).pipe(
-      tap(_ => console.log(`fetched my file`)),
-      catchError(this.handleError<MyFile[]>(`getMyFile`))
+      tap(_ => ghostLog(`fetched my file`)),
+      catchError(handleError<MyFile[]>(`getMyFile`))
     );
   }
 
@@ -34,8 +34,8 @@ export class FileService {
     const queryString = buildQueryString(req);
     const url = `${apiUrl}?${queryString}`;
     return this.http.get<MyFile[]>(url).pipe(
-      tap(_ => console.log(`fetched my file`)),
-      catchError(this.handleError<MyFile[]>(`getMyFile`))
+      tap(_ => ghostLog(`fetched my file`)),
+      catchError(handleError<MyFile[]>(`getMyFile`))
     );
   }
 
@@ -43,38 +43,38 @@ export class FileService {
     const queryString = buildQueryString(req);
     const url = `${apiUrl}/my-file?${queryString}`;
     return this.http.get<MyFile[]>(url).pipe(
-      tap(_ => console.log(`fetched my file`)),
-      catchError(this.handleError<MyFile[]>(`getMyFile`))
+      tap(_ => ghostLog(`fetched my file`)),
+      catchError(handleError<MyFile[]>(`getMyFile`))
     );
   }
 
   addFile(item: MyFile): Observable<MyFile> {
     return this.http.post<MyFile>(apiUrl, item).pipe(
-      tap((prod: MyFile) => console.log(`added file`)),
-      catchError(this.handleError<MyFile>('addFile'))
+      tap((prod: MyFile) => ghostLog(`added file`)),
+      catchError(handleError<MyFile>('addFile'))
     );
   }
 
   updateFile(id: any, item: MyFile): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, item).pipe(
-      tap(_ => console.log(`updated item id=${id}`)),
-      catchError(this.handleError<any>('updateFile'))
+      tap(_ => ghostLog(`updated item id=${id}`)),
+      catchError(handleError<any>('updateFile'))
     );
   }
 
   deleteFile(id: any): Observable<MyFile> {
     const url = `${apiUrl}/${id}`;
     return this.http.delete<MyFile>(url).pipe(
-      tap(_ => console.log(`deleted item id=${id}`)),
-      catchError(this.handleError<MyFile>('deleteFile'))
+      tap(_ => ghostLog(`deleted item id=${id}`)),
+      catchError(handleError<MyFile>('deleteFile'))
     );
   }
 
   uploadFile(formData): Observable<MyFile> {
     return this.http.post<MyFile>(apiUrl + '/upload', formData).pipe(
-      tap((prod: MyFile) => console.log(`upload file`)),
-      catchError(this.handleError<MyFile>('upload file'))
+      tap((prod: MyFile) => ghostLog(`upload file`)),
+      catchError(handleError<MyFile>('upload file'))
     );
   }
 
@@ -86,19 +86,5 @@ export class FileService {
       finalize(callbackReset)
     );
     return upload$;
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
-  }
-
-  private log(message: string) {
-    console.log(message);
   }
 }

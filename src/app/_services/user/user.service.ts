@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { GuestMessage, User } from '@models/_index';
+import { ghostLog, handleError } from '@app/_shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/user';
 
@@ -23,58 +24,48 @@ export class UserService {
     return this.http.get<User[]>(apiUrl)
       .pipe(
         tap(_ => {
-          this.log('fetched Users');
+          ghostLog('fetched Users');
         }),
-        catchError(this.handleError('getUser', []))
+        catchError(handleError('getUser', []))
       );
   }
 
   getUser(id: any): Observable<User> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<User>(url).pipe(
-      tap(_ => console.log(`fetched user by id=${id}`)),
-      catchError(this.handleError<User>(`getUser id=${id}`))
+      tap(_ => ghostLog(`fetched user by id=${id}`)),
+      catchError(handleError<User>(`getUser id=${id}`))
     );
   }
 
   addUser(tdtd: User): Observable<User> {
     return this.http.post<User>(apiUrl, tdtd).pipe(
-      tap((prod: User) => console.log(`added user id=${tdtd.id}`)),
-      catchError(this.handleError<User>('addUser'))
+      tap((prod: User) => ghostLog(`added user id=${tdtd.id}`)),
+      catchError(handleError<User>('addUser'))
     );
   }
 
   updateUser(id: any, tdtd: User): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, tdtd).pipe(
-      tap(_ => console.log(`updated tdtd id=${id}`)),
-      catchError(this.handleError<any>('updateUser'))
+      tap(_ => ghostLog(`updated tdtd id=${id}`)),
+      catchError(handleError<any>('updateUser'))
     );
   }
 
   deleteUser(id: any): Observable<User> {
     const url = `${apiUrl}/${id}`;
     return this.http.delete<User>(url).pipe(
-      tap(_ => console.log(`deleted tdtd id=${id}`)),
-      catchError(this.handleError<User>('deleteUser'))
+      tap(_ => ghostLog(`deleted tdtd id=${id}`)),
+      catchError(handleError<User>('deleteUser'))
     );
   }
 
   sendGuestMessage(message: any): Observable<GuestMessage> {
     return this.http.post<GuestMessage>(apiUrl + '/guest-message', message).pipe(
-      tap((_message: GuestMessage) => console.log(`add guest message= ${_message.id}`)),
-      catchError(this.handleError<GuestMessage>('add guest message'))
+      tap((_message: GuestMessage) => ghostLog(`add guest message= ${_message.id}`)),
+      catchError(handleError<GuestMessage>('add guest message'))
     );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
   }
 
   private initCacheUser() {
@@ -89,9 +80,5 @@ export class UserService {
     }
     const get = (this.cacheUser.filter(user => user.id === id)[0] || {});
     return get.fullName || '';
-  }
-
-  private log(message: string) {
-    console.log(message);
   }
 }

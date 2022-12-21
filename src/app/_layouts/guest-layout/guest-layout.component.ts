@@ -28,8 +28,8 @@ export class GuestLayoutComponent implements OnInit, AfterViewInit {
         } else {
             document.getElementsByTagName('body')[0].classList.remove('perfect-scrollbar-off');
         }
-        const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
-        const elemSidebar = <HTMLElement>document.querySelector('.sidebar .sidebar-wrapper');
+        const elemMainPanel = document.querySelector('.main-panel');
+        const elemSidebar = document.querySelector('.sidebar .sidebar-wrapper');
 
         this.location.subscribe((ev: PopStateEvent) => {
             this.lastPoppedUrl = ev.url;
@@ -53,8 +53,7 @@ export class GuestLayoutComponent implements OnInit, AfterViewInit {
             elemSidebar.scrollTop = 0;
         });
         if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac()) {
-            let ps = new PerfectScrollbar(elemMainPanel);
-            ps = new PerfectScrollbar(elemSidebar);
+            // TODO document why this block is empty  
         }
 
         const window_width = $(window).width();
@@ -85,7 +84,6 @@ export class GuestLayoutComponent implements OnInit, AfterViewInit {
         });
 
         $('.fixed-plugin .badge').click(function () {
-            const $full_page_background = $('.full-page-background');
 
 
             $(this).siblings().removeClass('active');

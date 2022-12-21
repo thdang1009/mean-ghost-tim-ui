@@ -1,11 +1,11 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CONSTANT } from '@shares/constant';
-import { LoginResponse } from '@shares/common';
+import { LoginResponse, ghostLog, handleError } from '@shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/auth';
 
@@ -43,7 +43,7 @@ export class AuthService {
           this.isAdminE.emit(this.isAdmin());
           this.router.navigateByUrl(returnUrl);
         }),
-        catchError(this.handleError('login', []))
+        catchError(handleError('login', []))
       );
   }
 
@@ -59,23 +59,23 @@ export class AuthService {
             this.router.navigate(['/']);
           }, 1000);
         }),
-        catchError(this.handleError('logout', []))
+        catchError(handleError('logout', []))
       );
   }
 
   register(data: any): Observable<any> {
     return this.http.post<any>(apiUrl + '/register', data)
       .pipe(
-        tap(_ => this.log('login')),
-        catchError(this.handleError('login', []))
+        tap(_ => ghostLog('login')),
+        catchError(handleError('login', []))
       );
   }
 
   confirmEmail(code) {
     return this.http.get<any>(apiUrl + `/confirm/${code}`)
     .pipe(
-      tap(_ => this.log('confirm email')),
-      catchError(this.handleError('confirm email', []))
+      tap(_ => ghostLog('confirm email')),
+      catchError(handleError('confirm email', []))
     );
   }
 
@@ -90,7 +90,6 @@ export class AuthService {
 
   isAdmin() {
     const arr = [CONSTANT.PERMISSION.GRAND_ADMIN, CONSTANT.PERMISSION.ADMIN];
-    // console.log('permission=', this.userInfo.permission);
     return this.userInfo && arr.includes(this.userInfo.permission);
   }
 
@@ -101,20 +100,6 @@ export class AuthService {
 
   isGuest() {
     return true;
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
-  }
-
-  private log(message: string) {
-    console.log(message);
   }
 
   private saveUserLoginInfo(userInfo) {

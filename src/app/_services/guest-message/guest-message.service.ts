@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { GuestMessage } from '@models/_index';
 import { environment } from '@environments/environment';
-import { buildQueryString } from '@shares/common';
+import { buildQueryString, ghostLog, handleError } from '@shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/guest-message';
 
@@ -19,8 +19,8 @@ export class GuestMessageService {
   getGuestMessage(id: any): Observable<GuestMessage> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<GuestMessage>(url).pipe(
-      tap(_ => console.log(`fetched guest-message by id=${id}`)),
-      catchError(this.handleError<GuestMessage>(`getGuestMessage id=${id}`))
+      tap(_ => ghostLog(`fetched guest-message by id=${id}`)),
+      catchError(handleError<GuestMessage>(`getGuestMessage id=${id}`))
     );
   }
 
@@ -29,45 +29,31 @@ export class GuestMessageService {
     const hasParams = queryString.length;
     const url = `${apiUrl}${hasParams ? ('?' + queryString) : ''}`;
     return this.http.get<GuestMessage>(url).pipe(
-      // tap(_ => console.log(`fetched my guest-message`)),
-      catchError(this.handleError<GuestMessage>(`getMyGuestMessage`))
+      // tap(_ => ghostLog(`fetched my guest-message`)),
+      catchError(handleError<GuestMessage>(`getMyGuestMessage`))
     );
   }
 
   addGuestMessage(guestMessage: GuestMessage): Observable<GuestMessage> {
     return this.http.post<GuestMessage>(apiUrl, guestMessage).pipe(
-      tap((prod: GuestMessage) => console.log(`added guest-message id=${guestMessage.id}`)),
-      catchError(this.handleError<GuestMessage>('addGuestMessage'))
+      tap((prod: GuestMessage) => ghostLog(`added guest-message id=${guestMessage.id}`)),
+      catchError(handleError<GuestMessage>('addGuestMessage'))
     );
   }
 
   updateGuestMessage(id: any, guestMessage: GuestMessage): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, guestMessage).pipe(
-      tap(_ => console.log(`updated guest-message id=${id}`)),
-      catchError(this.handleError<any>('updateGuestMessage'))
+      tap(_ => ghostLog(`updated guest-message id=${id}`)),
+      catchError(handleError<any>('updateGuestMessage'))
     );
   }
 
   deleteGuestMessage(id: any): Observable<GuestMessage> {
     const url = `${apiUrl}/${id}`;
     return this.http.delete<GuestMessage>(url).pipe(
-      tap(_ => console.log(`deleted guest-message id=${id}`)),
-      catchError(this.handleError<GuestMessage>('deleteGuestMessage'))
+      tap(_ => ghostLog(`deleted guest-message id=${id}`)),
+      catchError(handleError<GuestMessage>('deleteGuestMessage'))
     );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
-  }
-
-  private log(message: string) {
-    console.log(message);
   }
 }

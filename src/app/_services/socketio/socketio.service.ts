@@ -9,8 +9,6 @@ export class SocketioService {
 
   socket;
 
-  constructor() { }
-
   setupSocketConnection() {
     this.socket = io(environment.SOCKET_ENDPOINT, {
       path: '/socket',
@@ -27,7 +25,6 @@ export class SocketioService {
   }
   disconnect() {
     if (this.socket) {
-      ``
       this.socket.disconnect();
     }
   }

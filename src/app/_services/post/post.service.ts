@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Post } from '@models/_index';
 import { environment } from '@environments/environment';
-import { buildQueryString } from '@shares/common';
+import { buildQueryString, ghostLog, handleError } from '@shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/post';
 
@@ -21,8 +21,8 @@ export class PostService {
     const queryString = hasKeys && ('?' + buildQueryString(req)) || '';
     const url = `${apiUrl}/public${req && queryString || ''}`;
     return this.http.get<any>(url).pipe(
-      tap(_ => this.log(`fetched public post`)),
-      catchError(this.handleError<Post>(`getPublicPost`))
+      tap(_ => ghostLog(`fetched public post`)),
+      catchError(handleError<Post>(`getPublicPost`))
     );
   }
 
@@ -30,8 +30,8 @@ export class PostService {
   getPost(ref: String): Observable<Post> {
     const url = `${apiUrl}/ref/${ref}`;
     return this.http.get<Post>(url).pipe(
-      tap(_ => this.log(`fetched post by ref=${ref}`)),
-      catchError(this.handleError<Post>(`getPost ref=${ref}`))
+      tap(_ => ghostLog(`fetched post by ref=${ref}`)),
+      catchError(handleError<Post>(`getPost ref=${ref}`))
     );
   }
 
@@ -39,8 +39,8 @@ export class PostService {
   getPostAsAdmin(id: any): Observable<Post> {
     const url = `${apiUrl}/get-as-member/${id}`;
     return this.http.get<Post>(url).pipe(
-      tap(_ => this.log(`fetched post by id=${id}`)),
-      catchError(this.handleError<Post>(`getPost id=${id}`))
+      tap(_ => ghostLog(`fetched post by id=${id}`)),
+      catchError(handleError<Post>(`getPost id=${id}`))
     );
   }
 
@@ -49,8 +49,8 @@ export class PostService {
     const queryString = buildQueryString(req);
     const url = `${apiUrl}?${queryString}`;
     return this.http.get<Post>(url).pipe(
-      tap(_ => this.log(`fetched my post`)),
-      catchError(this.handleError<Post>(`getAllPost`))
+      tap(_ => ghostLog(`fetched my post`)),
+      catchError(handleError<Post>(`getAllPost`))
     );
   }
 
@@ -59,53 +59,39 @@ export class PostService {
   //   const queryString = buildQueryString(req);
   //   const url = `${apiUrl}/my-post?${queryString}`;
   //   return this.http.get<Post>(url).pipe(
-  //     tap(_ => this.log(`fetched my post`)),
-  //     catchError(this.handleError<Post>(`getMyPost`))
+  //     tap(_ => ghostLog(`fetched my post`)),
+  //     catchError(handleError<Post>(`getMyPost`))
   //   );
   // }
 
   addPost(post: Post): Observable<Post> {
     return this.http.post<Post>(apiUrl, post).pipe(
-      tap((prod: Post) => this.log(`added post id=${post.id}`)),
-      catchError(this.handleError<Post>('addPost'))
+      tap((prod: Post) => ghostLog(`added post id=${post.id}`)),
+      catchError(handleError<Post>('addPost'))
     );
   }
 
-  clapPost(post: Post, num: Number): Observable<Post> {
+  clapPost(post: Post, num: number): Observable<Post> {
     return this.http.put<Post>(`${apiUrl}/clap-post/${post.id}`, { numIncrease: num })
       .pipe(
-        tap((prod: Post) => this.log(`clap post id=${post.id}`)),
-        catchError(this.handleError<Post>('clap post'))
+        tap((prod: Post) => ghostLog(`clap post id=${post.id}`)),
+        catchError(handleError<Post>('clap post'))
       );
   }
 
   updatePost(id: any, post: Post): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, post).pipe(
-      tap(_ => this.log(`updated post id=${id}`)),
-      catchError(this.handleError<any>('updatePost'))
+      tap(_ => ghostLog(`updated post id=${id}`)),
+      catchError(handleError<any>('updatePost'))
     );
   }
 
   deletePost(id: any): Observable<Post> {
     const url = `${apiUrl}/${id}`;
     return this.http.delete<Post>(url).pipe(
-      tap(_ => this.log(`deleted post id=${id}`)),
-      catchError(this.handleError<Post>('deletePost'))
+      tap(_ => ghostLog(`deleted post id=${id}`)),
+      catchError(handleError<Post>('deletePost'))
     );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
-  }
-
-  private log(message: string) {
-    console.log(message);
   }
 }
