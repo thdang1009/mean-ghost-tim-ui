@@ -27,10 +27,6 @@ export class AppComponent implements OnInit {
   ) {
   }
 
-  showJson(d: Event) {
-    // this.visibleData = d;
-  }
-
   ngOnInit(): void {
     this.analyticService.logAccess()
       .subscribe(_ => { }, _ => { });
