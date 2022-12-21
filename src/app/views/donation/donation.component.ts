@@ -10,6 +10,7 @@ export class DonationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    window.open('https://www.buymeacoffee.com/thdang1009', '_blank');
   }
 
 }
