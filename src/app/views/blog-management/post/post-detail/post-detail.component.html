@@ -5,7 +5,7 @@
 </div>
 <div class="container post-container">
 
-    <article class="article-page">
+    <article class="container article-page">
         <div class="div__back-to-home"><a (click)="backToHome()">← Back to the Blog Home</a></div>
         <figure *ngIf="ready" class="d-flex-col-mid-center">
             <img loading="lazy" class="page-image" src="{{item.postBackgroundImg}}" alt="post's image">
@@ -38,7 +38,7 @@
                 </docu-article>
 
                 <ng-template #markdownPart>
-                    <markdown style="width: 100%" [data]="item.content">
+                    <markdown [data]="item.content">
                     </markdown>
                 </ng-template>
             </ng-container>

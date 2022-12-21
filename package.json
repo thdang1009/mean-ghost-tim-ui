@@ -9,7 +9,7 @@
     "local": "ng serve --open --host localhost --disable-host-check --port 4500",
     "debug": "ng serve --open --host localhost --disable-host-check --port 4500 -c development",
     "build-compress": "ng build  --aot --configuration production && gzipper c ./dist --include js,css,html --output-file-format [filename].[ext] ./dist-compressed/",
-    "deploy": "ng build  --aot --configuration production && firebase deploy",
+    "deploy": "ng build  --aot --configuration production && deploy",
     "deploy-compress": "ng build  --aot --configuration production && gzipper c ./dist --include js,css,html --output-file-format [filename].[ext] ./dist-compressed/ && firebase deploy",
     "test": "ng test",
     "test:coverage": "ng test --no-watch --code-coverage",
