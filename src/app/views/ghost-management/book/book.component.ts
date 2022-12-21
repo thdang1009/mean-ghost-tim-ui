@@ -120,7 +120,6 @@ export class BookComponent implements OnInit {
         this.data.unshift(res);
         this.isLoadingResults = false;
       }, err => {
-        // console.log(err);
         this.isLoadingResults = false;
       });
   }
@@ -141,13 +140,6 @@ export class BookComponent implements OnInit {
   }
 
   _getMyBook(id = undefined) {
-    const value = this.searchDate && this.searchDate.value || new Date();
-    const fromDate = dateFns.startOfDay(value);
-    const toDate = dateFns.endOfDay(value);
-    const req = {
-      from: fromDate || undefined,
-      to: toDate || undefined,
-    }
     this.isLoadingResults = true;
     this.bookService.getBooks()
       .subscribe((res: Book[]) => {
@@ -167,17 +159,11 @@ export class BookComponent implements OnInit {
   saveItem(id, item, index = -1) {
     this.bookService.updateBook(id, item)
       .subscribe((res: any) => {
-        // if (index === -1) {
-        //   this.searchBook();
-        // } else {
-        //   this.data[index] = res;
-        // }
       }, err => {
       });
   }
   saveThenBack(newBook) {
     this.saveItem(this.id, newBook);
-    // it could be trigger back first, but that ok
     this.back();
   }
   back() {

@@ -42,9 +42,6 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     this.savedPage = Number(localStorage.getItem(this.key));
     const arr = (localStorage.getItem(this.key + '_bookmarks') || '').split(',').map(el => +el);
     this.bookmarks = new Map(arr.map(el => [el, true]));
-    // console.log(typeof this.savedPage, typeof this.key);
-    // const element: HTMLElement = this.element.nativeElement;
-    // const loadingOverlay = element.getElementsByClassName('overlay')[0];
     let count = 0;
 
     const intervalId = setInterval(_ => {
@@ -52,7 +49,6 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       const delta = 1 / time;
       this.loadingOpacity = 1 - count * delta;
       ++count;
-      // loadingOverlay.setAttribute('style', {});
       if (count > time) {
         clearInterval(intervalId);
       }
@@ -69,12 +65,12 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   }
 
   pagechanging(e: CustomEvent) {
-    // this.currentPage = e['pageNumber']; // the page variable
-    // console.log(this.currentPage);
+    // TODO document why this method 'pagechanging' is empty
   }
+  
 
   parseSavedObject(objString) {
-
+    // TODO document why this method 'parseSavedObject' is empty
   }
 
   createSavedObject() {
@@ -83,8 +79,6 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   }
 
   ngOnDestroy(): void {
-    // console.log(this.currentPage);
-    const objSaved = this.createSavedObject();
     localStorage.setItem(this.key, '' + this.currentPage);
     localStorage.setItem(this.key + '_bookmarks', Array.from(this.bookmarks.keys()).join());
   }
@@ -110,7 +104,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       return;
     }
 
-    // console.log('goto ' + pageTarget, arr);
+
     setTimeout(_ => {
       this.pdf.pdfViewer.scrollPageIntoView({
         pageNumber: pageTarget
@@ -133,7 +127,6 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       return;
     }
 
-    // console.log('goto ' + pageTarget, arr);
     setTimeout(_ => {
       this.pdf.pdfViewer.scrollPageIntoView({
         pageNumber: pageTarget
@@ -188,10 +181,9 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     }
   }
   keepExpand() {
-
+    // TODO document why this method 'keepExpand' is empty
   }
   loadComplete() {
-    // showNoti('Document successfully loaded!', 'success', 300);
     setTimeout(_ => {
       if (this.savedPage) {
         this.pdf.pdfViewer.scrollPageIntoView({

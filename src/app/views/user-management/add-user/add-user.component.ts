@@ -27,7 +27,6 @@ export class MyErrorStateMatcherRepassword implements ErrorStateMatcher {
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
 
@@ -44,7 +43,7 @@ export class AddUserComponent implements OnInit {
     'ADMIN',
     'MEMBER'
   ];
-  permission = this.permissions[1]; // CONSTANT.PERMISSION.MEMBER;
+  permission = this.permissions[1];
 
   constructor(
     private formBuilder: UntypedFormBuilder,

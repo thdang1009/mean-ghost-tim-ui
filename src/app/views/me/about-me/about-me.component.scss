@@ -10,8 +10,6 @@
 }
 
 section {
-    /* min-height: 100vh; */
-    /* background: var(--bg-black-100); */
     display: block;
     padding: 16px;
     margin-bottom: 16px;
@@ -82,12 +80,6 @@ a.ghost-nav-hight-light {
     width: 50px;
 }
 
-.aside {
-    /* position: fixed;
-    top: 0;
-    left: 0; */
-}
-
 .about-me-content {
     width: 100%;
     padding: 0 8px;
@@ -114,18 +106,8 @@ h4 {
     line-height: 18px;
 }
 
-/* first section */
-.about-me {
-    /* position: relative; */
-}
-
 .dark400 {
     color: #334C65
-}
-
-.two-col {
-    /* display: flex; */
-
 }
 
 .btn-float-bottom {
@@ -148,8 +130,6 @@ h4 {
     margin-bottom: 0;
 }
 
-.section-header-container {}
-
 .section-header {
     padding: 4px 12px;
     margin-bottom: 0;
@@ -160,13 +140,10 @@ h4 {
     margin-bottom: 32px;
 }
 
-.description {}
-
 .detail-info {
     position: relative;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: space-between;
 }
 
@@ -177,19 +154,6 @@ h4 {
 strong {
     font-weight: bold;
 }
-
-.time-line-container {}
-
-.time-line-container {}
-
-/* second section */
-.services {}
-
-/* third section */
-.portfolio {}
-
-/* fourth section */
-.contact {}
 
 .portfolio-container {
     margin: 10px 0;

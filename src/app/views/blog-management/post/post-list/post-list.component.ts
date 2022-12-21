@@ -33,12 +33,6 @@ export class PostListComponent implements OnInit {
   statusList = [POST_STATUS.NONE, POST_STATUS.PRIVATE, POST_STATUS.PUBLIC, POST_STATUS.PROTECTED];
   itemSelected: any = {} as any;
   editMode = false;
-  // newTag = { _id: 'Add more', name: '+ Add more tag' };
-  // newCategory = { _id: 'Add more', name: '+ Add more category' };
-  // moreTagMode = false;
-  // moreCategoryMode = false;
-  // newTagName = '';
-  // newCategoryName = '';
 
   constructor(
     private postService: PostService,
@@ -62,60 +56,6 @@ export class PostListComponent implements OnInit {
       }
     });
   }
-
-  // newTagChange() {
-  //   console.log(this.newTagName);
-  //   // debounce(this.createTag, 1000);
-  //   this.createTag();
-  // }
-
-  // newCategoryChange() {
-  //   console.log(this.newCategoryName);
-  //   // debounce(this.createCategory, 1000);
-  //   this.createCategory();
-  // }
-
-  // createCategory() {
-  //   const val = confirm(`Add "${this.newCategoryName}"?`);
-  //   if (val) {
-  //     this.categoryService.createCategoryWithName(this.newCategoryName)
-  //       .subscribe(_ => {
-  //         this.getCategories();
-  //         this.moreCategoryMode = false;
-  //         this.newCategoryName = '';
-  //       });
-  //   }
-  // }
-
-  // createTag() {
-  //   const val = confirm(`Add "${this.newTagName}"?`);
-  //   if (val) {
-  //     this.tagService.createTagWithName(this.newTagName)
-  //       .subscribe(_ => {
-  //         this.getTags();
-  //         this.moreTagMode = false;
-  //         this.newTagName = '';
-  //       });
-  //   }
-  // }
-
-  // onChooseCategory(e) {
-  //   this.moreCategoryMode = this.moreCategoryMode || (e && e.includes('Add more'));
-  //   this.focusById('more-category-field');
-  // }
-
-  // onChooseTag(e) {
-  //   // console.log('onChooseTag', e);
-  //   this.moreTagMode = this.moreTagMode || (e && e.includes('Add more'));
-  //   this.focusById('more-tag-field');
-  // }
-
-  // focusById(id) {
-  //   setTimeout(() => {
-  //     const element = document.getElementById(id);
-  //     element.focus();
-  //   }, 200)
-  // }
 
   getPost(id, cb?) {
     this.isLoadingResults = true;
@@ -166,8 +106,6 @@ export class PostListComponent implements OnInit {
     const to = this.searchDateTo && this.searchDateTo.value || new Date();
     const fromDate = dateFns.startOfDay(from);
     const toDate = dateFns.endOfDay(to);
-    // const fromDate = dateFns.startOfDay(dateFns.subDays(new Date(), 7));
-    // const toDate = dateFns.endOfDay(dateFns.addDays(new Date(), 7));
     const req = {
       from: fromDate || undefined,
       to: toDate || undefined,
@@ -181,7 +119,6 @@ export class PostListComponent implements OnInit {
           this.itemSelected = res.filter(el => el.id === id)[0];
           this.ref.markForCheck();
         }
-        // this.searchDateDisplay = this.simpleTimePipe.transform(value);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;

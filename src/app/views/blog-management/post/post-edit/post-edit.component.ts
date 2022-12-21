@@ -14,7 +14,7 @@ export interface PostSaveWrapper  {
 @Component({
   selector: 'post-edit',
   templateUrl: './post-edit.component.html',
-  styleUrls: ['../post-list/post-list.component.scss', './post-edit.component.scss']
+  styleUrls: ['../post-list/post-list.component.scss']
 })
 export class PostEditComponent implements OnInit, OnDestroy {
 

@@ -10,7 +10,6 @@ export class MoneyComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // this.router.navigateByUrl('https://https://web.moneylover.me/');
   }
 
 }

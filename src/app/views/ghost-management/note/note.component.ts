@@ -82,6 +82,8 @@ export class NoteComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       const id = Number(params.id);
       if (id) {
+        // TODO document why this block is empty
+      
       } else {
         this.itemSelected = undefined;
       }
@@ -98,7 +100,6 @@ export class NoteComponent implements OnInit {
         this.data.unshift(res);
         this.isLoadingResults = false;
       }, err => {
-        // console.log(err);
         this.isLoadingResults = false;
       });
   }

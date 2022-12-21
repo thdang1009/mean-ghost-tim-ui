@@ -59,8 +59,7 @@ export const ROUTES: RouteInfo[] = [
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
@@ -92,7 +91,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.authService.isLoggedIn.subscribe((status: any) => {
-      // console.log('debug', status);
       if (status === true) {
         this.isLogined = true;
         this.checkAfterLogin();

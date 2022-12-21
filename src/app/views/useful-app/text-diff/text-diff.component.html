@@ -2,8 +2,6 @@
 
     <div class="textarea-container">
         <div class="ghost-backdrop highlights" innerHTML="{{ highlights1 }}" #backdrop1>
-            <!-- <pre class="highlights" innerHTML="{{ highlights1 }}">
-            </pre> -->
         </div>
         <textarea #text1 name="text-area-left" class="ghost-text-area text-area-left" [(ngModel)]="visibleData1" (ngModelChange)="findDiff()"
             (scroll)="onScroll1($event)">
@@ -20,8 +18,6 @@
 
     <div class="textarea-container">
         <div class="ghost-backdrop highlights" innerHTML="{{ highlights2 }}" #backdrop2>
-            <!-- <pre class="highlights" innerHTML="{{ highlights2 }}">
-            </pre> -->
         </div>
         <textarea #text2 name="text-area-right" class="ghost-text-area text-area-right" [(ngModel)]="visibleData2" (ngModelChange)="findDiff()"
             (scroll)="onScroll2($event)">

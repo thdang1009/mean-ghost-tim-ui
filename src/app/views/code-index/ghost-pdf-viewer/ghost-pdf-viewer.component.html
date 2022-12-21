@@ -25,25 +25,22 @@
             </a>
             <a (click)="toggleBookmark(); $event.stopPropagation()" class="hover-pointer btn-expand btn-expand-bottom"
                 data-toggle="dropdown" aria-expanded="true">
-                <img loading="lazy" *ngIf="!bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-add.svg" width="36px">
-                <img loading="lazy" *ngIf="bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-remove.svg" width="36px">
+                <img loading="lazy" *ngIf="!bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-add.svg" width="36px" alt="add bookmark">
+                <img loading="lazy" *ngIf="bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-remove.svg" width="36px" alt="remove bookmark">
 
             </a>
 
-            <!-- <a class="material-icons hover-pointer btn-expand btn-expand-top" matTooltip="Goto Full Screen"
-                (click)="openFullscreen(); $event.stopPropagation()">
-            </a> -->
             <a (click)="openFullscreen(); $event.stopPropagation()" class="hover-pointer btn-expand btn-expand-top"
                 data-toggle="dropdown" aria-expanded="true">
                 <i class="fa fa-expand fa-2x fa-custom c-purple"></i>
             </a>
             <a (click)="scrollToPreviousBookmark(); $event.stopPropagation()"
                 class="hover-pointer btn-expand btn-expand-left" data-toggle="dropdown" aria-expanded="true">
-                <img loading="lazy" src="assets/custom-icon/bookmark-up.svg" width="36px">
+                <img loading="lazy" src="assets/custom-icon/bookmark-up.svg" width="36px" alt="Move to last bookmark">
             </a>
             <a (click)="scrollToNextBookmark(); $event.stopPropagation()"
                 class="hover-pointer btn-expand btn-expand-right" data-toggle="dropdown" aria-expanded="true">
-                <img loading="lazy" src="assets/custom-icon/bookmark-down.svg" width="36px">
+                <img loading="lazy" src="assets/custom-icon/bookmark-down.svg" width="36px" alt="Move to next bookmark">
             </a>
         </div>
     </div>

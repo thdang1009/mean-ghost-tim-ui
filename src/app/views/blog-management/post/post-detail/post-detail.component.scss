@@ -13,8 +13,6 @@
     align-items: flex-end;
     justify-content: center;
 }
-ang-clap {
-}
 .post-thumbnail {
     height: 512px;
     width: 512px;
@@ -44,7 +42,6 @@ ang-clap {
 }
 @media (max-width: 991px) {
     .post-container {
-        // background-color: white;
         padding: 10px 20px;
     }
     .page-image {

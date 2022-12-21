@@ -7,7 +7,6 @@
     margin: auto;
     max-width: 1024px;
     position: relative;
-    // height: 84vh !important;
 }
 
 .ghost-box {
@@ -43,10 +42,6 @@
     display: flex;
     flex-direction: row;
 }
-.article-page,
-.post {
-    background-color: #fff;
-}
 article,
 aside,
 footer,
@@ -55,20 +50,16 @@ nav,
 section {
     display: block;
 }
-//
 
-.content-box,
-.post {
-    align-items: stretch;
-    display: flex;
-    flex-direction: column;
-}
 .content-box {
     display: flex;
     flex-direction: column;
     position: relative;
 }
 .post {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
     border: 0.5px solid #ccc;
     margin-bottom: 1.5rem;
     max-width: 100%;
@@ -92,7 +83,6 @@ section {
 .post-loading {
     width: 100%;
     height: 100%;
-    // position: absolute;
     min-height: 201px;
 }
 .private-post {
@@ -100,7 +90,6 @@ section {
 }
 .private-post:after {
     content: "Private";
-    /* background-color: black; */
     right: 0;
     font-weight: bold;
     position: absolute;

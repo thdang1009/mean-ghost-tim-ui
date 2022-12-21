@@ -9,8 +9,7 @@ export interface FePDFInfo {
 
 @Component({
   selector: 'dymanic-index',
-  templateUrl: './dymanic-index.component.html',
-  styleUrls: ['./dymanic-index.component.scss']
+  templateUrl: './dymanic-index.component.html'
 })
 export class DymanicIndexComponent implements OnInit {
   pdfSrc;

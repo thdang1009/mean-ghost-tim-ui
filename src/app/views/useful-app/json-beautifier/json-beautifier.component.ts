@@ -24,6 +24,8 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
   isLoadingResults = false;
 
   constructor() {
+    // TODO document why this constructor is empty
+  
   }
 
   StringToReadableObject(s: string) {
@@ -64,7 +66,6 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
     console.log(1, result);
     const left = document.querySelectorAll('#json-editor-left .ace_line') || [];
     const right = document.querySelectorAll('#json-editor-right .ace_line') || [];
-    // console.log(left, right);
     let currentLineLeft = 0;
     let currentLineRight = 0;
     const coloredRight = [];

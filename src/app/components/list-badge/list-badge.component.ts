@@ -13,7 +13,6 @@ export class ListBadgeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(this.myStyles);
     if (!this.myStyles) {
       this.myStyles = {
         'margin': 'auto',

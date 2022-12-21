@@ -4,7 +4,7 @@
         <div class="aside">
             <div class="my-logo">
                 <a [routerLink]="['/home']">
-                    <img loading="lazy" src="/assets/img/ghost.png" />
+                    <img loading="lazy" src="/assets/img/ghost.png" alt="Ghost"/>
                 </a>
             </div>
             <div class="nav-container">
@@ -17,14 +17,6 @@
                             About Me
                         </a>
                     </li>
-                    <!-- <li>
-                        <a class="abc" (click)="scrollTo('services')" [ngClass]="{
-                            'ghost-nav-hight-light': currentActive === 1
-                        }">
-                            <i class="fa fa-list"> </i>
-                            Services
-                        </a>
-                    </li> -->
                     <li>
                         <a class="abc" (click)="scrollTo('portfolio')" [ngClass]="{
                             'ghost-nav-hight-light': currentActive === 1
@@ -69,30 +61,16 @@
 
                 <app-list-badge [myStyles]="{'display': 'flex', 'margin': 'inherit', 'padding': '0 0 12px 0'}">
                 </app-list-badge>
-                <!-- <br /> -->
                 <p>
                     I'm looking for a challenging and rewarding position in an environment that offers an opportunity to
                     learn as well as gain experience in order to achieve organizational goals while attaining personal
                     growth.
                 </p>
-                <!-- <br /> -->
                 <strong>
                     Techstack: MEAN.
                 </strong>
-                <!-- <br />
-                <strong>
-                    Project 1: <a href="https://mc.zalopay.vn/" target="_blank" rel="noopener noreferrer">ZaloPay
-                        Merchant</a>
-                </strong>
-                <br />
-                <strong>
-                    Project 2: <a href="https://ad.zalopay.vn/" target="_blank" rel="noopener noreferrer">ZaloPay
-                        Merchant Admin</a>
-                </strong>
-                <br /> -->
             </div>
             <div class="detail-info">
-                <!-- <div class="info-container"> -->
                 <ul class="list list-with-divider">
                     <li>
                         <p>
@@ -171,8 +149,6 @@
                         </p>
                     </li>
                 </ul>
-                <!-- </div>
-                <div class="skill-container"> -->
                 <ul class="list pdx-2">
                     <li>
                         <app-progress-with-label [percent]="90" [label]="'Javascript'"></app-progress-with-label>
@@ -189,20 +165,7 @@
                     <li>
                         <app-progress-with-label [percent]="70" [label]="'MongoDB'"></app-progress-with-label>
                     </li>
-                    <!-- <li>
-                        <app-progress-with-label [percent]="65" [label]="'React Native'"></app-progress-with-label>
-                    </li> -->
                 </ul>
-                <!-- </div> -->
-                <!-- 
-                <app-ghost-site-btn (click)="downloadCV()" type="btn" [link]="'../download-my-cv'"
-                    class="btn-float-bottom">
-                    Download CV
-                </app-ghost-site-btn>
-                <app-ghost-site-btn (click)="hireMe()" type="btn" [link]="'../hire-me'"
-                    class="btn-float-bottom" style="left: calc(120px + 5%)">
-                    Hire Me
-                </app-ghost-site-btn> -->
             </div>
             <div class="two-col row">
                 <div class="time-line-container col-sm-12 col-lg-6">
@@ -326,25 +289,6 @@
 
 
         <!-- **** **** **** **** SERVICES  **** **** **** ****-->
-        <!-- <section class="services" id="services" #services>
-            <div class="section-header-container  box-border-tl-br" (click)="scrollTo('services')">
-                <h2 class="section-header">
-                    Services
-                </h2>
-            </div>
-            <div class="services-container row">
-                <div class="col-sm-12 col-lg-6">
-                    <object data="https://product-preview-card-component-ebon.vercel.app">
-                        <embed src="https://product-preview-card-component-ebon.vercel.app" />
-                    </object>
-                </div>
-                <div class="col-sm-12 col-lg-6">
-                    <object data="https://qr-code-component-main-rho-gules.vercel.app">
-                        <embed src="https://qr-code-component-main-rho-gules.vercel.app" />
-                    </object>
-                </div>
-            </div>
-        </section> -->
         <!-- **** **** **** **** SERVICES END **** **** **** ****-->
 
 
@@ -415,7 +359,6 @@
                                 <textarea matInput placeholder="Comment" formControlName="message" autosize
                                     [minRows]="1" [maxRows]="10" (change)="onMessageChange()">
                                 </textarea>
-                                <!-- <input matInput type="text" placeholder="Message" formControlName="message"> -->
                                 <mat-error>
                                     <span
                                         *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched">

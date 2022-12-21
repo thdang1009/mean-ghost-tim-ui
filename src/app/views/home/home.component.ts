@@ -44,6 +44,8 @@ export class HomeComponent implements OnInit {
       })
   }
   openPost(post) {
+    // TODO document why this method 'openPost' is empty
+  
 
   }
   backToHome() {

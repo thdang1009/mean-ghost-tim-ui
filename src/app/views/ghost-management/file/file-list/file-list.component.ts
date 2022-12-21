@@ -5,8 +5,7 @@ import { showNoti } from '@shares/common';
 
 @Component({
   selector: 'app-file-list',
-  templateUrl: './file-list.component.html',
-  styleUrls: ['./file-list.component.scss']
+  templateUrl: './file-list.component.html'
 })
 export class FileListComponent implements OnInit {
 

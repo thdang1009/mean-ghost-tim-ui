@@ -10,7 +10,6 @@ import { compareWithFunc, showNoti } from '@shares/common';
 @Component({
   selector: 'app-add-file',
   templateUrl: './add-file.component.html',
-  styleUrls: ['./add-file.component.scss']
 })
 export class AddFileComponent implements OnInit {
 
@@ -52,8 +51,6 @@ export class AddFileComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      // url: [null, Validators.required],
-      // user: [null, Validators.required],
       permission: [null, Validators.required],
       originName: [null, Validators.required],
       nameOnDisk: [null, Validators.required],
@@ -77,7 +74,6 @@ export class AddFileComponent implements OnInit {
 
   initFormWithData(data = {} as any) {
     this.registerForm.patchValue(data);
-    // console.log(this.registerForm.get('user'));
   }
 
   onFormSubmit(data: any) {

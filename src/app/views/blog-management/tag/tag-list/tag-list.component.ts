@@ -5,8 +5,7 @@ import { showNoti } from '@shares/common';
 
 @Component({
   selector: 'app-tag-list',
-  templateUrl: './tag-list.component.html',
-  styleUrls: ['./tag-list.component.scss']
+  templateUrl: './tag-list.component.html'
 })
 export class TagListComponent implements OnInit {
 

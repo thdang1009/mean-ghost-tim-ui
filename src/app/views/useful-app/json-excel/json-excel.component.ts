@@ -103,7 +103,6 @@ export class JsonExcelComponent implements OnInit, OnDestroy {
       this.initialData = this.visibleData;
       json = this.visibleData;
       formatedJSON = this.formatJSONArray(json);
-      // console.log('formatedJSON', formatedJSON);
     } catch (e) {
       showNoti('Error JSON: ' + e, 'danger');
     }
@@ -135,7 +134,6 @@ export class JsonExcelComponent implements OnInit, OnDestroy {
       const data = (XLSX.utils.sheet_to_json(ws, {
 
       }));
-      // console.log(data);
       this.visibleData2 = data;
       this.initialData2 = data;
     }

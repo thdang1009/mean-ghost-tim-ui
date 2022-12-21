@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { ProgressWithLabelComponent } from './progress-with-label/progress-with-label.component';
 import { GhostSiteBtnComponent } from './ghost-site-btn/ghost-site-btn.component';
 import { ListBadgeComponent } from './list-badge/list-badge.component';
-import { GhostServiceComponent } from './ghost-service/ghost-service.component';
 import { GhostIframeComponent } from './ghost-iframe/ghost-iframe.component';
 
 @NgModule({
@@ -29,7 +28,6 @@ import { GhostIframeComponent } from './ghost-iframe/ghost-iframe.component';
     ProgressWithLabelComponent,
     GhostSiteBtnComponent,
     ListBadgeComponent,
-    GhostServiceComponent,
     GhostIframeComponent,
   ],
   exports: [

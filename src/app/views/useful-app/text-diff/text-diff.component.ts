@@ -85,13 +85,9 @@ export class TextDiffComponent implements OnInit, OnDestroy {
     const formatAddContent = (add) => {
       return `<mark>${add}</mark>`;
     };
-    const formatEditContent = (edit) => {
-      return `<mark-as-edit>${edit}</mark-as-edit>`;
-    }
     const formatContent = (content) => {
       return `${content}`;
     }
-    // console.log(result);
     result.forEach(([flag, content]) => {
       if (flag === -1) {
         content1 += formatAddContent(content);
@@ -104,8 +100,6 @@ export class TextDiffComponent implements OnInit, OnDestroy {
     });
     this.highlights1 = this.applyHighlights(content1);
     this.highlights2 = this.applyHighlights(content2);
-    // console.log(this.highlights1);
-    // console.log(this.highlights2);
   }
   applyHighlights(text) {
     return text

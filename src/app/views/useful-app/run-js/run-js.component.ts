@@ -29,6 +29,8 @@ export class RunJsComponent implements OnInit, OnDestroy {
   store = [];
 
   constructor() {
+    // TODO document why this constructor is empty
+  
   }
 
   ngOnDestroy(): void {
@@ -81,7 +83,6 @@ export class RunJsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const handleFunction = this.handleCmdSave.bind(this);
-    // showNoti('Command + S to run code', 'info');
     (function () {
       let timer;
       let metaflag = false;
@@ -103,7 +104,6 @@ export class RunJsComponent implements OnInit, OnDestroy {
   }
 
   saveOnLocal() {
-    // console.log('saveOnLocal', this.codeModel.value);
     try {
       localStorage.setItem(SAVED_CODE, this.codeModel.value);
     } catch (e) {
@@ -112,7 +112,6 @@ export class RunJsComponent implements OnInit, OnDestroy {
   }
 
   onCodeChanged(value) {
-    // console.log('CODE', value);
   }
 
   handleCmdSave() {
@@ -124,7 +123,6 @@ export class RunJsComponent implements OnInit, OnDestroy {
         console.log['ghost_cheat'] = false;
       }
       this.handleV1(code);
-      // this.handleV2(code);
       this.saveOnLocal();
 
     } catch (e) {
@@ -163,8 +161,6 @@ export class RunJsComponent implements OnInit, OnDestroy {
     /* tslint:disable no-eval */
     eval(code);
     this.store = store;
-    // store.forEach(value => window[funcName](value));
-    // console.log = window[funcName];
   }
 
   handleV2(code) {

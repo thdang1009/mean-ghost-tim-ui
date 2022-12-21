@@ -47,14 +47,6 @@ export class ChooseFileComponent implements OnInit {
           console.log(err);
           showNoti(`Upload fail. Error: ${err}`, 'danger');
         });
-
-      // const upload$ = this.fileService.createObservableUploadFile(formData);
-
-      // this.uploadSub = upload$.subscribe(event => {
-      //   if (event.type == HttpEventType.UploadProgress) {
-      //     this.uploadProgress = Math.round(100 * (event.loaded / event.total));
-      //   }
-      // })
     }
   }
   
