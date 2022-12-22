@@ -26,8 +26,6 @@ export class NavbarComponent implements OnInit {
             const arr = [cur, ...(cur.children && cur.children.map(el => el) || [])];
             return [...pre, ...arr];
         }, []);
-        // this.title = this.getTitle();
-        // console.log('listTitles= ', this.listTitles);
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
         this.router.events.subscribe((event) => {
@@ -59,8 +57,6 @@ export class NavbarComponent implements OnInit {
         body.classList.remove('nav-open');
     };
     sidebarToggle() {
-        // const toggleButton = this.toggleButton;
-        // const body = document.getElementsByTagName('body')[0];
         /* tslint:disable-next-line */
         var $toggle = document.getElementsByClassName('navbar-toggler')[0];
 
@@ -72,7 +68,6 @@ export class NavbarComponent implements OnInit {
         const body = document.getElementsByTagName('body')[0];
 
         if (this.mobile_menu_visible === 1) {
-            // $('html').removeClass('nav-open');
             body.classList.remove('nav-open');
             /* tslint:disable-next-line */
             if ($layer) {
@@ -125,11 +120,8 @@ export class NavbarComponent implements OnInit {
         const subpath = ((titlee.match(regexPath) || [])[0] || '')
             .replace(/\/(admin|guest)\//, '')
             .replace(/\?.*/, '');
-        // console.log(subpath);
-        // console.log(this.listTitles);
         const found = (this.listTitles.filter(item => item.path === subpath) || [])[0] || {};
         const title = found.title || 'Dashboard';
-        // console.log(title);
         return title
     }
 }

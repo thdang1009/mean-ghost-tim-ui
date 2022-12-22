@@ -29,5 +29,13 @@ export const AdminLayoutRoutes: Routes = [
             loadChildren: () => import('../../views/ghost-management/ghost-management.module').then(m => m.GhostManagementModule),
             canActivate: [LoginGuard]
         }]
+    },
+    {
+        path: 'file',
+        children: [{
+            path: '',
+            loadChildren: () => import('../../views/file-management/file-management.module').then(m => m.FileManagementModule),
+            canActivate: [LoginGuard]
+        }]
     }
 ];
