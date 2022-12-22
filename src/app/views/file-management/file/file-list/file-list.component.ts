@@ -52,7 +52,7 @@ export class FileListComponent implements OnInit {
       return;
     }
     this.router.navigate(
-      ['admin/tool/file'],
+      ['admin/file/file'],
       {
         queryParams: { id: file._id }
       });

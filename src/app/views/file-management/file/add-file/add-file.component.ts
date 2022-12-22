@@ -94,7 +94,7 @@ export class AddFileComponent implements OnInit {
       .subscribe(file => {
         if (file) {
           showNoti(`Update success`, 'success');
-          this.router.navigate(['/admin/tool/file-list']);
+          this.router.navigate(['/admin/file/file-list']);
         }
       }, (err) => {
         console.log(err);
@@ -107,7 +107,7 @@ export class AddFileComponent implements OnInit {
       .subscribe(file => {
         if (file) {
           showNoti(`Create success`, 'success');
-          this.router.navigate(['/admin/tool/file-list']);
+          this.router.navigate(['/admin/file/file-list']);
         }
       }, (err) => {
         console.log(err);
