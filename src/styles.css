@@ -510,6 +510,11 @@ mark {
 .div__radio-label>label {
     margin: 0;
 }
+.hi-user {
+    text-align: center;
+    display: block;
+    font-weight: bold;
+}
 
 /* 
     to remove css
