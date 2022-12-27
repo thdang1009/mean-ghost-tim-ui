@@ -37,9 +37,6 @@ export const ROUTES: RouteInfo[] = [
     children: [
       { path: 'tool/todo-today', title: 'Todo Today', icon: 'checklist_rtl', class: '', permission: 'isMember' },
       { path: 'tool/note', title: 'Note', icon: 'notes', class: '', permission: 'isMember' },
-      { path: 'tool/book', title: 'Book', icon: 'library_books', class: '', permission: 'isAdmin' },
-      { path: 'tool/file', title: 'Add File', icon: 'post_add', class: '', permission: 'isAdmin' },
-      { path: 'tool/file-list', title: 'List Files', icon: 'picture_as_pdf', class: '', permission: 'isAdmin' },
       { path: 'tool/guest-message', title: 'List Guest Message', icon: 'list', class: '', permission: 'isGrandAdmin' }
     ]
   },
