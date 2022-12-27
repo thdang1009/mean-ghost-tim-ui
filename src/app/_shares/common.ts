@@ -106,7 +106,7 @@ export function mapResourceName(input): FePDFInfo {
       fileName: 'css'
     },
     'git-index': {
-      src: '/html.pdf',
+      src: '/git.pdf',
       fileName: 'git'
     },
     'html-index': {
@@ -138,7 +138,7 @@ export function mapResourceName(input): FePDFInfo {
       fileName: 'react'
     },
     'react-native-index': {
-      src: '/react.pdf',
+      src: '/react-native.pdf',
       fileName: 'react-native'
     },
     'ts-index': {
