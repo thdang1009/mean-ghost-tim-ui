@@ -60,68 +60,50 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="nav-link" [routerLink]="['index/js-index']">
                             <i class="fab fa-js"></i>
-                            JS Index
+                            JavaScript
                         </a>
                         <a class="nav-link" [routerLink]="['index/node-js-index']">
                             <i class="fab fa-node"></i>
-                            NodeJS Index
+                            NodeJS
                         </a>
                         <a class="nav-link" [routerLink]="['index/angular-index']">
                             <i class="fab fa-angular"></i>
-                            Angular Index
+                            Angular
                         </a>
                         <a class="nav-link" [routerLink]="['index/react-index']">
                             <i class="fab fa-react"></i>
-                            React Index
+                            React
                         </a>
                         <a class="nav-link" [routerLink]="['index/html-index']">
                             <i class="fab fa-html5"></i>
-                            Html Index
+                            Html
                         </a>
                         <a class="nav-link" [routerLink]="['index/css-index']">
                             <i class="fab fa-css3"></i>
-                            Css Index
+                            Css
                         </a>
                         <a class="nav-link" [routerLink]="['index/git-index']">
                             <i class="fab fa-git"></i>
-                            GIT Index
+                            GIT
                         </a>
                         <a class="nav-link" [routerLink]="['index/mongodb-index']">
                             <i class="fas fa-code"></i>
-                            MongoDB Index
+                            MongoDB
                         </a>
                         <a class="nav-link" [routerLink]="['index/ts-index']">
                             <i class="fas fa-code"></i>
-                            TypeScript Index
+                            TypeScript
                         </a>
                         <a class="nav-link" [routerLink]="['index/algorithms-index']">
                             <i class="fas fa-code"></i>
-                            Algorithms Index
+                            Algorithms
                         </a>
-                        <!-- <a class="nav-link" [routerLink]="['index/android-index']">
-                            <i class="fab fa-android"></i>
-                            Android Index
-                        </a>
-                        <a class="nav-link" [routerLink]="['index/mysql-index']">
-                            <i class="fas fa-code"></i>
-                            MySQL Index
-                        </a> -->
                         <a class="nav-link" [routerLink]="['index/react-native-index']">
                             <i class="fas fa-code"></i>
-                            React Native Index
+                            React Native
                         </a>
-                        <!-- <a class="nav-link" [routerLink]="['index/markdown-index']">
-                            <i class="fab fa-markdown"></i>
-                            Markdown Index
-                        </a> -->
                     </div>
                 </li>
-                <!-- <li class="nav-item" *ngIf="isAdmin">
-                    <a class="nav-link" [routerLink]="['admin/dashboard']">
-                        <i class="fas fa-ghost"></i>
-                        Admin View
-                    </a>
-                </li> -->
                 <li class="nav-item hover-pointer">
                     <a *ngIf="isLogined(); else notLogined" class="nav-link hover-pointer" (click)="logout()">
                         <i class="fas fa-sign-out-alt"></i>
