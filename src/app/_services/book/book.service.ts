@@ -34,11 +34,11 @@ export class BookService {
       catchError(handleError<any>('updateBook'))
     );
   }
-  getBook(id): Observable<Book[]> {
+  getBook(id): Observable<Book> {
     const url = `${apiUrl}/${id}`;
-    return this.http.get<Book[]>(url).pipe(
+    return this.http.get<Book>(url).pipe(
       tap(_ => ghostLog(`fetched my book`)),
-      catchError(handleError<Book[]>(`getMyBook`))
+      catchError(handleError<Book>(`getMyBook`))
     );
   }
 

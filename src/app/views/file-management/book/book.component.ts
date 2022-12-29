@@ -73,15 +73,19 @@ export class BookComponent implements OnInit {
       if (id) {
         this.bookService.getBook(id)
           .subscribe(res => {
-            this.initFormWithData(res);
-            this.itemSelected = res;
+            const url = (res.url as any).id;
+            const urlGet = (res.url as any).urlGet;
+            this.itemSelected = {
+              ...res,
+              urlGet: urlGet,
+              url: url
+            };
+            this.initFormWithData(this.itemSelected);
             this.isUpdate = true;
-            this.id = id;
           });
       } else {
         this.searchBook();
         this.isUpdate = false;
-        this.id = undefined;
         this.itemSelected = undefined;
       }
     });
@@ -117,7 +121,7 @@ export class BookComponent implements OnInit {
     }
     this.bookService.addBook(sample)
       .subscribe((res: any) => {
-        this.data.unshift(res);
+        this.data.push(res);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
@@ -163,7 +167,7 @@ export class BookComponent implements OnInit {
       });
   }
   saveThenBack(newBook) {
-    this.saveItem(this.id, newBook);
+    this.saveItem(this.itemSelected.id, newBook);
     this.back();
   }
   back() {
@@ -173,6 +177,17 @@ export class BookComponent implements OnInit {
       {
         relativeTo: this.activatedRoute,
         queryParams: { id: null },
+        queryParamsHandling: 'merge'
+      });
+  }
+  readThisBook() {
+    const urlGet = this.itemSelected.urlGet;
+    const title = this.itemSelected.title;
+    this.router.navigate(
+      ['../view-book'],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: { link: urlGet, title: title },
         queryParamsHandling: 'merge'
       });
   }

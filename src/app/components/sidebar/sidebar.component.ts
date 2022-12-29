@@ -46,6 +46,7 @@ export const ROUTES: RouteInfo[] = [
       { path: 'file/file-list', title: 'List Files', icon: 'picture_as_pdf', class: '', permission: 'isAdmin' },
       { path: 'file/file', title: 'Add File', icon: 'post_add', class: '', permission: 'isAdmin' },
       { path: 'file/book', title: 'Book', icon: 'library_books', class: '', permission: 'isAdmin' },
+      { path: 'file/view-book', title: 'View Book', icon: 'menu_book', class: '', permission: 'isAdmin' },
     ]
   },
   {

@@ -12,12 +12,17 @@ import { ProgressWithLabelComponent } from './progress-with-label/progress-with-
 import { GhostSiteBtnComponent } from './ghost-site-btn/ghost-site-btn.component';
 import { ListBadgeComponent } from './list-badge/list-badge.component';
 import { GhostIframeComponent } from './ghost-iframe/ghost-iframe.component';
+import { GhostPdfViewerComponent } from './ghost-pdf-viewer/ghost-pdf-viewer.component';
+
+// third party
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    PdfViewerModule,
   ],
   declarations: [
     FooterComponent,
@@ -28,6 +33,7 @@ import { GhostIframeComponent } from './ghost-iframe/ghost-iframe.component';
     ProgressWithLabelComponent,
     GhostSiteBtnComponent,
     ListBadgeComponent,
+    GhostPdfViewerComponent,
     GhostIframeComponent,
   ],
   exports: [
@@ -39,6 +45,7 @@ import { GhostIframeComponent } from './ghost-iframe/ghost-iframe.component';
     ProgressWithLabelComponent,
     GhostSiteBtnComponent,
     ListBadgeComponent,
+    GhostPdfViewerComponent,
     GhostIframeComponent,
   ],
   providers: [
