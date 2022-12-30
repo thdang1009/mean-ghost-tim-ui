@@ -41,14 +41,14 @@ export class GuestNavbarComponent implements OnInit {
   }
 
   search() {
-    if (this._isInPDFView()) {
+    if (this._isInPDFView) {
       // call search in pdf
       // just update the ?searchInPDF=...
       this.router.navigate(
         [],
         {
           relativeTo: this.activatedRoute,
-          queryParams: { searchInPDF: this.stringToSearch },
+          queryParams: { searchInPDF: this.stringToSearch, time: (new Date()).getTime() },
           queryParamsHandling: 'merge'
         });
     } else {
@@ -56,9 +56,8 @@ export class GuestNavbarComponent implements OnInit {
     }
   }
 
-  _isInPDFView() {
-    return isInPDFView();
-  }
+  _isInPDFView = isInPDFView;
+
   gotoAdminView() {
     if (this.isLogined()) {
       this.router.navigate(['admin/dashboard']);

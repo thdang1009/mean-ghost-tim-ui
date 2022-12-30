@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SocketioService } from '@app/_services/_index';
-import { handleSocket } from '@app/_shares/common';
+import { handleSocket, isInPDFView } from '@app/_shares/common';
 import { GUEST_MESSAGE_RESPONSE } from '@app/_shares/constant';
 import { AuthService } from '@services/_index';
 
@@ -75,11 +75,13 @@ export class SidebarComponent implements OnInit {
   username = 'Guest';
   fullName = 'Guest';
   permission = 'GUEST';
+  stringToSearch = '';
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private socketService: SocketioService
+    private socketService: SocketioService,
+    private activatedRoute: ActivatedRoute
   ) {
     this.isLogined = authService.isLogin();
     if (this.isLogined) {
@@ -149,4 +151,23 @@ export class SidebarComponent implements OnInit {
     }
     return true;
   };
+
+  search() {
+    if (this._isInPDFView) {
+      // call search in pdf
+      // just update the ?searchInPDF=...
+      this.router.navigate(
+        [],
+        {
+          relativeTo: this.activatedRoute,
+          queryParams: { searchInPDF: this.stringToSearch, time: (new Date()).getTime() },
+          queryParamsHandling: 'merge'
+        });
+    } else {
+      // call search normal in all page
+    }
+  }
+
+  _isInPDFView = isInPDFView();
+
 }

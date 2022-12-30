@@ -10,9 +10,11 @@
             <span class="navbar-toggler-icon icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form class="navbar-form">
+            <form class="navbar-form" (ngSubmit)="search()">
                 <div class="input-group no-border">
-                    <input type="text" value="" class="form-control" placeholder="Search in all page...">
+                    <input type="text" class="form-control" [(ngModel)]="stringToSearch"
+                        [ngModelOptions]="{standalone: true}"
+                        placeholder="{{ _isInPDFView ? 'Search in PDF' : 'Search in all page...' }}">
                     <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
                         <i class="material-icons">search</i>
                         <div class="ripple-container"></div>

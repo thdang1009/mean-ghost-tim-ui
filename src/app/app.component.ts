@@ -48,12 +48,10 @@ export class AppComponent implements OnInit {
           if (route.snapshot.data['title']) {
             routeTitle = route!.snapshot.data['title'];
           }
-          console.log('debug, routeTitle=', routeTitle);
           return routeTitle;
         })
       )
       .subscribe((title: string) => {
-        console.log('debug, title=', title);
         if (title) {
           this.titleService.setTitle(`${title}`);
         }

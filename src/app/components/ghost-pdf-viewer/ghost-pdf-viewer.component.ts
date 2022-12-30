@@ -34,6 +34,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   isLoading = true;
   bookmarks = new Map();
   elem;
+  pdfQuery = '';
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -61,13 +62,13 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       this.activeRoute.queryParams.subscribe(queryParams => {
         this.search(queryParams['searchInPDF']);
       });
-    }, 4000);
+    }, 3000);
   }
 
   pagechanging(e: CustomEvent) {
     // TODO document why this method 'pagechanging' is empty
   }
-  
+
 
   parseSavedObject(objString) {
     // TODO document why this method 'parseSavedObject' is empty
@@ -193,11 +194,21 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       this.isLoading = false;
     }, 300);
   }
-  search(stringToSearch: string) {
-    if (stringToSearch) {
-      this.pdf.pdfFindController.executeCommand('find', {
-        caseSensitive: false, findPrevious: undefined, highlightAll: true, phraseSearch: true, query: stringToSearch
-      });
+  search(newQuery: string = '') {
+    if (!newQuery) {
+      return;
     }
+    const isNewSearch = newQuery !== this.pdfQuery;
+    const type = isNewSearch ? '' : 'again';
+    this.pdfQuery = newQuery;
+
+    this.pdf.pdfFindController.executeCommand('find', {
+      type: type,
+      caseSensitive: false,
+      highlightAll: true,
+      phraseSearch: true,
+      query: this.pdfQuery,
+      findPrevious: isNewSearch
+    });
   }
 }

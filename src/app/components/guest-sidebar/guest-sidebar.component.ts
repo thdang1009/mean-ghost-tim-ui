@@ -57,7 +57,6 @@ export class GuestSidebarComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) {
     this.isLogined = this.authService.isLogin();
     this.isMember = this.authService.isMember();
-    console.log('isMember = ', this.isMember);
     if (this.isLogined) {
     }
   }
@@ -70,20 +69,18 @@ export class GuestSidebarComponent implements OnInit {
     }
     this.menuItems = tempMenu;
   }
-  _isInPDFView() {
-    return isInPDFView();
-  }
+  _isInPDFView = isInPDFView();
 
   search() {
     // alert(this.stringToSearch)
-    if (this._isInPDFView()) {
+    if (this._isInPDFView) {
       // call search in pdf
       // just update the ?searchInPDF=...
       this.router.navigate(
         [],
         {
           relativeTo: this.activatedRoute,
-          queryParams: { searchInPDF: this.stringToSearch },
+          queryParams: { searchInPDF: this.stringToSearch, time: (new Date()).getTime() },
           queryParamsHandling: 'merge'
         });
     } else {

@@ -1,7 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { isInPDFView } from '@app/_shares/common';
 
 @Component({
     selector: 'app-navbar',
@@ -15,8 +16,13 @@ export class NavbarComponent implements OnInit {
     mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    stringToSearch = '';
 
-    constructor(location: Location, private element: ElementRef, private router: Router) {
+    constructor(
+        location: Location,
+        private element: ElementRef,
+        private router: Router,
+        private activatedRoute: ActivatedRoute) {
         this.location = location;
         this.sidebarVisible = false;
     }
@@ -122,6 +128,24 @@ export class NavbarComponent implements OnInit {
             .replace(/\?.*/, '');
         const found = (this.listTitles.filter(item => item.path === subpath) || [])[0] || {};
         const title = found.title || 'Dashboard';
-        return title
+        return title;
     }
+
+    search() {
+        if (this._isInPDFView) {
+            // call search in pdf
+            // just update the ?searchInPDF=...
+            this.router.navigate(
+                [],
+                {
+                    relativeTo: this.activatedRoute,
+                    queryParams: { searchInPDF: this.stringToSearch, time: (new Date()).getTime() },
+                    queryParamsHandling: 'merge'
+                });
+        } else {
+            // call search normal in all page
+        }
+    }
+
+    _isInPDFView = isInPDFView();
 }

@@ -9,10 +9,12 @@
 </div>
 <div class="sidebar-wrapper">
     <div *ngIf="isMobileMenu()">
-        <form class="navbar-form">
+        <form class="navbar-form" (ngSubmit)="search()">
             <span class="bmd-form-group">
                 <div class="input-group no-border">
-                    <input type="text" value="" class="form-control" placeholder="Search in all page...">
+                    <input type="text" [(ngModel)]="stringToSearch" [ngModelOptions]="{standalone: true}"
+                        placeholder="{{ _isInPDFView ? 'Search in PDF' : 'Search in all page...' }}"
+                        class="form-control">
                     <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
                         <i class="material-icons">search</i>
                         <div class="ripple-container"></div>
