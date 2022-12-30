@@ -60,7 +60,8 @@ export function isImportant(content) {
   return content.includes('**');
 }
 export function isInPDFView() {
-  return location.pathname.includes('index');
+  const name = location.pathname;
+  return name.includes('index') || name.includes('view-book');
 }
 
 export function nextStatus(oldStatus) {
