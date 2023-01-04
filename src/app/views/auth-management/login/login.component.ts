@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CONSTANT } from '@shares/constant';
 import { showNoti } from '@shares/common';
+import { ReadingInfoService } from '@app/_services/reading-info/reading-info.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -27,7 +28,11 @@ export class LoginComponent implements OnInit {
   isLoadingResults = false;
   isRunning = false;
 
-  constructor(private formBuilder: UntypedFormBuilder, private router: Router, private authService: AuthService) { }
+  constructor(
+    private formBuilder: UntypedFormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private readingInfoService: ReadingInfoService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -46,6 +51,7 @@ export class LoginComponent implements OnInit {
           setTimeout(_ => {
             this.router.navigate(['/admin/dashboard']);
           }, 1000);
+          this.readingInfoService.getReadingInfo();
           showNoti('Login success!', 'success');
         }
       }, (err) => {

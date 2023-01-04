@@ -35,34 +35,11 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe(_ => { }, _ => { });
     this.socketService.setupSocketConnection();
     if (this.authService.isMember()) {
-      this.getReadingInfo();
+      this.readingInfoService.getReadingInfo();
     }
     this.checkSocket();
     this.initAutoTitle();
     window.onbeforeunload = () => this.ngOnDestroy();
-  }
-
-  getReadingInfo() {
-    this.readingInfoService.getMyReadingInfo()
-      .subscribe((res: ReadingInfo) => {
-        const jsonObject = res.info;
-        Object.entries(jsonObject).forEach(([key, value]) => {
-          if (key.includes(PDF_OBJ))
-            localStorage.setItem(key, value);
-        });
-      }, err => {
-        showNoti(`Error when get Reading Info: ${err}`, 'danger');
-      });
-  }
-
-  updateReadingInfo() {
-    const newReadingInfo = new ReadingInfo();
-    this.readingInfoService.updateReadingInfo(newReadingInfo)
-      .subscribe((_: ReadingInfo) => {
-
-      }, err => {
-        showNoti(`Error when update Reading Info: ${err}`, 'danger');
-      });
   }
 
   initAutoTitle() {
@@ -91,7 +68,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.socketService.disconnect();
     if (this.authService.isMember()) {
-      this.updateReadingInfo();
+      this.readingInfoService.updateReadingInfo();
     }
   }
 
