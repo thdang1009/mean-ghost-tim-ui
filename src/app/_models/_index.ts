@@ -10,3 +10,4 @@ export * from './post';
 export * from './category';
 export * from './tag';
 export * from './my-file';
+export * from './reading-info';

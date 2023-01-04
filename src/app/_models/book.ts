@@ -12,11 +12,3 @@ export class Book {
     createdAt?: Date;
     updatedAt?: Date;
   }
-
-
-export class BookReadingInfo {
-  user?: Number;
-  info?: String;
-  createdAt?: Date;
-  updatedAt?: Date;
-}

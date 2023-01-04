@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
-import { BookReadingInfo, Book } from '@models/_index';
+import { ReadingInfo, Book } from '@models/_index';
 import { ghostLog, handleError } from '@app/_shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/book';
@@ -18,22 +18,7 @@ export class BookService {
   redirectUrl: string;
 
   constructor(private http: HttpClient) { }
-
-  getMyBookReadingInfo(): Observable<BookReadingInfo> {
-    const url = `${apiUrl}/reading-info`;
-    return this.http.get<BookReadingInfo>(url).pipe(
-      tap(_ => ghostLog(`fetched myBookReadingInfo`)),
-      catchError(handleError<BookReadingInfo>(`getMyBookReadingInfo with my ID`))
-    );
-  }
-
-  updatebookReadingInfo(id: any, jsonString: BookReadingInfo): Observable<any> {
-    const url = `${apiUrl}/reading-info/${id}`;
-    return this.http.put(url, jsonString).pipe(
-      tap(_ => ghostLog(`updated myBookReadingInfo`)),
-      catchError(handleError<any>('updateBook'))
-    );
-  }
+  
   getBook(id): Observable<Book> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<Book>(url).pipe(
