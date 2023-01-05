@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
-import { UserService } from '@services/_index';
+import { GuestMessageService } from '@app/_services/_index';
 import { showNoti } from '@shares/common';
 
 export interface PortfolioData {
@@ -40,7 +40,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   indexInterval = 0;
   constructor(
     private formBuilder: UntypedFormBuilder,
-    private userService: UserService,) { }
+    private guestMessage: GuestMessageService) { }
 
   ngOnInit(): void {
     this.yearOlds = new Date().getFullYear() - 1996;
@@ -62,7 +62,7 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   }
   sendMessageToMe(form: NgForm) {
     this.isRunning = true;
-    this.userService.sendGuestMessage(form)
+    this.guestMessage.sendGuestMessage(form)
       .subscribe(res => {
         this.isRunning = false;
         if (res && res.id) {

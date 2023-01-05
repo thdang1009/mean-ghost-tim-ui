@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
-import { GuestMessage, User } from '@models/_index';
+import { User } from '@models/_index';
 import { ghostLog, handleError } from '@app/_shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/user';
@@ -58,13 +58,6 @@ export class UserService {
     return this.http.delete<User>(url).pipe(
       tap(_ => ghostLog(`deleted tdtd id=${id}`)),
       catchError(handleError<User>('deleteUser'))
-    );
-  }
-
-  sendGuestMessage(message: any): Observable<GuestMessage> {
-    return this.http.post<GuestMessage>(apiUrl + '/guest-message', message).pipe(
-      tap((_message: GuestMessage) => ghostLog(`add guest message= ${_message.id}`)),
-      catchError(handleError<GuestMessage>('add guest message'))
     );
   }
 

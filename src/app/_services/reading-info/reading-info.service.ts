@@ -6,6 +6,7 @@ import { environment } from '@environments/environment';
 import { ReadingInfo } from '@models/_index';
 import { ghostLog, handleError, showNoti } from '@app/_shares/common';
 import { PDF_OBJ } from '@app/_shares/constant';
+import { AuthService } from '../_index';
 
 const apiUrl = environment.apiUrl + '/v1/reading-info';
 
@@ -18,17 +19,39 @@ export class ReadingInfoService {
   loggedInStatus = false;
   redirectUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService) { }
 
+  readtimeUpdateReadingInfo(object = {}) {
+
+    if (!this.authService.isMember()) {
+      console.log('Not loggined yet, just save localstorage');
+      return;
+    }
+    Object.entries(object).forEach(([key, value]) => {
+      this._readtimeUpdateReadingInfo(key, value)
+        .subscribe(res => {
+
+        }, err => {
+          showNoti(`Error when update realtime Reading Info: ${err}`, 'danger');
+        });
+    });
+  }
 
   getReadingInfo() {
     this._getReadingInfo()
       .subscribe((res: ReadingInfo) => {
-        const jsonObject = res.info;
-        Object.entries(jsonObject).forEach(([key, value]) => {
-          if (key.includes(PDF_OBJ))
-            localStorage.setItem(key, value);
-        });
+        if (res === null) {
+          // nếu chưa từng lưu dữ liệu thì gọi hàm này để init
+          this.updateReadingInfo();
+        } else {
+          const jsonObject = res.info;
+          Object.entries(jsonObject).forEach(([key, value]) => {
+            if (key.includes(PDF_OBJ))
+              localStorage.setItem(key, value);
+          });
+        }
       }, err => {
         showNoti(`Error when get Reading Info: ${err}`, 'danger');
       });
@@ -41,7 +64,6 @@ export class ReadingInfoService {
       if (key.includes(PDF_OBJ))
         newReadingInfo[key] = value;
     });
-    alert(newReadingInfo);
     this._updateReadingInfo(newReadingInfo)
       .subscribe((_: ReadingInfo) => {
 
@@ -62,7 +84,16 @@ export class ReadingInfoService {
     const url = `${apiUrl}`;
     return this.http.put(url, readingInfo).pipe(
       tap(_ => ghostLog(`updated myReadingInfo`)),
-      catchError(handleError<any>('updateBook'))
+      catchError(handleError<any>('updateReadingInfo'))
+    );
+  }
+
+  private _readtimeUpdateReadingInfo(key, value): Observable<any> {
+    const url = `${apiUrl}/realtime`;
+    console.log('_readtimeUpdateReadingInfo req=', { key: key, value: value });
+    return this.http.put(url, { key: key, value: value }).pipe(
+      tap(_ => ghostLog(`updated readtimeReadingInfo`)),
+      catchError(handleError<any>('readtimeUpdateReadingInfo'))
     );
   }
 }

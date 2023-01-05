@@ -25,7 +25,8 @@ export const SAVED_TEXT = 'SAVED_TEXT';
 export const SAVED_TEXT_2 = 'SAVED_TEXT_2';
 
 export const PDF_OBJ = 'PDF_OBJ';
-export const GUEST_MESSAGE = 'guest message';
-export const GUEST_MESSAGE_RESPONSE = 'guest message response';
+export const SK_GUEST_MESSAGE = 'guest message';
+export const SK_GUEST_MESSAGE_RESPONSE = 'guest message response';
+export const SK_READING_INFO_REALTIME_UPDATE = 'reading info realtime update';
 
 export const HOUR = 60 * 60 * 1000;

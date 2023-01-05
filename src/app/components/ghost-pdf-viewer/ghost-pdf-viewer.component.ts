@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ReadingInfoService } from '@app/_services/reading-info/reading-info.service';
 import { showNoti } from '@app/_shares/common';
 import { PDF_OBJ } from '@shares/constant';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
@@ -35,7 +36,10 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   bookmarks = new Map();
   elem;
   pdfQuery = '';
-  constructor(private activeRoute: ActivatedRoute) { }
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private readingInfoService: ReadingInfoService
+  ) { }
 
   ngOnInit(): void {
     this.pdfSrc = this.src;
@@ -82,6 +86,12 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   ngOnDestroy(): void {
     localStorage.setItem(this.key, '' + this.currentPage);
     localStorage.setItem(this.key + '_bookmarks', Array.from(this.bookmarks.keys()).join());
+
+    const objectSync = {};
+    objectSync[this.key] = '' + this.currentPage;
+    objectSync[this.key + '_bookmarks'] = Array.from(this.bookmarks.keys()).join();
+    this.readingInfoService.readtimeUpdateReadingInfo(objectSync);
+    showNoti('Your reading progess is saved', 'info');
   }
   scrollToTop() {
     setTimeout(_ => {

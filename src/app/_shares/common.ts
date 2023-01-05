@@ -12,15 +12,15 @@ export interface LoginResponse extends GhostSiteResponse {
   token: string
 }
 
-export function showNoti(content, type, _timer = 2000, title = 'Notifications') {
+export function showNoti(content, type, _timer = 1000, title = 'Notifications') {
   showNotification('top', 'right', title, content, type, _timer);
 }
 
-export function showNotiSocket(content, type, _timer = 2000, title = 'Notifications') {
+export function showNotiSocket(content, type, _timer = 1000, title = 'Notifications') {
   showNotification('top', 'left', title, content, type, _timer);
 }
 
-export function showNotification(from, align, title, content, type, _timer = 2000) {
+export function showNotification(from, align, title, content, type, _timer = 1000) {
   // const type = ['','info','success','warning','danger'];
 
   $.notify({
@@ -151,11 +151,21 @@ export function mapResourceName(input): FePDFInfo {
 }
 
 export function handleSocket(arg) {
-  console.log('Get data from socket= ', arg);
+  console.log('handleSocket Get data from socket= ', arg);
   try {
     const object = typeof arg === 'string' ? JSON.parse(arg) : arg;
     const content = `${object.name} send: "${object.message}"`;
     showNotiSocket(content, 'info', undefined, object.title);
+  } catch (e) {
+
+  }
+}
+
+export function handleSocketReadingInfo(arg) {
+  console.log('handleSocketReadingInfo Get data from socket= ', arg);
+  try {
+    showNotiSocket('Some pages has changed!!', 'info', undefined);
+    this.localStorage.setItem(arg.key, arg.value);
   } catch (e) {
 
   }

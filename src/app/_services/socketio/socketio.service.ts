@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { handleSocketReadingInfo } from '@app/_shares/common';
+import { SK_READING_INFO_REALTIME_UPDATE } from '@app/_shares/constant';
 import { environment } from '@environments/environment';
 import { io } from 'socket.io-client';
 
@@ -22,6 +24,8 @@ export class SocketioService {
     this.socket.on('disconnect', () => {
       console.log('socket disconnected');
     });
+
+    this.socket.on(SK_READING_INFO_REALTIME_UPDATE, handleSocketReadingInfo);
   }
   disconnect() {
     if (this.socket) {

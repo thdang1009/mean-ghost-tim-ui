@@ -16,6 +16,13 @@ export class GuestMessageService {
   constructor(private http: HttpClient) { }
 
 
+  sendGuestMessage(message: any): Observable<GuestMessage> {
+    return this.http.post<GuestMessage>(apiUrl, message).pipe(
+      tap((_message: GuestMessage) => ghostLog(`add guest message= ${_message.id}`)),
+      catchError(handleError<GuestMessage>('add guest message'))
+    );
+  }
+
   getGuestMessage(id: any): Observable<GuestMessage> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<GuestMessage>(url).pipe(

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SocketioService } from '@app/_services/_index';
-import { handleSocket, isInPDFView } from '@app/_shares/common';
-import { GUEST_MESSAGE_RESPONSE } from '@app/_shares/constant';
+import { handleSocket, handleSocketReadingInfo, isInPDFView } from '@app/_shares/common';
+import { SK_GUEST_MESSAGE_RESPONSE, SK_READING_INFO_REALTIME_UPDATE } from '@app/_shares/constant';
 import { AuthService } from '@services/_index';
 
 declare const $: any;
@@ -114,7 +114,11 @@ export class SidebarComponent implements OnInit {
   checkSocket() {
     const isAdmin = this.authService.isAdmin();
     if (isAdmin) {
-      this.socketService.socket.on(GUEST_MESSAGE_RESPONSE, handleSocket);
+      this.socketService.socket.on(SK_GUEST_MESSAGE_RESPONSE, handleSocket);
+    }
+    const isMember = this.authService.isMember();
+    if (isMember) {
+      this.socketService.socket.on(SK_READING_INFO_REALTIME_UPDATE, handleSocketReadingInfo);
     }
   }
   checkPermission() {
