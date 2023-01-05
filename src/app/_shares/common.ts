@@ -1,6 +1,7 @@
 import { FePDFInfo } from "@app/views/code-index/dymanic-index/dymanic-index.component";
 import { TDTD_STATUS } from "./enum";
 import { Observable, of } from "rxjs";
+import { HOUR } from "./constant";
 
 
 declare var $: any;
@@ -150,12 +151,12 @@ export function mapResourceName(input): FePDFInfo {
   })[input]
 }
 
-export function handleSocket(arg) {
-  console.log('handleSocket Get data from socket= ', arg);
+export function handleSocketGuestMessage(arg) {
+  console.log('handleSocketGuestMessage Get data from socket= ', arg);
   try {
     const object = typeof arg === 'string' ? JSON.parse(arg) : arg;
     const content = `${object.name} send: "${object.message}"`;
-    showNotiSocket(content, 'info', undefined, object.title);
+    showNotiSocket(content, 'info', 3 * HOUR, object.title);
   } catch (e) {
 
   }
@@ -164,8 +165,10 @@ export function handleSocket(arg) {
 export function handleSocketReadingInfo(arg) {
   console.log('handleSocketReadingInfo Get data from socket= ', arg);
   try {
-    showNotiSocket('Some pages has changed!!', 'info', undefined);
-    this.localStorage.setItem(arg.key, arg.value);
+    const key = arg.key || '';
+    const targetName = key.includes('bookmark') ? 'Bookmark' : 'Page';
+    showNotiSocket(`${targetName} has changed!!`, 'info', undefined, 'You read somewhere else!');
+    localStorage.setItem(arg.key, arg.value);
   } catch (e) {
 
   }

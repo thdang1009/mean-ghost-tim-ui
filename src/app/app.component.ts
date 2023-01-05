@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
 import { AnalyticService, AuthService, SocketioService } from './_services/_index';
-import { handleSocket, handleSocketReadingInfo } from './_shares/common';
+import { handleSocketGuestMessage, handleSocketReadingInfo } from './_shares/common';
 import { SK_GUEST_MESSAGE_RESPONSE, SK_READING_INFO_REALTIME_UPDATE } from './_shares/constant';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
@@ -73,7 +73,7 @@ export class AppComponent implements OnInit, OnDestroy {
   checkSocket() {
     const isAdmin = this.authService.isAdmin();
     if (isAdmin) {
-      this.socketService.socket.on(SK_GUEST_MESSAGE_RESPONSE, handleSocket);
+      this.socketService.socket.on(SK_GUEST_MESSAGE_RESPONSE, handleSocketGuestMessage);
     }
     const isMember = this.authService.isMember();
     if (isMember) {

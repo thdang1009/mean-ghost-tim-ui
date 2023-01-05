@@ -24,8 +24,6 @@ export class SocketioService {
     this.socket.on('disconnect', () => {
       console.log('socket disconnected');
     });
-
-    this.socket.on(SK_READING_INFO_REALTIME_UPDATE, handleSocketReadingInfo);
   }
   disconnect() {
     if (this.socket) {
