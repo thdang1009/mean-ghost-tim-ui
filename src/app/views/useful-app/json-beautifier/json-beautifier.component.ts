@@ -63,7 +63,7 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
   findDiff() {
     this.isLoadingResults = true;
     const result = this.callFindDiff() || [];
-    console.log(1, result);
+    
     const left = document.querySelectorAll('#json-editor-left .ace_line') || [];
     const right = document.querySelectorAll('#json-editor-right .ace_line') || [];
     let currentLineLeft = 0;
@@ -158,13 +158,11 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
   }
 
   onScroll1(e) {
-    console.log('scroll', e);
     // change it to angular and element is 1
     const scrollTop = this.text1.nativeElement.scrollTop;
     this.text2.nativeElement.scrollTop = scrollTop;
   }
   onScroll2(e) {
-    console.log('scroll', e);
     // change it to angular and element is 2
     const scrollTop = this.text2.nativeElement.scrollTop;
     this.text1.nativeElement.scrollTop = scrollTop;

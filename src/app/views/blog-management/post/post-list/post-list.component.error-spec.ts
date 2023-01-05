@@ -16,7 +16,6 @@ class MockService extends AbstractMockObservableService {
     return this;
   }
   getCategorys() {
-    console.log('12434', this.getCategorys);
     return this;
   }
 }

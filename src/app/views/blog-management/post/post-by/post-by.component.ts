@@ -16,7 +16,6 @@ export class PostByComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.queryParams
       .subscribe(params => {
-        console.log(params);
         this.postService.getPublicPosts(params)
           .subscribe(posts => {
             this.posts = posts || [];

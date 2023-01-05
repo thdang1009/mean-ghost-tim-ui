@@ -154,7 +154,6 @@ export class DashboardComponent implements OnInit {
           checked: el.status === TDTD_STATUS.DONE,
           nextStatus: nextStatus(el.status)
         }));
-        console.log(this.tdtds);
       }, err => {
       });
   }
@@ -207,7 +206,6 @@ export class DashboardComponent implements OnInit {
       const link = data.headers.get('Link');
       if (link) {
         this.pageLinks = this.parseLinkHeader(link);
-        console.log(this.pageLinks);
       }
       this.issues = data.body;
       this.issuesLength = data.body.length || 0;

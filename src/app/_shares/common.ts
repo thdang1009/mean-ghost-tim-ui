@@ -62,7 +62,6 @@ export function isImportant(content) {
 }
 export function isInPDFView() {
   const pathname = location.pathname;
-  console.log('pathname', pathname);
   return pathname.includes('index') || pathname.includes('view-book');
 }
 
@@ -87,7 +86,6 @@ export function isValidFile(file) {
   return isValidSize;
 }
 export function compareWithFunc(a, b) {
-  console.log(a, b);
   return a == b;
 }
 export function mapResourceName(input): FePDFInfo {
@@ -152,7 +150,6 @@ export function mapResourceName(input): FePDFInfo {
 }
 
 export function handleSocketGuestMessage(arg) {
-  console.log('handleSocketGuestMessage Get data from socket= ', arg);
   try {
     const object = typeof arg === 'string' ? JSON.parse(arg) : arg;
     const content = `${object.name} send: "${object.message}"`;
@@ -163,12 +160,14 @@ export function handleSocketGuestMessage(arg) {
 }
 
 export function handleSocketReadingInfo(arg) {
-  console.log('handleSocketReadingInfo Get data from socket= ', arg);
   try {
-    const key = arg.key || '';
-    const targetName = key.includes('bookmark') ? 'Bookmark' : 'Page';
-    showNotiSocket(`${targetName} has changed!!`, 'info', undefined, 'You read somewhere else!');
-    localStorage.setItem(arg.key, arg.value);
+    const username = localStorage.getItem('username');
+    if (username === arg.username) {
+      const key = arg.key || '';
+      const targetName = key.includes('bookmark') ? 'Bookmark' : 'Page';
+      showNotiSocket(`${targetName} has changed!!`, 'info', undefined, 'You read somewhere else!');
+      localStorage.setItem(arg.key, arg.value);
+    }
   } catch (e) {
 
   }

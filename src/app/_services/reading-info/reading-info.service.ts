@@ -90,7 +90,6 @@ export class ReadingInfoService {
 
   private _readtimeUpdateReadingInfo(key, value): Observable<any> {
     const url = `${apiUrl}/realtime`;
-    console.log('_readtimeUpdateReadingInfo req=', { key: key, value: value });
     return this.http.put(url, { key: key, value: value }).pipe(
       tap(_ => ghostLog(`updated readtimeReadingInfo`)),
       catchError(handleError<any>('readtimeUpdateReadingInfo'))

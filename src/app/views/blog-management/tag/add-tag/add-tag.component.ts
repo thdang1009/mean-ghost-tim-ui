@@ -55,7 +55,6 @@ export class AddTagComponent implements OnInit {
   }
 
   onFormSubmit(data: any) {
-    console.log(data);
     const newTag: Tag = {
       name: data.name,
       description: data.description,

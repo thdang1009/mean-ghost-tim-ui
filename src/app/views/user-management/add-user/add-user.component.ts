@@ -71,7 +71,6 @@ export class AddUserComponent implements OnInit {
   }
 
   onFormSubmit(data: any) {
-    console.log(data);
     const newUser: User = {
       fullName: data.fullName,
       username: data.username,
