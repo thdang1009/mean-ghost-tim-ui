@@ -150,6 +150,7 @@ export function mapResourceName(input): FePDFInfo {
 }
 
 export function handleSocketGuestMessage(arg) {
+  console.log('handleSocketGuestMessage');
   try {
     const object = typeof arg === 'string' ? JSON.parse(arg) : arg;
     const content = `${object.name} send: "${object.message}"`;
@@ -160,8 +161,9 @@ export function handleSocketGuestMessage(arg) {
 }
 
 export function handleSocketReadingInfo(arg) {
+  console.log('handleSocketReadingInfo');
   try {
-    const username = localStorage.getItem('username');
+    const { username } = JSON.parse(localStorage.getItem('USER_INFO'));
     if (username === arg.username) {
       const key = arg.key || '';
       const targetName = key.includes('bookmark') ? 'Bookmark' : 'Page';
@@ -169,7 +171,7 @@ export function handleSocketReadingInfo(arg) {
       localStorage.setItem(arg.key, arg.value);
     }
   } catch (e) {
-
+    console.log('handleSocketReadingInfo', e);
   }
 }
 

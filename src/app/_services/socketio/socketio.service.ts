@@ -32,10 +32,12 @@ export class SocketioService {
       this.socket.disconnect();
     }
   }
-  subcribeChanel(chanel, handlerBindedThis) {
+  subcribeChanel(chanel, handler, that) {
     if (!this.subcribedChanel.has(chanel)) {
+      console.log('debug subcribeChanel', chanel);
       this.subcribedChanel.add(chanel);
-      this.socket.on(chanel, handlerBindedThis);
+      console.log('debug subcribeChanel this.socket', this.socket);
+      this.socket.on(chanel, handler.bind(that));
     }
   }
 }

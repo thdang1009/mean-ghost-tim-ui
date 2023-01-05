@@ -73,11 +73,11 @@ export class AppComponent implements OnInit, OnDestroy {
   checkSocket() {
     const isAdmin = this.authService.isAdmin();
     if (isAdmin) {
-      this.socketService.subcribeChanel(SK_GUEST_MESSAGE_RESPONSE, handleSocketGuestMessage.bind(this));
+      this.socketService.subcribeChanel(SK_GUEST_MESSAGE_RESPONSE, handleSocketGuestMessage, this);
     }
     const isMember = this.authService.isMember();
     if (isMember) {
-      this.socketService.subcribeChanel(SK_READING_INFO_REALTIME_UPDATE, handleSocketReadingInfo.bind(this));
+      this.socketService.subcribeChanel(SK_READING_INFO_REALTIME_UPDATE, handleSocketReadingInfo, this);
     }
   }
 }
