@@ -11,6 +11,8 @@ export class SocketioService {
 
   socket;
 
+  subcribedChanel = new Set();
+
   setupSocketConnection() {
     this.socket = io(environment.SOCKET_ENDPOINT, {
       path: '/socket',
@@ -28,6 +30,12 @@ export class SocketioService {
   disconnect() {
     if (this.socket) {
       this.socket.disconnect();
+    }
+  }
+  subcribeChanel(chanel, handlerBindedThis) {
+    if (!this.subcribedChanel.has(chanel)) {
+      this.subcribedChanel.add(chanel);
+      this.socket.on(chanel, handlerBindedThis);
     }
   }
 }
