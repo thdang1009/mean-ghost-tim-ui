@@ -34,9 +34,7 @@ export class SocketioService {
   }
   subcribeChanel(chanel, handler, that) {
     if (!this.subcribedChanel.has(chanel)) {
-      console.log('debug subcribeChanel', chanel);
       this.subcribedChanel.add(chanel);
-      console.log('debug subcribeChanel this.socket', this.socket);
       this.socket.on(chanel, handler.bind(that));
     }
   }

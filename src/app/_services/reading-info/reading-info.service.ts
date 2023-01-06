@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { ReadingInfo } from '@models/_index';
@@ -14,7 +14,6 @@ const apiUrl = environment.apiUrl + '/v1/reading-info';
   providedIn: 'root'
 })
 export class ReadingInfoService {
-
   readingInfoInfo: any = {};
   loggedInStatus = false;
   redirectUrl: string;
@@ -22,7 +21,7 @@ export class ReadingInfoService {
   constructor(
     private http: HttpClient,
     private authService: AuthService) { }
-
+  
   readtimeUpdateReadingInfo(object = {}) {
 
     if (!this.authService.isMember()) {

@@ -1,6 +1,6 @@
 import { FePDFInfo } from "@app/views/code-index/dymanic-index/dymanic-index.component";
 import { TDTD_STATUS } from "./enum";
-import { Observable, of } from "rxjs";
+import { Observable, Subject, of } from "rxjs";
 import { HOUR } from "./constant";
 
 
@@ -168,7 +168,6 @@ export function handleSocketReadingInfo(arg) {
       const key = arg.key || '';
       const targetName = key.includes('bookmark') ? 'Bookmark' : 'Page';
       showNotiSocket(`${targetName} has changed!!`, 'info', undefined, 'You read somewhere else!');
-      localStorage.setItem(arg.key, arg.value);
     }
   } catch (e) {
     console.log('handleSocketReadingInfo', e);
