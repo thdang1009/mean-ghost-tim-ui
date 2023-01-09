@@ -150,7 +150,6 @@ export function mapResourceName(input): FePDFInfo {
 }
 
 export function handleSocketGuestMessage(arg) {
-  console.log('handleSocketGuestMessage');
   try {
     const object = typeof arg === 'string' ? JSON.parse(arg) : arg;
     const content = `${object.name} send: "${object.message}"`;
@@ -161,7 +160,6 @@ export function handleSocketGuestMessage(arg) {
 }
 
 export function handleSocketReadingInfo(arg) {
-  console.log('handleSocketReadingInfo');
   try {
     const { username } = JSON.parse(localStorage.getItem('USER_INFO'));
     if (username === arg.username) {

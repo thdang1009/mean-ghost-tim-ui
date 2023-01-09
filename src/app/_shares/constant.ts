@@ -30,3 +30,5 @@ export const SK_GUEST_MESSAGE_RESPONSE = 'guest message response';
 export const SK_READING_INFO_REALTIME_UPDATE = 'reading info realtime update';
 
 export const HOUR = 60 * 60 * 1000;
+
+export const LIST_TRUE_FALSE = [true, false];

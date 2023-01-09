@@ -12,7 +12,6 @@ import { BookComponent } from './book/book.component';
 import { SharedModule } from '@app/_shares/shared-module.module';
 import { ViewBookComponent } from './view-book/view-book.component';
 import { ComponentsModule } from '@app/components/components.module';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
     declarations: [
@@ -29,7 +28,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
         CommonModule,
         FileManagementRoutingModule,
         FileUploadModule,
-        DragDropModule,
         SharedModule,
         HttpClientModule,
         ReuseComponentModule,

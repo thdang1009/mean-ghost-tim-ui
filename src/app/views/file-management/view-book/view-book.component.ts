@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CONSTANT } from '@app/_shares/constant';
 
 @Component({
   selector: 'view-book',
@@ -23,7 +24,13 @@ export class ViewBookComponent implements OnInit {
       const title = params['title'];
       const haveParams = !!link;
       if (haveParams) {
-        this.pdfSrc = link;
+        let queryParams = '';
+        let token = localStorage.getItem(CONSTANT.TOKEN);
+        if (token) {
+          token = token.replace('JWT ', '');
+          queryParams = `?token=${token}`;
+        }
+        this.pdfSrc = link + queryParams;
         this.pdfFileName = title;
         this.isReady = true;
       }

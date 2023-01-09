@@ -80,9 +80,9 @@ svg {
 .fixed-plugin {
     border-radius: 8px;
     position: fixed;
-    left: 50%;
-    top: 80%;
-    transform: translate(-50%, 0);
+    left: calc(100% - 128px);
+    top: 30%;
+    // transform: translate(-50%, 0);
     background: transparent !important;
     overflow: hidden;
     z-index: 1000;

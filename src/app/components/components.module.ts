@@ -13,7 +13,7 @@ import { GhostSiteBtnComponent } from './ghost-site-btn/ghost-site-btn.component
 import { ListBadgeComponent } from './list-badge/list-badge.component';
 import { GhostIframeComponent } from './ghost-iframe/ghost-iframe.component';
 import { GhostPdfViewerComponent } from './ghost-pdf-viewer/ghost-pdf-viewer.component';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 // third party
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 
@@ -23,6 +23,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     RouterModule,
     FormsModule,
     PdfViewerModule,
+    DragDropModule
   ],
   declarations: [
     FooterComponent,

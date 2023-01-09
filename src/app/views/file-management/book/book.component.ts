@@ -7,7 +7,7 @@ import { compareWithFunc, showNoti } from '@shares/common';
 import * as dateFns from 'date-fns';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '@environments/environment';
-import { CONSTANT } from '@app/_shares/constant';
+import { CONSTANT, LIST_TRUE_FALSE } from '@app/_shares/constant';
 import { BookPermission } from '@app/_shares/enum';
 import { FileService } from '@app/_services/_index';
 @Component({
@@ -23,6 +23,7 @@ export class BookComponent implements OnInit {
   savedFile: File = null;
   scoreValue = 0;
   listFileOnServer = [];
+  listTrueFalse = LIST_TRUE_FALSE;
 
   debounceID = undefined;
   today = dateFns.startOfToday();
