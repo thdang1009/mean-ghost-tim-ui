@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ReadingInfoService } from '@app/_services/reading-info/reading-info.service';
 import { showNoti } from '@app/_shares/common';
@@ -23,10 +23,11 @@ import { PdfViewerComponent } from 'ng2-pdf-viewer';
   templateUrl: './ghost-pdf-viewer.component.html',
   styleUrls: ['./ghost-pdf-viewer.component.scss']
 })
-export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit {
+export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit, DoCheck {
   @ViewChild('pdf') pdf: PdfViewerComponent;
   @Input() src: string;
   @Input() pdfFileName: string;
+  @Input() isAdminView: boolean = false;
   pdfSrc;
   currentPage = 1;
   key = '';
@@ -34,12 +35,15 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   loadingOpacity = 1;
   isLoading = true;
   bookmarks = new Map();
+  bigPageMode = false;
   elem;
   pdfQuery = '';
   constructor(
     private activeRoute: ActivatedRoute,
     private readingInfoService: ReadingInfoService
   ) { }
+  ngDoCheck(): void {
+  }
 
   ngOnInit(): void {
     this.pdfSrc = this.src;
@@ -67,6 +71,13 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
         this.search(queryParams['searchInPDF']);
       });
     }, 3000);
+  }
+
+  turnOnbigPageMode() {
+    this.bigPageMode = true;
+  }
+  turnOffbigPageMode() {
+    this.bigPageMode = false;
   }
 
   pagechanging(e: CustomEvent) {
@@ -202,6 +213,26 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
         });
       }
       this.isLoading = false;
+
+
+      const pdfViewer = document.getElementsByTagName('pdf-viewer')[0];
+      const pdfViewerWidth = pdfViewer['offsetWidth'];
+
+
+      const textLayers = document.getElementsByClassName('textLayer');
+      let isBigger = false;
+      Array.from(textLayers).forEach(textLayer => {
+        if (textLayer['offsetWidth'] > pdfViewerWidth) {
+          isBigger = true;
+        }
+      });
+
+      if (isBigger) {
+        this.turnOnbigPageMode();
+      } else {
+        this.turnOffbigPageMode();
+      }
+
     }, 300);
   }
   search(newQuery: string = '') {

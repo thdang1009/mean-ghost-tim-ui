@@ -4,7 +4,9 @@
             <div class="overlay__content"><span class="spinner"></span></div>
         </div>
     </div>
-    <pdf-viewer #pdf [src]="pdfSrc" [render-text]="true" [original-size]="false" [(page)]="currentPage"
+    <pdf-viewer #pdf [ngClass]="{
+        'is-admin-view': isAdminView
+    }" [src]="pdfSrc" [render-text]="true" [original-size]="false" [(page)]="currentPage" [fit-to-page]="bigPageMode" [original-size]="bigPageMode"
         style="width: 400px; height: 500px" (pagechanging)="pagechanging($event)" [show-all]="true"
         (after-load-complete)="loadComplete()">
     </pdf-viewer>

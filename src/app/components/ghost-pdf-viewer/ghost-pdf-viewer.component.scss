@@ -90,6 +90,9 @@ svg {
 pdf-viewer {
     z-index: 999;
 }
+pdf-viewer.is-admin-view {
+    height: calc(100vh - 55.5px) !important;
+}
 .fixed-plugin .fa-custom {
     color: #ffffff;
     padding: 10px;
