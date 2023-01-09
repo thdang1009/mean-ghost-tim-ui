@@ -21,7 +21,8 @@
             </div>
             <a (click)="keepExpand(); $event.stopPropagation()" class="hover-pointer btn-expand btn-expand-center"
                 data-toggle="dropdown" aria-expanded="true">
-                <i class="fa fa-gear fa-2x fa-custom"></i>
+                <img style="width: 50px" loading="lazy" src="assets/custom-icon/home-button.png" width="36px" alt="Home">
+                <!-- <i class="fa fa-gear fa-2x fa-custom"></i> -->
             </a>
 
             <a (click)="toggleBookmark(); $event.stopPropagation()" class="hover-pointer btn-expand btn-expand-bottom"
@@ -39,7 +40,7 @@
                 class="hover-pointer btn-expand btn-expand-left" data-toggle="dropdown" aria-expanded="true">
                 <img loading="lazy" src="assets/custom-icon/bookmark-up.svg" width="36px" alt="Move to last bookmark">
             </a>
-            
+
             <a (click)="scrollToNextBookmark(); $event.stopPropagation()"
                 class="hover-pointer btn-expand btn-expand-right" data-toggle="dropdown" aria-expanded="true">
                 <img loading="lazy" src="assets/custom-icon/bookmark-down.svg" width="36px" alt="Move to next bookmark">
