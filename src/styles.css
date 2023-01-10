@@ -320,8 +320,8 @@ app-table-loading {
 }
 
 .bmc-logo {
-    width: 1em !important;
-    height: 1em !important;
+    width: 2em !important;
+    height: 2em !important;
     z-index: -1;
 }
 

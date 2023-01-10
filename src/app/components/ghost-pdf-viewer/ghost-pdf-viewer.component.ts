@@ -207,11 +207,6 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   }
   loadComplete() {
     setTimeout(_ => {
-      if (this.savedPage) {
-        this.pdf.pdfViewer.scrollPageIntoView({
-          pageNumber: this.savedPage
-        });
-      }
       this.isLoading = false;
 
 
@@ -228,11 +223,18 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       });
 
       if (isBigger) {
-        this.turnOnbigPageMode();
+        console.log('isBigger');
+        // this.turnOnbigPageMode();
       } else {
-        this.turnOffbigPageMode();
+        console.log('!isBigger');
+        // this.turnOffbigPageMode();
       }
 
+      if (this.savedPage) {
+        this.pdf.pdfViewer.scrollPageIntoView({
+          pageNumber: this.savedPage
+        });
+      }
     }, 300);
   }
   search(newQuery: string = '') {
