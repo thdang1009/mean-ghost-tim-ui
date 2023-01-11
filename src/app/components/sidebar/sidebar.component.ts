@@ -164,7 +164,7 @@ export class SidebarComponent implements OnInit {
         [],
         {
           relativeTo: this.activatedRoute,
-          queryParams: { searchInPDF: this.stringToSearch, time: (new Date()).getTime() },
+          queryParams: { searchInPDF: this.stringToSearch || null, time: (new Date()).getTime() },
           queryParamsHandling: 'merge'
         });
     } else {
