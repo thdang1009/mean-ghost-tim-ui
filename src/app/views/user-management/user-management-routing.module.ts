@@ -7,8 +7,8 @@ import { UserListComponent } from './user-list/user-list.component';
 const routes: Routes = [
   {
     path: '',
-    title: 'Dashboard',
-    redirectTo: 'dashboard',
+    title: 'Home',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'dashboard',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
 ];

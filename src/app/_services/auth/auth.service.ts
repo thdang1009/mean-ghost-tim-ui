@@ -63,6 +63,14 @@ export class AuthService {
       );
   }
 
+  changePassword(data: any): Observable<any> {
+    return this.http.post<any>(apiUrl + '/change-password', data)
+      .pipe(
+        tap(_ => ghostLog('change password')),
+        catchError(handleError('change password', []))
+      );
+  }
+
   register(data: any): Observable<any> {
     return this.http.post<any>(apiUrl + '/register', data)
       .pipe(
@@ -77,6 +85,34 @@ export class AuthService {
       tap(_ => ghostLog('confirm email')),
       catchError(handleError('confirm email', []))
     );
+  }
+
+  // call reset
+  resetPassword(data: any): Observable<any> {
+    return this.http.post<any>(apiUrl + '/reset-password', data)
+      .pipe(
+        tap(_ => ghostLog('reset password')),
+        catchError(handleError('reset password', []))
+      );
+  }
+
+  confirmResetPassword(code) {
+    return this.http.get<any>(apiUrl + `/confirm-reset-password/${code}`)
+    .pipe(
+      tap(_ => ghostLog('confirm reset password')),
+      catchError(handleError('confirm reset password', []))
+    );
+  }
+
+  // after receive redirect from email, call this to set new password
+  setNewPassword(data: any): Observable<any> {
+    return this.http.post<any>(apiUrl + '/set-new-password', data)
+      .pipe(
+        tap(_ => {
+          tap(_ => ghostLog('set new password'))
+        }),
+        catchError(handleError('set new password', []))
+      );
   }
 
   getUserInfo() {

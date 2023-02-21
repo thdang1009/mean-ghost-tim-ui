@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '@views/dashboard/dashboard.component';
-import { AdminGuard } from '@app/views/auth-management/auth/admin.guard';
 import { GrandAdminGuard } from '@app/views/auth-management/auth/grand-admin.guard';
 import { LoginGuard } from '@app/views/auth-management/auth/login.guard';
+import { ChangePasswordComponent } from '@app/views/auth-management/change-password/change-password.component';
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard', title: 'Dashboard', component: DashboardComponent, canActivate: [LoginGuard] },
+    { path: 'change-password', title: 'Change password', component: ChangePasswordComponent, canActivate: [LoginGuard] },
     {
         path: 'user-management',
         children: [{

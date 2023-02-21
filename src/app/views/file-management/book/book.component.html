@@ -39,9 +39,6 @@
                                         Update At
                                     </th>
                                     <th>
-                                        UUID
-                                    </th>
-                                    <th>
                                         Name
                                     </th>
                                     <th>
@@ -66,23 +63,18 @@
                                                 </span>
                                             </td>
                                             <td>
-                                                <span (click)="chooseThisItem(book)" matTooltip="{{book.id}}"
-                                                    class="hover-pointer"> ID
+                                                <span (click)="chooseThisItem(book)" class="hover-pointer">
+                                                    {{ book.title }}
                                                 </span>
                                             </td>
                                             <td>
-                                                <span (click)="chooseThisItem(book)" class="hover-pointer">{{ book.title
-                                                    }}
+                                                <span (click)="chooseThisItem(book)" class="hover-pointer">
+                                                    {{ book?.user?.fullName }}
                                                 </span>
                                             </td>
                                             <td>
-                                                <span (click)="chooseThisItem(book)" class="hover-pointer">{{
-                                                    book?.user?.fullName }}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span (click)="chooseThisItem(book)" class="hover-pointer">{{
-                                                    book.permisson }}
+                                                <span (click)="chooseThisItem(book)" class="hover-pointer">
+                                                    {{ book.permisson }}
                                                 </span>
                                                 <button mat-raised-button type="button" matTooltip="Delete Book"
                                                     [disabled]="isLoadingResults"

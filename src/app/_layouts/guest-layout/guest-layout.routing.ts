@@ -7,6 +7,7 @@ import { LogoutComponent } from '@app/views/auth-management/logout/logout.compon
 import { ConfirmEmailComponent } from '@app/views/user-management/confirm-email/confirm-email.component';
 import { DonationComponent } from '@app/views/donation/donation.component';
 import { PostDetailComponent } from '@app/views/blog-management/post/post-detail/post-detail.component';
+import { ResetPasswordComponent } from '@app/views/auth-management/reset-password/reset-password.component';
 
 export const GuestLayoutRoutes: Routes = [
     {
@@ -18,6 +19,11 @@ export const GuestLayoutRoutes: Routes = [
         path: 'home',
         title: 'Ghost\'s Blogs',
         component: HomeComponent
+    },
+    {
+        path: 'reset-password',
+        title: 'Reset password',
+        component: ResetPasswordComponent, canActivate: [NotLoginGuard]
     },
     {
         path: 'login',
