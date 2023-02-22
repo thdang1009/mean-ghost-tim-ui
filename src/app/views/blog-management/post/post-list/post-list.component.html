@@ -71,24 +71,24 @@
                                                 'ghost-public-item': post.permission == 'PUBLIC',
                                                 'ghost-private-item': post.permission == 'PRIVATE',
                                                 'ghost-protected-item': post.permission == 'PROTECTED'
-                                            }" (click)="chooseThisItem(post.id); false">
-                                                <td class="text-center">
+                                            }">
+                                                <td class="text-center" (click)="chooseThisItem(post.id); false">
                                                     <span class="hover-pointer"
                                                         matTooltip="Create At: {{ post.createdAt | date: 'dd-MM HH:mm' }}">
                                                         {{ post.updatedAt | date: 'dd-MM HH:mm' }}
                                                     </span>
                                                 </td>
-                                                <td>
-                                                    <span class="hover-pointer">{{
-                                                        post.title }}
+                                                <td (click)="chooseThisItem(post.id); false">
+                                                    <span class="hover-pointer">
+                                                        {{ post.title }}
                                                     </span>
-                                                    <button mat-raised-button type="button" matTooltip="Delete Post"
-                                                        [disabled]="isLoadingResults"
-                                                        class="btn btn-float-in-row btn-round btn-danger pull-right"
-                                                        (click)="deletePost(post)">
-                                                        <i class="material-icons red">delete</i>
-                                                    </button>
                                                 </td>
+                                                <button mat-raised-button type="button" matTooltip="Delete Post"
+                                                    [disabled]="isLoadingResults"
+                                                    class="btn btn-float-in-row btn-round btn-danger pull-right"
+                                                    (click)="deletePost(post)">
+                                                    <i class="material-icons red">delete</i>
+                                                </button>
                                             </tr>
                                         </ng-container>
                                     </ng-container>

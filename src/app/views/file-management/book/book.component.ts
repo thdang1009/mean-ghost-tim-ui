@@ -202,8 +202,10 @@ export class BookComponent implements OnInit {
     if (id) {
       this.isLoadingResults = true;
       this.bookService.deleteBook(id)
-        .subscribe((_: any) => {
-          this.data = this.data.filter(el => el.id !== id);
+        .subscribe(({ success }: any) => {
+          if (success) {
+            this.data = this.data.filter(el => el.id !== id);
+          }
           this.isLoadingResults = false;
         }, err => {
           this.isLoadingResults = false;

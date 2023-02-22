@@ -56,33 +56,33 @@
                                             'ghost-private-item': book.permission == 'PRIVATE',
                                             'ghost-protected-item': book.permission == 'PROTECTED'
                                         }">
-                                            <td class="text-center">
-                                                <span class="hover-pointer" (click)="chooseThisItem(book)"
+                                            <td class="text-center" (click)="chooseThisItem(book)">
+                                                <span class="hover-pointer"
                                                     matTooltip="Create At: {{ book.createdAt | date: 'dd-MM HH:mm' }}">
                                                     {{ book.updatedAt | date: 'dd-MM HH:mm' }}
                                                 </span>
                                             </td>
-                                            <td>
-                                                <span (click)="chooseThisItem(book)" class="hover-pointer">
+                                            <td (click)="chooseThisItem(book)" class="hover-pointer">
+                                                <span>
                                                     {{ book.title }}
                                                 </span>
                                             </td>
-                                            <td>
-                                                <span (click)="chooseThisItem(book)" class="hover-pointer">
+                                            <td (click)="chooseThisItem(book)" class="hover-pointer">
+                                                <span>
                                                     {{ book?.user?.fullName }}
                                                 </span>
                                             </td>
-                                            <td>
-                                                <span (click)="chooseThisItem(book)" class="hover-pointer">
+                                            <td (click)="chooseThisItem(book)" class="hover-pointer">
+                                                <span>
                                                     {{ book.permisson }}
                                                 </span>
-                                                <button mat-raised-button type="button" matTooltip="Delete Book"
-                                                    [disabled]="isLoadingResults"
-                                                    class="btn btn-float-in-row btn-round btn-danger pull-right"
-                                                    (click)="deleteBook(book)">
-                                                    <em class="material-icons red">delete</em>
-                                                </button>
                                             </td>
+                                            <button mat-raised-button type="button" matTooltip="Delete Book"
+                                                [disabled]="isLoadingResults"
+                                                class="btn btn-float-in-row btn-round btn-danger pull-right"
+                                                (click)="deleteBook(book)">
+                                                <em class="material-icons red">delete</em>
+                                            </button>
                                         </tr>
                                     </ng-container>
                                     <ng-template #noDataBlock>

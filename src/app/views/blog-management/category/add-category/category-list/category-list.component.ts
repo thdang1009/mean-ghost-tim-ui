@@ -26,14 +26,14 @@ export class CategoryListComponent implements OnInit {
       showNoti(`Create category fail!`, 'danger');
     });
   }
-  delete(category) {
+  postReference(category) {
     if (!category) {
       return;
     }
     const id = category._id;
     if (category) {
       this.categoryService.deleteCategory(id)
-        .subscribe((_: any) => {
+        .subscribe(({ success }: any) => {
           showNoti('Category deleted!', 'success');
           this.getCategorys();
         }, err => {
