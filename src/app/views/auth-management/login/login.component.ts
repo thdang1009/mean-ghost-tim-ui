@@ -17,7 +17,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -27,6 +28,8 @@ export class LoginComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   isLoadingResults = false;
   isRunning = false;
+  isShowPassword = false;
+  countClick = 0;
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -64,6 +67,19 @@ export class LoginComponent implements OnInit {
   }
   forgotPassword() {
     this.router.navigate(['reset-password']);
+  }
+
+  showPassword() {
+    this.isShowPassword = true;
+    this.countClick += 1;
+  }
+
+  hidePassword() {
+    this.isShowPassword = false;
+    this.countClick += 1;
+  }
+  toggleShowPassword() {
+    this.isShowPassword = !this.isShowPassword;
   }
 
 }

@@ -6,11 +6,11 @@ import { RunJsComponent } from './run-js/run-js.component';
 import { TextDiffComponent } from './text-diff/text-diff.component';
 
 const routes: Routes = [
-  {
-    path: 'run-js',
-    title: 'Javascript\'s playground',
-    component: RunJsComponent
-  },
+  // {
+  //   path: 'run-js',
+  //   title: 'Javascript\'s playground',
+  //   component: RunJsComponent
+  // },
   {
     path: 'json-beautifier',
     title: 'JSON Beautifier',

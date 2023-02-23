@@ -22,8 +22,18 @@
                 </div>
                 <div class="col-md-12">
                   <mat-form-field class="example-full-width">
-                    <input matInput type="password" placeholder="Password" formControlName="password"
-                      [errorStateMatcher]="matcher">
+                    <input matInput type="{{isShowPassword ? 'text' : 'password'}}" placeholder="Password"
+                      formControlName="password" [errorStateMatcher]="matcher">
+                    <ng-container *ngIf="countClick < 10; else eyeIsHurtPart">
+                      <i *ngIf="!isShowPassword" (click)="showPassword()" class="fa fa-eye reveal-password"
+                        aria-hidden="true"></i>
+                      <i *ngIf="isShowPassword" (click)="hidePassword()" class="fa fa-eye-slash reveal-password"
+                        aria-hidden="true"></i>
+                    </ng-container>
+                    <ng-template #eyeIsHurtPart>
+                      <img (click)="toggleShowPassword()" loading="lazy" width="15px" height="15px"
+                        class="reveal-password red" src="/assets/custom-icon/hurt-eye.jpg" alt="It's hurt">
+                    </ng-template>
                     <mat-error>
                       <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
                         Please enter your password
@@ -37,7 +47,8 @@
                   <p>Don't have account? <a href="javascript:void(0)" (click)="register()">Register</a></p>
                 </div>
                 <div class="col-md-12">
-                  <p>Forgot your password? <a href="javascript:void(0)" (click)="forgotPassword()">Reset password</a></p>
+                  <p>Forgot your password? <a href="javascript:void(0)" (click)="forgotPassword()">Reset password</a>
+                  </p>
                 </div>
               </div>
               <button mat-raised-button type="submit" [disabled]="!loginForm.valid || isRunning"
