@@ -3,7 +3,8 @@
     <div class="ghost-box">
       <div>
         <a aria-current="page" class="" [routerLink]="['/']">
-          <img loading="lazy" width="100px" height="100px" class="top-avatar" alt="ghost" src="assets/img/ghost.png" alt="Ghost">
+          <img loading="lazy" width="100px" height="100px" class="top-avatar" alt="ghost" src="assets/img/ghost.png"
+            alt="Ghost">
         </a>
       </div>
       <div>
@@ -38,12 +39,14 @@
           </span>
           <ng-container *ngIf="post && post.tags.length">
             <div class="tagging" *ngFor="let tag of post.tags">
-              <a class="tagging__item" [routerLink]="'/home'"
-                [queryParams]="{ tag: tag.name }">#{{tag.name}}</a>
+              <a class="tagging__item" [routerLink]="'/home'" [queryParams]="{ tag: tag.name }">#{{tag.name}}</a>
             </div>
           </ng-container>
         </div>
       </article>
+    </div>
+    <div class="show-more-post-container">
+      <a class="show-more-post" (click)="showMorePost()" *ngIf="allPosts.length">Show more post</a>
     </div>
   </div>
 </div>

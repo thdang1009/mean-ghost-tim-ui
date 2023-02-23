@@ -15,7 +15,10 @@ export class HomeComponent implements OnInit {
   isLoadingResults = true;
   thisYear = (new Date).getFullYear();
   posts = [];
+  allPosts = [];
   isFilteredByTag = false;
+  pageIndex = 1;
+  pageSize = 3;
 
   constructor(
     private authService: AuthService,
@@ -28,6 +31,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.init();
   }
+
   async init() {
     this.isLogined = this.authService.isLogin();
     this.hasBackofficePermission = this.authService.isLogin();
@@ -39,17 +43,34 @@ export class HomeComponent implements OnInit {
         }
         this.postService.getPublicPosts(params)
           .subscribe(posts => {
-            this.posts = posts || [];
+            this.allPosts = (posts || []).reverse();
+            this.posts = this.getMorePosts();
           });
       })
   }
+
   openPost(post) {
     // TODO document why this method 'openPost' is empty
-  
-
   }
+
   backToHome() {
     this.isFilteredByTag = false;
     this.router.navigate(['home']);
+  }
+
+  getMorePosts() {
+    let count = 0;
+    let fistItem = this.allPosts.pop();
+    const tempArray = [];
+    while (fistItem && count < this.pageSize) {
+      count++;
+      tempArray.push(fistItem);
+      fistItem = this.allPosts.pop();
+    }
+    return tempArray;
+  }
+
+  showMorePost() {
+    this.posts = [...this.posts, ...this.getMorePosts()];
   }
 }
