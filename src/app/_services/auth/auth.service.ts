@@ -96,14 +96,6 @@ export class AuthService {
       );
   }
 
-  confirmResetPassword(code) {
-    return this.http.get<any>(apiUrl + `/confirm-reset-password/${code}`)
-    .pipe(
-      tap(_ => ghostLog('confirm reset password')),
-      catchError(handleError('confirm reset password', []))
-    );
-  }
-
   // after receive redirect from email, call this to set new password
   setNewPassword(data: any): Observable<any> {
     return this.http.post<any>(apiUrl + '/set-new-password', data)
