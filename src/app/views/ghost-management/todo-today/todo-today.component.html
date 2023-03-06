@@ -61,7 +61,8 @@
                                         'warning': tdtd.status === TDTD_STATUS.NOT_YET,
                                         'success': tdtd.status === TDTD_STATUS.DONE,
                                         'primary': tdtd.status === TDTD_STATUS.NEW,
-                                        'future': tdtd.status === TDTD_STATUS.TOMORROW
+                                        'future': tdtd.status === TDTD_STATUS.TOMORROW,
+                                        'is-important': index < 10
                                     }" (mouseenter)="hoveredIndex=index">
                                             <td class="text-center">
                                                 <span class="hover-pointer" (click)="updateStatus(tdtd, index)"
