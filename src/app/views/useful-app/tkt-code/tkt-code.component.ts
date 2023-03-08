@@ -22,10 +22,13 @@ export class TktCodeComponent implements OnInit {
     });
   }
   onFormSubmit(data) {
+    this.isRunning = true;
     this.tktService.runTKTManually(data)
     .subscribe(res => {
+      this.isRunning = false;
       showNoti('Chạy thành công', 'success');
     }, error => {
+      this.isRunning = false;
       showNoti('Lỗi hệ thống', 'error');
     });
   }
