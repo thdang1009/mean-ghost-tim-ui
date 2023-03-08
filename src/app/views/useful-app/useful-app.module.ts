@@ -10,6 +10,7 @@ import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { JsonExcelComponent } from './json-excel/json-excel.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { TextDiffComponent } from './text-diff/text-diff.component';
+import { TktCodeComponent } from './tkt-code/tkt-code.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { TextDiffComponent } from './text-diff/text-diff.component';
     // RunJsComponent,
     JsonExcelComponent,
     TextDiffComponent,
+    TktCodeComponent,
   ],
   imports: [
     CommonModule,
