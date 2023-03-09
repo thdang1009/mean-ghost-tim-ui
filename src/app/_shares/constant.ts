@@ -1,6 +1,7 @@
 export const CONSTANT = {
   USER_INFO: 'USER_INFO',
   TOKEN: 'token',
+  SOCKET_ID: 'SOCKET_ID',
   PERMISSION: {
     GRAND_ADMIN: 'GRAND_ADMIN',
     ADMIN: 'ADMIN',
@@ -28,6 +29,7 @@ export const PDF_OBJ = 'PDF_OBJ';
 export const SK_GUEST_MESSAGE = 'guest message';
 export const SK_GUEST_MESSAGE_RESPONSE = 'guest message response';
 export const SK_READING_INFO_REALTIME_UPDATE = 'reading info realtime update';
+export const SK_RESULT_AUTO_RUN_TKT = 'SK_RESULT_AUTO_RUN_TKT';
 
 export const HOUR = 60 * 60 * 1000;
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { handleSocketReadingInfo } from '@app/_shares/common';
-import { SK_READING_INFO_REALTIME_UPDATE } from '@app/_shares/constant';
+import { SK_READING_INFO_REALTIME_UPDATE, CONSTANT } from '@app/_shares/constant';
 import { environment } from '@environments/environment';
 import { io } from 'socket.io-client';
 
@@ -19,8 +19,10 @@ export class SocketioService {
       autoConnect: true,
       transports: ['polling', 'websocket'],
     });
-    this.socket.on('connect', (data) => {
-      console.log('socket conected', this.socket.sessionid);
+    this.socket.on('connect', () => {
+      const id = this.socket.id || this.socket.io.engine.id || this.socket.json.id;
+      console.log(id);
+      localStorage.setItem(CONSTANT.SOCKET_ID, id);
     });
 
     this.socket.on('disconnect', () => {

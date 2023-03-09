@@ -158,6 +158,17 @@ export function handleSocketGuestMessage(arg) {
 
   }
 }
+export function handleSocketRunCode(params) {
+  if (params['end']) {
+    showNoti('Đã chạy hết', 'success');
+  } else {
+    const value = {
+      message: params['message'],
+      code: params['code']
+    }
+    this.resultSet = [...this.resultSet, value];
+  }
+}
 
 export function handleSocketReadingInfo(arg) {
   try {

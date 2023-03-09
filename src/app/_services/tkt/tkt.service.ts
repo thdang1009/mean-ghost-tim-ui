@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { ghostLog, handleError } from '@app/_shares/common';
+import { CONSTANT } from '@app/_shares/constant';
 
 const apiUrl = environment.apiUrl + '/v1/tkt';
 
@@ -16,7 +17,8 @@ export class TKTService {
 
   runTKTManually(req): Observable<any> {
     const url = `${apiUrl}/run`;
-    return this.http.put(url, { ...req }).pipe(
+    const socketId =  localStorage.getItem(CONSTANT.SOCKET_ID);;
+    return this.http.put(url, { clientId: socketId, ...req }).pipe(
       tap(_ => ghostLog(`runTKTManually!`)),
       catchError(handleError<any>('runTKTManually'))
     );
