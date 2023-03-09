@@ -20,7 +20,7 @@ export class SocketioService {
       transports: ['polling', 'websocket'],
     });
     this.socket.on('connect', (data) => {
-      console.log('socket connected');
+      console.log('socket conected', this.socket.sessionid);
     });
 
     this.socket.on('disconnect', () => {
