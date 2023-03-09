@@ -32,8 +32,7 @@ export class TktCodeComponent implements OnInit {
     this.isRunning = true;
     this.tktService.runTKTManually(data)
       .subscribe(res => {
-        this.isRunning = false;
-        showNoti('Chạy thành công', 'success');
+        showNoti('Đang chạy code', 'success');
       }, error => {
         this.isRunning = false;
         showNoti('Lỗi hệ thống', 'error');
