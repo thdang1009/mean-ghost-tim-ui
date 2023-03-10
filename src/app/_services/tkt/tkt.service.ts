@@ -15,10 +15,10 @@ export class TKTService {
 
   constructor(private http: HttpClient) { }
 
-  runTKTManually(req): Observable<any> {
+  runTKTManually(data, list): Observable<any> {
     const url = `${apiUrl}/run`;
-    const socketId =  localStorage.getItem(CONSTANT.SOCKET_ID);;
-    return this.http.put(url, { clientId: socketId, ...req }).pipe(
+    const socketId = localStorage.getItem(CONSTANT.SOCKET_ID);;
+    return this.http.put(url, { clientId: socketId, ...data, list: list }).pipe(
       tap(_ => ghostLog(`runTKTManually!`)),
       catchError(handleError<any>('runTKTManually'))
     );

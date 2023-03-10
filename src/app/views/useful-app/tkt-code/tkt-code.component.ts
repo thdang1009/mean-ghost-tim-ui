@@ -3,7 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { SocketioService } from '@app/_services/_index';
 import { TKTService } from '@app/_services/tkt/tkt.service';
 import { handleSocketRunCode, showNoti } from '@app/_shares/common';
-import { SK_RESULT_AUTO_RUN_TKT } from '@app/_shares/constant';
+import { SK_RESULT_AUTO_RUN_TKT, LIST_USER_VN, LIST_USER_GLOBAL } from '@app/_shares/constant';
 
 @Component({
   selector: 'tkt-code',
@@ -11,7 +11,8 @@ import { SK_RESULT_AUTO_RUN_TKT } from '@app/_shares/constant';
   styleUrls: ['./tkt-code.component.scss']
 })
 export class TktCodeComponent implements OnInit {
-
+  listServer = ['VN', 'GLOBAL'];
+  server = this.listServer[0];
   codeForm: UntypedFormGroup;
   isRunning = false;
   resultSet = [
@@ -30,7 +31,12 @@ export class TktCodeComponent implements OnInit {
 
   onFormSubmit(data) {
     this.isRunning = true;
-    this.tktService.runTKTManually(data)
+    const map = {
+      'VN': LIST_USER_VN,
+      'GLOBAL': LIST_USER_GLOBAL
+    }
+    const list = map[this.server];
+    this.tktService.runTKTManually(data, list)
       .subscribe(res => {
         showNoti('Đang chạy code', 'success');
       }, error => {
