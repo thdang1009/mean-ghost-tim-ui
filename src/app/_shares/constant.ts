@@ -36,7 +36,8 @@ export const HOUR = 60 * 60 * 1000;
 export const LIST_TRUE_FALSE = [true, false];
 
 export const LIST_USER_GLOBAL = [
-
+  ['武神丨Yue', 11366],
+  ['Eren', 381859],
   ['VNSky', 382018],
   ['Chikaki', 382101],
   ['CàKhịa', 382291],
@@ -91,7 +92,8 @@ export const LIST_USER_GLOBAL = [
   ['Thuyle', 709028],
   ['Kian', 382168],
   ['Rinvn', 391920],
-  ['MrMinh', 648010]];
+  ['MrMinh', 648010]
+];
 
 export const LIST_USER_VN = [
   ['Ghost', '5752941'],

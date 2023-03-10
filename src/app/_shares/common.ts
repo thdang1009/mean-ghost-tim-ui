@@ -159,17 +159,17 @@ export function handleSocketGuestMessage(arg) {
   }
 }
 export function handleSocketRunCode(params) {
+  const value = {
+    message: params['message'],
+    code: params['code']
+  }
   if (params['end']) {
-    showNoti('Đã chạy hết', 'success');
+    showNoti(`${value.message}`, 'success');
     this.isRunning = false;
   } else {
-    const value = {
-      message: params['message'],
-      code: params['code']
-    }
-    this.resultSet = [...this.resultSet, value];
     console.log(value);
   }
+  this.resultSet = [...this.resultSet, value];
 }
 
 export function handleSocketReadingInfo(arg) {
