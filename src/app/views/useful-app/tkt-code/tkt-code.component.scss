@@ -43,11 +43,28 @@
     left: -10px;
 }
 .border-solid {
-    border: solid
+    border: solid;
 }
-@media (max-width: 480px) {
+
+.tkt-button-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+@media (max-width: 720px) {
     .or-text {
         left: 0;
         top: -20px;
     }
+    .btn-w22 {
+        width: 100%;
+    }
+    .tkt-button-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
 }

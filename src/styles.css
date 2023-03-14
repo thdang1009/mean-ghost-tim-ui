@@ -55,6 +55,18 @@ pdf-viewer {
 .btn-w100 {
     width: 100%;
 }
+.btn-w45 {
+    width: 45%;
+}
+.btn-w30 {
+    width: 30%;
+}
+.btn-w22 {
+    width: 22%;
+}
+.btn-w20 {
+    width: 20%;
+}
 
 .navbar-wrapper .button {
     width: auto !important;

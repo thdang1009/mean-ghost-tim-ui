@@ -19,6 +19,103 @@ export class TktCodeComponent implements OnInit {
   isRunning = false;
   fileName = '';
   resultSet = [
+    // {
+    //   code: -1,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"active code get lock fail","error":{"trace_id":"505d0421b1a10bd1521314d5215e8a50","module":"Elixir.ReturnCode","message":"active code get lock fail","code":85045996,"app":"game_adapter_ex"},"code":10607}'
+    // },
+    // {
+    //   code: -1,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"active code get lock fail","error":{"trace_id":"505d0421b1a10bd1521314d5215e8a50","module":"Elixir.ReturnCode","message":"active code get lock fail","code":85045996,"app":"game_adapter_ex"},"code":10607}'
+    // },
+    // {
+    //   code: -1,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"active code get lock fail","error":{"trace_id":"505d0421b1a10bd1521314d5215e8a50","module":"Elixir.ReturnCode","message":"active code get lock fail","code":85045996,"app":"game_adapter_ex"},"code":10607}'
+    // },
+    // {
+    //   code: 0,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"ok","items":[{"reward_uuid":"64095d7d7b74c69febd8974a","reward_type":2023030810,"reward_desc":{"subject":"Đổi code thành công","rewardItems":[{"item":11,"amount":50}],"meta":{},"deadline":1678789642,"custom_packages":[],"catalogue_id":0,"catalogue":"system","body":"Chúc mừng Chủ Công nhận thưởng quà code!"},"action":"ActiveReward"}],"code":200}'
+    // },
+    // {
+    //   code: -1,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"active code get lock fail","error":{"trace_id":"505d0421b1a10bd1521314d5215e8a50","module":"Elixir.ReturnCode","message":"active code get lock fail","code":85045996,"app":"game_adapter_ex"},"code":10607}'
+    // },
+    // {
+    //   code: -1,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"active code get lock fail","error":{"trace_id":"505d0421b1a10bd1521314d5215e8a50","module":"Elixir.ReturnCode","message":"active code get lock fail","code":85045996,"app":"game_adapter_ex"},"code":10607}'
+    // },
+    // {
+    //   code: -1,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"active code get lock fail","error":{"trace_id":"505d0421b1a10bd1521314d5215e8a50","module":"Elixir.ReturnCode","message":"active code get lock fail","code":85045996,"app":"game_adapter_ex"},"code":10607}'
+    // },
+    // {
+    //   code: 0,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"ok","items":[{"reward_uuid":"64095d7d7b74c69febd8974a","reward_type":2023030810,"reward_desc":{"subject":"Đổi code thành công","rewardItems":[{"item":11,"amount":50}],"meta":{},"deadline":1678789642,"custom_packages":[],"catalogue_id":0,"catalogue":"system","body":"Chúc mừng Chủ Công nhận thưởng quà code!"},"action":"ActiveReward"}],"code":200}'
+    // },
+    // {
+    //   code: -1,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"active code get lock fail","error":{"trace_id":"505d0421b1a10bd1521314d5215e8a50","module":"Elixir.ReturnCode","message":"active code get lock fail","code":85045996,"app":"game_adapter_ex"},"code":10607}'
+    // },
+    // {
+    //   code: -1,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"active code get lock fail","error":{"trace_id":"505d0421b1a10bd1521314d5215e8a50","module":"Elixir.ReturnCode","message":"active code get lock fail","code":85045996,"app":"game_adapter_ex"},"code":10607}'
+    // },
+    // {
+    //   code: -1,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"active code get lock fail","error":{"trace_id":"505d0421b1a10bd1521314d5215e8a50","module":"Elixir.ReturnCode","message":"active code get lock fail","code":85045996,"app":"game_adapter_ex"},"code":10607}'
+    // },
+    // {
+    //   code: 0,
+    //   message: 'test 1',
+    //   codeInput: 'code1',
+    //   name: 'name1',
+    //   id: 'id1',
+    //   sdtout: '{"message":"ok","items":[{"reward_uuid":"64095d7d7b74c69febd8974a","reward_type":2023030810,"reward_desc":{"subject":"Đổi code thành công","rewardItems":[{"item":11,"amount":50}],"meta":{},"deadline":1678789642,"custom_packages":[],"catalogue_id":0,"catalogue":"system","body":"Chúc mừng Chủ Công nhận thưởng quà code!"},"action":"ActiveReward"}],"code":200}'
+    // }
+
   ];
 
   constructor(
@@ -30,6 +127,33 @@ export class TktCodeComponent implements OnInit {
     this.codeForm = this.formBuilder.group({
       codes: [null, Validators.required],
     });
+    this.socketService.subcribeChanel(SK_RESULT_AUTO_RUN_TKT, handleSocketRunCode, this);
+  }
+
+  handleCmdExportExcel() {
+    const worksheet = XLSX.utils.json_to_sheet(this.resultSet);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Results");
+    XLSX.writeFile(workbook, this.fileName, { compression: true });
+  }
+
+  handleCmdClearConsole() {
+    this.isRunning = true;
+    this.resultSet.length = 0;
+    this.isRunning = false;
+  }
+
+  handleCmdCopy() {
+    this.isRunning = true;
+    const code = this.resultSet.map(el => el.message).join('\n');
+    try {
+      navigator.clipboard.writeText(code);
+      showNoti('Copied!', 'success');
+    } catch (e) {
+      showNoti(e, 'danger');
+    } finally {
+      this.isRunning = false;
+    }
   }
 
   updateList() {
@@ -54,7 +178,6 @@ export class TktCodeComponent implements OnInit {
         this.isRunning = false;
         showNoti('Lỗi hệ thống', 'error');
       });
-    this.socketService.subcribeChanel(SK_RESULT_AUTO_RUN_TKT, handleSocketRunCode, this);
   }
   onFileChange(evt) {
 

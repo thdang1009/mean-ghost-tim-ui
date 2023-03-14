@@ -4,7 +4,7 @@
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="card">
           <div class="card-header card-header-info">
-            <h4 (click)="cancelCurrentRunning()" class="card-title">Auto run code</h4>
+            <h4 class="card-title">Auto run code</h4>
           </div>
           <div class="card-body">
             <form [formGroup]="codeForm" (ngSubmit)="onFormSubmit(codeForm.value)">
@@ -68,6 +68,28 @@
                   </code>
                   <br />
                 </ng-container>
+              </div>
+              <div class="tkt-button-container">
+                <button id="copy" mat-raised-button type="button" [disabled]="isRunning || resultSet.length === 0"
+                  class="btn btn-info pull-right btn-w22 btn-run" (click)="handleCmdCopy()">
+                  <i class="material-icons">content_copy</i>
+                  Copy result
+                </button>
+                <button id="export-excel" mat-raised-button type="button" [disabled]="isRunning || resultSet.length === 0"
+                  class="btn btn-success pull-right btn-w22 btn-run" (click)="handleCmdExportExcel()">
+                  <i class="material-icons">file_download</i>
+                  Export result
+                </button>
+                <button id="delete-result" mat-raised-button type="button" [disabled]="!isRunning"
+                  class="btn btn-danger pull-right btn-w22 btn-run" (click)="cancelCurrentRunning()">
+                  <i class="material-icons">front_hand</i>
+                  Stop running
+                </button>
+                <button id="delete-result" mat-raised-button type="button" [disabled]="isRunning"
+                  class="btn btn-danger pull-right btn-w22 btn-run" (click)="handleCmdClearConsole()">
+                  <i class="material-icons">delete_forever</i>
+                  Clear result
+                </button>
               </div>
             </div>
           </div>
