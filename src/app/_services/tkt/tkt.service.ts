@@ -23,4 +23,12 @@ export class TKTService {
       catchError(handleError<any>('runTKTManually'))
     );
   }
+  runCancel(): Observable<any> {
+    const url = `${apiUrl}/cancel`;
+    const socketId = localStorage.getItem(CONSTANT.SOCKET_ID);;
+    return this.http.put(url, { clientId: socketId }).pipe(
+      tap(_ => ghostLog(`runCancel!`)),
+      catchError(handleError<any>('runCancel'))
+    );
+  }
 }

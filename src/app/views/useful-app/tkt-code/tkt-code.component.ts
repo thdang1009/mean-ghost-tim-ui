@@ -132,4 +132,14 @@ export class TktCodeComponent implements OnInit {
     }
     evt.target.value = '';
   }
+
+  cancelCurrentRunning() {
+    this.tktService.runCancel()
+      .subscribe(() => {
+        this.isRunning = false;
+        showNoti('Đã cancel tất cả tiến trình hiện hành', 'success');
+      }, error => {
+        showNoti('Lỗi hệ thống', 'error');
+      });
+  }
 }
