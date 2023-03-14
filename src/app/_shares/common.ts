@@ -169,7 +169,7 @@ export function handleSocketRunCode(params) {
   } else {
     console.log(value);
   }
-  this.resultSet = [...this.resultSet, value];
+  this.resultSet = [value, ...this.resultSet];
 }
 
 export function handleSocketReadingInfo(arg) {

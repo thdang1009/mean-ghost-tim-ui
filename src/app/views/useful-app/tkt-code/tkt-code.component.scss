@@ -3,6 +3,8 @@
     align-items: center;
     flex-direction: column;
     padding: 5px 10px;
+    border: solid;
+    min-height: 300px;
 }
 
 .output {
@@ -30,5 +32,22 @@
 }
 
 .row-error {
-    color: #F14C4C !important;
+    color: #f14c4c !important;
+}
+.main-content {
+    margin-top: 0 !important;
+}
+.or-text {
+    position: absolute;
+    z-index: 10;
+    left: -10px;
+}
+.border-solid {
+    border: solid
+}
+@media (max-width: 480px) {
+    .or-text {
+        left: 0;
+        top: -20px;
+    }
 }

@@ -36,14 +36,14 @@ export const HOUR = 60 * 60 * 1000;
 export const LIST_TRUE_FALSE = [true, false];
 
 export const LIST_USER_GLOBAL = [
-  ['武神丨Yue', 11366],
+  ['結戰丨Yue', 11366],
   ['Eren', 381859],
   ['VNSky', 382018],
   ['Chikaki', 382101],
   ['CàKhịa', 382291],
   ['AceVnAnnA', 382335],
   ['RohanZ', 382371],
-  ['Nav1', 382501],
+  ['EnViKey', 382501],
   ['Roflan', 384613],
   ['zDHAz', 384663],
   ['Ghost1', 386079],
@@ -75,7 +75,7 @@ export const LIST_USER_GLOBAL = [
   ['Xaku', 877448],
   ['NuHao', 812664],
   ['JakeVn', 1104927],
-  ['Kitty', 384288],
+  ['Kittyz', 384288],
   ['VnBebu', 309789],
   ['Kjss', 59124],
   ['GàRán', 335089],
@@ -87,13 +87,21 @@ export const LIST_USER_GLOBAL = [
   ['ZzNancyzZ', 359821],
   ['tuanha', 111262],
   ['XiangYu', 2683373],
-  ['Kian', 382168],
+  ['Kian1', 382168],
   ['hjddjd', 1097145],
   ['Thuyle', 709028],
-  ['Kian', 382168],
   ['Rinvn', 391920],
-  ['MrMinh', 648010]
-];
+  ['MrMinh', 648010],
+  ['Kittyz', 384288],
+  ['Pinky', 709026],
+  ['Kokudo', 2986366],
+  ['YenYen', 2986369],
+  ['Cindyz', 3132008],
+  ['Sanguo', 661234],
+].map(el => ({
+  account: el[0],
+  id: el[1]
+}));;
 
 export const LIST_USER_VN = [
   ['Ghost', '5752941'],
@@ -194,4 +202,7 @@ export const LIST_USER_VN = [
   ['Zant', '5777456'],
   ['MitAnn', '5772288'],
   ['Doan', '5770126'],
-];
+].map(el => ({
+  account: el[0],
+  id: el[1]
+}));;
