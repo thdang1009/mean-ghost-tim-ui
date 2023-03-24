@@ -83,7 +83,7 @@ export class NoteComponent implements OnInit {
       const id = Number(params.id);
       if (id) {
         // TODO document why this block is empty
-      
+
       } else {
         this.itemSelected = undefined;
       }
@@ -108,7 +108,29 @@ export class NoteComponent implements OnInit {
     this._getMyNote(id);
   }
 
+  isSecretHeader(header = '') {
+    if (header.includes('**') || header.includes('***')) {
+      return true;
+    }
+    return false;
+  }
+
+  guardSecretHeader() {
+    const pw = prompt('Enter password for super secret note');
+    if (pw !== '147239') {
+      showNoti('Wrong password', 'danger');
+      return false;
+    }
+    return true;
+  }
+
   chooseThisItem(item) {
+    if (this.isSecretHeader(item?.header)) {
+      const pwValid = this.guardSecretHeader();
+      if (!pwValid) {
+        return;
+      }
+    }
     this.itemSelected = item;
     this.router.navigate(
       [],
@@ -133,7 +155,14 @@ export class NoteComponent implements OnInit {
       .subscribe((res: any) => {
         this.data = res;
         if (id) {
-          this.itemSelected = res.filter(el => el.id === id)[0];
+          const foundNote = res.filter(el => el.id === id)[0];
+          if (this.isSecretHeader(foundNote?.header)) {
+            const pwValid = this.guardSecretHeader();
+            if (!pwValid) {
+              return;
+            }
+          }
+          this.itemSelected = foundNote;
           this.ref.markForCheck();
         }
         this.isLoadingResults = false;

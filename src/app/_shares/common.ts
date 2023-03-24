@@ -12,8 +12,9 @@ export interface GhostSiteResponse {
 export interface LoginResponse extends GhostSiteResponse {
   token: string
 }
+type NotiType = 'danger' | 'success' | 'error' | 'warning' | 'info';
 
-export function showNoti(content, type, _timer = 1000, title = 'Notifications') {
+export function showNoti(content, type: NotiType, _timer = 1000, title = 'Notifications') {
   showNotification('top', 'right', title, content, type, _timer);
 }
 
@@ -23,7 +24,9 @@ export function showNotiSocket(content, type, _timer = 1000, title = 'Notificati
 
 export function showNotification(from, align, title, content, type, _timer = 1000) {
   // const type = ['','info','success','warning','danger'];
-
+  if (type === 'error') {
+    type = 'danger';
+  }
   $.notify({
     icon: 'notifications',
     message: content,
