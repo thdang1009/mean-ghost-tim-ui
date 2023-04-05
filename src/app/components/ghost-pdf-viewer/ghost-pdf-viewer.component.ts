@@ -54,7 +54,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     let count = 0;
 
     const intervalId = setInterval(_ => {
-      const time = 80;
+      const time = 400;
       const delta = 1 / time;
       this.loadingOpacity = 1 - count * delta;
       ++count;
