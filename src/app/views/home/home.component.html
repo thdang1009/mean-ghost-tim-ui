@@ -36,6 +36,8 @@
             <!-- write a component here later -->
             {{post.createdAt | timeAgo }}
             ({{post.createdAt | date }})
+            with
+            {{post.viewCount | number:'1.0-0' }} <i class="fa fa-eye" aria-hidden="true"></i>
           </span>
           <ng-container *ngIf="post && post.tags.length">
             <div class="tagging" *ngFor="let tag of post.tags">

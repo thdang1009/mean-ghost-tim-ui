@@ -19,6 +19,7 @@
                     wrote
                     {{item?.createdAt | timeAgo }}
                     ({{item?.createdAt | date }})
+                    with {{item?.viewCount | number:'1.0-0' }} <i class="fa fa-eye" aria-hidden="true"></i>
                 </div>
                 <div style="margin-top: 1rem;">
                     <div class="tagging" *ngFor="let tag of item.tags">
