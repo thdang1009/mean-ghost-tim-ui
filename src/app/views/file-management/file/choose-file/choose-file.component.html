@@ -7,5 +7,5 @@
     <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
         <em class="material-icons">attach_file</em>
     </button>
-
+    <app-progress-with-label *ngIf="isUploading" [percent]="randomNumber" [label]="'Uploading'"></app-progress-with-label>
 </div>
