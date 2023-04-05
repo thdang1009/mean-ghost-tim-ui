@@ -68,6 +68,7 @@ export class BookComponent implements OnInit {
       url: [null, Validators.required],
       score: [null, Validators.required],
       permission: [null, Validators.required],
+      description: [null],
     });
     this.activatedRoute.queryParams.subscribe(params => {
       const id = params.id;
