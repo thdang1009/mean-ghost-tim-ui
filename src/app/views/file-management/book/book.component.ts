@@ -74,8 +74,8 @@ export class BookComponent implements OnInit {
       if (id) {
         this.bookService.getBook(id)
           .subscribe(res => {
-            const url = (res.url as any).id;
-            const urlGet = (res.url as any).urlGet;
+            const url = (res.url || {} as any).id;
+            const urlGet = (res.url || {} as any).urlGet;
             this.itemSelected = {
               ...res,
               urlGet: urlGet,
@@ -124,6 +124,7 @@ export class BookComponent implements OnInit {
       .subscribe((res: any) => {
         this.data.push(res);
         this.isLoadingResults = false;
+        showNoti('Add empty book successfully!', 'success');
       }, err => {
         this.isLoadingResults = false;
       });

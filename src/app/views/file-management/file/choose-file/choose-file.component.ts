@@ -33,7 +33,7 @@ export class ChooseFileComponent implements OnInit {
   }
 
   fakeProgessing() {
-    const middle = getRandomInt(1, 99);
+    const middle = getRandomInt(20, 80);
     const first = getRandomInt(1, middle);
     const second = getRandomInt(middle, 99);
     this.randomNumber = first;
