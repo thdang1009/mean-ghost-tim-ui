@@ -82,12 +82,14 @@ export class NoteComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       const id = Number(params.id);
       if (id) {
-        // TODO document why this block is empty
-
+        this.noteService.getNote(id)
+          .subscribe(res => {
+            this.itemSelected = res;
+          });
       } else {
         this.itemSelected = undefined;
+        this.searchNote(id);
       }
-      this.searchNote(id);
     });
   }
 
@@ -131,13 +133,14 @@ export class NoteComponent implements OnInit {
         return;
       }
     }
-    this.itemSelected = item;
+    // this.itemSelected = item;
     this.router.navigate(
       [],
       {
         relativeTo: this.activatedRoute,
         queryParams: { id: item.id },
-        queryParamsHandling: 'merge'
+        queryParamsHandling: 'merge',
+        skipLocationChange: true
       });
   }
 

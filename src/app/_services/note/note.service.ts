@@ -24,7 +24,7 @@ export class NoteService {
   }
 
   getNote(id: any): Observable<Note> {
-    const url = `${apiUrl}/${id}`;
+    const url = `${apiUrl}/id/${id}`;
     return this.http.get<Note>(url).pipe(
       tap(_ => ghostLog(`fetched note by id=${id}`)),
       catchError(handleError<Note>(`getNote id=${id}`))
