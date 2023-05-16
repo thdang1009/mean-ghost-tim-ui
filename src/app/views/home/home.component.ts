@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   allPosts = [];
   isFilteredByTag = false;
   pageIndex = 1;
-  pageSize = 3;
 
   constructor(
     private authService: AuthService,
@@ -58,11 +57,11 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
-  getMorePosts() {
+  getMorePosts(pageSize = 3) {
     let count = 0;
     let fistItem = this.allPosts.pop();
     const tempArray = [];
-    while (fistItem && count < this.pageSize) {
+    while (fistItem && count < pageSize) {
       count++;
       tempArray.push(fistItem);
       fistItem = this.allPosts.pop();
@@ -71,6 +70,6 @@ export class HomeComponent implements OnInit {
   }
 
   showMorePost() {
-    this.posts = [...this.posts, ...this.getMorePosts()];
+    this.posts = [...this.posts, ...this.getMorePosts(5)];
   }
 }
