@@ -103,11 +103,12 @@ section {
 .show-more-post-container {
     display: flex;
     justify-content: center;
-    padding: 15px;
+    padding: 0;
 }
 .show-more-post {
     cursor: pointer;
     font-weight: bold;
+    color: white;
 }
 
 #loader {
