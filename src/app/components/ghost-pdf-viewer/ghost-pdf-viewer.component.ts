@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, DoCheck, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { ReadingInfoService } from '@app/_services/reading-info/reading-info.service';
 import { showNoti } from '@app/_shares/common';
 import { PDF_OBJ } from '@shares/constant';
-import { PdfViewerComponent } from 'ng2-pdf-viewer';
+import { PDFDocumentProxy, PdfViewerComponent } from 'ng2-pdf-viewer';
 
 /*
   - Add loading process => done
@@ -28,8 +29,14 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   @Input() src: string;
   @Input() pdfFileName: string;
   @Input() isAdminView: boolean = false;
+  // pdf var
   pdfSrc;
   currentPage = 1;
+  totalPages = 0;
+  zoom = 1;
+  moveWrongPage = false;
+  urlDoc: any;
+  // end pdf var
   key = '';
   savedPage;
   loadingOpacity = 1;
@@ -40,13 +47,18 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   pdfQuery = '';
   constructor(
     private activeRoute: ActivatedRoute,
-    private readingInfoService: ReadingInfoService
+    private readingInfoService: ReadingInfoService,
+    public sanitizer: DomSanitizer,
   ) { }
   ngDoCheck(): void {
   }
-
   ngOnInit(): void {
     this.pdfSrc = this.src;
+    // new code to detect urlDoc
+    const type = this.getTypeFromUrl(this.src);
+    this.urlDoc = this.cleanUrl(this.src, type);
+    // end new code
+
     this.key = PDF_OBJ + '_' + this.pdfFileName;
     this.savedPage = Number(localStorage.getItem(this.key));
     const arr = (localStorage.getItem(this.key + '_bookmarks') || '').split(',').map(el => +el);
@@ -205,10 +217,32 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   keepExpand() {
     // TODO document why this method 'keepExpand' is empty
   }
-  loadComplete() {
+
+  cleanUrl(url = '.', type = undefined): SafeResourceUrl {
+    if (!type) {
+      type = this.getTypeFromUrl(url);
+    }
+    return type !== 'pdf' ?
+      this.sanitizer.bypassSecurityTrustResourceUrl(`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(url)}`)
+      :
+      url;
+  }
+
+  getTypeFromUrl(url = '.?') {
+    let arr;
+    if (url.includes('?')) {
+      arr = url.split('?')[0].split('.');
+    } else {
+      arr = url.split('.');
+    }
+    return arr[arr.length - 1];
+  }
+
+  loadComplete(pdf: PDFDocumentProxy) {
     setTimeout(_ => {
       this.isLoading = false;
 
+      this.totalPages = pdf.numPages;
 
       const pdfViewer = document.getElementsByTagName('pdf-viewer')[0];
       const pdfViewerWidth = pdfViewer['offsetWidth'];
@@ -253,5 +287,21 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       query: this.pdfQuery,
       findPrevious: isNewSearch
     });
+  }
+
+  // pdf control panel
+
+  changePageValue(e) {
+    this.currentPage = e;
+  }
+  changeZoomValue(e) {
+    this.zoom = e / 100;
+  }
+  shakeThePdf(_) {
+    this.moveWrongPage = true;
+    setTimeout(() => {
+      this.moveWrongPage = false;
+      // this.changeDetectorRef.markForCheck();
+    }, 500)
   }
 }

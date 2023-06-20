@@ -55,15 +55,19 @@ pdf-viewer {
 .btn-w100 {
     width: 100%;
 }
+
 .btn-w45 {
     width: 45%;
 }
+
 .btn-w30 {
     width: 30%;
 }
+
 .btn-w22 {
     width: 22%;
 }
+
 .btn-w20 {
     width: 20%;
 }
@@ -145,28 +149,10 @@ app-json-beautifier {
     flex-direction: column;
 }
 
-@media (min-width: 992px) {
-    app-json-beautifier {
-        flex-direction: row;
-    }
-}
-
 app-json-excel {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-}
-
-@media (min-width: 992px) {
-    app-json-excel {
-        flex-direction: row;
-    }
-}
-
-@media (max-width: 480px) {
-    .hidden-xs {
-        display: none;
-    }
 }
 
 app-am-chart {
@@ -259,6 +245,7 @@ app-am-chart {
 .material-icons.md-36 {
     font-size: 36px;
 }
+
 .visible-hidden {
     visibility: hidden;
 }
@@ -315,6 +302,7 @@ app-am-chart {
     padding: 0.5rem;
     transition: all 0.35s cubic-bezier(0.13, 0.43, 0.54, 1.82);
 }
+
 .div__back-to-home>a {
     cursor: pointer;
 }
@@ -519,9 +507,11 @@ mark {
     align-items: center;
     padding: 8px;
 }
+
 .div__radio-label>label {
     margin: 0;
 }
+
 .hi-user {
     text-align: center;
     display: block;
@@ -533,4 +523,31 @@ mark {
 */
 .cdk-overlay-connected-position-bounding-box {
     /* display: none !important; */
+}
+
+app-pdf-control-panel {
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: 15px;
+}
+
+@media (min-width: 992px) {
+    app-json-beautifier {
+        flex-direction: row;
+    }
+
+    app-json-excel {
+        flex-direction: row;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .hidden-xs {
+        display: none;
+    }
 }

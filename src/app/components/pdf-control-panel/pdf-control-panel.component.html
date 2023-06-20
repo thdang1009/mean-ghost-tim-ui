@@ -1,0 +1,36 @@
+<div class="cp-container">
+    <button type="button" class="btn cp-button" (click)="changePage(currentPage + 1)">
+        <img src="./assets/pdf-control-panel-icon/arrow-down.svg" alt="Next page" />
+    </button>
+
+    <button type="button" class="btn cp-button" (click)="changePage(currentPage - 1)">
+        <img src="./assets/pdf-control-panel-icon/arrow-up.svg" alt="Previous page" />
+    </button>
+
+    <div class="cp-pages-navigation">
+        <input class="cp-input" [(ngModel)]="currentPage" (ngModelChange)="debounceChangeCurrentPage()" />
+
+        <img src="./assets/pdf-control-panel-icon/slash.svg" alt="" />
+
+        <span class="cp-total-page">{{totalPages}}</span>
+    </div>
+
+    <img src="./assets/pdf-control-panel-icon/separate-line.svg" alt="" />
+
+    <button type="button" class="btn cp-button" (click)="zoomOut()">
+        <img src="./assets/pdf-control-panel-icon/minus.svg" alt="Zoom out" />
+    </button>
+
+    <button type="button" class="btn cp-button" (click)="zoomIn()">
+        <img src="./assets/pdf-control-panel-icon/plus.svg" alt="Zoom in" />
+    </button>
+
+    <select [(ngModel)]="zoom" (change)="changeZoom()" class="cp-zoom-select">
+        <option *ngFor="let item of zoomList" [value]="item">{{item}} %</option>
+    </select>
+
+    <img src="./assets/pdf-control-panel-icon/separate-line.svg" alt="" />
+    <img class="cp-download" src="./assets/pdf-control-panel-icon/download.svg" alt="Download" (click)="download()"/>
+
+
+</div>

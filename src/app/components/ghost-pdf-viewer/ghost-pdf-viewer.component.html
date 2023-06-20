@@ -1,53 +1,107 @@
-<div id="view-port-to-zoom" class="example-boundary">
-    <div *ngIf="isLoading" class="overlay" [style.opacity]="loadingOpacity">
-        <div class="overlay__inner">
-            <div class="overlay__content"><span class="spinner"></span></div>
-        </div>
-    </div>
-    <pdf-viewer #pdf [ngClass]="{
+<div [ngClass]="{ 'shaking-the-doc': moveWrongPage }"
+	id="view-port-to-zoom"
+	class="example-boundary">
+	<div *ngIf="isLoading"
+		[style.opacity]="loadingOpacity"
+		class="overlay">
+		<div class="overlay__inner">
+			<div class="overlay__content">
+				<span class="spinner"></span>
+			</div>
+		</div>
+	</div>
+	<app-pdf-control-panel [totalPages]="totalPages"
+		[currentPage]="currentPage"
+		[linkPdf]="urlDoc"
+		(changePageValue)="changePageValue($event)"
+		(changeZoomValue)="changeZoomValue($event)"
+		(shakeThePdf)="shakeThePdf($event)"></app-pdf-control-panel>
+	<pdf-viewer #pdf
+		[ngClass]="{
         'is-admin-view': isAdminView
-    }" [src]="pdfSrc" [render-text]="true" [original-size]="false" [(page)]="currentPage" [fit-to-page]="bigPageMode" [original-size]="bigPageMode"
-        style="width: 400px; height: 500px" (pagechanging)="pagechanging($event)" [show-all]="true"
-        (after-load-complete)="loadComplete()">
-    </pdf-viewer>
+    }"
+		[src]="pdfSrc"
+        [zoom]="zoom"
+		[render-text]="true"
+		[original-size]="false"
+		[(page)]="currentPage"
+		[fit-to-page]="bigPageMode"
+		[original-size]="bigPageMode"
+		[show-all]="true"
+		(pagechanging)="pagechanging($event)"
+		(after-load-complete)="loadComplete($event)"
+		style="width: 400px; height: 500px">
+	</pdf-viewer>
 
-    <div class="fixed-plugin" cdkDrag cdkDragBoundary=".example-boundary">
-        <div class="dropdown show-dropdown open show">
-            <div class="example-handle" cdkDragHandle>
-                <svg width="24px" fill="black" viewBox="0 0 24 24">
-                    <path
-                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
-                    </path>
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                </svg>
-            </div>
-            <a (click)="keepExpand(); $event.stopPropagation()" class="hover-pointer btn-expand btn-expand-center"
-                data-toggle="dropdown" aria-expanded="true">
-                <img style="width: 50px" loading="lazy" src="assets/custom-icon/home-button.png" width="36px" alt="Home">
-                <!-- <i class="fa fa-gear fa-2x fa-custom"></i> -->
-            </a>
+	<div class="fixed-plugin"
+		cdkDrag
+		cdkDragBoundary=".example-boundary">
+		<div class="dropdown show-dropdown open show">
+			<div class="example-handle"
+				cdkDragHandle>
+				<svg width="24px"
+					fill="black"
+					viewBox="0 0 24 24">
+					<path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+					<path d="M0 0h24v24H0z"
+						fill="none"></path>
+				</svg>
+			</div>
+			<a (click)="keepExpand(); $event.stopPropagation()"
+				class="hover-pointer btn-expand btn-expand-center"
+				data-toggle="dropdown"
+				aria-expanded="true">
+				<img style="width: 50px"
+					loading="lazy"
+					src="assets/custom-icon/home-button.png"
+					width="36px"
+					alt="Home">
+				<!-- <i class="fa fa-gear fa-2x fa-custom"></i> -->
+			</a>
 
-            <a (click)="toggleBookmark(); $event.stopPropagation()" class="hover-pointer btn-expand btn-expand-bottom"
-                data-toggle="dropdown" aria-expanded="true">
-                <img loading="lazy" *ngIf="!bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-add.svg" width="36px" alt="add bookmark">
-                <img loading="lazy" *ngIf="bookmarks.has(currentPage)" src="assets/custom-icon/bookmark-remove.svg" width="36px" alt="remove bookmark">
-            </a>
+			<a (click)="toggleBookmark(); $event.stopPropagation()"
+				class="hover-pointer btn-expand btn-expand-bottom"
+				data-toggle="dropdown"
+				aria-expanded="true">
+				<img *ngIf="!bookmarks.has(currentPage)"
+					loading="lazy"
+					src="assets/custom-icon/bookmark-add.svg"
+					width="36px"
+					alt="add bookmark">
+				<img *ngIf="bookmarks.has(currentPage)"
+					loading="lazy"
+					src="assets/custom-icon/bookmark-remove.svg"
+					width="36px"
+					alt="remove bookmark">
+			</a>
 
-            <a (click)="openFullscreen(); $event.stopPropagation()" class="hover-pointer btn-expand btn-expand-top"
-                data-toggle="dropdown" aria-expanded="true">
-                <i class="fa fa-expand fa-2x fa-custom c-purple"></i>
-            </a>
+			<a (click)="openFullscreen(); $event.stopPropagation()"
+				class="hover-pointer btn-expand btn-expand-top"
+				data-toggle="dropdown"
+				aria-expanded="true">
+				<i class="fa fa-expand fa-2x fa-custom c-purple"></i>
+			</a>
 
-            <a (click)="scrollToPreviousBookmark(); $event.stopPropagation()"
-                class="hover-pointer btn-expand btn-expand-left" data-toggle="dropdown" aria-expanded="true">
-                <img loading="lazy" src="assets/custom-icon/bookmark-up.svg" width="36px" alt="Move to last bookmark">
-            </a>
+			<a (click)="scrollToPreviousBookmark(); $event.stopPropagation()"
+				class="hover-pointer btn-expand btn-expand-left"
+				data-toggle="dropdown"
+				aria-expanded="true">
+				<img loading="lazy"
+					src="assets/custom-icon/bookmark-up.svg"
+					width="36px"
+					alt="Move to last bookmark">
+			</a>
 
-            <a (click)="scrollToNextBookmark(); $event.stopPropagation()"
-                class="hover-pointer btn-expand btn-expand-right" data-toggle="dropdown" aria-expanded="true">
-                <img loading="lazy" src="assets/custom-icon/bookmark-down.svg" width="36px" alt="Move to next bookmark">
-            </a>
-        </div>
-    </div>
+			<a (click)="scrollToNextBookmark(); $event.stopPropagation()"
+				class="hover-pointer btn-expand btn-expand-right"
+				data-toggle="dropdown"
+				aria-expanded="true">
+				<img loading="lazy"
+					src="assets/custom-icon/bookmark-down.svg"
+					width="36px"
+					alt="Move to next bookmark">
+			</a>
+		</div>
+	</div>
 
 </div>

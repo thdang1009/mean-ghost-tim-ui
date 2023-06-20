@@ -1,0 +1,71 @@
+.cp-container {
+    width: 322px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    opacity: 0.7;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px;
+}
+.cp-container * {
+    color: var(--white);
+}
+
+.cp-container:hover {
+    opacity: 1;
+}
+
+.cp-button {
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px var(--white);
+    outline: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cp-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.cp-input {
+    width: 35px;
+    height: 23px;
+    outline: none;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px var(--white);
+    text-align: center;
+}
+
+.cp-download {
+    cursor: pointer;
+}
+.cp-total-page {
+    cursor: pointer;
+    width: 35px;
+}
+.cp-zoom-select {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 0 0 0 #000;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.cp-pages-navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

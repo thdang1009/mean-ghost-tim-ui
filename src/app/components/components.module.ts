@@ -16,6 +16,7 @@ import { GhostPdfViewerComponent } from './ghost-pdf-viewer/ghost-pdf-viewer.com
 import { DragDropModule } from '@angular/cdk/drag-drop';
 // third party
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { PdfControlPanelComponent } from './pdf-control-panel/pdf-control-panel.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ListBadgeComponent,
     GhostPdfViewerComponent,
     GhostIframeComponent,
+    PdfControlPanelComponent,
   ],
   exports: [
     FooterComponent,
@@ -48,6 +50,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ListBadgeComponent,
     GhostPdfViewerComponent,
     GhostIframeComponent,
+    PdfControlPanelComponent,
   ],
   providers: [
   ]

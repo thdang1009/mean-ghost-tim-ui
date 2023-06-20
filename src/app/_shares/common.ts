@@ -219,3 +219,12 @@ export function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
+export function getTypeFromUrl(url = '.?') {
+  let arr;
+  if (url.includes('?')) {
+    arr = url.split('?')[0].split('.');
+  } else {
+    arr = url.split('.');
+  }
+  return arr[arr.length - 1];
+}
