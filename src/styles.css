@@ -524,10 +524,13 @@ mark {
 .cdk-overlay-connected-position-bounding-box {
     /* display: none !important; */
 }
+.hidden {
+    display: none;
+}
 
 app-pdf-control-panel {
     position: absolute;
-    z-index: 1000;
+    z-index: 1050;
     width: 100%;
     display: flex;
     flex-direction: column;
