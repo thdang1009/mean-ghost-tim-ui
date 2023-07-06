@@ -133,14 +133,13 @@ export class NoteComponent implements OnInit {
         return;
       }
     }
-    // this.itemSelected = item;
     this.router.navigate(
       [],
       {
         relativeTo: this.activatedRoute,
         queryParams: { id: item.id },
         queryParamsHandling: 'merge',
-        skipLocationChange: true
+        skipLocationChange: false
       });
   }
 

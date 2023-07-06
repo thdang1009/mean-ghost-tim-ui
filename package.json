@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open --host localhost --disable-host-check --port 4500",
-    "build": "ng build --aot --configuration production",
+    "build": "ng build --aot --configuration production --output-hashing bundles",
     "debug": "ng serve --open --host localhost --disable-host-check --port 4500 -c development",
     "test": "ng test",
     "test:coverage": "ng test --no-watch --code-coverage",
