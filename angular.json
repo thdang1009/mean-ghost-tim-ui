@@ -192,7 +192,8 @@
             "development": {
               "outputHashing": "media",
               "optimization": true,
-              "sourceMap": true
+              "sourceMap": true,
+              "vendorChunk": true
             }
           },
           "defaultConfiguration": "production"
