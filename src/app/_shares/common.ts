@@ -67,6 +67,10 @@ export function isInPDFView() {
   const pathname = location.pathname;
   return pathname.includes('index') || pathname.includes('view-book');
 }
+export function checkIsInPDFView(pathname = '') {
+  // console.info('dangth', pathname);
+  return pathname.includes('index') || pathname.includes('view-book');
+}
 
 export function nextStatus(oldStatus) {
   return {

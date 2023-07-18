@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-import { isInPDFView } from '@app/_shares/common';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { checkIsInPDFView } from '@app/_shares/common';
 
 @Component({
     selector: 'app-navbar',
@@ -41,6 +41,11 @@ export class NavbarComponent implements OnInit {
             if ($layer) {
                 $layer.remove();
                 this.mobile_menu_visible = 0;
+            }
+        });
+        this.router.events.subscribe((event: NavigationEnd) => {
+            if (event instanceof NavigationEnd) {
+              this._isInPDFView = checkIsInPDFView(event.url);
             }
         });
     }
@@ -147,5 +152,5 @@ export class NavbarComponent implements OnInit {
         }
     }
 
-    _isInPDFView = isInPDFView();
+    _isInPDFView;
 }

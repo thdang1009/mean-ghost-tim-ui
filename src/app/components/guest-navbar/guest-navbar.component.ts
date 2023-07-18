@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { isInPDFView } from '@shares/common';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { checkIsInPDFView } from '@shares/common';
 import { AuthService } from '@services/_index';
 // import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { ROUTES } from '../guest-sidebar/guest-sidebar.component';
@@ -17,6 +17,7 @@ export class GuestNavbarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
   stringToSearch = '';
+  _isInPDFView;
 
   constructor(
     private authService: AuthService,
@@ -38,6 +39,11 @@ export class GuestNavbarComponent implements OnInit {
         this.mobile_menu_visible = 0;
       }
     });
+    this.router.events.subscribe((event: NavigationEnd) => {
+      if (event instanceof NavigationEnd) {
+        this._isInPDFView = checkIsInPDFView(event.url);
+      }
+    });
   }
 
   search() {
@@ -55,8 +61,6 @@ export class GuestNavbarComponent implements OnInit {
       // call search normal in all page
     }
   }
-
-  _isInPDFView = isInPDFView;
 
   gotoAdminView() {
     if (this.isLogined()) {

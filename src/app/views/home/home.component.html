@@ -83,7 +83,7 @@
 		<div class="show-more-post-container">
 
 			<button *ngIf="allPosts.length"
-				[disabled]="!contactForm.valid || isRunning"
+				[disabled]="isRunning"
 				(click)="showMorePost()"
 				mat-raised-button
 				type="button"

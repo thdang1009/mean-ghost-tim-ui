@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { SocketioService } from '@app/_services/_index';
-import { handleSocketGuestMessage, handleSocketReadingInfo, isInPDFView } from '@app/_shares/common';
+import { checkIsInPDFView, handleSocketGuestMessage, handleSocketReadingInfo } from '@app/_shares/common';
 import { SK_GUEST_MESSAGE_RESPONSE, SK_READING_INFO_REALTIME_UPDATE } from '@app/_shares/constant';
 import { AuthService } from '@services/_index';
 
@@ -110,6 +110,11 @@ export class SidebarComponent implements OnInit {
     }))
 
     this.menuItems = checkSubMenu.filter(menuItem => this[menuItem.permission]);
+    this.router.events.subscribe((event: NavigationEnd) => {
+      if (event instanceof NavigationEnd) {
+        this._isInPDFView = checkIsInPDFView(event.url);
+      }
+    });
   }
   checkSocket() {
     const isAdmin = this.authService.isAdmin();
@@ -171,7 +176,5 @@ export class SidebarComponent implements OnInit {
       // call search normal in all page
     }
   }
-
-  _isInPDFView = isInPDFView();
-
+  _isInPDFView;
 }
