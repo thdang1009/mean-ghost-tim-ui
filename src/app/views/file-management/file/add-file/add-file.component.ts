@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FileDownloadService } from '@app/_services/file-download-service.service';
 import { FILE_PERMISSION } from '@app/_shares/enum';
 import { MyFile } from '@models/_index';
 import { FileService, AlertService } from '@services/_index';
@@ -29,8 +30,19 @@ export class AddFileComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private fileService: FileService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private fileDownloadService: FileDownloadService,
   ) { }
+
+  public onDownloadFile() {
+    const name = this.registerForm.get('originName').value;
+    const url = this.registerForm.get('urlGet').value;
+    console.info('dagnth', name, url);
+    this.fileDownloadService.downloadFile(url, name).subscribe((progress) => {
+      console.log(progress);
+    });
+    return false;
+  }
 
   compareWithFunc = compareWithFunc;
 

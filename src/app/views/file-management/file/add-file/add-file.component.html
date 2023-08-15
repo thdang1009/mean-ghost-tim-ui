@@ -99,6 +99,8 @@
               <div class="button-row">
                 <button mat-raised-button type="submit" [disabled]="!registerForm.valid"
                   class="btn btn-info pull-right btn-w100">{{ isUpdate ? 'Update' : 'Create'}} </button>
+                <button mat-raised-button type="button" *ngIf="isUpdate" (click)="onDownloadFile()"
+                  class="btn btn-info pull-right btn-w100">Download</button>
               </div>
             </form>
           </div>
