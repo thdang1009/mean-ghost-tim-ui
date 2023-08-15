@@ -24,7 +24,7 @@ export class TodoTodayComponent implements OnInit {
   searchDate = new UntypedFormControl(this.today);
   searchDateDisplay = 'ToDay';
   searchStatus = 'NONE';
-  statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];
+  statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW', 'IN_PAST'];
   count = 0;
   nextStatus = nextStatus;
   previousStatus = previousStatus;

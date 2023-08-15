@@ -68,7 +68,6 @@ export class NoteComponent implements OnInit {
   today = dateFns.startOfToday();
   searchDate = new UntypedFormControl(this.today);
   searchStatus = 'NONE';
-  statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];
   itemSelected = undefined;
 
   constructor(

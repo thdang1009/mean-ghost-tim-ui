@@ -19,6 +19,7 @@ export const TDTD_STATUS = {
   NEW: 'NEW',
   NOT_YET: 'NOT_YET',
   TOMORROW: 'TOMORROW',
+  IN_PAST: 'IN_PAST',
   DONE: 'DONE',
 }
 export const POST_STATUS = {

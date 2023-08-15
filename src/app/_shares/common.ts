@@ -77,7 +77,8 @@ export function nextStatus(oldStatus) {
     NEW: TDTD_STATUS.DONE,
     DONE: TDTD_STATUS.TOMORROW,
     TOMORROW: TDTD_STATUS.NOT_YET,
-    NOT_YET: TDTD_STATUS.NEW
+    NOT_YET: TDTD_STATUS.IN_PAST,
+    IN_PAST: TDTD_STATUS.NEW
   }[oldStatus];
 }
 export function previousStatus(oldStatus) {
@@ -85,7 +86,8 @@ export function previousStatus(oldStatus) {
     DONE: TDTD_STATUS.NEW,
     TOMORROW: TDTD_STATUS.DONE,
     NOT_YET: TDTD_STATUS.TOMORROW,
-    NEW: TDTD_STATUS.NOT_YET
+    IN_PAST: TDTD_STATUS.NOT_YET,
+    NEW: TDTD_STATUS.IN_PAST
   }[oldStatus];
 }
 export function isValidFile(file) {

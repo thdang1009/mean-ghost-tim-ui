@@ -29,7 +29,6 @@ export class BookComponent implements OnInit {
   today = dateFns.startOfToday();
   searchDate = new UntypedFormControl(this.today);
   searchStatus = 'NONE';
-  statusList = ['NONE', 'NOT_YET', 'DONE', 'TOMORROW'];
   itemSelected = undefined;
   permissions = [
     BookPermission.PUBLIC,
