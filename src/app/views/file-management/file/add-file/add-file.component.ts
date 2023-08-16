@@ -5,7 +5,7 @@ import { FileDownloadService } from '@app/_services/file-download-service.servic
 import { FILE_PERMISSION } from '@app/_shares/enum';
 import { MyFile } from '@models/_index';
 import { FileService, AlertService } from '@services/_index';
-import { compareWithFunc, showNoti } from '@shares/common';
+import { compareWithFunc, openExternalLink, showNoti } from '@shares/common';
 
 
 @Component({
@@ -45,6 +45,7 @@ export class AddFileComponent implements OnInit {
   }
 
   compareWithFunc = compareWithFunc;
+  openExternalLink = openExternalLink;
 
   handleAfterUpload(e) {
     console.log(e);

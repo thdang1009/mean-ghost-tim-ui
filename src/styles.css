@@ -524,6 +524,7 @@ mark {
 .cdk-overlay-connected-position-bounding-box {
     /* display: none !important; */
 }
+
 .hidden {
     display: none;
 }
@@ -536,6 +537,15 @@ app-pdf-control-panel {
     flex-direction: column;
     align-items: center;
     bottom: 15px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.icon-inline-text {
+    position: absolute;
+    right: 10px;
 }
 
 @media (min-width: 992px) {
