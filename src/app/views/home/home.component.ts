@@ -59,12 +59,10 @@ export class HomeComponent implements OnInit {
 
   getMorePosts(pageSize = 3) {
     let count = 0;
-    let fistItem = this.allPosts.pop();
     const tempArray = [];
-    while (fistItem && count < pageSize) {
+    while (count < pageSize) {
       count++;
-      tempArray.push(fistItem);
-      fistItem = this.allPosts.pop();
+      tempArray.push(this.allPosts.pop());
     }
     return tempArray;
   }
