@@ -1,11 +1,19 @@
-<input type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event)" #fileUpload>
+<input #fileUpload
+	[accept]="requiredFileType"
+	(change)="onFileSelected($event)"
+	type="file"
+	class="file-input"
+	multiple>
 
 <div class="file-upload">
-
-    {{fileName || "No file uploaded yet."}}
-
-    <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
-        <em class="material-icons">attach_file</em>
-    </button>
-    <app-progress-with-label *ngIf="isUploading" [percent]="randomNumber" [label]="'Uploading'"></app-progress-with-label>
+	{{(listFileName && listFileName.length === 1 ? listFileName[0] : ('Upload ' + listFileName.length + ' files'))}}
+	<button (click)="fileUpload.click()"
+		mat-mini-fab
+		color="primary"
+		class="upload-btn">
+		<em class="material-icons">attach_file</em>
+	</button>
+	<app-progress-with-label *ngIf="isUploading"
+		[percent]="randomNumber"
+		[label]="'Uploading'"></app-progress-with-label>
 </div>

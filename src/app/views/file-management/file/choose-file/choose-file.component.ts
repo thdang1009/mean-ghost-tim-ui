@@ -18,7 +18,7 @@ export class ChooseFileComponent implements OnInit {
   @Output()
   uploadDone: EventEmitter<MyFile> = new EventEmitter();
 
-  fileName = '';
+  listFileName: string[] = [];
   uploadProgress: number;
   randomNumber: number = 0;
   uploadSub: Subscription;
@@ -43,28 +43,41 @@ export class ChooseFileComponent implements OnInit {
   }
 
   onFileSelected(event) {
-    const file: File = event.target.files[0];
-    if (file) {
-      this.fakeProgessing();
-      this.fileName = file.name;
-      const formData = new FormData();
-      formData.append('file', file);
-      this.isUploading = true;
-      this.fileService.uploadFile(formData)
-        .subscribe(file => {
-          this.isUploading = false;
-          if (file) {
-            showNoti(`Upload success`, 'success');
-            this.uploadDone.emit(file);
-          }
-        }, (err) => {
-          this.isUploading = false;
-          console.log(err);
-          showNoti(`Upload fail. Error: ${err}`, 'danger');
-        });
+    const files: File[] = event.target.files;
+    if (files && files.length) {
+      this.listFileName.length = 0;
+      Array.from(files).forEach((file, index) => {
+        this.fakeProgessing();
+        this.listFileName[index] = file.name;
+        const formData = new FormData();
+        formData.append('file', file);
+        this.isUploading = true;
+        const numOfFile = files.length;
+        this.fileService.uploadFile(formData)
+          .subscribe(fileResponse => {
+            this.isUploading = false;
+            if (fileResponse) {
+              showNoti(`Upload success file ${index + 1} - ${file.name}`, 'success');
+              if (numOfFile > 1 && index + 1 >= numOfFile) {
+                showNoti(`Upload all files`, 'info');
+                this.uploadDone.emit(fileResponse);
+                // TODO: redirect to list file instead of file detail
+              } else if (numOfFile === 1) {
+                this.uploadDone.emit(fileResponse);
+              }
+
+            } else {
+              showNoti(`Upload fail file ${index + 1} - ${file.name}`, 'error');
+            }
+          }, (err) => {
+            this.isUploading = false;
+            console.log(err);
+            showNoti(`Upload fail. Error: ${err}`, 'danger');
+          });
+      });
     }
   }
-  
+
   cancelUpload() {
     this.uploadSub.unsubscribe();
     this.reset();
