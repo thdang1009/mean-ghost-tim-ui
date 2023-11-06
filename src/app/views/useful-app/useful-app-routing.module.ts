@@ -27,11 +27,11 @@ const routes: Routes = [
     title: 'Text diff',
     component: TextDiffComponent
   },
-  {
-    path: 'tkt-code',
-    title: 'Auto run code',
-    component: TktCodeComponent
-  },
+  // {
+  //   path: 'tkt-code',
+  //   title: 'Auto run code',
+  //   component: TktCodeComponent
+  // },
 ];
 
 @NgModule({

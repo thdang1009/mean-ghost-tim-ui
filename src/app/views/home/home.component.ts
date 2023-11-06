@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
-  getMorePosts(pageSize = 3) {
+  getMorePosts(pageSize = 4) {
     let count = 0;
     const tempArray = [];
     while (count < pageSize) {
