@@ -6,7 +6,13 @@
 	multiple>
 
 <div class="file-upload">
-	{{(listFileName && listFileName.length === 1 ? listFileName[0] : ('Upload ' + listFileName.length + ' files'))}}
+	<ng-container *ngIf="listFileName && listFileName.length; else pleaseUploadPart">
+		{{(listFileName.length === 1 ? listFileName[0] : ('Uploaded ' + listFileName.length + ' files'))}}
+	</ng-container>
+	<ng-template #pleaseUploadPart>
+		Please choose file
+		<br>
+	</ng-template>
 	<button (click)="fileUpload.click()"
 		mat-mini-fab
 		color="primary"

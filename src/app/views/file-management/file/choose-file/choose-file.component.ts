@@ -87,5 +87,4 @@ export class ChooseFileComponent implements OnInit {
     this.uploadProgress = null;
     this.uploadSub = null;
   }
-
 }

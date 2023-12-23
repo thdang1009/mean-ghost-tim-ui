@@ -23,7 +23,7 @@ export class AddFileComponent implements OnInit {
   isLoadingResults = false;
   isUpdate = false;
   id = undefined;
-  filePermissionList = [FILE_PERMISSION.PRIVATE, FILE_PERMISSION.PUBLIC, FILE_PERMISSION.PROTECTED];
+  filePermissionList = [FILE_PERMISSION.PRIVATE, FILE_PERMISSION.PUBLIC, FILE_PERMISSION.PROTECTED, FILE_PERMISSION.SHARE_LINK_TO_ACCESS];
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -47,8 +47,22 @@ export class AddFileComponent implements OnInit {
   compareWithFunc = compareWithFunc;
   openExternalLink = openExternalLink;
 
+  copyLinkToClipboard(file: { urlGet: string, permission: string }) {
+    if (file.permission !== FILE_PERMISSION.SHARE_LINK_TO_ACCESS) {
+      return;
+    }
+    try {
+      navigator.clipboard.writeText(file.urlGet);
+      showNoti('Link copied to clipboard!', 'success');
+    } catch (e) {
+      showNoti(e, 'danger');
+    } finally {
+      this.isLoadingResults = false;
+    }
+  }
+
   handleAfterUpload(e) {
-    console.log(e);
+    this.copyLinkToClipboard(e);
     this.reloadWithID(e);
   }
 
@@ -107,6 +121,7 @@ export class AddFileComponent implements OnInit {
       .subscribe(file => {
         if (file) {
           showNoti(`Update success`, 'success');
+          this.copyLinkToClipboard(file);
           this.router.navigate(['/admin/file/file-list']);
         }
       }, (err) => {
@@ -126,5 +141,8 @@ export class AddFileComponent implements OnInit {
         console.log(err);
         this.alertService.error(err.error);
       });
+  }
+  back() {
+    this.router.navigate(['/admin/file/file-list']);
   }
 }

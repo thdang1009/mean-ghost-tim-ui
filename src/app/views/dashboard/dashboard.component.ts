@@ -131,7 +131,7 @@ export class DashboardComponent implements OnInit {
   getMyUser() {
     this.userService.getUsers()
       .subscribe(users => {
-        this.users = users.slice(0, 5);
+        this.users = users || [];
       }, (err) => {
         console.log(err);
         showNoti(`getMyUserß fail!`, 'danger');

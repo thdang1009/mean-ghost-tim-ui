@@ -5,11 +5,12 @@ import { showNoti } from '@shares/common';
 
 @Component({
   selector: 'app-file-list',
-  templateUrl: './file-list.component.html'
+  templateUrl: './file-list.component.html',
+  styleUrls: ['./file-list.component.scss']
 })
 export class FileListComponent implements OnInit {
-
-
+  index = 0;
+  listAll = [];
   files = [];
   constructor(
     private fileService: FileService,
@@ -18,13 +19,29 @@ export class FileListComponent implements OnInit {
   ngOnInit(): void {
     this.getFiles();
   }
+
+  resetParams() {
+    this.index = 0;
+    this.listAll.length = 0;
+    this.files.length = 0;
+  }
+
   getFiles() {
+    this.resetParams();
     this.fileService.getAllFile().subscribe(files => {
-      this.files = files;
+      this.listAll = files;
+      this.files = this.getMoreFiles();
     }, (err) => {
       console.log(err);
       showNoti(`Get file fail!`, 'danger');
     });
+  }
+  getMoreFiles(pageSize = 5) {
+    const tempArray = [];
+    for (let i = 0; i < pageSize; i++, this.index++) {
+      tempArray.push(this.listAll[this.index]);
+    }
+    return tempArray;
   }
   delete(id) {
     if (!id) {
@@ -56,5 +73,14 @@ export class FileListComponent implements OnInit {
       {
         queryParams: { id: file._id }
       });
+  }
+  uploadNewFile() {
+    this.router.navigate(
+      ['admin/file/file'],
+      {
+      });
+  }
+  showMore() {
+    this.files = [...this.files, ...this.getMoreFiles()];
   }
 }
