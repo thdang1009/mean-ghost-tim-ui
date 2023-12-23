@@ -39,7 +39,8 @@ export class FileListComponent implements OnInit {
   getMoreFiles(pageSize = 5) {
     const tempArray = [];
     for (let i = 0; i < pageSize; i++, this.index++) {
-      tempArray.push(this.listAll[this.index]);
+      if (this.listAll[this.index])
+        tempArray.push(this.listAll[this.index]);
     }
     return tempArray;
   }
