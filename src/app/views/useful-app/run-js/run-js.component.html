@@ -1,23 +1,34 @@
-<!-- <ngs-code-editor [theme]="theme" [codeModel]="codeModel" [options]="options" (valueChanged)="onCodeChanged($event)">
+<ngs-code-editor [theme]="theme"
+	[codeModel]="codeModel"
+	[options]="options"
+	(valueChanged)="onCodeChanged($event)">
 </ngs-code-editor>
 <div class="output-container">
-    <div class="buttons-container">
-        <button id="execute" mat-raised-button type="button" [disabled]="isLoadingResults"
-            class="btn btn-info pull-right btn-w100 btn-run" (click)="handleCmdSave()">
-            <i class="material-icons">arrow_forward_ios</i>
-            Run
-        </button>
-        <button id="copy" mat-raised-button type="button" [disabled]="isLoadingResults"
-            class="btn btn-info pull-right btn-w100 btn-run" (click)="handleCmdCopy()">
-            <i class="material-icons">content_copy</i>
-            Copy
-        </button>
-    </div>
-    <div id="console" class="output scrollable">
-        <ng-container *ngFor="let consoleValue of store;">
-            <code class="fade-in">{{ consoleValue }}
-            </code>
-            <br/>
-        </ng-container>
-    </div>
-</div> -->
+	<div class="buttons-container">
+		<button [disabled]="isLoadingResults"
+			(click)="handleCmdSave()"
+			id="execute"
+			mat-raised-button
+			type="button"
+			class="btn btn-info pull-right btn-w100 btn-run">
+			<i class="material-icons">arrow_forward_ios</i>
+			Run
+		</button>
+		<button [disabled]="isLoadingResults"
+			(click)="handleCmdCopy()"
+			id="copy"
+			mat-raised-button
+			type="button"
+			class="btn btn-info pull-right btn-w100 btn-run">
+			<i class="material-icons">content_copy</i>
+			Copy
+		</button>
+	</div>
+	<div id="console"
+		class="output scrollable">
+		<ng-container *ngFor="let consoleValue of store;">
+			<code class="fade-in">{{ consoleValue }}</code>
+			<br>
+		</ng-container>
+	</div>
+</div>

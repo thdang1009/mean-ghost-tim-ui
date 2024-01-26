@@ -36,12 +36,12 @@ export const ROUTES: RouteInfo[] = [
   //   icon: 'code',
   //   class: ''
   // },
-  // {
-  //   path: 'useful-app/run-js',
-  //   title: 'Javascript\'s playground',
-  //   icon: 'javascript',
-  //   class: ''
-  // },
+  {
+    path: 'useful-app/run-js',
+    title: 'Javascript\'s playground',
+    icon: 'javascript',
+    class: ''
+  },
   {
     path: 'admin/dashboard',
     title: 'Amin',

@@ -25,7 +25,7 @@ import { DonationComponent } from './views/donation/donation.component';
 
 // third party
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
-// import { CodeEditorModule } from '@ngstack/code-editor';
+import { CodeEditorModule } from '@ngstack/code-editor';
 import { environment } from '@environments/environment';
 import { AnchorModule } from './_shares/anchor/anchor.module';
 import { MarkdownModule, MarkedOptions, ClipboardOptions, ClipboardButtonComponent } from 'ngx-markdown';
@@ -45,7 +45,7 @@ import { AnchorService } from './_shares/anchor/anchor.service';
     AppRoutingModule,
     CommonModule,
     // third party
-    // CodeEditorModule.forRoot(),
+    CodeEditorModule.forRoot(),
     NgxGoogleAnalyticsModule.forRoot(environment.gaCode),
     MarkdownModule.forRoot({
       loader: HttpClient,
@@ -94,7 +94,7 @@ import { AnchorService } from './_shares/anchor/anchor.service';
     AppRoutingModule,
     CommonModule,
     // third party
-    // CodeEditorModule,
+    CodeEditorModule,
     NgxGoogleAnalyticsModule,
     MarkdownModule,
   ]

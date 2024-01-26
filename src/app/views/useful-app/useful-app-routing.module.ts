@@ -7,11 +7,11 @@ import { TextDiffComponent } from './text-diff/text-diff.component';
 import { TktCodeComponent } from './tkt-code/tkt-code.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'run-js',
-  //   title: 'Javascript\'s playground',
-  //   component: RunJsComponent
-  // },
+  {
+    path: 'run-js',
+    title: 'Javascript\'s playground',
+    component: RunJsComponent
+  },
   {
     path: 'json-beautifier',
     title: 'JSON Beautifier',

@@ -226,14 +226,14 @@ export class NoteComponent implements OnInit {
         });
     }
   }
-  async drop(event: CdkDragDrop<string[]>) {
-    const result = await this.sort(event.previousIndex, event.currentIndex);
-    if (result === 'fail') {
-      showNoti('Sort Fail!', 'danger');
-      return;
-    }
-    moveItemInArray(this.data, event.previousIndex, event.currentIndex);
-  }
+  // async drop(event: CdkDragDrop<string[]>) {
+  //   const result = await this.sort(event.previousIndex, event.currentIndex);
+  //   if (result === 'fail') {
+  //     showNoti('Sort Fail!', 'danger');
+  //     return;
+  //   }
+  //   moveItemInArray(this.data, event.previousIndex, event.currentIndex);
+  // }
   sort(preIndex, curIndex) {
     const item = this.data[preIndex];
     const newOrder = Number(this.data[curIndex].order);
