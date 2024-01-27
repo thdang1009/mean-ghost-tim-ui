@@ -28,14 +28,22 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   debounceID = undefined;
   listPortfolio: Array<PortfolioData> = [{
     src: 'https://product-preview-card-component-ebon.vercel.app',
-    title: 'Product preview component',
+    title: 'Product view example',
     allowFullscreen: true
   }, {
     src: 'https://qr-code-component-main-rho-gules.vercel.app',
-    title: 'Product preview component',
+    title: 'QR Code example',
+    allowFullscreen: true
+  }, {
+    src: 'https://dangtrinh.site/home',
+    title: 'Personal\'s blogs',
+    allowFullscreen: true
+  }, {
+    src: 'https://mc.zalopay.vn/homepage/index.html',
+    title: 'Merchant tool',
     allowFullscreen: true
   }];
-  arrString = ['A Fullstack Web Engineer', 'A Javascript Lover', 'A Minimalist', 'A Book Reviewer'];
+  arrString = ['A Fullstack Web Engineer', 'A Javascript Lover', 'A Minimalist', 'A Book Reviewer', 'A Blogger'];
 
   indexInterval = 0;
   constructor(

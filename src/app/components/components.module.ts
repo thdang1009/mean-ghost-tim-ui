@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { ProgressWithLabelComponent } from './progress-with-label/progress-with-label.component';
 import { GhostSiteBtnComponent } from './ghost-site-btn/ghost-site-btn.component';
 import { ListBadgeComponent } from './list-badge/list-badge.component';
-import { GhostIframeComponent } from './ghost-iframe/ghost-iframe.component';
 import { GhostPdfViewerComponent } from './ghost-pdf-viewer/ghost-pdf-viewer.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 // third party
@@ -24,7 +23,7 @@ import { PdfControlPanelComponent } from './pdf-control-panel/pdf-control-panel.
     RouterModule,
     FormsModule,
     PdfViewerModule,
-    DragDropModule
+    DragDropModule,
   ],
   declarations: [
     FooterComponent,
@@ -36,7 +35,6 @@ import { PdfControlPanelComponent } from './pdf-control-panel/pdf-control-panel.
     GhostSiteBtnComponent,
     ListBadgeComponent,
     GhostPdfViewerComponent,
-    GhostIframeComponent,
     PdfControlPanelComponent,
   ],
   exports: [
@@ -49,7 +47,6 @@ import { PdfControlPanelComponent } from './pdf-control-panel/pdf-control-panel.
     GhostSiteBtnComponent,
     ListBadgeComponent,
     GhostPdfViewerComponent,
-    GhostIframeComponent,
     PdfControlPanelComponent,
   ],
   providers: [

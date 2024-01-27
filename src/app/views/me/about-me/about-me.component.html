@@ -323,12 +323,18 @@
 			</div>
 			<div class="portfolio-container row">
 				<ng-container *ngFor="let item of listPortfolio; let i = index">
-					<div class="col-sm-12 col-lg-6">
-						<ghost-iframe [src]="item.src | safe"
-							[title]="item.title"
-							[allowFullscreen]="item.allowFullscreen">
-
-						</ghost-iframe>
+					<div class="product-preview-iframe">
+						<label>
+							<a [href]="item.src"
+								target="_blank">
+								{{item.title}}
+							</a>
+						</label>
+						<iframe [title]="item.title"
+							[src]="item.src | safe"
+							width="100%"
+							height="100%">
+						</iframe>
 					</div>
 				</ng-container>
 			</div>

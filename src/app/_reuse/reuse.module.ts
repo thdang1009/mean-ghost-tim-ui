@@ -12,11 +12,11 @@ import { TableLoadingComponent } from './table-loading/table-loading.component';
   ],
   declarations: [
     TableLoadingComponent,
-    UnitConversionPipe
+    UnitConversionPipe,
   ],
   exports: [
     TableLoadingComponent,
-    UnitConversionPipe
+    UnitConversionPipe,
   ],
   providers: [
   ]
