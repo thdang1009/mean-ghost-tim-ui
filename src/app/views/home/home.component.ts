@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
   getMorePosts(pageSize = 4) {
     let count = 0;
     const tempArray = [];
-    while (count < pageSize) {
+    while (count < pageSize && this.allPosts.length) {
       count++;
       tempArray.push(this.allPosts.pop());
     }
