@@ -38,5 +38,10 @@ export const AdminLayoutRoutes: Routes = [
             loadChildren: () => import('../../views/file-management/file-management.module').then(m => m.FileManagementModule),
             canActivate: [LoginGuard]
         }]
-    }
+    },
+    {
+        path: '**',
+        redirectTo: 'home',
+        pathMatch: 'full'
+    },
 ];
