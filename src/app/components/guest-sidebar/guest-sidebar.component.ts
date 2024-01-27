@@ -30,18 +30,6 @@ export const ROUTES: RouteInfo[] = [
     icon: 'description',
     class: ''
   },
-  // {
-  //   path: 'useful-app/code-tkt',
-  //   title: 'Auto run code',
-  //   icon: 'code',
-  //   class: ''
-  // },
-  {
-    path: 'useful-app/run-js',
-    title: 'Javascript\'s playground',
-    icon: 'javascript',
-    class: ''
-  },
   {
     path: 'admin/dashboard',
     title: 'Amin',

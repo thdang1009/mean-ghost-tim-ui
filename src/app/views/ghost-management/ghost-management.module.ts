@@ -12,11 +12,14 @@ import { ReuseComponentModule } from '@app/_reuse/reuse.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { GuestMessageComponent } from './guest-message/guest-message.component';
+// import { RunJsComponent } from './run-js/run-js.component';
+// import { CodeEditorModule } from '@ngstack/code-editor';
 @NgModule({
   declarations: [
     NoteComponent,
     TodoTodayComponent,
-    GuestMessageComponent
+    GuestMessageComponent,
+    // RunJsComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +29,7 @@ import { GuestMessageComponent } from './guest-message/guest-message.component';
     HttpClientModule,
     AngularEditorModule,
     ReuseComponentModule,
+    // CodeEditorModule.forChild(),
   ],
   providers: [
     DatePipe,

@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReuseComponentModule } from '@app/_reuse/reuse.module';
+import { CodeEditorModule } from '@ngstack/code-editor';
 
 @NgModule({
   imports: [
@@ -26,12 +27,16 @@ import { ReuseComponentModule } from '@app/_reuse/reuse.module';
     MatNativeDateModule,
     MatTooltipModule,
     MatDialogModule,
-    ReuseComponentModule
+    ReuseComponentModule,
+    CodeEditorModule.forRoot(),
   ],
   declarations: [
     DashboardComponent,
   ],
   providers: [
+  ],
+  exports: [
+    CodeEditorModule,
   ]
 })
 

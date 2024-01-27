@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UsefulAppRoutingModule } from './useful-app-routing.module';
 import { JsonBeautifierComponent } from './json-beautifier/json-beautifier.component';
-import { RunJsComponent } from './run-js/run-js.component';
 import { SharedModule } from '@shares/shared-module.module';
-import { CodeEditorModule } from '@ngstack/code-editor';
 import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { JsonExcelComponent } from './json-excel/json-excel.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
@@ -16,7 +14,6 @@ import { TktCodeComponent } from './tkt-code/tkt-code.component';
 @NgModule({
   declarations: [
     JsonBeautifierComponent,
-    RunJsComponent,
     JsonExcelComponent,
     TextDiffComponent,
     TktCodeComponent,
@@ -25,7 +22,6 @@ import { TktCodeComponent } from './tkt-code/tkt-code.component';
     CommonModule,
     UsefulAppRoutingModule,
     SharedModule,
-    CodeEditorModule.forChild(),
     NgJsonEditorModule,
     NgxFileDropModule,
   ]
