@@ -39,9 +39,4 @@ export const AdminLayoutRoutes: Routes = [
             canActivate: [LoginGuard]
         }]
     },
-    {
-        path: '**',
-        redirectTo: 'home',
-        pathMatch: 'full'
-    },
 ];
