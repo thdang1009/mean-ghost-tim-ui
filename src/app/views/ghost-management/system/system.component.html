@@ -1,0 +1,26 @@
+<div class="main-content"
+	tabindex="-1">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card"
+					tabindex="-1">
+					<div class="card-body">
+						<form [formGroup]="systemForm"
+							(ngSubmit)="onFormSubmit()">
+							<button [disabled]="isDisableRestart"
+								mat-raised-button
+								type="submit"
+								matTooltip="Restart Server"
+								style="background-color: red;"
+								class="btn btn-red btn-round btn-just-icon">
+								<i class="material-icons">restart_alt</i>
+								<div class="ripple-container"></div>
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

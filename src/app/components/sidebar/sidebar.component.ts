@@ -38,6 +38,7 @@ export const ROUTES: RouteInfo[] = [
       { path: 'tool/todo-today', title: 'Todo Today', icon: 'checklist_rtl', class: '', permission: 'isMember' },
       { path: 'tool/note', title: 'Note', icon: 'notes', class: '', permission: 'isMember' },
       { path: 'tool/guest-message', title: 'List Guest Message', icon: 'list', class: '', permission: 'isGrandAdmin' },
+      { path: 'tool/system', title: 'System', icon: 'dns', class: '', permission: 'isAdmin' },
       // { path: 'tool/run-js', title: 'Run JS', icon: 'code', class: '', permission: 'isGrandAdmin' }
     ]
   },

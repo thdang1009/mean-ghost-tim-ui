@@ -14,3 +14,4 @@ export * from './book/book.service';
 export * from './file/file.service';
 export * from './socketio/socketio.service';
 export * from './guest-message/guest-message.service';
+export * from './system/system.service';

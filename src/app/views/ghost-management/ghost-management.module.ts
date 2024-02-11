@@ -12,6 +12,7 @@ import { ReuseComponentModule } from '@app/_reuse/reuse.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { GuestMessageComponent } from './guest-message/guest-message.component';
+import { SystemComponent } from './system/system.component';
 // import { RunJsComponent } from './run-js/run-js.component';
 // import { CodeEditorModule } from '@ngstack/code-editor';
 @NgModule({
@@ -19,6 +20,7 @@ import { GuestMessageComponent } from './guest-message/guest-message.component';
     NoteComponent,
     TodoTodayComponent,
     GuestMessageComponent,
+    SystemComponent,
     // RunJsComponent,
   ],
   imports: [
