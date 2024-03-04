@@ -8,7 +8,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { NgJsonEditorModule } from '@maaxgr/ang-jsoneditor';
 import { AutosizeModule } from 'ngx-autosize';
 import { ScoreToTierPipe, SimpleTimePipe, TimeAgoPipe } from '@pipes/_index';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -28,7 +27,6 @@ import { MatTabsModule } from '@angular/material/tabs';
     FormsModule,
     ReactiveFormsModule,
     // third party
-    NgJsonEditorModule,
     AutosizeModule,
     // angular material
     MatButtonModule,
@@ -48,7 +46,6 @@ import { MatTabsModule } from '@angular/material/tabs';
     FormsModule,
     ReactiveFormsModule,
     // third party
-    NgJsonEditorModule,
     AutosizeModule,
     // pipes
     TimeAgoPipe,

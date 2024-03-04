@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
 import { AnalyticService, AuthService, SocketioService } from './_services/_index';
 import { handleSocketGuestMessage, handleSocketReadingInfo } from './_shares/common';
 import { SK_GUEST_MESSAGE_RESPONSE, SK_READING_INFO_REALTIME_UPDATE } from './_shares/constant';
@@ -14,7 +13,6 @@ import { ReadingInfoService } from './_services/reading-info/reading-info.servic
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  public editorOptions: JsonEditorOptions;
   public initialData: any;
   public visibleData: any;
 

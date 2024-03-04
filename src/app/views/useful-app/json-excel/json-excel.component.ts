@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ExampleJSON2 } from '@helpers/fake.data';
 import { showNoti } from '@shares/common';
 import { SAVED_JSON_EXCEL, SAVED_JSON_EXCEL_2 } from '@shares/constant';
-import { JsonEditorOptions } from '@maaxgr/ang-jsoneditor';
+import { JsonEditorComponent, JsonEditorOptions } from 'ang-jsoneditor';
 import { NgxFileDropEntry } from 'ngx-file-drop';
 import * as XLSX from 'xlsx';
 
@@ -20,6 +20,9 @@ export class JsonExcelComponent implements OnInit, OnDestroy {
   public initialData2: any;
   public visibleData: any;
   public visibleData2: any;
+
+  @ViewChild(JsonEditorComponent, { static: false }) editor: JsonEditorComponent;
+  @ViewChild(JsonEditorComponent, { static: false }) editor2: JsonEditorComponent;
 
   mod = 'jsonToExcel';
 

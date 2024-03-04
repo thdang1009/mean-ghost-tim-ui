@@ -1,88 +1,135 @@
 <form class="form-under-table-header row">
-    <!-- Title -->
-    <textarea name="title" type="text" [(ngModel)]="itemSelected.title" class="editable wd100 editable-header" autosize
-        [minRows]="1" [maxRows]="3" [useImportant]="true">
-    </textarea>
+	<!-- Title -->
+	<textarea [(ngModel)]="itemSelected.title"
+		[minRows]="1"
+		[maxRows]="3"
+		[useImportant]="true"
+		name="title"
+		type="text"
+		class="editable wd100 editable-header"
+		autosize>
+	</textarea>
 
-    <textarea name="description" type="text" [(ngModel)]="itemSelected.description" class="editable wd100" autosize
-        [minRows]="1" [maxRows]="3" [useImportant]="true">
-    </textarea>
-    <!-- permission -->
-    <div class="col-md-4">
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Permission</mat-label>
-            <mat-select [(ngModel)]="itemSelected.permission" [ngModelOptions]="{standalone: true}" name="permission">
-                <mat-option *ngFor="let item of listPermisson; let i = index" [(value)]="listPermisson[i]">
-                    {{item}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <!-- background cover -->
-    <div class="col-md-4">
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Background cover</mat-label>
-            <mat-select [(ngModel)]="itemSelected.postBackgroundImg" name="postBackgroundImg">
-                <mat-option *ngFor="let item of listFileOnServer; let i = index" [(value)]="listFileOnServer[i].urlGet">
-                    {{item.originName}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <!-- type -->
-    <div class="col-md-4">
-        <mat-form-field class="example-full-width" appearance="fill" name="type">
-            <mat-label>Type</mat-label>
-            <mat-select [(ngModel)]="itemSelected.type">
-                <mat-option *ngFor="let item of listPostType; let i = index" [(value)]="listPostType[i]">
-                    {{item}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
+	<textarea [(ngModel)]="itemSelected.description"
+		[minRows]="1"
+		[maxRows]="3"
+		[useImportant]="true"
+		name="description"
+		type="text"
+		class="editable wd100"
+		autosize>
+	</textarea>
+	<!-- permission -->
+	<div class="col-md-4">
+		<mat-form-field class="example-full-width"
+			appearance="fill">
+			<mat-label>Permission</mat-label>
+			<mat-select [(ngModel)]="itemSelected.permission"
+				[ngModelOptions]="{standalone: true}"
+				name="permission">
+				<mat-option *ngFor="let item of listPermisson; let i = index"
+					[(value)]="listPermisson[i]">
+					{{item}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</div>
+	<!-- background cover -->
+	<div class="col-md-4">
+		<mat-form-field class="example-full-width"
+			appearance="fill">
+			<mat-label>Background cover</mat-label>
+			<mat-select [(ngModel)]="itemSelected.postBackgroundImg"
+				name="postBackgroundImg">
+				<mat-option *ngFor="let item of listFileOnServer; let i = index"
+					[(value)]="listFileOnServer[i].urlGet">
+					{{item.originName}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</div>
+	<!-- type -->
+	<div class="col-md-4">
+		<mat-form-field class="example-full-width"
+			appearance="fill"
+			name="type">
+			<mat-label>Type</mat-label>
+			<mat-select [(ngModel)]="itemSelected.type">
+				<mat-option *ngFor="let item of listPostType; let i = index"
+					[(value)]="listPostType[i]">
+					{{item}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</div>
 
-    <!-- tag -->
-    <div class="col-md-4">
-        <tag-input name="tag" [(ngModel)]="itemSelected.tags" [displayBy]="'name'" [identifyBy]="'_id'"
-            [onTextChangeDebounce]="500" [onAdding]="handleAddNewTag">
-            <tag-input-dropdown [autocompleteItems]="listTag" [dynamicUpdate]="false" [zIndex]="10000"
-                [displayBy]="'name'" [identifyBy]="'_id'" [showDropdownIfEmpty]="true">
-                <ng-template let-item="item" let-index="index">
-                    {{ item.name }}
-                </ng-template>
-            </tag-input-dropdown>
-        </tag-input>
-    </div>
-    <!-- cat -->
-    <div class="col-md-4">
-        <tag-input name="cateogry" [(ngModel)]="itemSelected.category" [placeholder]="'+ Category'" [displayBy]="'name'"
-            [identifyBy]="'_id'" [onTextChangeDebounce]="500" [onAdding]="handleAddNewCategory">
-            <tag-input-dropdown [autocompleteItems]="listCategory" [dynamicUpdate]="false" [zIndex]="10000"
-                [displayBy]="'name'" [identifyBy]="'_id'" [showDropdownIfEmpty]="true">
-                <ng-template let-item="item" let-index="index">
-                    {{ item.name }}
-                </ng-template>
-            </tag-input-dropdown>
-        </tag-input>
-    </div>
-    <div class="col-md-4">
-        <button mat-raised-button type="button" (click)="saveAndBack()" class="btn btn-info pull-right btn-w100">
-            <i class="material-icons">save</i>
-            Save & Back
-        </button>
-    </div>
-    <!-- tools -->
-    <div class="col-md-8 tool-container">
-        <span class="material-icons md-36" matTooltip="Goto Full Screen" (click)="openFullscreen()">
-            fullscreen
-        </span>
-    </div>
+	<!-- tag -->
+	<div class="col-md-4">
+		<tag-input [(ngModel)]="itemSelected.tags"
+			[displayBy]="'name'"
+			[identifyBy]="'_id'"
+			[onTextChangeDebounce]="500"
+			[onAdding]="handleAddNewTag"
+			name="tag">
+			<tag-input-dropdown [autocompleteItems]="listTag"
+				[dynamicUpdate]="false"
+				[zIndex]="10000"
+				[displayBy]="'name'"
+				[identifyBy]="'_id'"
+				[showDropdownIfEmpty]="true">
+				<ng-template let-item="item"
+					let-index="index">
+					{{ item.name }}
+				</ng-template>
+			</tag-input-dropdown>
+		</tag-input>
+	</div>
+	<!-- cat -->
+	<div class="col-md-4">
+		<tag-input [(ngModel)]="itemSelected.category"
+			[placeholder]="'+ Category'"
+			[displayBy]="'name'"
+			[identifyBy]="'_id'"
+			[onTextChangeDebounce]="500"
+			[onAdding]="handleAddNewCategory"
+			name="cateogry">
+			<tag-input-dropdown [autocompleteItems]="listCategory"
+				[dynamicUpdate]="false"
+				[zIndex]="10000"
+				[displayBy]="'name'"
+				[identifyBy]="'_id'"
+				[showDropdownIfEmpty]="true">
+				<ng-template let-item="item"
+					let-index="index">
+					{{ item.name }}
+				</ng-template>
+			</tag-input-dropdown>
+		</tag-input>
+	</div>
+	<div class="col-md-4">
+		<button (click)="saveAndBack()"
+			mat-raised-button
+			type="button"
+			class="btn btn-info pull-right btn-w100">
+			<i class="material-icons">save</i>
+			Save & Back
+		</button>
+	</div>
+	<!-- tools -->
+	<div class="col-md-8 tool-container">
+		<span (click)="openFullscreen()"
+			class="material-icons md-36"
+			matTooltip="Goto Full Screen">
+			fullscreen
+		</span>
+	</div>
 </form>
 
-<div id="edit-post-container" class="edit-post-container"
-    [ngStyle]="{'flex-direction': isSplitHorizontal ? 'column' : 'row'}">
-    <!-- raw text -->
-    <ng-container *ngIf="itemSelected.type === POST_TYPE.GHOST_EDITOR; else markdownPart">
+<div [ngStyle]="{'flex-direction': isSplitHorizontal ? 'column' : 'row'}"
+	id="edit-post-container"
+	class="edit-post-container">
+	<!-- raw text -->
+	<!-- <ng-container *ngIf="itemSelected.type === POST_TYPE.GHOST_EDITOR; else markdownPart">
         <mat-tab-group>
             <mat-tab label="Editor">
                 <docu-editor class="editable wd100" (save)="itemSelected.contentGhostEditor = $event"
@@ -96,26 +143,33 @@
                 </docu-article>
             </mat-tab>
         </mat-tab-group>
-    </ng-container>
-    <ng-template #markdownPart>
-        <mat-tab-group>
-            <mat-tab label="Markdown">
-                <textarea type="text" [(ngModel)]="itemSelected.content" class="editable wd100"
-                    [ngClass]="{ 'split-horizontal': this.isSplitHorizontal }" (blur)="saveOnly()" autosize
-                    [minRows]="1" [useImportant]="true">
-                                    </textarea>
-            </mat-tab>
-            <mat-tab label="Preview">
-                <!-- text to markdown -->
-                <markdown class="" [ngClass]="{'split-horizontal': this.isSplitHorizontal}"
-                    [data]="itemSelected.content">
-                </markdown>
-            </mat-tab>
-        </mat-tab-group>
-    </ng-template>
+    </ng-container> -->
+	<mat-tab-group>
+		<mat-tab label="Markdown">
+			<textarea [(ngModel)]="itemSelected.content"
+				[ngClass]="{ 'split-horizontal': this.isSplitHorizontal }"
+				[minRows]="1"
+				[useImportant]="true"
+				(blur)="saveOnly()"
+				type="text"
+				class="editable wd100"
+				autosize>
+			</textarea>
+		</mat-tab>
+		<mat-tab label="Preview">
+			<!-- text to markdown -->
+			<markdown [ngClass]="{'split-horizontal': this.isSplitHorizontal}"
+				[data]="itemSelected.content"
+				class>
+			</markdown>
+		</mat-tab>
+	</mat-tab-group>
 </div>
 
-<button mat-raised-button type="button" (click)="saveAndBack()" class="btn btn-info pull-right btn-w100">
-    <i class="material-icons">save</i>
-    Save & Back
+<button (click)="saveAndBack()"
+	mat-raised-button
+	type="button"
+	class="btn btn-info pull-right btn-w100">
+	<i class="material-icons">save</i>
+	Save & Back
 </button>

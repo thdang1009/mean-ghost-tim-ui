@@ -14,8 +14,8 @@ import { TagListComponent } from './tag/tag-list/tag-list.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { ComponentsModule } from '@app/components/components.module';
-import { AngClapModule } from 'ang-clap';
-import { DocuModule, DocuEditorModule } from 'ng-write';
+// import { AngClapModule } from 'ang-clap';
+// import { DocuModule, DocuEditorModule } from 'ng-write';
 import { TagInputModule } from 'ngx-chips';
 import { PostEditComponent } from './post/post-edit/post-edit.component';
 
@@ -54,10 +54,10 @@ export function markedOptionsFactory(anchorService: AnchorService): MarkedOption
     BlogManagementRoutingModule,
     ComponentsModule,
     // third party
-    AngClapModule,
+    // AngClapModule,
     TagInputModule,
-    DocuModule,
-    DocuEditorModule,
+    // DocuModule,
+    // DocuEditorModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
       markedOptions: {

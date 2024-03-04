@@ -31,6 +31,7 @@ import { AnchorModule } from './_shares/anchor/anchor.module';
 import { MarkdownModule, MarkedOptions, ClipboardOptions, ClipboardButtonComponent } from 'ngx-markdown';
 import { markedOptionsFactory } from './views/blog-management/blog-management.module';
 import { AnchorService } from './_shares/anchor/anchor.service';
+
 // NgModule
 @NgModule({
   imports: [
