@@ -34,9 +34,14 @@
 		</table>
 	</div>
 </div>
-<!-- <json-editor *ngIf="mod === 'jsonToExcel'" id="json-editor-left" name="json-editor-left" class="json-editor-left"
-    [options]="editorOptions" [data]="initialData" (change)="showJson($event);">
-</json-editor> -->
+<json-editor *ngIf="mod === 'jsonToExcel'"
+	[options]="editorOptions"
+	[data]="initialData"
+	(change)="showJson($event);"
+	id="json-editor-left"
+	name="json-editor-left"
+	class="json-editor-left">
+</json-editor>
 <div class="json-controler">
 	<div class="div__radio-label">
 		<input [value]="'jsonToExcel'"
@@ -67,6 +72,11 @@
 		Execute
 	</button>
 </div>
-<!-- <json-editor *ngIf="mod === 'excelToJSON'" id="json-editor-right" name="json-editor-right" class="json-editor-right"
-    [options]="editorOptions2" [data]="initialData2" (change)="showJson2($event);">
-</json-editor> -->
+<json-editor *ngIf="mod === 'excelToJSON'"
+	[options]="editorOptions2"
+	[data]="initialData2"
+	(change)="showJson2($event);"
+	id="json-editor-right"
+	name="json-editor-right"
+	class="json-editor-right">
+</json-editor>

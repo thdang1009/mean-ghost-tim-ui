@@ -61,52 +61,52 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
     this.visibleData2 = d;
   }
   findDiff() {
-    // this.isLoadingResults = true;
-    // const result = this.callFindDiff() || [];
+    this.isLoadingResults = true;
+    const result = this.callFindDiff() || [];
     
-    // const left = document.querySelectorAll('#json-editor-left .ace_line') || [];
-    // const right = document.querySelectorAll('#json-editor-right .ace_line') || [];
-    // let currentLineLeft = 0;
-    // let currentLineRight = 0;
-    // const coloredRight = [];
-    // const coloredLeft = [];
-    // for (let [flag, value] of result) {
-    //   const num = (value.match(/[\n]/gm) || []).length;
-    //   switch (flag) {
-    //     case 0:
-    //       for (let i = 0; i <= num; ++i) {
-    //         const thisRow = currentLineLeft + i;
-    //         if (!coloredLeft.includes(thisRow))
-    //           left[thisRow] && (left[thisRow].style.backgroundColor = 'white');
-    //       }
-    //       currentLineLeft += num;
+    const left = document.querySelectorAll('#json-editor-left .ace_line') || [];
+    const right = document.querySelectorAll('#json-editor-right .ace_line') || [];
+    let currentLineLeft = 0;
+    let currentLineRight = 0;
+    const coloredRight = [];
+    const coloredLeft = [];
+    for (let [flag, value] of result) {
+      const num = (value.match(/[\n]/gm) || []).length;
+      switch (flag) {
+        case 0:
+          for (let i = 0; i <= num; ++i) {
+            const thisRow = currentLineLeft + i;
+            if (!coloredLeft.includes(thisRow))
+              left[thisRow] && (left[thisRow].style.backgroundColor = 'white');
+          }
+          currentLineLeft += num;
 
-    //       for (let i = 0; i <= num; ++i) {
-    //         const thisRow = currentLineRight + i;
-    //         if (!coloredRight.includes(thisRow))
-    //           right[thisRow] && (right[thisRow].style.backgroundColor = 'white');
-    //       }
-    //       currentLineRight += num;
-    //       break;
-    //     case 1: // left less than right
-    //       for (let i = 0; i <= num; ++i) {
-    //         const thisRow = currentLineRight + i;
-    //         right[thisRow] && (right[thisRow].style.backgroundColor = '#BDDDFF');
-    //         coloredRight.push(thisRow);
-    //       }
-    //       currentLineRight += num;
-    //       break;
-    //     case -1: // left more than right
-    //       for (let i = 0; i <= num; ++i) {
-    //         const thisRow = currentLineLeft + i;
-    //         left[thisRow] && (left[thisRow].style.backgroundColor = '#BDDDFF');
-    //         coloredLeft.push(thisRow);
-    //       }
-    //       currentLineLeft += num;
-    //       break;
-    //   }
-    //   this.isLoadingResults = false;
-    // }
+          for (let i = 0; i <= num; ++i) {
+            const thisRow = currentLineRight + i;
+            if (!coloredRight.includes(thisRow))
+              right[thisRow] && (right[thisRow].style.backgroundColor = 'white');
+          }
+          currentLineRight += num;
+          break;
+        case 1: // left less than right
+          for (let i = 0; i <= num; ++i) {
+            const thisRow = currentLineRight + i;
+            right[thisRow] && (right[thisRow].style.backgroundColor = '#BDDDFF');
+            coloredRight.push(thisRow);
+          }
+          currentLineRight += num;
+          break;
+        case -1: // left more than right
+          for (let i = 0; i <= num; ++i) {
+            const thisRow = currentLineLeft + i;
+            left[thisRow] && (left[thisRow].style.backgroundColor = '#BDDDFF');
+            coloredLeft.push(thisRow);
+          }
+          currentLineLeft += num;
+          break;
+      }
+      this.isLoadingResults = false;
+    }
   }
 
   ngOnDestroy(): void {
