@@ -8,7 +8,6 @@
 						<button *ngIf="isUpdate"
 							[disabled]="isLoadingResults"
 							(click)="back()"
-							mat-raised-button
 							type="button"
 							class="btn btn-info pull-right btn-w100"
 							style="margin-bottom: 25px;">
@@ -138,14 +137,12 @@
 							</div>
 							<div class="button-row">
 								<button [disabled]="!registerForm.valid"
-									mat-raised-button
 									type="submit"
 									class="btn btn-info pull-right btn-w100">
 									{{ isUpdate ? 'Update' : 'Create'}}
 								</button>
 								<button *ngIf="isUpdate"
 									(click)="onDownloadFile()"
-									mat-raised-button
 									type="button"
 									class="btn btn-info pull-right btn-w100">
 									Download

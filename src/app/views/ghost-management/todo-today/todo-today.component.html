@@ -43,7 +43,6 @@
 						<!-- button search -->
 						<div class="col-md-4">
 							<button [disabled]="isLoadingResults"
-								mat-raised-button
 								type="submit"
 								class="btn btn-info pull-right btn-w100">
 								<em class="material-icons">search</em>
@@ -101,7 +100,6 @@
 													autosize></textarea>
 												<button [disabled]="isLoadingResults"
 													(click)="deleteTDTD(tdtd)"
-													mat-raised-button
 													type="button"
 													matTooltip="Delete"
 													class="btn btn-float-in-row btn-round btn-danger pull-right">
@@ -123,7 +121,6 @@
 										<td colspan="100%">
 											<button [disabled]="isLoadingResults"
 												(click)="addToDoToDay()"
-												mat-raised-button
 												type="button"
 												matTooltip="Add Empty Row"
 												class="btn btn-info pull-right btn-w100">

@@ -65,7 +65,7 @@
 
 	<!-- tag -->
 	<div class="col-md-4">
-		<tag-input [(ngModel)]="itemSelected.tags"
+		<!-- <tag-input [(ngModel)]="itemSelected.tags"
 			[displayBy]="'name'"
 			[identifyBy]="'_id'"
 			[onTextChangeDebounce]="500"
@@ -82,11 +82,11 @@
 					{{ item.name }}
 				</ng-template>
 			</tag-input-dropdown>
-		</tag-input>
+		</tag-input> -->
 	</div>
 	<!-- cat -->
 	<div class="col-md-4">
-		<tag-input [(ngModel)]="itemSelected.category"
+		<!-- <tag-input [(ngModel)]="itemSelected.category"
 			[placeholder]="'+ Category'"
 			[displayBy]="'name'"
 			[identifyBy]="'_id'"
@@ -104,11 +104,10 @@
 					{{ item.name }}
 				</ng-template>
 			</tag-input-dropdown>
-		</tag-input>
+		</tag-input> -->
 	</div>
 	<div class="col-md-4">
 		<button (click)="saveAndBack()"
-			mat-raised-button
 			type="button"
 			class="btn btn-info pull-right btn-w100">
 			<i class="material-icons">save</i>
@@ -167,7 +166,6 @@
 </div>
 
 <button (click)="saveAndBack()"
-	mat-raised-button
 	type="button"
 	class="btn btn-info pull-right btn-w100">
 	<i class="material-icons">save</i>

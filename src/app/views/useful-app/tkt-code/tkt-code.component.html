@@ -67,7 +67,6 @@
 								</div>
 							</div>
 							<button [disabled]="!codeForm.valid || isRunning"
-								mat-raised-button
 								type="submit"
 								class="btn btn-info pull-right btn-w100">
 								{{ isRunning ? 'Running...' :'Run code' }}
@@ -93,7 +92,6 @@
 								<button [disabled]="isRunning || resultSet.length === 0"
 									(click)="handleCmdCopy()"
 									id="copy"
-									mat-raised-button
 									type="button"
 									class="btn btn-info pull-right btn-w22 btn-run">
 									<i class="material-icons">content_copy</i>
@@ -102,7 +100,6 @@
 								<button [disabled]="isRunning || resultSet.length === 0"
 									(click)="handleCmdExportExcel()"
 									id="export-excel"
-									mat-raised-button
 									type="button"
 									class="btn btn-success pull-right btn-w22 btn-run">
 									<i class="material-icons">file_download</i>
@@ -111,7 +108,6 @@
 								<button [disabled]="!isRunning"
 									(click)="cancelCurrentRunning()"
 									id="delete-result"
-									mat-raised-button
 									type="button"
 									class="btn btn-danger pull-right btn-w22 btn-run">
 									<i class="material-icons">front_hand</i>
@@ -120,7 +116,6 @@
 								<button [disabled]="isRunning"
 									(click)="handleCmdClearConsole()"
 									id="delete-result"
-									mat-raised-button
 									type="button"
 									class="btn btn-danger pull-right btn-w22 btn-run">
 									<i class="material-icons">delete_forever</i>

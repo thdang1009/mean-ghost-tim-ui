@@ -187,13 +187,15 @@
               ],
               "optimization": true,
               "sourceMap": false,
-              "extractLicenses": true
+              "extractLicenses": true,
+              "buildOptimizer": true
             },
             "development": {
               "outputHashing": "media",
               "optimization": true,
               "sourceMap": true,
-              "vendorChunk": true
+              "vendorChunk": true,
+              "buildOptimizer": true
             }
           },
           "defaultConfiguration": "production"
@@ -253,7 +255,6 @@
       }
     }
   },
-  "defaultProject": "mean-ghost-tim-ui",
   "schematics": {},
   "cli": {
     "analytics": false

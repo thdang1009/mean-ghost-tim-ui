@@ -2,7 +2,7 @@
     [data]="initialData" (change)="showJson($event);" (scroll)="onScroll1($event)" #text1>
 </json-editor>
 <div class="json-controler">
-    <button id="find-diff" mat-raised-button type="button" [disabled]="isLoadingResults"
+    <button id="find-diff" type="button" [disabled]="isLoadingResults"
         class="btn btn-info pull-right btn-responsive visible-hidden" (click)="findDiff()">
         <i class="material-icons">difference</i>
         Diff

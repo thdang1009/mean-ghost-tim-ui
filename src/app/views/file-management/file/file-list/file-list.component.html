@@ -6,7 +6,6 @@
 					<div class="card-body">
 						<div class="col-md-6 col-sm-12">
 							<button (click)="uploadNewFile()"
-								mat-raised-button
 								type="button"
 								class="btn btn-info pull-right btn-w100">
 								<em class="material-icons">upload_file</em>
@@ -55,7 +54,6 @@
 												{{ file.urlGet}}
 											</td>
 											<button (click)="deleteItem(file)"
-												mat-raised-button
 												type="button"
 												matTooltip="Delete"
 												class="btn btn-float-in-row btn-round btn-danger pull-right">
@@ -80,7 +78,6 @@
 							class="col-sm-12 show-more-post-container">
 							<button [disabled]="isRunning"
 								(click)="showMore()"
-								mat-raised-button
 								type="button"
 								class="btn btn-info pull-right btn-w100">
 								<a class="show-more-post">Show more</a>

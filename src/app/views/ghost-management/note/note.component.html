@@ -11,7 +11,6 @@
 						<div class="col-md-4">
 							<button *ngIf="!itemSelected || !itemSelected.id"
 								[disabled]="isLoadingResults"
-								mat-raised-button
 								type="submit"
 								class="btn btn-info pull-right btn-w100">
 								<em class="material-icons">search</em>
@@ -20,7 +19,6 @@
 							<button *ngIf="itemSelected && itemSelected.id"
 								[disabled]="isLoadingResults"
 								(click)="saveThenBack()"
-								mat-raised-button
 								type="button"
 								class="btn btn-info pull-right btn-w100">
 								<em class="material-icons">save</em>
@@ -31,7 +29,6 @@
 						<div class="col-md-4">
 							<button *ngIf="!itemSelected || !itemSelected.id"
 								(click)="addNote()"
-								mat-raised-button
 								type="button"
 								matTooltip="Add Empty Row"
 								class="btn btn-success pull-right btn-w100">
@@ -67,7 +64,6 @@
 												</span>
 												<button [disabled]="isLoadingResults"
 													(click)="deleteNote(note)"
-													mat-raised-button
 													type="button"
 													matTooltip="Delete Note"
 													class="btn btn-float-in-row btn-round btn-danger pull-right">
@@ -108,7 +104,6 @@
 						<button *ngIf="itemSelected && itemSelected.id"
 							[disabled]="isLoadingResults"
 							(click)="saveThenBack()"
-							mat-raised-button
 							type="button"
 							class="btn btn-info pull-right btn-w100">
 							<em class="material-icons">save</em>

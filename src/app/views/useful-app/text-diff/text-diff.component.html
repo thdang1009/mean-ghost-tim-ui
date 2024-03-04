@@ -1,26 +1,41 @@
 <div class="text-diff-container">
 
-    <div class="textarea-container">
-        <div class="ghost-backdrop highlights" innerHTML="{{ highlights1 }}" #backdrop1>
-        </div>
-        <textarea #text1 name="text-area-left" class="ghost-text-area text-area-left" [(ngModel)]="visibleData1" (ngModelChange)="findDiff()"
-            (scroll)="onScroll1($event)">
-        </textarea>
-    </div>
-    
-    <div class="json-controler">
-        <button id="find-diff" mat-raised-button type="button" [disabled]="isLoadingResults"
-            class="btn btn-info pull-right btn-responsive" (click)="findDiff()">
-            <i class="material-icons">difference</i>
-            Diff
-        </button>
-    </div>
+	<div class="textarea-container">
+		<div #backdrop1
+			class="ghost-backdrop highlights"
+			innerHTML="{{ highlights1 }}">
+		</div>
+		<textarea #text1
+			[(ngModel)]="visibleData1"
+			(ngModelChange)="findDiff()"
+			(scroll)="onScroll1($event)"
+			name="text-area-left"
+			class="ghost-text-area text-area-left">
+		</textarea>
+	</div>
 
-    <div class="textarea-container">
-        <div class="ghost-backdrop highlights" innerHTML="{{ highlights2 }}" #backdrop2>
-        </div>
-        <textarea #text2 name="text-area-right" class="ghost-text-area text-area-right" [(ngModel)]="visibleData2" (ngModelChange)="findDiff()"
-            (scroll)="onScroll2($event)">
-        </textarea>
-    </div>
+	<div class="json-controler">
+		<button [disabled]="isLoadingResults"
+			(click)="findDiff()"
+			id="find-diff"
+			type="button"
+			class="btn btn-info pull-right btn-responsive">
+			<i class="material-icons">difference</i>
+			Diff
+		</button>
+	</div>
+
+	<div class="textarea-container">
+		<div #backdrop2
+			class="ghost-backdrop highlights"
+			innerHTML="{{ highlights2 }}">
+		</div>
+		<textarea #text2
+			[(ngModel)]="visibleData2"
+			(ngModelChange)="findDiff()"
+			(scroll)="onScroll2($event)"
+			name="text-area-right"
+			class="ghost-text-area text-area-right">
+		</textarea>
+	</div>
 </div>

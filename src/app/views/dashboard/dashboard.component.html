@@ -1,182 +1,195 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">person</i>
-                        </div>
-                        <p class="card-category">Total Access
-                        </p>
-                        <h3 class="card-title">{{totalAccess}}</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i> All time
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">storage</i>
-                        </div>
-                        <p class="card-category">Database</p>
-                        <h3 class="card-title">
-                            <small>{{usagedSpace | unitConversion:'B-kB'}}kB</small>
-                            /{{allSpace}}MB
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons text-success">verified</i>
-                            <a href="javascript:void(0)">Get from MongoDB...</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">info_outline</i>
-                        </div>
-                        <p class="card-category">Issues</p>
-                        <h3 class="card-title">{{issuesLength}}</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">local_offer</i>
-                            <a href="https://github.com/thdang1009/mean-ghost-tim-ui/issues" target="_blank"
-                                rel="noopener noreferrer">Tracked from Github</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-tabs card-header-primary">
-                        <div class="nav-tabs-navigation">
-                            <div class="nav-tabs-wrapper">
-                                <ul class="nav nav-tabs" data-tabs="tabs">
-                                    <li class="nav-item">
-                                        <a (click)="reloadTDTD()" mat-button class="nav-link active" href="#profile"
-                                            data-toggle="tab">
-                                            <i class="material-icons">checklist_rtl</i> TDTD
-                                            <div class="ripple-container"></div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="profile">
-                                <table class="table">
-                                    <tbody>
-                                        <ng-container *ngIf="tdtds.length; else waitingTDTDBlock">
-                                            <tr *ngFor="let item of tdtds; let index = index">
-                                                <app-table-loading *ngIf="loadingTDTD[index]" (size)="'sm'">
-                                                </app-table-loading>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                [ngModelOptions]="{standalone: true}"
-                                                                [(ngModel)]="item.checked"
-                                                                (change)="checkboxChange(item, index)"
-                                                                [checked]="item.checked">
-                                                            <span class="form-check-sign">
-                                                                <span class="check"></span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="truncate">{{ item.content }}
-                                                    </p>
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button mat-raised-button type="button" matTooltip="More action"
-                                                        [matTooltipPosition]="'above'" (click)="redirectToTDTD()"
-                                                        class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                        <i class="material-icons">more_vert</i>
-                                                    </button>
-                                                    <button mat-raised-button type="button" matTooltip="Remove"
-                                                        [matTooltipPosition]="'above'" (click)="deleteTDTD(item, index)"
-                                                        class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </ng-container>
-                                        <ng-template #waitingTDTDBlock>
-                                            <tr>
-                                                <td colspan="100%" class="text-center">
-                                                    <app-table-loading (size)="'sm'"></app-table-loading>
-                                                    No data
-                                                </td>
-                                            </tr>
-                                        </ng-template>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12 col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-warning">
-                        <h4 class="card-title">User</h4>
-                        <a class="card-category hover-pointer" [routerLink]="['/admin/user-management/user-list']">
-                            Goto List User
-                        </a>
-                    </div>
-                    <div class="card-body table-responsive">
-                        <table class="table table-hover">
-                            <thead class="text-warning">
-                                <th>Full Name</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Permission</th>
-                            </thead>
-                            <tbody>
-                                <ng-container *ngIf="users.length; else waitingBlock">
-                                    <tr *ngFor="let user of users; let index = index">
-                                        <td>
-                                            {{ user.fullName }}
-                                        </td>
-                                        <td>
-                                            {{ user.username }}
-                                        </td>
-                                        <td>
-                                            {{ user.status }}
-                                        </td>
-                                        <td>
-                                            {{ user.permission}}
-                                        </td>
-                                    </tr>
-                                </ng-container>
-                                <ng-template #waitingBlock>
-                                    <tr>
-                                        <td colspan="100%" class="text-center">
-                                            <app-table-loading (size)="'sm'"></app-table-loading>
-                                            No data
-                                        </td>
-                                    </tr>
-                                </ng-template>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="card card-stats">
+					<div class="card-header card-header-success card-header-icon">
+						<div class="card-icon">
+							<i class="material-icons">person</i>
+						</div>
+						<p class="card-category">Total Access</p>
+						<h3 class="card-title">{{totalAccess}}</h3>
+					</div>
+					<div class="card-footer">
+						<div class="stats">
+							<i class="material-icons">date_range</i>
+							All time
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="card card-stats">
+					<div class="card-header card-header-warning card-header-icon">
+						<div class="card-icon">
+							<i class="material-icons">storage</i>
+						</div>
+						<p class="card-category">Database</p>
+						<h3 class="card-title">
+							<small>
+								{{usagedSpace | unitConversion:'B-kB'}}kB
+							</small>
+							/{{allSpace}}MB
+						</h3>
+					</div>
+					<div class="card-footer">
+						<div class="stats">
+							<i class="material-icons text-success">verified</i>
+							<a href="javascript:void(0)">Get from MongoDB...</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="card card-stats">
+					<div class="card-header card-header-danger card-header-icon">
+						<div class="card-icon">
+							<i class="material-icons">info_outline</i>
+						</div>
+						<p class="card-category">Issues</p>
+						<h3 class="card-title">{{issuesLength}}</h3>
+					</div>
+					<div class="card-footer">
+						<div class="stats">
+							<i class="material-icons">local_offer</i>
+							<a href="https://github.com/thdang1009/mean-ghost-tim-ui/issues"
+								target="_blank"
+								rel="noopener noreferrer">
+								Tracked from Github
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="card">
+					<div class="card-header card-header-tabs card-header-primary">
+						<div class="nav-tabs-navigation">
+							<div class="nav-tabs-wrapper">
+								<ul class="nav nav-tabs"
+									data-tabs="tabs">
+									<li class="nav-item">
+										<a (click)="reloadTDTD()"
+											mat-button
+											class="nav-link active"
+											href="#profile"
+											data-toggle="tab">
+											<i class="material-icons">checklist_rtl</i>
+											TDTD
+											<div class="ripple-container"></div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="tab-content">
+							<div class="tab-pane active"
+								id="profile">
+								<table class="table">
+									<tbody>
+										<ng-container *ngIf="tdtds.length; else waitingTDTDBlock">
+											<tr *ngFor="let item of tdtds; let index = index">
+												<app-table-loading *ngIf="loadingTDTD[index]"
+													(size)="'sm'">
+												</app-table-loading>
+												<td>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input [ngModelOptions]="{standalone: true}"
+																[(ngModel)]="item.checked"
+																[checked]="item.checked"
+																(change)="checkboxChange(item, index)"
+																class="form-check-input"
+																type="checkbox">
+															<span class="form-check-sign">
+																<span class="check"></span>
+															</span>
+														</label>
+													</div>
+												</td>
+												<td>
+													<p class="truncate">{{ item.content }}</p>
+												</td>
+												<td class="td-actions text-right">
+													<button [matTooltipPosition]="'above'"
+														(click)="redirectToTDTD()"
+														type="button"
+														matTooltip="More action"
+														class="btn btn-primary btn-link btn-sm btn-just-icon">
+														<i class="material-icons">more_vert</i>
+													</button>
+													<button [matTooltipPosition]="'above'"
+														(click)="deleteTDTD(item, index)"
+														type="button"
+														matTooltip="Remove"
+														class="btn btn-danger btn-link btn-sm btn-just-icon">
+														<i class="material-icons">close</i>
+													</button>
+												</td>
+											</tr>
+										</ng-container>
+										<ng-template #waitingTDTDBlock>
+											<tr>
+												<td colspan="100%"
+													class="text-center">
+													<app-table-loading (size)="'sm'"></app-table-loading>
+													No data
+												</td>
+											</tr>
+										</ng-template>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12">
+				<div class="card">
+					<div class="card-header card-header-warning">
+						<h4 class="card-title">User</h4>
+						<a [routerLink]="['/admin/user-management/user-list']"
+							class="card-category hover-pointer">
+							Goto List User
+						</a>
+					</div>
+					<div class="card-body table-responsive">
+						<table class="table table-hover">
+							<thead class="text-warning">
+								<th>Full Name</th>
+								<th>Name</th>
+								<th>Status</th>
+								<th>Permission</th>
+							</thead>
+							<tbody>
+								<ng-container *ngIf="users.length; else waitingBlock">
+									<tr *ngFor="let user of users; let index = index">
+										<td>{{ user.fullName }}</td>
+										<td>{{ user.username }}</td>
+										<td>{{ user.status }}</td>
+										<td>
+											{{ user.permission}}
+										</td>
+									</tr>
+								</ng-container>
+								<ng-template #waitingBlock>
+									<tr>
+										<td colspan="100%"
+											class="text-center">
+											<app-table-loading (size)="'sm'"></app-table-loading>
+											No data
+										</td>
+									</tr>
+								</ng-template>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

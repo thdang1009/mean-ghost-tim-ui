@@ -16,14 +16,14 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { ComponentsModule } from '@app/components/components.module';
 // import { AngClapModule } from 'ang-clap';
 // import { DocuModule, DocuEditorModule } from 'ng-write';
-import { TagInputModule } from 'ngx-chips';
+// import { TagInputModule } from '@_mehrad/ngx-chips';
 import { PostEditComponent } from './post/post-edit/post-edit.component';
 
-TagInputModule.withDefaults({
-  tagInput: {
-      placeholder: '+ Tag'
-  }
-})
+// TagInputModule.withDefaults({
+//   tagInput: {
+//       placeholder: '+ Tag'
+//   }
+// })
 
 
 export function markedOptionsFactory(anchorService: AnchorService): MarkedOptions {
@@ -55,7 +55,7 @@ export function markedOptionsFactory(anchorService: AnchorService): MarkedOption
     ComponentsModule,
     // third party
     // AngClapModule,
-    TagInputModule,
+    // TagInputModule,
     // DocuModule,
     // DocuEditorModule,
     MarkdownModule.forRoot({
