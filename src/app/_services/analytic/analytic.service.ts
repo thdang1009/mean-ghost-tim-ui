@@ -18,12 +18,12 @@ export class AnalyticService {
 
   logAccess(): Observable<any> {
     return this.http.post<AccessLog>(apiUrl, {
-        clientTime: new Date,
-        // còn lại thì mai viết nha
+      clientTime: new Date,
+      // còn lại thì mai viết nha
     }).pipe(
-        tap((prod: AccessLog) => ghostLog(`Log Access!`)),
-        catchError(handleError<AccessLog>('Log Access!'))
-      );
+      tap((prod: AccessLog) => ghostLog(`Log Access!`)),
+      catchError(handleError<AccessLog>('Log Access!'))
+    );
   }
 
   getTotalAccess(): Observable<any> {

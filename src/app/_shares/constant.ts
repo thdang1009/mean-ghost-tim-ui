@@ -205,4 +205,6 @@ export const LIST_USER_VN = [
 ].map(el => ({
   account: el[0],
   id: el[1]
-}));;
+}));
+
+export const regexPercentage = /[\d\.\,]+\%/;

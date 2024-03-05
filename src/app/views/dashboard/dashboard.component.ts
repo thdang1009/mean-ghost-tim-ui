@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AWSService } from '@app/_services/aws/aws.service.service';
+import { regexPercentage } from '@app/_shares/constant';
 import { TDTD_STATUS } from '@app/_shares/enum';
 import { IssueService, AnalyticService, UserService, TodoTodayService } from '@services/_index';
 import { nextStatus, showNoti } from '@shares/common';
@@ -17,6 +19,7 @@ export class DashboardComponent implements OnInit {
   totalAccess = 0;
   allSpace = 512;
   usagedSpace = 0;
+  awsEC2Usage = '';
 
   loadingTDTD = [];
   loadingUser = false;
@@ -32,6 +35,7 @@ export class DashboardComponent implements OnInit {
     private userService: UserService,
     private todoTodayService: TodoTodayService,
     private analyticService: AnalyticService,
+    private awsService: AWSService,
     private router: Router,
     private issueService: IssueService
   ) { }
@@ -103,7 +107,8 @@ export class DashboardComponent implements OnInit {
     this.getMyToDoToDay();
     this.getTotalAccess();
     this.getStoragedSpace();
-    this.getIssues();
+    this.getAWSStoragedSpace();
+    // this.getIssues();
   }
 
   getStoragedSpace() {
@@ -115,8 +120,21 @@ export class DashboardComponent implements OnInit {
       }, (err) => {
         console.log(err);
         showNoti(`getStoragedSpace fail!`, 'danger');
-      }); ;
+      });;
   }
+
+  getAWSStoragedSpace() {
+    this.awsService.getAWSStoragedSpace()
+      .subscribe(res => {
+
+        const regex = regexPercentage;
+        this.awsEC2Usage = (res?.message?.match(regex) || [])[0] || '';
+      }, (err) => {
+        console.log(err);
+        showNoti(`getAWSStoragedSpace fail!`, 'danger');
+      });;
+  }
+
 
   getTotalAccess() {
     this.analyticService.getTotalAccess()
@@ -125,7 +143,7 @@ export class DashboardComponent implements OnInit {
       }, (err) => {
         console.log(err);
         showNoti(`Get total access fail!`, 'danger');
-      }); ;
+      });;
   }
 
   getMyUser() {
@@ -211,6 +229,7 @@ export class DashboardComponent implements OnInit {
       this.issuesLength = data.body.length || 0;
     });
   }
+
 
   /**
   * Returns pagination links from "Link" header parameter
