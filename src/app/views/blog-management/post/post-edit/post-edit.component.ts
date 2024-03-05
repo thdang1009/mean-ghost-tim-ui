@@ -6,7 +6,7 @@ import { DOCUMENT } from '@angular/common';
 import { TagService, CategoryService, FileService } from '@app/_services/_index';
 import { compareWithFunc, showNoti } from '@app/_shares/common';
 import { Observable } from 'rxjs/Observable';
-export interface PostSaveWrapper  {
+export interface PostSaveWrapper {
   item: Post;
   isBack: boolean;
 }
@@ -28,7 +28,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
   elem;
   POST_TYPE = POST_TYPE;
   listPostType = [
-    POST_TYPE.GHOST_EDITOR,
+    // POST_TYPE.GHOST_EDITOR,
     POST_TYPE.MARKDOWN
   ];
   listPermisson = [
@@ -109,14 +109,17 @@ export class PostEditComponent implements OnInit, OnDestroy {
   onSelectTag(e) {
     console.log(e);
   }
-  handleAddNewTag = (newTag) => {
+  handleAddNewTag = ({ value: newTagName }) => {
+    // migrate from ngx-chips to mat-chip-grid:
+    const foundInList = this.listTag.filter(el => el?.name?.toLowerCase() === newTagName.toLowerCase());
+    const oldTag = (foundInList || [])[0];
     // chọn cái cũ thì có _id, tạo mới thì chỉ có mỗi name mà còn ko phải là object nữa
-    const isOldTag = !!newTag._id;
+    const isOldTag = !!oldTag;
     if (isOldTag) {
-      this.itemSelected.tags.push(newTag);
+      this.itemSelected.tags.push(oldTag);
       return;
     }
-    this.tagService.createTagWithName(newTag)
+    this.tagService.createTagWithName(newTagName)
       .subscribe(newTagFromServer => {
         this.itemSelected.tags.push(newTagFromServer);
         this.getTags();
@@ -124,14 +127,17 @@ export class PostEditComponent implements OnInit, OnDestroy {
         showNoti('Create tag fail ' + error, 'danger');
       });
   }
-  handleAddNewCategory = (newCategory) => {
+  handleAddNewCategory = ({ value: newCategoryName }) => {
+    // migrate from ngx-chips to mat-chip-grid:
+    const foundInList = this.listCategory.filter(el => el?.name?.toLowerCase() === newCategoryName.toLowerCase());
+    const oldCategory = (foundInList || [])[0];
     // chọn cái cũ thì có _id, tạo mới thì chỉ có mỗi name mà còn ko phải là object nữa
-    const isOld = !!newCategory._id;
+    const isOld = !!newCategoryName._id;
     if (isOld) {
-      this.itemSelected.category.push(newCategory);
+      this.itemSelected.category.push(oldCategory);
       return;
     }
-    this.categoryService.createCategoryWithName(newCategory)
+    this.categoryService.createCategoryWithName(newCategoryName)
       .subscribe(newCategoryFromServer => {
         this.itemSelected.category.push(newCategoryFromServer);
         this.getCategories();
@@ -192,5 +198,15 @@ export class PostEditComponent implements OnInit, OnDestroy {
   }
   splitVertical() {
     this.isSplitHorizontal = false;
+  }
+  removeTag(removedTag) {
+    const temp = this.itemSelected.tags.filter(tag => tag._id !== removedTag._id);
+    this.itemSelected.tags = temp;
+    return temp;
+  }
+  removeCategory(removedCategory) {
+    const temp = this.itemSelected.category.filter(category => category._id !== removedCategory._id);
+    this.itemSelected.category = temp;
+    return temp;
   }
 }

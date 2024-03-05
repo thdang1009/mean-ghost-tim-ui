@@ -13,6 +13,7 @@ import { ScoreToTierPipe, SimpleTimePipe, TimeAgoPipe } from '@pipes/_index';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatDialogModule,
     MatSliderModule,
     MatTabsModule,
+    MatChipsModule
   ],
   exports: [
     CommonModule,
@@ -62,7 +64,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTooltipModule,
     MatDialogModule,
     MatSliderModule,
-    MatTabsModule
+    MatTabsModule,
+    MatChipsModule
   ]
 })
 export class SharedModule { }

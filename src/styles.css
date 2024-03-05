@@ -539,9 +539,16 @@ app-pdf-control-panel {
     bottom: 15px;
 }
 
+/* fix mat style after upgrade to 16 */
 mat-form-field {
     width: 100%;
 }
+
+mat-tab-group {
+    width: 100%;
+}
+
+/* end */
 
 .cursor-pointer {
     cursor: pointer;

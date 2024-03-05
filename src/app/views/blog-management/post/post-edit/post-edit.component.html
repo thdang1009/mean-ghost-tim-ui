@@ -65,24 +65,26 @@
 
 	<!-- tag -->
 	<div class="col-md-4">
-		<!-- <tag-input [(ngModel)]="itemSelected.tags"
-			[displayBy]="'name'"
-			[identifyBy]="'_id'"
-			[onTextChangeDebounce]="500"
-			[onAdding]="handleAddNewTag"
-			name="tag">
-			<tag-input-dropdown [autocompleteItems]="listTag"
-				[dynamicUpdate]="false"
-				[zIndex]="10000"
-				[displayBy]="'name'"
-				[identifyBy]="'_id'"
-				[showDropdownIfEmpty]="true">
-				<ng-template let-item="item"
-					let-index="index">
-					{{ item.name }}
-				</ng-template>
-			</tag-input-dropdown>
-		</tag-input> -->
+		<mat-form-field class="example-chip-list">
+			<mat-label>Tags:</mat-label>
+			<mat-chip-grid #chipGrid
+				aria-label="Enter Tag">
+				<mat-chip-row *ngFor="let tag of itemSelected?.tags"
+					[aria-description]="'press enter to edit ' + tag.name"
+					(removed)="removeTag(tag)">
+					{{tag.name}}
+					<button [attr.aria-label]="'remove ' + tag.name"
+						class=" mdc-icon-button material-icons"
+						matChipRemove>
+						<div class="mdc-icon-button__ripple"></div>
+						cancel
+					</button>
+				</mat-chip-row>
+				<input [matChipInputFor]="chipGrid"
+					(matChipInputTokenEnd)="handleAddNewTag($event)"
+					placeholder="New tag...">
+			</mat-chip-grid>
+		</mat-form-field>
 	</div>
 	<!-- cat -->
 	<div class="col-md-4">
@@ -105,6 +107,26 @@
 				</ng-template>
 			</tag-input-dropdown>
 		</tag-input> -->
+		<mat-form-field class="example-chip-list">
+			<mat-label>Categories:</mat-label>
+			<mat-chip-grid #chipGrid2
+				aria-label="Enter Categories">
+				<mat-chip-row *ngFor="let category of itemSelected?.category"
+					[aria-description]="'press enter to edit ' + category.name"
+					(removed)="removeCategory(category)">
+					{{category.name}}
+					<button [attr.aria-label]="'remove ' + category.name"
+						class=" mdc-icon-button material-icons"
+						matChipRemove>
+						<div class="mdc-icon-button__ripple"></div>
+						cancel
+					</button>
+				</mat-chip-row>
+				<input [matChipInputFor]="chipGrid2"
+					(matChipInputTokenEnd)="handleAddNewCategory($event)"
+					placeholder="New category...">
+			</mat-chip-grid>
+		</mat-form-field>
 	</div>
 	<div class="col-md-4">
 		<button (click)="saveAndBack()"

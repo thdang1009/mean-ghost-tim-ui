@@ -21,7 +21,7 @@ export class PostListComponent implements OnInit {
   isLoadingResults = true;
   POST_TYPE = POST_TYPE;
   listPostType = [
-    POST_TYPE.GHOST_EDITOR,
+    // POST_TYPE.GHOST_EDITOR,
     POST_TYPE.MARKDOWN
   ];
 
