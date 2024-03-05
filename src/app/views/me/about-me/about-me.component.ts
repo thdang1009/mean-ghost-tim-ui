@@ -27,14 +27,6 @@ export class AboutMeComponent implements OnInit, AfterViewInit {
   currentActive = 0;
   debounceID = undefined;
   listPortfolio: Array<PortfolioData> = [{
-    src: 'https://product-preview-card-component-ebon.vercel.app',
-    title: 'Product view example',
-    allowFullscreen: true
-  }, {
-    src: 'https://qr-code-component-main-rho-gules.vercel.app',
-    title: 'QR Code example',
-    allowFullscreen: true
-  }, {
     src: 'https://dangtrinh.site/home',
     title: 'Personal\'s blogs',
     allowFullscreen: true
