@@ -112,10 +112,10 @@
 			<mat-chip-grid #chipGrid2
 				aria-label="Enter Categories">
 				<mat-chip-row *ngFor="let category of itemSelected?.category"
-					[aria-description]="'press enter to edit ' + category.name"
+					[aria-description]="'press enter to edit ' + category?.name"
 					(removed)="removeCategory(category)">
-					{{category.name}}
-					<button [attr.aria-label]="'remove ' + category.name"
+					{{category?.name}}
+					<button [attr.aria-label]="'remove ' + category?.name"
 						class=" mdc-icon-button material-icons"
 						matChipRemove>
 						<div class="mdc-icon-button__ripple"></div>

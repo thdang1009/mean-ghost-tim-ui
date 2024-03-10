@@ -1,3 +1,8 @@
+## [2.7.0] - 2024-03-08
+### Updates
+- update to Angular 16
+- update all dependencies to match Angular 16 version
+
 ## [2.6.0] - 2021-07-15
 ### Updates
 - update to Angular 12

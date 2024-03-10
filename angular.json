@@ -37,7 +37,6 @@
               "node_modules/moment/moment.js",
               "node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js",
               "node_modules/bootstrap-notify/bootstrap-notify.js",
-
               "node_modules/marked/marked.min.js",
               "node_modules/prismjs/prism.js",
               "node_modules/prismjs/plugins/command-line/prism-command-line.js",
@@ -174,7 +173,10 @@
           "options": {
             "outputPath": "dist/mean-ghost-tim-ui/server",
             "main": "server.ts",
-            "tsConfig": "src/tsconfig.server.json"
+            "tsConfig": "src/tsconfig.server.json",
+            "externalDependencies": [
+              "canvas"
+            ]
           },
           "configurations": {
             "production": {

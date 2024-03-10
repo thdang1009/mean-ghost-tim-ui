@@ -279,13 +279,13 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     const type = isNewSearch ? '' : 'again';
     this.pdfQuery = newQuery;
 
-    this.pdf.pdfFindController.executeCommand('find', {
+    this.pdf.eventBus.dispatch('find', {
+      query: this.pdfQuery,
       type: type,
       caseSensitive: false,
       highlightAll: true,
       phraseSearch: true,
-      query: this.pdfQuery,
-      findPrevious: isNewSearch
+      findPrevious: isNewSearch,
     });
   }
 

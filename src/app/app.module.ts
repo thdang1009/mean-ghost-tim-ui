@@ -22,14 +22,13 @@ import {
   SocketioService
 } from './_services/_index';
 import { DonationComponent } from './views/donation/donation.component';
+import { environment } from '@environments/environment';
+import { markedOptionsFactory } from './views/blog-management/blog-management.module';
 
 // third party
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
-// import { CodeEditorModule } from '@ngstack/code-editor';
-import { environment } from '@environments/environment';
-import { AnchorModule } from './_shares/anchor/anchor.module';
 import { MarkdownModule, MarkedOptions, ClipboardOptions, ClipboardButtonComponent } from 'ngx-markdown';
-import { markedOptionsFactory } from './views/blog-management/blog-management.module';
+import { AnchorModule } from './_shares/anchor/anchor.module';
 import { AnchorService } from './_shares/anchor/anchor.service';
 
 // NgModule
@@ -79,7 +78,7 @@ import { AnchorService } from './_shares/anchor/anchor.service';
     AuthService,
     IssueService,
     // third party service
-    SocketioService
+    SocketioService,
   ],
   bootstrap: [AppComponent],
   exports: [

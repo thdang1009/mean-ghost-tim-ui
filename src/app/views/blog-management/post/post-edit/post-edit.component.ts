@@ -132,7 +132,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
     const foundInList = this.listCategory.filter(el => el?.name?.toLowerCase() === newCategoryName.toLowerCase());
     const oldCategory = (foundInList || [])[0];
     // chọn cái cũ thì có _id, tạo mới thì chỉ có mỗi name mà còn ko phải là object nữa
-    const isOld = !!newCategoryName._id;
+    const isOld = !!oldCategory;
     if (isOld) {
       this.itemSelected.category.push(oldCategory);
       return;

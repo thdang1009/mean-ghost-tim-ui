@@ -3,7 +3,6 @@ import { ServerModule } from '@angular/platform-server';
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './_shares/shared-module.module';
 
 @NgModule({
   imports: [
@@ -12,4 +11,4 @@ import { SharedModule } from './_shares/shared-module.module';
   ],
   bootstrap: [AppComponent],
 })
-export class AppServerModule {}
+export class AppServerModule { }
