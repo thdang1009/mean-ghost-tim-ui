@@ -4,8 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutosizeModule } from 'ngx-autosize';
 import { ScoreToTierPipe, SimpleTimePipe, TimeAgoPipe } from '@pipes/_index';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
-
-
 @NgModule({
   declarations: [
     // put all the pipe, directive, component should be shared here
