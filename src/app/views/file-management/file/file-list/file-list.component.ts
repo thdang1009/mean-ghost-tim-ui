@@ -53,7 +53,9 @@ export class FileListComponent implements OnInit {
         .subscribe((res: any) => {
           if (res.success) {
             showNoti('File deleted!', 'success');
-            this.getFiles();
+            this.listAll = this.listAll.filter(el => el.id !== id);
+            this.files = this.files.filter(el => el.id !== id);
+            // this.getFiles();
           }
         }, err => {
         });
