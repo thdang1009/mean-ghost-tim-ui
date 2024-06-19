@@ -73,6 +73,10 @@ export class TextDiffComponent implements OnInit, OnDestroy {
     return array;
   }
 
+  formatContent(content, className) {
+    return content.split('').map(char => `<mark class="${className}">${char}</mark>`).join('');
+  };
+
   findDiff() {
     this.visibleData1 = this.visibleData1.trim();
     this.visibleData2 = this.visibleData2.trim();
@@ -80,29 +84,33 @@ export class TextDiffComponent implements OnInit, OnDestroy {
     const b = this.visibleData2;
 
     const result = this.diffItem(a, b);
-    let content1 = '',
-        content2 = '';
-    const formatAddContent = (add) => {
-      return `<mark>${add}</mark>`;
+    let contentLeft = '',
+      contentRight = '';
+    const markLeft = (content) => {
+      return this.formatContent(content, 'left');
     };
-    const formatContent = (content) => {
-      return `${content}`;
-    }
+    const markRight = (content) => {
+      return this.formatContent(content, 'right');
+    };
+    const markNormal = (content) => {
+      return this.formatContent(content, 'normal');
+    };
     result.forEach(([flag, content]) => {
       if (flag === -1) {
-        content1 += formatAddContent(content);
+        contentLeft += markLeft(content);
       } else if (flag === 1) {
-        content2 += formatAddContent(content);
+        contentRight += markRight(content);
       } else if (flag === 0) {
-        content1 += formatContent(content);
-        content2 += formatContent(content);
+        contentLeft += markNormal(content);
+        contentRight += markNormal(content);
       }
     });
-    this.highlights1 = this.applyHighlights(content1);
-    this.highlights2 = this.applyHighlights(content2);
+    this.highlights1 = this.applyHighlights(contentLeft);
+    this.highlights2 = this.applyHighlights(contentRight);
   }
+
   applyHighlights(text) {
-    return text
+    return text;
   }
   handleInput1() {
     // change it to angular and element is 1
@@ -119,8 +127,8 @@ export class TextDiffComponent implements OnInit, OnDestroy {
   onScroll1(e) {
     // change it to angular and element is 1
     const scrollTop = this.text1.nativeElement.scrollTop;
-    this.backdrop1.nativeElement.scrollTop = scrollTop ;
-    this.text2.nativeElement.scrollTop = scrollTop ;
+    this.backdrop1.nativeElement.scrollTop = scrollTop;
+    this.text2.nativeElement.scrollTop = scrollTop;
   }
   onScroll2(e) {
     // change it to angular and element is 2
