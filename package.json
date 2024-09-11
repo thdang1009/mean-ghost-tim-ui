@@ -16,7 +16,7 @@
     "serve:ssr": "node dist/mean-ghost-tim-ui/server/main.js",
     "build:ssr": "ng build && ng run mean-ghost-tim-ui:server",
     "prerender": "ng run mean-ghost-tim-ui:prerender",
-    "serve:ssr:mean-ghost-tim-ui": "node dist/mean-ghost-tim-ui/server/server.mjs"
+    "ss": "node dist/mean-ghost-tim-ui/server/server.mjs"
   },
   "engines": {
     "node": "18.15.0",
@@ -74,7 +74,7 @@
     "zone.js": "0.14.10"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "17.3.9",
+    "@angular-devkit/build-angular": "^17.3.9",
     "@angular/cli": "17.3.9",
     "@angular/compiler-cli": "17.3.12",
     "@angular/language-service": "17.3.12",

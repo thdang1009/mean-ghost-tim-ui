@@ -160,8 +160,8 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-            "prerender": false,
-            "ssr": false,
+            "prerender": true,
+            "ssr": true,
             "browserTarget": "mean-ghost-tim-ui:build:production",
             "firebaseProject": "ghost-site-fe-ae2f4",
             "firebaseHostingSite": "ghost-site"
