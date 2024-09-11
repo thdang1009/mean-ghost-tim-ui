@@ -5,7 +5,7 @@ import { POST_STATUS, POST_TYPE } from '@app/_shares/enum';
 import { DOCUMENT } from '@angular/common';
 import { TagService, CategoryService, FileService } from '@app/_services/_index';
 import { compareWithFunc, showNoti } from '@app/_shares/common';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 export interface PostSaveWrapper {
   item: Post;
   isBack: boolean;

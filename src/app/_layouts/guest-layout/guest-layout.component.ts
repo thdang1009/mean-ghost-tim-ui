@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Location, PopStateEvent } from '@angular/common';
 import 'rxjs/add/operator/filter';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { filter, Subscription } from 'rxjs';
 import PerfectScrollbar from 'perfect-scrollbar';
 import * as $ from 'jquery';
 
@@ -48,7 +48,7 @@ export class GuestLayoutComponent implements OnInit, AfterViewInit {
                 }
             }
         });
-        this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
+        this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
             elemMainPanel.scrollTop = 0;
             elemSidebar.scrollTop = 0;
         });

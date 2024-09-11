@@ -5,7 +5,7 @@ import { BlogManagementRoutingModule } from './blog-management-routing.module';
 import { PostListComponent } from './post/post-list/post-list.component';
 import { PostDetailComponent } from './post/post-detail/post-detail.component';
 import { SharedModule } from '@shares/shared-module.module';
-import { ClipboardButtonComponent, ClipboardOptions, MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
+import { CLIPBOARD_OPTIONS, ClipboardButtonComponent, ClipboardOptions, MarkdownModule, MARKED_OPTIONS, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 import { HttpClient } from '@angular/common/http';
 import { AnchorService } from '@app/_shares/anchor/anchor.service';
 import { ReuseComponentModule } from '@app/_reuse/reuse.module';
@@ -53,12 +53,12 @@ export function markedOptionsFactory(anchorService: AnchorService): MarkedOption
     MarkdownModule.forRoot({
       loader: HttpClient,
       markedOptions: {
-        provide: MarkedOptions,
+        provide: MARKED_OPTIONS,
         useFactory: markedOptionsFactory,
         deps: [AnchorService],
       },
       clipboardOptions: {
-        provide: ClipboardOptions,
+        provide: CLIPBOARD_OPTIONS,
         useValue: {
           buttonComponent: ClipboardButtonComponent,
         },

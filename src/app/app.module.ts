@@ -27,7 +27,7 @@ import { markedOptionsFactory } from './views/blog-management/blog-management.mo
 
 // third party
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
-import { MarkdownModule, MarkedOptions, ClipboardOptions, ClipboardButtonComponent } from 'ngx-markdown';
+import { MarkdownModule, MarkedOptions, ClipboardOptions, ClipboardButtonComponent, MARKED_OPTIONS, CLIPBOARD_OPTIONS } from 'ngx-markdown';
 import { AnchorModule } from './_shares/anchor/anchor.module';
 import { AnchorService } from './_shares/anchor/anchor.service';
 
@@ -50,12 +50,12 @@ import { AnchorService } from './_shares/anchor/anchor.service';
     MarkdownModule.forRoot({
       loader: HttpClient,
       markedOptions: {
-        provide: MarkedOptions,
+        provide: MARKED_OPTIONS,
         useFactory: markedOptionsFactory,
         deps: [AnchorService],
       },
       clipboardOptions: {
-        provide: ClipboardOptions,
+        provide: CLIPBOARD_OPTIONS,
         useValue: {
           buttonComponent: ClipboardButtonComponent,
         },
