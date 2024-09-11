@@ -111,14 +111,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "mean-ghost-tim-ui:build"
+            "buildTarget": "mean-ghost-tim-ui:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "mean-ghost-tim-ui:build:production"
+              "buildTarget": "mean-ghost-tim-ui:build:production"
             },
             "development": {
-              "browserTarget": "mean-ghost-tim-ui:build:development"
+              "buildTarget": "mean-ghost-tim-ui:build:development"
             }
           },
           "defaultConfiguration": "production"
@@ -126,7 +126,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mean-ghost-tim-ui:build"
+            "buildTarget": "mean-ghost-tim-ui:build"
           }
         },
         "test": {
@@ -203,7 +203,7 @@
           "defaultConfiguration": "production"
         },
         "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
           "configurations": {
             "development": {
               "browserTarget": "mean-ghost-tim-ui:build:development",
@@ -217,7 +217,7 @@
           "defaultConfiguration": "development"
         },
         "prerender": {
-          "builder": "@nguniversal/builders:prerender",
+          "builder": "@angular-devkit/build-angular:prerender",
           "options": {
             "routes": [
               "/"
