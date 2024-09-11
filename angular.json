@@ -27,7 +27,7 @@
               "src/assets/css/demo.css",
               "src/styles.css",
               "node_modules/prismjs/themes/prism-okaidia.css",
-              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
@@ -167,6 +167,23 @@
             "firebaseHostingSite": "ghost-site"
           }
         },
+        "prerender": {
+          "builder": "@angular-devkit/build-angular:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mean-ghost-tim-ui:build:production"
+            },
+            "development": {
+              "browserTarget": "mean-ghost-tim-ui:build:development"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
@@ -179,6 +196,7 @@
           },
           "configurations": {
             "production": {
+              "buildOptimizer": true,
               "outputHashing": "media",
               "fileReplacements": [
                 {
@@ -189,14 +207,13 @@
               "optimization": true,
               "sourceMap": false,
               "extractLicenses": true,
-              "buildOptimizer": true
+              "vendorChunk": true
             },
             "development": {
+              "buildOptimizer": false,
               "outputHashing": "media",
               "optimization": true,
-              "sourceMap": true,
-              "vendorChunk": true,
-              "buildOptimizer": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -214,25 +231,6 @@
             }
           },
           "defaultConfiguration": "development"
-        },
-        "prerender": {
-          "builder": "@angular-devkit/build-angular:prerender",
-          "options": {
-            "routes": [
-              "/"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "mean-ghost-tim-ui:build:production",
-              "serverTarget": "mean-ghost-tim-ui:server:production"
-            },
-            "development": {
-              "browserTarget": "mean-ghost-tim-ui:build:development",
-              "serverTarget": "mean-ghost-tim-ui:server:development"
-            }
-          },
-          "defaultConfiguration": "production"
         }
       },
       "schematics": {

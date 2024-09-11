@@ -5,7 +5,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 // my codes
 import { AppComponent } from './app.component';
@@ -36,7 +36,6 @@ import { AnchorService } from './_shares/anchor/anchor.service';
   imports: [
     AnchorModule,
     BrowserAnimationsModule,
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -79,6 +78,7 @@ import { AnchorService } from './_shares/anchor/anchor.service';
     IssueService,
     // third party service
     SocketioService,
+    provideClientHydration(),
   ],
   bootstrap: [AppComponent],
   exports: [
