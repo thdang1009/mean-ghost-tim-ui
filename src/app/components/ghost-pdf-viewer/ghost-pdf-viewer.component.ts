@@ -6,29 +6,17 @@ import { showNoti } from '@app/_shares/common';
 import { PDF_OBJ } from '@shares/constant';
 import { PDFDocumentProxy, PdfViewerComponent } from 'ng2-pdf-viewer';
 
-/*
-  - Add loading process => done
-  - Add popup help: lên đầu trang, search, v.v... => done, nếu được thì
-    improve cái search in pdf cho nhiều kết quả chứ đừn đứng yên 1 chỗ như thế
-  - Tính năng mới nhất sẽ là cho phép user (đã đăng nhập) truy cập vào link three-book để upload 3 quyển sách
-  - Kéo thả file (tất nhiên là pdf)
-  - Upload file đó lên server
-  - Mở lên đọc (tất nhiên là từ server), lưu lại last page visit
-  - Có chức năng bỏ sách (đọc dở quá ko thèm đọc nữa), và chức năng done
-    => lưu lại danh sách sách đã đọc => đưa vào admin site
-*/
-
-
 @Component({
   selector: 'app-ghost-pdf-viewer',
   templateUrl: './ghost-pdf-viewer.component.html',
   styleUrls: ['./ghost-pdf-viewer.component.scss']
 })
-export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit, DoCheck {
+export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('pdf') pdf: PdfViewerComponent;
   @Input() src: string;
   @Input() pdfFileName: string;
   @Input() isAdminView: boolean = false;
+
   // pdf var
   pdfSrc;
   currentPage = 1;
@@ -37,6 +25,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   moveWrongPage = false;
   urlDoc: any;
   // end pdf var
+
   key = '';
   savedPage;
   loadingOpacity = 1;
@@ -45,19 +34,17 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   bigPageMode = false;
   elem;
   pdfQuery = '';
+
   constructor(
     private activeRoute: ActivatedRoute,
     private readingInfoService: ReadingInfoService,
     public sanitizer: DomSanitizer,
   ) { }
-  ngDoCheck(): void {
-  }
+
   ngOnInit(): void {
     this.pdfSrc = this.src;
-    // new code to detect urlDoc
     const type = this.getTypeFromUrl(this.src);
     this.urlDoc = this.cleanUrl(this.src, type);
-    // end new code
 
     this.key = PDF_OBJ + '_' + this.pdfFileName;
     this.savedPage = Number(localStorage.getItem(this.key));
@@ -88,6 +75,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   turnOnbigPageMode() {
     this.bigPageMode = true;
   }
+
   turnOffbigPageMode() {
     this.bigPageMode = false;
   }
@@ -95,12 +83,6 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   pagechanging(e: CustomEvent) {
     // TODO document why this method 'pagechanging' is empty
   }
-
-
-  parseSavedObject(objString) {
-    // TODO document why this method 'parseSavedObject' is empty
-  }
-
   createSavedObject() {
     const obj = {};
     return JSON.stringify(obj);
@@ -116,6 +98,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     this.readingInfoService.readtimeUpdateReadingInfo(objectSync);
     showNoti('Your reading progess is saved', 'info');
   }
+
   scrollToTop() {
     setTimeout(_ => {
       this.pdf.pdfViewer.scrollPageIntoView({
@@ -123,6 +106,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       });
     }, 0);
   }
+
   scrollToPreviousBookmark() {
     const curPage = this.currentPage;
     const findPreviousBookmark = (last, cur) => {
@@ -134,10 +118,9 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
     const pageTarget = arr.reduce(findPreviousBookmark, min);
 
     if (!pageTarget || pageTarget === curPage) {
-      showNoti('Not found! Can\'t go to previous bookmark', 'warning');
+      showNoti(`Not found! Can't go to previous bookmark`, 'warning');
       return;
     }
-
 
     setTimeout(_ => {
       this.pdf.pdfViewer.scrollPageIntoView({
@@ -145,6 +128,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       });
     }, 0);
   }
+
   scrollToNextBookmark() {
     const curPage = this.currentPage;
     const findNextBookmark = (last, cur) => {
@@ -167,6 +151,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       });
     }, 0);
   }
+
   toggleBookmark() {
     const curPage = this.currentPage;
     if (this.bookmarks.has(curPage)) {
@@ -175,16 +160,17 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       this.bookmarkThis(curPage);
     }
   }
+
   bookmarkThis(page) {
     this.bookmarks.set(page, true);
     showNoti(`Bookmarked page ${this.currentPage}`, 'info');
-    // update style of button
   }
+
   removeBookmark(page) {
     this.bookmarks.delete(page);
     showNoti(`Remove bookmark at page ${this.currentPage}`, 'info');
-    // update style of button
   }
+
   openFullscreen() {
     if (!this.elem) {
       this.elem = document.getElementById('view-port-to-zoom');
@@ -247,7 +233,6 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       const pdfViewer = document.getElementsByTagName('pdf-viewer')[0];
       const pdfViewerWidth = pdfViewer['offsetWidth'];
 
-
       const textLayers = document.getElementsByClassName('textLayer');
       let isBigger = false;
       Array.from(textLayers).forEach(textLayer => {
@@ -256,14 +241,6 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
         }
       });
 
-      if (isBigger) {
-        console.log('isBigger');
-        // this.turnOnbigPageMode();
-      } else {
-        console.log('!isBigger');
-        // this.turnOffbigPageMode();
-      }
-
       if (this.savedPage) {
         this.pdf.pdfViewer.scrollPageIntoView({
           pageNumber: this.savedPage
@@ -271,6 +248,7 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
       }
     }, 300);
   }
+
   search(newQuery: string = '') {
     if (!newQuery) {
       return;
@@ -290,18 +268,18 @@ export class GhostPdfViewerComponent implements OnInit, OnDestroy, AfterViewInit
   }
 
   // pdf control panel
-
   changePageValue(e) {
     this.currentPage = e;
   }
+
   changeZoomValue(e) {
     this.zoom = e / 100;
   }
+
   shakeThePdf(_) {
     this.moveWrongPage = true;
     setTimeout(() => {
       this.moveWrongPage = false;
-      // this.changeDetectorRef.markForCheck();
     }, 500)
   }
 }

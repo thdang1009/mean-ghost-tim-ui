@@ -188,10 +188,15 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/mean-ghost-tim-ui/server",
-            "main": "server.ts",
+            "main": "src/main.server.ts",
             "tsConfig": "src/tsconfig.server.json",
             "externalDependencies": [
               "canvas"
+            ],
+            "assets": [
+              "src/assets",
+              "src/favicon.ico",
+              "src/ghost.ico"
             ]
           },
           "configurations": {
