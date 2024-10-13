@@ -33,7 +33,7 @@ describe('AddTagComponent', () => {
         UntypedFormBuilder,
         { provide: AlertService, useValue: alertServiceSpy },
         { provide: Router, useValue: routerMock },
-        { provide: TagService, useValue: tagServiceSpy}
+        { provide: TagService, useValue: tagServiceSpy }
 
       ]
     })

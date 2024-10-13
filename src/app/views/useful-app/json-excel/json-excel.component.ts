@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ExampleJSON2 } from '@helpers/fake.data';
+import { ExampleJSON2 } from '@helpers/_index';
 import { showNoti } from '@shares/common';
 import { SAVED_JSON_EXCEL, SAVED_JSON_EXCEL_2 } from '@shares/constant';
 import { JsonEditorComponent, JsonEditorOptions } from 'ang-jsoneditor';

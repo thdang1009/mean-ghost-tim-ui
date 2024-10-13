@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterEvent, ActivatedRoute } from '@angular/router';
 import { AbstractMockObservableService } from '@helpers/mock.service';
-import { AuthService } from '@app/_services/auth.service';
+import { AuthService } from '@services/auth.service';
 import { NavigationService } from '@services/_index';
 import { of, ReplaySubject } from 'rxjs';
 

@@ -14,12 +14,12 @@ describe('UserListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserListComponent ],
+      declarations: [UserListComponent],
       providers: [
-        { provide: UserService, useValue: new MockUserService()}
+        { provide: UserService, useValue: new MockUserService() }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

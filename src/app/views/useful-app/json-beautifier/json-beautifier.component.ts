@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ExampleJSON } from '@helpers/fake.data';
+import { ExampleJSON } from '@helpers/_index';
 import { showNoti } from '@shares/common';
 import { SAVED_JSON, SAVED_JSON_2 } from '@shares/constant';
 import { JsonEditorComponent, JsonEditorOptions } from 'ang-jsoneditor';
@@ -25,7 +25,7 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
 
   constructor() {
     // TODO document why this constructor is empty
-  
+
   }
 
   StringToReadableObject(s: string) {
@@ -63,7 +63,7 @@ export class JsonBeautifierComponent implements OnInit, OnDestroy {
   findDiff() {
     this.isLoadingResults = true;
     const result = this.callFindDiff() || [];
-    
+
     const left = document.querySelectorAll('#json-editor-left .ace_line') || [];
     const right = document.querySelectorAll('#json-editor-right .ace_line') || [];
     let currentLineLeft = 0;

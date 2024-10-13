@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PostService } from '@app/_services/_index';
+import { PostService } from '@services/_index';
 import { Router } from '@angular/router';
 import { Title, Meta } from "@angular/platform-browser";
-import { POST_TYPE } from '@app/_shares/enum';
+import { POST_TYPE } from '@shares/enum';
 
 @Component({
   selector: 'app-post-detail',

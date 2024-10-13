@@ -6,6 +6,7 @@
     "mean-ghost-tim-ui": {
       "root": "",
       "sourceRoot": "src",
+      "prefix": "app",
       "projectType": "application",
       "architect": {
         "build": {
@@ -14,7 +15,7 @@
             "outputPath": "dist/mean-ghost-tim-ui/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "tsConfig": "tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
@@ -135,7 +136,7 @@
             "main": "src/test.ts",
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
+            "tsConfig": "tsconfig.spec.json",
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/popper.js/dist/umd/popper.js",
@@ -155,16 +156,6 @@
               "src/favicon.ico",
               "src/ghost.ico"
             ]
-          }
-        },
-        "deploy": {
-          "builder": "@angular/fire:deploy",
-          "options": {
-            "prerender": true,
-            "ssr": true,
-            "browserTarget": "mean-ghost-tim-ui:build:production",
-            "firebaseProject": "ghost-site-fe-ae2f4",
-            "firebaseHostingSite": "ghost-site"
           }
         },
         "prerender": {
@@ -188,16 +179,8 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/mean-ghost-tim-ui/server",
-            "main": "src/main.server.ts",
-            "tsConfig": "src/tsconfig.server.json",
-            "externalDependencies": [
-              "canvas"
-            ],
-            "assets": [
-              "src/assets",
-              "src/favicon.ico",
-              "src/ghost.ico"
-            ]
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
           },
           "configurations": {
             "production": {
@@ -212,7 +195,7 @@
               "optimization": true,
               "sourceMap": false,
               "extractLicenses": true,
-              "vendorChunk": true
+              "vendorChunk": false
             },
             "development": {
               "buildOptimizer": false,

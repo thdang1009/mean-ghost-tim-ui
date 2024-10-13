@@ -5,7 +5,7 @@ import { AuthService } from '@services/_index';
 @Injectable({
   providedIn: 'root'
 })
-export class NotLoginGuard  {
+export class NotLoginGuard {
 
   constructor(private authService: AuthService, private router: Router) { }
 

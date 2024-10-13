@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
-import { ghostLog, handleError } from '@app/_shares/common';
-import { CONSTANT } from '@app/_shares/constant';
+import { ghostLog, handleError } from '@shares/common';
+import { CONSTANT } from '@shares/constant';
 
 const apiUrl = environment.apiUrl + '/v1/tkt';
 

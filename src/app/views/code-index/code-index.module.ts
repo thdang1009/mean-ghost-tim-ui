@@ -6,7 +6,7 @@ import { SharedModule } from '@shares/shared-module.module';
 
 import { ThreeBookMainComponent } from './three-book-main/three-book-main.component';
 import { DymanicIndexComponent } from './dymanic-index/dymanic-index.component';
-import { ComponentsModule } from '@app/components/components.module';
+import { ComponentsModule } from '@components/components.module';
 
 
 // đọc file pdf rồi parse ra thành cái html

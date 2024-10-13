@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, DoCheck, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { ReadingInfoService } from '@app/_services/reading-info/reading-info.service';
-import { showNoti } from '@app/_shares/common';
+import { ReadingInfoService } from '@services/reading-info/reading-info.service';
+import { showNoti } from '@shares/common';
 import { PDF_OBJ } from '@shares/constant';
 import { PDFDocumentProxy, PdfViewerComponent } from 'ng2-pdf-viewer';
 

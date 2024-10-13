@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ExampleText, ExampleText2 } from '@helpers/fake.data';
+import { ExampleText, ExampleText2 } from '@helpers/_index';
 import { showNoti } from '@shares/common';
 import { SAVED_TEXT, SAVED_TEXT_2 } from '@shares/constant';
 import diff from 'diff-sequences';

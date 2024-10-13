@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
-import { MyFile } from '@app/_models/my-file';
+import { MyFile } from '@models/my-file';
 import { Subscription } from 'rxjs';
 import { EventEmitter } from '@angular/core';
-import { FileService } from '@app/_services/_index';
-import { getRandomInt, showNoti } from '@app/_shares/common';
+import { FileService } from '@services/_index';
+import { getRandomInt, showNoti } from '@shares/common';
 
 @Component({
   selector: 'choose-file',

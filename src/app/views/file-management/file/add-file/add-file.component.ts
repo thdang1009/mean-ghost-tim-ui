@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FileDownloadService } from '@app/_services/file-download-service.service';
-import { FILE_PERMISSION } from '@app/_shares/enum';
+import { FileDownloadService } from '@services/file-download-service.service';
+import { FILE_PERMISSION } from '@shares/enum';
 import { MyFile } from '@models/_index';
 import { FileService, AlertService } from '@services/_index';
 import { compareWithFunc, openExternalLink, showNoti } from '@shares/common';

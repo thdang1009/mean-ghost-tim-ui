@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UntypedFormBuilder } from '@angular/forms';
 import { Router, RouterEvent } from '@angular/router';
-import { AuthService } from '@app/_services/auth.service';
+import { AuthService } from '@services/auth.service';
 import { ReplaySubject } from 'rxjs';
 
 import { LoginComponent } from './login.component';

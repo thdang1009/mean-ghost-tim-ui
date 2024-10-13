@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntypedFormGroup, UntypedFormBuilder, Validators, NgForm, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
-import { AuthService } from '@app/_services/_index';
-import { showNoti } from '@app/_shares/common';
+import { AuthService } from '@services/_index';
+import { showNoti } from '@shares/common';
 import { MyErrorStateMatcher } from '../login/login.component';
 
 @Component({

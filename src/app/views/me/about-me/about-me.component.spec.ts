@@ -19,7 +19,7 @@ describe('AboutMeComponent', () => {
         UntypedFormBuilder
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

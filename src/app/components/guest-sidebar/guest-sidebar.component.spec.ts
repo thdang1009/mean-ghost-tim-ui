@@ -24,7 +24,7 @@ describe('GuestSidebarComponent', () => {
         GuestSidebarComponent,
       ],
       providers: [
-        { provide: AuthService, useValue: authServiceSpy},
+        { provide: AuthService, useValue: authServiceSpy },
         { provide: Router, useValue: routerMock },
         {
           provide: ActivatedRoute,
@@ -34,7 +34,7 @@ describe('GuestSidebarComponent', () => {
         },
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

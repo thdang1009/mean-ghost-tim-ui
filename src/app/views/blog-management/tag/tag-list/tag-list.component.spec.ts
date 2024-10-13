@@ -14,12 +14,12 @@ describe('TagListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TagListComponent ],
+      declarations: [TagListComponent],
       providers: [
-        { provide: TagService, useValue: new MockTagService()}
+        { provide: TagService, useValue: new MockTagService() }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

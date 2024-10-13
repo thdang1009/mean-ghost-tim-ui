@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Note } from '@models/_index';
 import { environment } from '@environments/environment';
-import { buildQueryString, ghostLog, handleError } from '@shares/common';
+import { ghostLog, handleError, buildQueryString } from '@shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/note';
 

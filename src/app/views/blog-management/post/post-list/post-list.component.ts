@@ -6,7 +6,7 @@ import { showNoti, compareWithFunc } from '@shares/common';
 import { Post } from '@models/_index';
 import { PostService } from '@services/_index';
 import * as dateFns from 'date-fns';
-import { POST_STATUS, POST_TYPE } from '@app/_shares/enum';
+import { POST_STATUS, POST_TYPE } from '@shares/enum';
 import { PostSaveWrapper } from '../post-edit/post-edit.component';
 
 

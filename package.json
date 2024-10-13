@@ -11,12 +11,10 @@
     "test:coverage": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o",
-    "dev:ssr": "ng run mean-ghost-tim-ui:serve-ssr --open --port 4500",
+    "dev:ssr": "ng run mean-ghost-tim-ui:serve-ssr",
     "serve:ssr": "node dist/mean-ghost-tim-ui/server/main.js",
-    "build:ssr": "ng build --aot --configuration production --output-hashing bundles && ng run mean-ghost-tim-ui:server",
-    "prerender": "ng run mean-ghost-tim-ui:prerender",
-    "ssr": "node dist/mean-ghost-tim-ui/server/server.mjs"
+    "build:ssr": "ng build && ng run mean-ghost-tim-ui:server",
+    "prerender": "ng run mean-ghost-tim-ui:prerender"
   },
   "engines": {
     "node": "18.15.0",

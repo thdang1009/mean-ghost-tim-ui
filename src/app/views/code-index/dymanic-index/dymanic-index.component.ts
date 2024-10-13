@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PDF_ASSETS_PATH } from '@app/_shares/constant';
+import { PDF_ASSETS_PATH } from '@shares/constant';
 import { mapResourceName } from '../../../_shares/common';
 export interface FePDFInfo {
   src: string,

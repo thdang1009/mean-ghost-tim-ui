@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { handleSocketReadingInfo } from '@app/_shares/common';
-import { SK_READING_INFO_REALTIME_UPDATE, CONSTANT } from '@app/_shares/constant';
+import { handleSocketReadingInfo } from '@shares/common';
+import { SK_READING_INFO_REALTIME_UPDATE, CONSTANT } from '@shares/constant';
 import { environment } from '@environments/environment';
 import { io } from 'socket.io-client';
 

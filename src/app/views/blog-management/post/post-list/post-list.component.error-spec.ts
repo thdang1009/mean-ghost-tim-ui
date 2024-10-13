@@ -2,8 +2,8 @@ import { DOCUMENT } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { AbstractMockObservableService } from '@app/_helpers/mock.service';
-import { CategoryService, PostService, TagService } from '@app/_services/_index';
+import { AbstractMockObservableService } from '@helpers/mock.service';
+import { CategoryService, PostService, TagService } from '@services/_index';
 import { of } from 'rxjs';
 
 import { PostListComponent } from './post-list.component';

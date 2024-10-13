@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from '@app/views/auth-management/login/login.component';
-import { RegisterComponent } from '@app/views/auth-management/register/register.component';
-import { HomeComponent } from '@app/views/home/home.component';
-import { NotLoginGuard } from '@app/views/auth-management/auth/not-login.guard';
-import { LogoutComponent } from '@app/views/auth-management/logout/logout.component';
-import { ConfirmEmailComponent } from '@app/views/user-management/confirm-email/confirm-email.component';
-import { DonationComponent } from '@app/views/donation/donation.component';
-import { PostDetailComponent } from '@app/views/blog-management/post/post-detail/post-detail.component';
-import { ResetPasswordComponent } from '@app/views/auth-management/reset-password/reset-password.component';
+import { LoginComponent } from '@views/auth-management/login/login.component';
+import { RegisterComponent } from '@views/auth-management/register/register.component';
+import { HomeComponent } from '@views/home/home.component';
+import { NotLoginGuard } from '@views/auth-management/auth/not-login.guard';
+import { LogoutComponent } from '@views/auth-management/logout/logout.component';
+import { ConfirmEmailComponent } from '@views/user-management/confirm-email/confirm-email.component';
+import { DonationComponent } from '@views/donation/donation.component';
+import { PostDetailComponent } from '@views/blog-management/post/post-detail/post-detail.component';
+import { ResetPasswordComponent } from '@views/auth-management/reset-password/reset-password.component';
 
 export const GuestLayoutRoutes: Routes = [
     {

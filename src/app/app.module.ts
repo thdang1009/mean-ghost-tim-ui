@@ -9,7 +9,7 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 // my codes
 import { AppComponent } from './app.component';
-import { AdminLayoutComponent } from '@layouts/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from './_layouts/admin-layout/admin-layout.component';
 import { GuestLayoutComponent } from './_layouts/guest-layout/guest-layout.component';
 import { TokenInterceptor } from './_helpers/_index';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -22,14 +22,14 @@ import {
   SocketioService
 } from './_services/_index';
 import { DonationComponent } from './views/donation/donation.component';
-import { environment } from '@environments/environment';
 import { markedOptionsFactory } from './views/blog-management/blog-management.module';
 
 // third party
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
-import { MarkdownModule, MarkedOptions, ClipboardOptions, ClipboardButtonComponent, MARKED_OPTIONS, CLIPBOARD_OPTIONS } from 'ngx-markdown';
+import { MarkdownModule, ClipboardButtonComponent, MARKED_OPTIONS, CLIPBOARD_OPTIONS } from 'ngx-markdown';
 import { AnchorModule } from './_shares/anchor/anchor.module';
 import { AnchorService } from './_shares/anchor/anchor.service';
+import { environment } from '@environments/environment';
 
 // NgModule
 @NgModule({

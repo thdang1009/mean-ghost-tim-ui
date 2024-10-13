@@ -14,11 +14,11 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe(users => {
-        // showNoti('Get users success!', 'success');
-        this.users = users;
-      }, (err) => {
-        console.log(err);
-        showNoti(`Create user fail!`, 'danger');
-      });
+      // showNoti('Get users success!', 'success');
+      this.users = users;
+    }, (err) => {
+      console.log(err);
+      showNoti(`Create user fail!`, 'danger');
+    });
   }
 }

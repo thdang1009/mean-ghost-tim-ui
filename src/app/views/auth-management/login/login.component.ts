@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CONSTANT } from '@shares/constant';
 import { showNoti } from '@shares/common';
-import { ReadingInfoService } from '@app/_services/reading-info/reading-info.service';
+import { ReadingInfoService } from '@services/reading-info/reading-info.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {

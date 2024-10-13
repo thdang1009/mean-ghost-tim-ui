@@ -42,13 +42,13 @@ describe('SidebarComponent', () => {
       events: routerEventReplaySubject.asObservable()
     };
     TestBed.configureTestingModule({
-      declarations: [ SidebarComponent ],
+      declarations: [SidebarComponent],
       providers: [
-        { provide: AuthService, useValue: new MockAuthService()},
+        { provide: AuthService, useValue: new MockAuthService() },
         { provide: Router, useValue: routerMock },
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

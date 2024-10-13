@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CONSTANT } from '@app/_shares/constant';
+import { CONSTANT } from '@shares/constant';
 
 @Component({
   selector: 'view-book',

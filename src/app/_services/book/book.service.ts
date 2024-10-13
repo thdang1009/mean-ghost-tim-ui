@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { ReadingInfo, Book } from '@models/_index';
-import { ghostLog, handleError } from '@app/_shares/common';
+import { ghostLog, handleError } from '@shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/book';
 
@@ -18,7 +18,7 @@ export class BookService {
   redirectUrl: string;
 
   constructor(private http: HttpClient) { }
-  
+
   getBook(id): Observable<Book> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<Book>(url).pipe(

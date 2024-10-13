@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Post } from '@app/_models/post';
+import { Post } from '@models/post';
 import { EventEmitter } from '@angular/core';
-import { POST_STATUS, POST_TYPE } from '@app/_shares/enum';
+import { POST_STATUS, POST_TYPE } from '@shares/enum';
 import { DOCUMENT } from '@angular/common';
-import { TagService, CategoryService, FileService } from '@app/_services/_index';
-import { compareWithFunc, showNoti } from '@app/_shares/common';
+import { TagService, CategoryService, FileService } from '@services/_index';
+import { compareWithFunc, showNoti } from '@shares/common';
 import { Observable } from 'rxjs';
 export interface PostSaveWrapper {
   item: Post;

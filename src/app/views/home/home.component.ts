@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BookPermission } from '@app/_shares/enum';
+import { BookPermission } from '@shares/enum';
 import { AuthService, PostService } from '@services/_index';
 @Component({
   selector: 'app-home',

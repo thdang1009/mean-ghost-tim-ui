@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError, finalize, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { MyFile } from '@models/_index';
-import { buildQueryString, ghostLog, handleError } from '@app/_shares/common';
+import { buildQueryString, ghostLog, handleError } from '@shares/common';
 const apiUrl = environment.apiUrl + '/v1/file';
 
 @Injectable({

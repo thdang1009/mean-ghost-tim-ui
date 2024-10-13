@@ -10,8 +10,8 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { CONSTANT } from '@shares/constant';
 import { showNoti } from '@shares/common';
+import { CONSTANT } from '@shares/constant';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {

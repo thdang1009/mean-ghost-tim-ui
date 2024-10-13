@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { SocketioService } from '@app/_services/_index';
-import { checkIsInPDFView, handleSocketGuestMessage, handleSocketReadingInfo } from '@app/_shares/common';
-import { SK_GUEST_MESSAGE_RESPONSE, SK_READING_INFO_REALTIME_UPDATE } from '@app/_shares/constant';
+import { SocketioService } from '@services/_index';
+import { checkIsInPDFView, handleSocketGuestMessage, handleSocketReadingInfo } from '@shares/common';
+import { SK_GUEST_MESSAGE_RESPONSE, SK_READING_INFO_REALTIME_UPDATE } from '@shares/constant';
 import { AuthService } from '@services/_index';
 
 declare const $: any;

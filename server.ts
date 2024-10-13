@@ -30,7 +30,7 @@ export function app(): express.Express {
   // All regular routes use the Angular engine
   server.get('*', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
-    console.log('dangth', protocol, originalUrl, baseUrl, headers);
+
     commonEngine
       .render({
         bootstrap: AppServerModule,

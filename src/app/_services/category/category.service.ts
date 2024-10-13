@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Category } from '@models/_index';
 import { environment } from '@environments/environment';
-import { ghostLog, handleError } from '@app/_shares/common';
+import { ghostLog, handleError } from '@shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/category';
 

@@ -19,7 +19,7 @@ describe('FooterComponent', () => {
         { provide: AlertService, useValue: alertServiceSpy },
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

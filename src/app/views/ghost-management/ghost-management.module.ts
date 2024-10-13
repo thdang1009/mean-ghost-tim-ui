@@ -6,7 +6,7 @@ import { NoteComponent } from './note/note.component';
 import { TodoTodayComponent } from './todo-today/todo-today.component';
 import { SharedModule } from '@shares/shared-module.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { ReuseComponentModule } from '@app/_reuse/reuse.module';
+import { ReuseComponentModule } from '@reuse/reuse.module';
 
 // angular rich text editor
 import { HttpClientModule } from '@angular/common/http';

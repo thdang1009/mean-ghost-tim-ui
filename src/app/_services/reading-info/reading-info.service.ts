@@ -4,8 +4,8 @@ import { Observable, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { ReadingInfo } from '@models/_index';
-import { ghostLog, handleError, showNoti } from '@app/_shares/common';
-import { PDF_OBJ } from '@app/_shares/constant';
+import { ghostLog, handleError, showNoti } from '@shares/common';
+import { PDF_OBJ } from '@shares/constant';
 import { AuthService } from '../_index';
 
 const apiUrl = environment.apiUrl + '/v1/reading-info';
@@ -21,7 +21,7 @@ export class ReadingInfoService {
   constructor(
     private http: HttpClient,
     private authService: AuthService) { }
-  
+
   readtimeUpdateReadingInfo(object = {}) {
 
     if (!this.authService.isMember()) {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { handleError } from '@app/_shares/common';
+import { handleError } from '@shares/common';
 
 @Injectable()
 export class IssueService {

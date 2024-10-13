@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { checkIsInPDFView } from '@app/_shares/common';
+import { checkIsInPDFView } from '@shares/common';
 
 @Component({
     selector: 'app-navbar',
@@ -45,7 +45,7 @@ export class NavbarComponent implements OnInit {
         });
         this.router.events.subscribe((event: NavigationEnd) => {
             if (event instanceof NavigationEnd) {
-              this._isInPDFView = checkIsInPDFView(event.url);
+                this._isInPDFView = checkIsInPDFView(event.url);
             }
         });
     }

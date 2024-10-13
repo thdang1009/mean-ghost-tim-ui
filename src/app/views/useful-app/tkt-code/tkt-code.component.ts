@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { SocketioService } from '@app/_services/_index';
-import { TKTService } from '@app/_services/tkt/tkt.service';
-import { handleSocketRunCode, showNoti } from '@app/_shares/common';
-import { SK_RESULT_AUTO_RUN_TKT, LIST_USER_VN, LIST_USER_GLOBAL } from '@app/_shares/constant';
+import { SocketioService } from '@services/_index';
+import { TKTService } from '@services/tkt/tkt.service';
+import { handleSocketRunCode, showNoti } from '@shares/common';
+import { SK_RESULT_AUTO_RUN_TKT, LIST_USER_VN, LIST_USER_GLOBAL } from '@shares/constant';
 import * as XLSX from 'xlsx';
 
 @Component({

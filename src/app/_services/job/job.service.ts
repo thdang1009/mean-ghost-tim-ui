@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
-import { ghostLog, handleError } from '@app/_shares/common';
+import { ghostLog, handleError } from '@shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/job';
 

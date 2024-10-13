@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ExampleCode } from '@helpers/fake.data';
+import { ExampleCode } from '@helpers/_index';
 import { showNoti } from '@shares/common';
 import { SAVED_CODE } from '@shares/constant';
 import { CodeModel } from '@ngstack/code-editor';
@@ -30,7 +30,7 @@ export class RunJsComponent implements OnInit, OnDestroy {
 
   constructor() {
     // TODO document why this constructor is empty
-  
+
   }
 
   ngOnDestroy(): void {

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AbstractMockObservableService } from '@app/_helpers/mock.service';
-import { BookService } from '@app/_services/_index';
+import { AbstractMockObservableService } from '@helpers/mock.service';
+import { BookService } from '@services/_index';
 
 import { BookComponent } from './book.component';
 
@@ -27,7 +27,7 @@ describe('BookComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookComponent ],
+      declarations: [BookComponent],
 
       providers: [
         {
@@ -35,7 +35,7 @@ describe('BookComponent', () => {
         },
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(BookComponent);
     component = fixture.componentInstance;

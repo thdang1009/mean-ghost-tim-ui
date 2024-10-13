@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { showNoti } from '@app/_shares/common';
+import { showNoti } from '@shares/common';
 import { AuthService } from '@services/_index';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard  {
+export class AdminGuard {
 
   constructor(private authService: AuthService) { }
 

@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
-    "baseUrl": "src",
     "sourceMap": true,
     "declaration": false,
     "module": "es2020",
@@ -19,37 +18,37 @@
     ],
     "paths": {
       "@app/*": [
-        "app/*"
+        "./src/app/*"
       ],
       "@components/*": [
-        "app/components/*"
+        "./src/app/components/*"
       ],
       "@services/*": [
-        "app/_services/*"
+        "./src/app/_services/*"
       ],
       "@shares/*": [
-        "app/_shares/*"
+        "./src/app/_shares/*"
       ],
       "@helpers/*": [
-        "app/_helpers/*"
+        "./src/app/_helpers/*"
       ],
       "@models/*": [
-        "app/_models/*"
+        "./src/app/_models/*"
       ],
       "@layouts/*": [
-        "app/_layouts/*"
+        "./src/app/_layouts/*"
       ],
       "@pipes/*": [
-        "app/_pipes/*"
+        "./src/app/_pipes/*"
       ],
       "@views/*": [
-        "app/views/*"
+        "./src/app/views/*"
       ],
       "@reuse/*": [
-        "app/reuse/*"
+        "./src/app/_reuse/*"
       ],
       "@environments/*": [
-        "environments/*"
+        "./src/environments/*"
       ]
     },
     "useDefineForClassFields": false

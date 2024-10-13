@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
+import { ghostLog, handleError } from '@shares/common';
 import { AccessLog } from '@models/_index';
-import { ghostLog, handleError } from '@app/_shares/common';
 
 const apiUrl = environment.apiUrl + '/v1/analytic';
 

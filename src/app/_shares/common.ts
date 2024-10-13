@@ -1,4 +1,4 @@
-import { FePDFInfo } from "@app/views/code-index/dymanic-index/dymanic-index.component";
+import { FePDFInfo } from "@views/code-index/dymanic-index/dymanic-index.component";
 import { TDTD_STATUS } from "./enum";
 import { Observable, Subject, of } from "rxjs";
 import { HOUR } from "./constant";

@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import { DashboardComponent } from '@views/dashboard/dashboard.component';
-import { ReuseComponentModule } from '@app/_reuse/reuse.module';
 import { CodeEditorModule } from '@ngstack/code-editor';
+import { ReuseComponentModule } from '@reuse/reuse.module';
+import { DashboardComponent } from '@views/dashboard/dashboard.component';
 
 @NgModule({
   imports: [

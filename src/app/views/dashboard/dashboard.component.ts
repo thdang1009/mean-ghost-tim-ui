@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AWSService } from '@app/_services/aws/aws.service.service';
-import { regexPercentage } from '@app/_shares/constant';
-import { TDTD_STATUS } from '@app/_shares/enum';
+import { AWSService } from '@services/aws/aws.service.service';
+import { regexPercentage } from '@shares/constant';
+import { TDTD_STATUS } from '@shares/enum';
 import { IssueService, AnalyticService, UserService, TodoTodayService } from '@services/_index';
 import { nextStatus, showNoti } from '@shares/common';
 import * as Chartist from 'chartist';

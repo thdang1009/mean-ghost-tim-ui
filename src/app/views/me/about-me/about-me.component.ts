@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
-import { GuestMessageService } from '@app/_services/_index';
+import { GuestMessageService } from '@services/_index';
 import { showNoti } from '@shares/common';
 
 export interface PortfolioData {

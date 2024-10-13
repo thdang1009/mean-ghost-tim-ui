@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { SystemService } from '@app/_services/_index';
+import { SystemService } from '@services/_index';
 
 const timeToNextRestart = 20 * 1000;
 
@@ -18,7 +18,7 @@ export class SystemComponent implements OnInit {
   constructor(
     private systemService: SystemService,
     private formBuilder: UntypedFormBuilder,
-    ) {
+  ) {
 
   }
 

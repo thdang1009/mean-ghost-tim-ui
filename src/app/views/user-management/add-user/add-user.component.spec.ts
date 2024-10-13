@@ -26,7 +26,7 @@ describe('AddUserComponent', () => {
         UntypedFormBuilder,
         { provide: AlertService, useValue: alertServiceSpy },
         { provide: Router, useValue: routerMock },
-        { provide: UserService, useValue: userServiceSpy}
+        { provide: UserService, useValue: userServiceSpy }
 
       ]
     })
