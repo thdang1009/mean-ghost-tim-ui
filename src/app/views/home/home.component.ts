@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { debounce } from '@app/_shares/common';
 import { BookPermission } from '@app/_shares/enum';
 import { AuthService, PostService } from '@services/_index';
 @Component({
@@ -18,6 +19,12 @@ export class HomeComponent implements OnInit {
   allPosts = [];
   isFilteredByTag = false;
   pageIndex = 1;
+  numberOfAllPost = 0;
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    this.debouceFunc();
+  }
 
   constructor(
     private authService: AuthService,
@@ -43,6 +50,7 @@ export class HomeComponent implements OnInit {
         this.postService.getPublicPosts(params)
           .subscribe(posts => {
             this.allPosts = (posts || []).reverse();
+            this.numberOfAllPost = posts.length;
             this.posts = this.getMorePosts();
           });
       })
@@ -68,6 +76,8 @@ export class HomeComponent implements OnInit {
   }
 
   showMorePost() {
-    this.posts = [...this.posts, ...this.getMorePosts(5)];
+    if (this.posts?.length < this.numberOfAllPost)
+      this.posts = [...this.posts, ...this.getMorePosts(5)];
   }
+  debouceFunc = debounce(this.showMorePost.bind(this), 500);
 }
