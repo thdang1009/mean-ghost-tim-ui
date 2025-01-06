@@ -42,7 +42,7 @@
 		<div *ngFor="let post of posts"
 			class="list-post">
 			<article [ngClass]="{'private-post': post.permission === 'PRIVATE'}"
-				class="post">
+				class="post hover-moved">
 				<a [routerLink]="'/blogs/' + post.postReference"
 					[ngStyle]="{
             'background-image': 'url(' + post.postBackgroundImg + ')'

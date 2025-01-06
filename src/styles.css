@@ -278,11 +278,6 @@ app-am-chart {
     color: #262b2f !important;
 }
 
-.post:hover {
-    -webkit-transform: translateY(-4px);
-    transform: translateY(-4px);
-}
-
 .align-children-middle {
     display: flex !important;
     align-items: center;
@@ -324,6 +319,12 @@ app-table-loading {
     height: 2em !important;
     z-index: -1;
 }
+
+.hover-moved:hover {
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+}
+
 
 ang-clap .wrapper.show-border>button {
     background-color: transparent !important;
