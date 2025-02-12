@@ -98,7 +98,6 @@ export function compareWithFunc(a, b) {
   return a == b;
 }
 export function openExternalLink(link) {
-  console.info('dangth', link);
   window.open(link, '_blank');
 }
 export function mapResourceName(input): FePDFInfo {

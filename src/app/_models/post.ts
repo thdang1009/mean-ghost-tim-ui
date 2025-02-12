@@ -11,7 +11,7 @@ export class Post {
   description?: String;
   content?: String; // content
   postReference?: String;
-  postImgUrls? : String[];
+  postImgUrls?: String[];
   postBackgroundImg?: String;
   isPinned?: Boolean;
   tags?: Tag[];
@@ -21,4 +21,5 @@ export class Post {
   clapCount?: Number;
   type?: String;
   contentGhostEditor?: Object;
+  readTime?: Number;
 }

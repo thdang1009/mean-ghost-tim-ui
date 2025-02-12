@@ -66,6 +66,8 @@
             {{post.viewCount | number:'1.0-0' }}
 						<i class="fa fa-eye"
 							aria-hidden="true"></i>
+						|
+							{{post.readTime || 5}} mins read
 					</span>
 					<ng-container *ngIf="post && post.tags.length">
 						<div *ngFor="let tag of post.tags"
