@@ -69,7 +69,7 @@
 			<mat-label>Tags:</mat-label>
 			<mat-chip-grid #chipGrid
 				aria-label="Enter Tag">
-				<mat-chip-row *ngFor="let tag of itemSelected?.tags"
+				<mat-chip-row *ngFor="let tag of tags"
 					[aria-description]="'press enter to edit ' + tag.name"
 					(removed)="removeTag(tag)">
 					{{tag.name}}
@@ -80,38 +80,29 @@
 						cancel
 					</button>
 				</mat-chip-row>
-				<input [matChipInputFor]="chipGrid"
-					(matChipInputTokenEnd)="handleAddNewTag($event)"
+				<input #tagInput
+					[formControl]="tagCtrl"
+					[matChipInputFor]="chipGrid"
+					[matAutocomplete]="autoTag"
+					(matChipInputTokenEnd)="addTag($event)"
 					placeholder="New tag...">
+				<mat-autocomplete #autoTag="matAutocomplete"
+					(optionSelected)="selectedTag($event)">
+					<mat-option *ngFor="let tag of filteredTags | async"
+						[value]="tag">
+						{{tag.name}}
+					</mat-option>
+				</mat-autocomplete>
 			</mat-chip-grid>
 		</mat-form-field>
 	</div>
-	<!-- cat -->
+	<!-- category -->
 	<div class="col-md-4">
-		<!-- <tag-input [(ngModel)]="itemSelected.category"
-			[placeholder]="'+ Category'"
-			[displayBy]="'name'"
-			[identifyBy]="'_id'"
-			[onTextChangeDebounce]="500"
-			[onAdding]="handleAddNewCategory"
-			name="cateogry">
-			<tag-input-dropdown [autocompleteItems]="listCategory"
-				[dynamicUpdate]="false"
-				[zIndex]="10000"
-				[displayBy]="'name'"
-				[identifyBy]="'_id'"
-				[showDropdownIfEmpty]="true">
-				<ng-template let-item="item"
-					let-index="index">
-					{{ item.name }}
-				</ng-template>
-			</tag-input-dropdown>
-		</tag-input> -->
 		<mat-form-field class="example-chip-list">
 			<mat-label>Categories:</mat-label>
 			<mat-chip-grid #chipGrid2
 				aria-label="Enter Categories">
-				<mat-chip-row *ngFor="let category of itemSelected?.category"
+				<mat-chip-row *ngFor="let category of categories"
 					[aria-description]="'press enter to edit ' + category?.name"
 					(removed)="removeCategory(category)">
 					{{category?.name}}
@@ -122,9 +113,20 @@
 						cancel
 					</button>
 				</mat-chip-row>
-				<input [matChipInputFor]="chipGrid2"
-					(matChipInputTokenEnd)="handleAddNewCategory($event)"
+				<input #categoryInput
+					[formControl]="categoryCtrl"
+					[matChipInputFor]="chipGrid2"
+					[matAutocomplete]="autoCategory"
+					[matChipInputFor]="chipGrid2"
+					(matChipInputTokenEnd)="addCategory($event)"
 					placeholder="New category...">
+				<mat-autocomplete #autoCategory="matAutocomplete"
+					(optionSelected)="selectedCategory($event)">
+					<mat-option *ngFor="let category of filteredCategories | async"
+						[value]="category">
+						{{category.name}}
+					</mat-option>
+				</mat-autocomplete>
 			</mat-chip-grid>
 		</mat-form-field>
 	</div>
