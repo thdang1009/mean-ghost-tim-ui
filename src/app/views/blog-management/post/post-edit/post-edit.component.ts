@@ -176,11 +176,6 @@ export class PostEditComponent implements OnInit, OnDestroy {
   splitVertical() {
     this.isSplitHorizontal = false;
   }
-  // removeCategory(removedCategory) {
-  //   const temp = this.itemSelected.category.filter(category => category._id !== removedCategory._id);
-  //   this.itemSelected.category = temp;
-  //   return temp;
-  // }
 
   addTag(event: MatChipInputEvent): void {
     const newTagName = event.value;
@@ -263,7 +258,6 @@ export class PostEditComponent implements OnInit, OnDestroy {
     this.categoryInput.nativeElement.value = '';
     this.categoryCtrl.setValue(null);
   }
-
 
   private _filterTag(value: Tag): Tag[] {
     const filterValue = value;
