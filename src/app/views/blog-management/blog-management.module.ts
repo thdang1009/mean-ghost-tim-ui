@@ -17,7 +17,13 @@ import { ComponentsModule } from '@app/components/components.module';
 // import { AngClapModule } from 'ang-clap';
 // import { DocuModule, DocuEditorModule } from 'ng-write';
 import { PostEditComponent } from './post/post-edit/post-edit.component';
+import { MermaidAPI } from 'ngx-markdown';
 
+export const mmOptions: MermaidAPI.Config = {
+  fontFamily: '"trebuchet ms", verdana, arial, sans-serif',
+  logLevel: MermaidAPI.LogLevel.Info,
+  theme: MermaidAPI.Theme.Dark,
+};
 
 export function markedOptionsFactory(anchorService: AnchorService): MarkedOptions {
   const renderer = new MarkedRenderer();

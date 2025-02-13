@@ -13,6 +13,8 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { FormControl } from '@angular/forms';
 import { Tag } from '@app/_models/tag';
 import { Category } from '@app/_models/category';
+import { mmOptions } from '../../blog-management.module'
+import { MarkdownService } from 'ngx-markdown';
 export interface PostSaveWrapper {
   item: Post;
   isBack: boolean;
@@ -24,10 +26,70 @@ export interface PostSaveWrapper {
   styleUrls: ['../post-list/post-list.component.scss']
 })
 export class PostEditComponent implements OnInit, OnDestroy {
-
+  mmOptions = mmOptions;
   @Input() itemSelected = {} as any;
   @Output() save: EventEmitter<PostSaveWrapper> = new EventEmitter<PostSaveWrapper>();
 
+  test = `## Markdown __rulez__!
+---
+
+### Syntax highlight
+TypeScript code snippet using syntax highlight
+\`\`\`typescript
+const language = 'typescript';
+\`\`\`
+
+\`\`\`javascript
+import './polyfills';
+
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+
+platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
+  // Ensure Angular destroys itself on hot reloads.
+  if (window['ngRef']) {
+    window['ngRef'].destroy();
+  }
+  window['ngRef'] = ref;
+
+  // Otherwise, log the boot error
+}).catch(err => console.error(err));
+\`\`\`
+\`\`\`css
+.variable-binding,
+.variable-textarea {
+  width: 49%;
+}
+
+.variable-textarea {
+  min-height: 420px;
+  padding: 8px;
+}
+
+.variable-binding {
+  display: block;
+  float: right;
+}
+\`\`\`
+\`\`\`html
+<h5>
+  angular@{{ angularVersion }} | ngx-markdown@{{ ngxMarkdownVersion }}
+</h5>
+<br>
+
+<div markdown ngPreserveWhitespaces>{{ markdown }}</div>
+<!-- <div markdown [data]="markdown"></div> -->
+\`\`\`
+### Lists
+1. Ordered list
+2. Another bullet point
+  - Unordered list
+  - Another unordered bullet point
+
+### Blockquote
+> Blockquote to the max!!!`
   // old
   s;
   isLoadingResults = false;
@@ -67,12 +129,14 @@ export class PostEditComponent implements OnInit, OnDestroy {
     @Inject(DOCUMENT) private document,
     private tagService: TagService,
     private categoryService: CategoryService,
-    private fileService: FileService) {
+    private fileService: FileService,
+    private markdownService: MarkdownService
+  ) {
   }
 
   ngOnInit(): void {
     this.elem = document.getElementById('edit-post-container');
-
+    console.log('dangth', this.markdownService.parse(this.test));
     this.getCategories();
     this.getTags();
     this.fileService.getMyFile({
