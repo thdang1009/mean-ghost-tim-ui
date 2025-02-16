@@ -9,6 +9,7 @@ export * from './analytic/analytic.service';
 export * from './navigation/navigation.service';
 export * from './post/post.service';
 export * from './tag/tag.service';
+export * from './todo-label/todo-label.service';
 export * from './category/category.service';
 export * from './book/book.service';
 export * from './file/file.service';

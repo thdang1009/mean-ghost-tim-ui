@@ -9,5 +9,6 @@ export * from './accesslog';
 export * from './post';
 export * from './category';
 export * from './tag';
+export * from './todo-label';
 export * from './my-file';
 export * from './reading-info';

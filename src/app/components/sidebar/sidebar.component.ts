@@ -58,7 +58,14 @@ export const ROUTES: RouteInfo[] = [
       { path: 'blog/tag-list', title: 'List Tag', icon: 'list', class: '', permission: 'isAdmin' },
       { path: 'blog/tag', title: 'Add A Tag', icon: 'local_offer', class: '', permission: 'isAdmin' },
       { path: 'blog/category-list', title: 'List Category', icon: 'list', class: '', permission: 'isAdmin' },
-      { path: 'blog/category', title: 'Add A Category', icon: 'category', class: '', permission: 'isAdmin' }
+      { path: 'blog/category', title: 'Add A Category', icon: 'category', class: '', permission: 'isAdmin' },
+    ]
+  },
+  {
+    path: 'operation', title: 'Operation', icon: 'engineering', class: '', permission: 'isMember', hasChild: true,
+    children: [
+      { path: 'operation/todo-label-list', title: 'List TodoLabel', icon: 'list', class: '', permission: 'isAdmin' },
+      { path: 'operation/todo-label', title: 'Add A TodoLabel', icon: 'local_offer', class: '', permission: 'isAdmin' },
     ]
   }
 ];

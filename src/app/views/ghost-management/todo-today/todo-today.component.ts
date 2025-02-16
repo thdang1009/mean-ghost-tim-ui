@@ -3,9 +3,8 @@ import { UntypedFormControl } from '@angular/forms';
 import { TodoToday } from '@models/_index';
 import * as dateFns from 'date-fns';
 import { JobService, TodoTodayService } from '@services/_index';
-import { isImportant, nextStatus, previousStatus, showNoti } from '@shares/common';
+import { isImportant, nextStatus, previousStatus, showNoti, toggleStatus } from '@shares/common';
 import { TDTD_STATUS } from '@shares/enum';
-import { DEBOUCE_TIME, } from '@shares/constant';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -69,25 +68,29 @@ export class TodoTodayComponent implements OnInit {
     this.isLoadingResults = true;
     this.todoTodayService.getMyTodoToday(req)
       .subscribe((res: any) => {
-        this.data = res.map(el => ({
-          ...el,
-          nextStatus: nextStatus(el.status)
-        })).sort(el => isImportant(el.content) ? -1 : 1);
+        this.data = res.map(el => {
+          return {
+            ...el,
+            checked: el.status === TDTD_STATUS.DONE
+          }
+        }).sort(el => isImportant(el.content) ? -1 : 1);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
       });
   }
-
+  setChangedLineOnly(res, index) {
+    this.data[index] = { ...res, checked: res.status === TDTD_STATUS.DONE };
+  }
   updateStatus(item, index) {
     const req = {
       ...item,
-      status: nextStatus(item.status)
+      status: toggleStatus(item.status)
     };
     this.isLoadingResults = true;
     this.todoTodayService.updateTodoToday(item.id, req)
       .subscribe((res: any) => {
-        this.data[index] = res;
+        this.setChangedLineOnly(res, index);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;
@@ -97,26 +100,9 @@ export class TodoTodayComponent implements OnInit {
     item.content = item.content.trim();
     this.todoTodayService.updateTodoToday(id, item)
       .subscribe((res: any) => {
-        this.data[index] = res;
+        this.setChangedLineOnly(res, index);
       }, err => {
       });
-  }
-  deleteLast() {
-    this.isLoadingResults = true;
-    if (!this.data || !this.data.length) {
-      return;
-    }
-    const lastIndex = this.data.length - 1;
-    const id = this.data[lastIndex].id;
-    if (id) {
-      this.todoTodayService.deleteTodoToday(id)
-        .subscribe((_: any) => {
-          this._getMyToDoToDay(DEBOUCE_TIME);
-          this.isLoadingResults = false;
-        }, err => {
-          this.isLoadingResults = false;
-        });
-    }
   }
   delete(id) {
     if (!this.data || !this.data.length) {

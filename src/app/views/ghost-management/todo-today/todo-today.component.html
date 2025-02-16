@@ -54,7 +54,7 @@
 						<div class="table-responsive">
 							<table class="table">
 								<thead class=" text-primary">
-									<th style="max-width: 120px; min-width: 120px; width: 120px;">Status</th>
+									<th class="status-width">Status</th>
 									<th>
 										<span (click)="increaseCount()">Content</span>
 									</th>
@@ -70,17 +70,24 @@
                                         'primary': tdtd.status === TDTD_STATUS.NEW,
                                         'future': tdtd.status === TDTD_STATUS.TOMORROW,
                                         'past': tdtd.status === TDTD_STATUS.IN_PAST,
-                                        'is-important': index < 5
+                                        'is-important': index < 7
                                     }"
 											(mouseenter)="hoveredIndex=index"
 											cdkDrag>
 											<td class="text-center">
-												<span (click)="updateStatus(tdtd, index)"
-													class="hover-pointer"
-													matTooltip="=> {{ tdtd.nextStatus || nextStatus(tdtd.status) }}">
-													{{
-                                                    tdtd.status }}
-												</span>
+												<div class="form-check">
+													<label class="form-check-label">
+														<input [ngModelOptions]="{standalone: true}"
+															[(ngModel)]="tdtd.checked"
+															[checked]="tdtd.checked"
+															(change)="updateStatus(tdtd, index)"
+															class="form-check-input"
+															type="checkbox">
+														<span class="form-check-sign">
+															<span class="check"></span>
+														</span>
+													</label>
+												</div>
 												<div class="drag-to-reorder"
 													cdkDragHandle>
 													<img loading="lazy"

@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "local": "ng serve --open --host localhost --disable-host-check --port 4500",
     "start": "ng serve --open --host localhost --disable-host-check --port 4500",
     "build": "ng build --aot --configuration production --output-hashing bundles",
     "debug": "ng serve --open --host localhost --disable-host-check --port 4500 -c development",

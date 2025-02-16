@@ -39,4 +39,12 @@ export const AdminLayoutRoutes: Routes = [
             canActivate: [LoginGuard]
         }]
     },
+    {
+        path: 'operation',
+        children: [{
+            path: '',
+            loadChildren: () => import('../../views/operation/operation.module').then(m => m.OperationModule),
+            canActivate: [LoginGuard]
+        }]
+    },
 ];
