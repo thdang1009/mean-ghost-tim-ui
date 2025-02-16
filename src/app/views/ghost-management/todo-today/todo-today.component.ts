@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
-import { TodoToday } from '@models/_index';
+import { TodoLabel, TodoToday } from '@models/_index';
 import * as dateFns from 'date-fns';
-import { JobService, TodoTodayService } from '@services/_index';
+import { JobService, TodoLabelService, TodoTodayService } from '@services/_index';
 import { isImportant, nextStatus, previousStatus, showNoti, toggleStatus } from '@shares/common';
 import { TDTD_STATUS } from '@shares/enum';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -15,6 +15,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export class TodoTodayComponent implements OnInit {
 
   data: TodoToday[] = [];
+  dataLabel: TodoLabel[] = [];
   isLoadingResults = true;
   callListIdTimeout = undefined;
   hoveredIndex = undefined;
@@ -31,6 +32,7 @@ export class TodoTodayComponent implements OnInit {
 
   constructor(
     private todoTodayService: TodoTodayService,
+    private todoLabelService: TodoLabelService,
     private jobService: JobService,
   ) { }
 
@@ -52,8 +54,19 @@ export class TodoTodayComponent implements OnInit {
       });
   }
 
-  searchToDoToDay() {
-    this._getMyToDoToDay();
+  async searchToDoToDay() {
+    await this._getTodoLabel();
+    await this._getMyToDoToDay();
+  }
+
+  _getTodoLabel() {
+    this.isLoadingResults = true;
+    this.todoLabelService.getTodoLabels().subscribe((res: any) => {
+      this.dataLabel = res;
+      this.isLoadingResults = false;
+    }, err => {
+      this.isLoadingResults = false;
+    });
   }
 
   _getMyToDoToDay(timeout = 0) {
@@ -71,9 +84,11 @@ export class TodoTodayComponent implements OnInit {
         this.data = res.map(el => {
           return {
             ...el,
-            checked: el.status === TDTD_STATUS.DONE
+            checked: el.status === TDTD_STATUS.DONE,
+            todoLabel: el.todoLabel && el.todoLabel.length ? el.todoLabel : this.todoLabelService.extractTodoLabel(el.content, this.dataLabel)
           }
         }).sort(el => isImportant(el.content) ? -1 : 1);
+        console.log('dangth, data', this.data);
         this.isLoadingResults = false;
       }, err => {
         this.isLoadingResults = false;

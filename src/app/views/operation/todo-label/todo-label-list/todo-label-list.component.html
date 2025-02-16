@@ -7,17 +7,18 @@
 						<div class="table-responsive">
 							<table class="table">
 								<thead class=" text-primary">
-									<th>#</th>
+									<th>Icon</th>
 									<th>Name</th>
 									<th>Description</th>
 									<th>AutoDetectKeywords</th>
-									<th>IMG Alternative</th>
 								</thead>
 								<tbody>
 									<ng-container *ngIf="todoLabels && todoLabels.length; else noDataBlock">
 										<tr *ngFor="let todoLabel of todoLabels; let index = index"
 											class="hover-pointer-td">
-											<td (click)="edit(todoLabel)">{{ index + 1 }}</td>
+											<td (click)="edit(todoLabel)">
+												{{ todoLabel.imgAlternative}}
+											</td>
 											<td (click)="edit(todoLabel)">
 												{{ todoLabel.name }}
 											</td>
@@ -26,9 +27,6 @@
 											</td>
 											<td (click)="edit(todoLabel)">
 												{{ todoLabel.autoDetectKeywords }}
-											</td>
-											<td (click)="edit(todoLabel)">
-												{{ todoLabel.imgAlternative}}
 											</td>
 
 											<button (click)="delete(todoLabel)"

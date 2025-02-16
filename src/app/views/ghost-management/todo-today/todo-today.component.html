@@ -75,7 +75,8 @@
 											(mouseenter)="hoveredIndex=index"
 											cdkDrag>
 											<td class="text-center">
-												<div class="form-check">
+												<div class="form-check"
+													style="padding-left: 1.25rem;">
 													<label class="form-check-label">
 														<input [ngModelOptions]="{standalone: true}"
 															[(ngModel)]="tdtd.checked"
@@ -91,12 +92,13 @@
 												<div class="drag-to-reorder"
 													cdkDragHandle>
 													<img loading="lazy"
-														class="png-to-icon"
+														class="todo-label-icon"
 														src="/assets/img/drag-up-and-down.svg"
 														alt="drag">
 												</div>
 											</td>
-											<td>
+											<td style="display: flex;">
+												<span *ngFor="let icon of tdtd.todoLabel">{{icon}}</span>
 												<textarea [(ngModel)]="tdtd.content"
 													[minRows]="1"
 													[maxRows]="3"

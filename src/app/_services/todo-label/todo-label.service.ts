@@ -14,6 +14,7 @@ const apiUrl = environment.apiUrl + '/v1/todo-label';
 export class TodoLabelService {
 
   constructor(private http: HttpClient) { }
+  mapTodoLabel = new Map<string, String[]>();
 
   getTodoLabels(name?): Observable<TodoLabel[]> {
     const url = `${apiUrl}` + (name ? `?name=${name}` : '');
@@ -65,4 +66,39 @@ export class TodoLabelService {
     );
   }
 
+  extractTodoLabel(content: string, todoLabelList: TodoLabel[]): String[] {
+    if (!this.mapTodoLabel || this.mapTodoLabel.size === 0) {
+      this.mapTodoLabel = this.makeMapTodoLabel(todoLabelList);
+    }
+    const listTentativeIcon = new Set<String>();
+    if (!content || content.length === 0) {
+      return Array.from(listTentativeIcon);
+    } else {
+      const arrayContent = content.toLowerCase().split(/\s+/g);
+      arrayContent.forEach(word => {
+        if (this.mapTodoLabel.has(word)) {
+          this.mapTodoLabel.get(word).forEach(el => listTentativeIcon.add(el));
+        }
+      })
+    }
+    return Array.from(listTentativeIcon);
+  }
+
+  makeMapTodoLabel(todoLabelList: TodoLabel[]) {
+    if (!todoLabelList || todoLabelList.length === 0) {
+      return this.mapTodoLabel;
+    }
+    todoLabelList.forEach(todoLabel => {
+      const arrayKw = todoLabel.autoDetectKeywords.split(';');
+      arrayKw.forEach(kw => {
+        kw = kw.toLowerCase();
+        if (this.mapTodoLabel.has(kw)) {
+          this.mapTodoLabel.set(kw, [...this.mapTodoLabel.get(kw), todoLabel.imgAlternative]);
+        } else {
+          this.mapTodoLabel.set(kw, [todoLabel.imgAlternative]);
+        }
+      })
+    });
+    return this.mapTodoLabel;
+  }
 }

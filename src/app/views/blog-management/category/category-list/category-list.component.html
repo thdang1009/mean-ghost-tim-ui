@@ -7,7 +7,6 @@
 						<div class="table-responsive">
 							<table class="table">
 								<thead class=" text-primary">
-									<th>#</th>
 									<th>Name</th>
 									<th>Description</th>
 									<th>Content</th>
@@ -17,7 +16,6 @@
 									<ng-container *ngIf="categorys && categorys.length; else noDataBlock">
 										<tr *ngFor="let category of categorys; let index = index"
 											class="hover-pointer-td">
-											<td (click)="edit(category)">{{ index + 1 }}</td>
 											<td (click)="edit(category)">{{ category.name }}</td>
 											<td (click)="edit(category)">
 												{{ category.description }}

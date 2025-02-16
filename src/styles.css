@@ -485,6 +485,10 @@ mark.normal {
     width: 10px;
 }
 
+.todo-label-icon {
+    width: 20px;
+}
+
 .claps-count>p {
     margin: 0 !important;
 }
