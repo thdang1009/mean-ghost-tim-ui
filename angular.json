@@ -120,7 +120,8 @@
             "development": {
               "browserTarget": "mean-ghost-tim-ui:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

@@ -223,16 +223,16 @@ export class PostEditComponent implements OnInit, OnDestroy {
 
     // migrate from ngx-chips to mat-chip-grid:
     const foundInList = this.allCategory.filter(el => el?.name?.toLowerCase() === newName.toLowerCase());
-    const oldTag = (foundInList || [])[0];
+    const oldCategory = (foundInList || [])[0];
     // chọn cái cũ thì có _id, tạo mới thì chỉ có mỗi name mà còn ko phải là object nữa
-    const isOldTag = !!oldTag;
-    if (isOldTag) {
-      this.tags.push(oldTag);
+    const isOldCategory = !!oldCategory;
+    if (isOldCategory) {
+      this.categories.push(oldCategory);
       return;
     }
     this.categoryService.createCategoryWithName(newName)
       .subscribe(newItemFromServer => {
-        this.tags.push(newItemFromServer);
+        this.categories.push(newItemFromServer);
         this.getCategories();
       }, error => {
         showNoti('Create category fail ' + error, 'danger');
